@@ -2,10 +2,421 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0;url=/q1-2026/">
-<title>Safeshield Updates</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CASEY Roadmap — Safeshield Insurance</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0a1628;--mid:#0e1a30;--card:#111e38;--gold:#FFA300;--green:#00c97b;--blue:#3b8beb;--purple:#a855f7;--white:#f0f0f0;--grey:#708599;--text:rgba(240,240,240,.82);--road-fill:#15253f;--road-stroke:#1e3355}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── HEADER ── */
+.hdr{text-align:center;padding:52px 24px 24px;position:relative;z-index:2}
+.hdr-brand{font-size:10px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:18px}
+.hdr h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,11vw,88px);letter-spacing:8px;line-height:.88}
+.hdr h1 em{font-style:normal;-webkit-text-stroke:2px var(--gold);-webkit-text-fill-color:transparent}
+.hdr p{margin-top:10px;font-size:13px;color:var(--grey);max-width:380px;margin-left:auto;margin-right:auto;line-height:1.5}
+.legend{display:flex;gap:16px;justify-content:center;margin-top:22px;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:middle}
+.legend span{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--grey)}
+.lg{background:var(--green);box-shadow:0 0 6px rgba(0,201,123,.5)}
+.lo{background:var(--gold);box-shadow:0 0 6px rgba(255,163,0,.5)}
+.lb{background:var(--blue);box-shadow:0 0 6px rgba(59,139,235,.5)}
+.lp{background:var(--purple);box-shadow:0 0 6px rgba(168,85,247,.5)}
+
+/* ── ROAD SECTION ── */
+.road-section{position:relative;max-width:960px;margin:32px auto 0;padding:0 16px}
+
+/* Each "row" is a stop with the road running through center */
+.stop-row{position:relative;display:grid;grid-template-columns:1fr 80px 1fr;align-items:center;min-height:180px;gap:0}
+/* The middle column is the road + node */
+.road-col{position:relative;display:flex;align-items:center;justify-content:center;z-index:2}
+
+/* Vertical road segments */
+.road-col::before{content:'';position:absolute;top:0;bottom:0;left:50%;width:52px;transform:translateX(-50%);background:var(--road-fill);border-left:3px solid var(--road-stroke);border-right:3px solid var(--road-stroke);z-index:0}
+/* Dashed center line */
+.road-col::after{content:'';position:absolute;top:0;bottom:0;left:50%;width:3px;transform:translateX(-50%);background:repeating-linear-gradient(to bottom,var(--gold) 0,var(--gold) 12px,transparent 12px,transparent 28px);opacity:.25;z-index:1}
+/* First row: round top of road */
+.stop-row:first-child .road-col::before{border-radius:26px 26px 0 0;top:40%}
+.stop-row:first-child .road-col::after{top:40%}
+/* Last row: round bottom */
+.stop-row:last-child .road-col::before{border-radius:0 0 26px 26px;bottom:20%}
+.stop-row:last-child .road-col::after{bottom:20%}
+
+/* Node circle */
+.node{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;position:relative;z-index:3;border:3px solid;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.node:hover{transform:scale(1.12)}
+.node.green{background:rgba(0,201,123,.1);border-color:var(--green);box-shadow:0 0 16px rgba(0,201,123,.25)}
+.node.green:hover{box-shadow:0 0 28px rgba(0,201,123,.5)}
+.node.gold{background:rgba(255,163,0,.1);border-color:var(--gold);box-shadow:0 0 16px rgba(255,163,0,.2)}
+.node.gold:hover{box-shadow:0 0 28px rgba(255,163,0,.45)}
+.node.blue{background:rgba(59,139,235,.1);border-color:var(--blue);box-shadow:0 0 16px rgba(59,139,235,.2)}
+.node.blue:hover{box-shadow:0 0 28px rgba(59,139,235,.45)}
+.node.purple{background:rgba(168,85,247,.1);border-color:var(--purple);box-shadow:0 0 16px rgba(168,85,247,.2)}
+.node.purple:hover{box-shadow:0 0 28px rgba(168,85,247,.45)}
+/* Pulse for shipped */
+.node.green::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--green);animation:ndPulse 2.5s infinite}
+@keyframes ndPulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.45);opacity:0}}
+
+/* Content card (left or right) */
+.info-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:22px 20px;position:relative;transition:border-color .3s}
+.info-card:hover{border-color:rgba(255,255,255,.12)}
+.info-card.left{text-align:right}
+.info-card.right{text-align:left}
+
+/* Connector line from card to node */
+.info-card.left::after{content:'';position:absolute;top:50%;right:-14px;width:14px;height:2px}
+.info-card.right::before{content:'';position:absolute;top:50%;left:-14px;width:14px;height:2px}
+.info-card.left.green::after,.info-card.right.green::before{background:var(--green);opacity:.3}
+.info-card.left.gold::after,.info-card.right.gold::before{background:var(--gold);opacity:.3}
+.info-card.left.blue::after,.info-card.right.blue::before{background:var(--blue);opacity:.3}
+.info-card.left.purple::after,.info-card.right.purple::before{background:var(--purple);opacity:.3}
+
+.info-card .badge{display:inline-block;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;padding:3px 10px;border-radius:4px;margin-bottom:8px}
+.badge.green{background:rgba(0,201,123,.12);color:var(--green)}
+.badge.gold{background:rgba(255,163,0,.1);color:var(--gold)}
+.badge.blue{background:rgba(59,139,235,.1);color:var(--blue)}
+.badge.purple{background:rgba(168,85,247,.1);color:var(--purple)}
+
+.info-card h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;margin-bottom:6px}
+.info-card.green h3{color:var(--green)}
+.info-card.gold h3{color:var(--gold)}
+.info-card.blue h3{color:var(--blue)}
+.info-card.purple h3{color:var(--purple)}
+.info-card p{font-size:13px;color:var(--text);line-height:1.65}
+.sim-btn{display:inline-flex;align-items:center;gap:5px;margin-top:12px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:700;cursor:pointer;padding:6px 14px;border-radius:6px;border:1px solid;transition:all .2s}
+.sim-btn.green{color:var(--green);border-color:rgba(0,201,123,.25)}.sim-btn.green:hover{background:rgba(0,201,123,.12)}
+.sim-btn.gold{color:var(--gold);border-color:rgba(255,163,0,.2)}.sim-btn.gold:hover{background:rgba(255,163,0,.1)}
+.sim-btn.blue{color:var(--blue);border-color:rgba(59,139,235,.2)}.sim-btn.blue:hover{background:rgba(59,139,235,.1)}
+.sim-btn.purple{color:var(--purple);border-color:rgba(168,85,247,.2)}.sim-btn.purple:hover{background:rgba(168,85,247,.1)}
+
+/* Empty spacer for alternating layout */
+.spacer{}
+
+/* Phase dividers on the road */
+.phase-div{position:relative;display:grid;grid-template-columns:1fr 80px 1fr;min-height:60px}
+.phase-div .road-col::before{content:'';position:absolute;top:0;bottom:0;left:50%;width:52px;transform:translateX(-50%);background:var(--road-fill);border-left:3px solid var(--road-stroke);border-right:3px solid var(--road-stroke)}
+.phase-div .road-col::after{content:'';position:absolute;top:0;bottom:0;left:50%;width:3px;transform:translateX(-50%);background:repeating-linear-gradient(to bottom,var(--gold) 0,var(--gold) 12px,transparent 12px,transparent 28px);opacity:.25}
+.phase-tag{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:4px;padding:4px 18px;border-radius:20px;white-space:nowrap}
+.phase-tag.green{background:rgba(0,201,123,.12);color:var(--green);border:1px solid rgba(0,201,123,.2)}
+.phase-tag.gold{background:rgba(255,163,0,.1);color:var(--gold);border:1px solid rgba(255,163,0,.2)}
+.phase-tag.blue{background:rgba(59,139,235,.1);color:var(--blue);border:1px solid rgba(59,139,235,.2)}
+.phase-tag.purple{background:rgba(168,85,247,.1);color:var(--purple);border:1px solid rgba(168,85,247,.2)}
+
+/* START / FINISH */
+.start-marker{text-align:center;padding:0 0 10px;position:relative;z-index:3}
+.start-marker span{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:5px;color:var(--green)}
+.end-marker{text-align:center;padding:30px 0 0;position:relative;z-index:3}
+.end-marker span{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:6px;color:var(--gold)}
+
+/* ── MODAL ── */
+.mo{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(5,10,20,.88);z-index:200;opacity:0;pointer-events:none;transition:opacity .25s;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(10px)}
+.mo.open{opacity:1;pointer-events:all}
+.md{background:var(--mid);border:1px solid rgba(255,255,255,.08);border-radius:16px;max-width:620px;width:100%;max-height:82vh;overflow-y:auto;transform:translateY(14px) scale(.97);transition:transform .25s}
+.mo.open .md{transform:translateY(0) scale(1)}
+.md-top{padding:22px 22px 16px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;gap:12px;align-items:flex-start}
+.md-ico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.md-ico.green{background:rgba(0,201,123,.12)}.md-ico.gold{background:rgba(255,163,0,.1)}.md-ico.blue{background:rgba(59,139,235,.1)}.md-ico.purple{background:rgba(168,85,247,.1)}
+.md-t{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px}
+.md-d{font-size:12px;color:var(--grey);line-height:1.5;margin-top:2px}
+.md-x{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:transparent;color:var(--grey);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.md-x:hover{background:rgba(255,255,255,.08);color:var(--white)}
+.sim-wrap{padding:18px 22px 22px}
+.sim-tag{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;color:var(--grey);margin-bottom:12px}
+.sim-box{background:var(--navy);border:1px solid rgba(255,255,255,.06);border-radius:10px;overflow:hidden}
+.sim-bar{height:26px;background:rgba(255,255,255,.03);display:flex;align-items:center;padding:0 10px;gap:4px;border-bottom:1px solid rgba(255,255,255,.04)}
+.sim-bd{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.12)}
+.sim-u{font-size:9px;color:var(--grey);margin-left:6px}
+.sim-inner{padding:16px;min-height:200px;font-size:12.5px;line-height:1.65;color:var(--text)}
+
+/* Chat bubbles */
+.cb{max-width:88%;padding:9px 13px;border-radius:10px;font-size:12px;line-height:1.55;opacity:0;transform:translateY(6px);animation:fi .35s ease forwards;margin-bottom:9px}
+.cb.u{margin-left:auto;background:rgba(0,75,137,.25);border:1px solid rgba(59,139,235,.15);border-radius:10px 10px 3px 10px}
+.cb.a{background:rgba(255,163,0,.07);border:1px solid rgba(255,163,0,.1);border-radius:10px 10px 10px 3px}
+.cb.s{margin:0 auto 9px;background:rgba(0,201,123,.08);border:1px solid rgba(0,201,123,.12);border-radius:6px;font-size:10px;text-align:center;color:var(--green);padding:6px 12px;max-width:92%}
+@keyframes fi{to{opacity:1;transform:translateY(0)}}
+.cb:nth-child(1){animation-delay:.05s}.cb:nth-child(2){animation-delay:.45s}.cb:nth-child(3){animation-delay:.85s}.cb:nth-child(4){animation-delay:1.25s}.cb:nth-child(5){animation-delay:1.65s}.cb:nth-child(6){animation-delay:2.05s}.cb:nth-child(7){animation-delay:2.45s}
+
+/* Grids */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:11px;opacity:0;animation:fi .35s ease forwards}
+.gc:nth-child(1){animation-delay:.25s}.gc:nth-child(2){animation-delay:.45s}.gc:nth-child(3){animation-delay:.65s}.gc:nth-child(4){animation-delay:.85s}
+.gc h4{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1.5px;margin-bottom:5px}
+.gc.old{border-color:rgba(255,100,100,.12)}.gc.old h4{color:#ff6b6b}
+.gc.new{border-color:rgba(0,201,123,.12)}.gc.new h4{color:var(--green)}
+.gr{display:flex;justify-content:space-between;font-size:10px;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.03)}.gr span:first-child{color:var(--grey)}
+.ghl{text-align:center;margin-top:8px;padding:7px;background:rgba(0,201,123,.07);border:1px solid rgba(0,201,123,.12);border-radius:6px;font-size:10px;color:var(--green);opacity:0;animation:fi .35s ease forwards;animation-delay:.8s}
+
+/* Auto rows */
+.aw{display:flex;align-items:center;gap:9px;padding:8px 11px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:8px;margin-bottom:6px;opacity:0;animation:fi .35s ease forwards}
+.aw:nth-child(2){animation-delay:.25s}.aw:nth-child(3){animation-delay:.5s}.aw:nth-child(4){animation-delay:.75s}.aw:nth-child(5){animation-delay:1s}
+.aw-i{font-size:15px;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.aw-t{flex:1}.aw-t b{display:block;font-size:11px;color:var(--white)}.aw-t span{font-size:9.5px;color:var(--grey)}
+.bx{font-size:8px;letter-spacing:1px;text-transform:uppercase;padding:2px 6px;border-radius:3px;font-weight:700;flex-shrink:0}
+
+/* Stats */
+.ssg{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px}
+.ss{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:10px;text-align:center;opacity:0;animation:fi .35s ease forwards}
+.ss:nth-child(1){animation-delay:.15s}.ss:nth-child(2){animation-delay:.3s}.ss:nth-child(3){animation-delay:.45s}.ss:nth-child(4){animation-delay:.6s}
+.ss label{font-size:8px;text-transform:uppercase;letter-spacing:1px;color:var(--grey);display:block;margin-bottom:2px}
+.ss .n{font-family:'Bebas Neue',sans-serif;font-size:24px}
+.wf{margin-top:8px;background:rgba(255,163,0,.05);border:1px solid rgba(255,163,0,.1);border-radius:8px;padding:11px;opacity:0;animation:fi .4s ease forwards;animation-delay:1s}
+.wf h4{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;color:var(--gold);margin-bottom:3px}
+.wf p{font-size:11px;color:var(--text);line-height:1.5}
+
+/* Future items */
+.fx{display:flex;gap:9px;align-items:flex-start;padding:9px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:8px;margin-bottom:6px;opacity:0;animation:fi .35s ease forwards}
+.fx:nth-child(1){animation-delay:.15s}.fx:nth-child(2){animation-delay:.4s}.fx:nth-child(3){animation-delay:.65s}
+.fx-i{font-size:16px;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(168,85,247,.08)}
+.fx b{display:block;font-size:11.5px;color:var(--white);margin-bottom:1px}
+.fx span{font-size:10px;color:var(--grey);line-height:1.5}
+
+/* ── CTA ── */
+.cta{text-align:center;padding:40px 24px 70px;position:relative;z-index:2}
+.cta-in{max-width:480px;margin:0 auto;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:32px 24px;background:var(--card)}
+.cta-in h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:4px;color:var(--gold);margin-bottom:6px}
+.cta-in p{font-size:12px;color:var(--grey);line-height:1.6;margin-bottom:16px}
+.mn{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:5px;color:var(--white);display:inline-block;padding:10px 24px;border:2px solid var(--gold);border-radius:100px;cursor:pointer;transition:all .3s}
+.mn:hover{background:var(--gold);color:var(--navy)}
+footer{text-align:center;padding:22px;border-top:1px solid rgba(255,255,255,.04)}
+footer .fb{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:5px}
+.fg{color:var(--gold)}.fw{color:var(--white)}
+footer .ft{color:var(--grey);font-size:9px;margin-top:2px;font-style:italic}
+
+@media(max-width:640px){
+  .stop-row{grid-template-columns:1fr 60px 1fr;min-height:160px}
+  .road-col::before{width:40px}
+  .node{width:44px;height:44px;font-size:20px}
+  .node.green::after{inset:-5px}
+  .info-card{padding:16px 14px}
+  .info-card h3{font-size:18px}
+  .info-card p{font-size:11.5px}
+  .g2{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
-<p>Redirecting to latest update...</p>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-brand">● Safeshield Insurance ●</div>
+  <h1>CASEY <em>ROADMAP</em></h1>
+  <p>Follow the road. Every stop tells you what it does — tap "See it live" to watch it work.</p>
+  <div class="legend">
+    <span><i class="lg"></i> Shipped</span>
+    <span><i class="lo"></i> Building</span>
+    <span><i class="lb"></i> Up Next</span>
+    <span><i class="lp"></i> Future</span>
+  </div>
+</div>
+
+<!-- ROAD -->
+<div class="road-section">
+
+  <!-- START -->
+  <div class="start-marker"><span>🏁 START HERE</span></div>
+
+  <!-- Phase: SHIPPED -->
+  <div class="phase-div"><div class="spacer"></div><div class="road-col"><div class="phase-tag green">✓ SHIPPED THIS WEEK</div></div><div class="spacer"></div></div>
+
+  <!-- 1: Intake — card LEFT -->
+  <div class="stop-row">
+    <div class="info-card left green">
+      <div class="badge green">Shipped</div>
+      <h3>Intake Portal</h3>
+      <p>You're talking to a prospect — GC, restaurant, homeowner, doesn't matter. Tell CASEY "I need an intake form for this" and it generates one instantly. Send the client a branded link. When they submit: confirmation email, intake log entry, and NowCerts household all created automatically. Any industry, any risk.</p>
+      <div class="sim-btn green" onclick="openM('intake')">▶ See It Live</div>
+    </div>
+    <div class="road-col"><div class="node green" onclick="openM('intake')">📋</div></div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- 2: Quote — card RIGHT -->
+  <div class="stop-row">
+    <div class="spacer"></div>
+    <div class="road-col"><div class="node green" onclick="openM('quote')">📊</div></div>
+    <div class="info-card right green">
+      <div class="badge green">Shipped</div>
+      <h3>Quote Portal</h3>
+      <p>Upload a client's existing policies alongside your new quotes. CASEY reads the PDFs, extracts coverage and premium data, and builds a branded side-by-side comparison. You tell it what to highlight. Send the client one clean URL — they see exactly why your quote wins. Multiple PDFs, multiple carriers. No one else is doing this.</p>
+      <div class="sim-btn green" onclick="openM('quote')">▶ See It Live</div>
+    </div>
+  </div>
+
+  <!-- 3: PDF — card LEFT -->
+  <div class="stop-row">
+    <div class="info-card left green">
+      <div class="badge green">Shipped</div>
+      <h3>PDF + Image Reader</h3>
+      <p>Upload Dec pages, quotes, handwritten notes, or photos directly into CASEY chat. It reads everything instantly. From there: log a deal, create a NowCerts household, draft an email — all from one upload. Everything starts in the chat. That's the brain. One interface, no jumping between tools.</p>
+      <div class="sim-btn green" onclick="openM('pdf')">▶ See It Live</div>
+    </div>
+    <div class="road-col"><div class="node green" onclick="openM('pdf')">📄</div></div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- 4: Automation — card RIGHT -->
+  <div class="stop-row">
+    <div class="spacer"></div>
+    <div class="road-col"><div class="node green" onclick="openM('auto')">⚡</div></div>
+    <div class="info-card right green">
+      <div class="badge green">Shipped</div>
+      <h3>Automation Center</h3>
+      <p>Your renewal engine, email headquarters, and outreach center in one place. Renewal emails and welcome sequences flow through CASEY. Run targeted campaigns — pull clients by carrier, LOB, renewal date. Want to mass-email a segment of your book? Do it. Want a report on next month's renewals? Done. Agents build campaigns, Austin gives final approval.</p>
+      <div class="sim-btn green" onclick="openM('auto')">▶ See It Live</div>
+    </div>
+  </div>
+
+  <!-- 5: Commission — card LEFT -->
+  <div class="stop-row">
+    <div class="info-card left green">
+      <div class="badge green">Shipped</div>
+      <h3>Commission Portal</h3>
+      <p>Your personal earnings dashboard. Every month: what you've earned, what's pending, what's paid. The What If simulator lets you play with numbers — "if I close this deal, where do I land?" Year-to-date earnings, distance to goal, quarterly milestones. This is your hub for tracking how hungry you really are.</p>
+      <div class="sim-btn green" onclick="openM('comm')">▶ See It Live</div>
+    </div>
+    <div class="road-col"><div class="node green" onclick="openM('comm')">💰</div></div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- Phase: BUILDING -->
+  <div class="phase-div"><div class="spacer"></div><div class="road-col"><div class="phase-tag gold">⏳ BUILDING NOW</div></div><div class="spacer"></div></div>
+
+  <!-- 6: NowCerts — card RIGHT -->
+  <div class="stop-row">
+    <div class="spacer"></div>
+    <div class="road-col"><div class="node gold" onclick="openM('nowcerts')">🧠</div></div>
+    <div class="info-card right gold">
+      <div class="badge gold">In Progress</div>
+      <h3>NowCerts Invisible</h3>
+      <p>You should never have to log into NowCerts. Policy info, renewals, client details, tasks — ask CASEY and it handles everything in the background. One brain, one interface. NowCerts becomes silent infrastructure that you never see.</p>
+      <div class="sim-btn gold" onclick="openM('nowcerts')">▶ See It Live</div>
+    </div>
+  </div>
+
+  <!-- 7: Webhooks — card LEFT -->
+  <div class="stop-row">
+    <div class="info-card left gold">
+      <div class="badge gold">In Progress</div>
+      <h3>Webhook Automations</h3>
+      <p>Real-time event triggers from NowCerts. Every policy change, endorsement, cancellation, and commission payment fires an event. CASEY catches it and kicks off the right action — alerts, tasks, compliance logs — without anyone lifting a finger.</p>
+      <div class="sim-btn gold" onclick="openM('webhooks')">▶ See It Live</div>
+    </div>
+    <div class="road-col"><div class="node gold" onclick="openM('webhooks')">🔄</div></div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- Phase: UP NEXT -->
+  <div class="phase-div"><div class="spacer"></div><div class="road-col"><div class="phase-tag blue">→ UP NEXT</div></div><div class="spacer"></div></div>
+
+  <!-- 8: Client DB — card RIGHT -->
+  <div class="stop-row">
+    <div class="spacer"></div>
+    <div class="road-col"><div class="node blue" onclick="openM('clientdb')">🗂️</div></div>
+    <div class="info-card right blue">
+      <div class="badge blue">Up Next</div>
+      <h3>Client Database</h3>
+      <p>Full client profiles with coverage gap analysis, cross-sell opportunities, retention risk scoring, and premium trend tracking. Every client becomes a complete picture — not just a list of policies. CASEY connects the dots and tells you what to do next.</p>
+      <div class="sim-btn blue" onclick="openM('clientdb')">▶ See It Live</div>
+    </div>
+  </div>
+
+  <!-- 9: Portal — card LEFT -->
+  <div class="stop-row">
+    <div class="info-card left blue">
+      <div class="badge blue">Up Next</div>
+      <h3>Client Portal</h3>
+      <p>Self-service portal where clients generate their own certificates, request endorsements, and access their documents — 24/7, no phone call needed. Premium service for your clients, zero admin workload on your end.</p>
+      <div class="sim-btn blue" onclick="openM('portal')">▶ See It Live</div>
+    </div>
+    <div class="road-col"><div class="node blue" onclick="openM('portal')">🌐</div></div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- Phase: FUTURE -->
+  <div class="phase-div"><div class="spacer"></div><div class="road-col"><div class="phase-tag purple">◆ THE VISION</div></div><div class="spacer"></div></div>
+
+  <!-- 10: Data — card RIGHT -->
+  <div class="stop-row">
+    <div class="spacer"></div>
+    <div class="road-col"><div class="node purple" onclick="openM('data')">📈</div></div>
+    <div class="info-card right purple">
+      <div class="badge purple">Future</div>
+      <h3>Data Intelligence</h3>
+      <p>CASEY analyzes your entire book — carrier concentration, premium trends by ZIP, coverage benchmarking against similar risks, cross-sell scoring. Walk into carrier meetings with leverage because you know exactly what you bring to the table. Data wins.</p>
+      <div class="sim-btn purple" onclick="openM('data')">▶ See It Live</div>
+    </div>
+  </div>
+
+  <!-- 11: AI Quoting — card LEFT -->
+  <div class="stop-row">
+    <div class="info-card left purple">
+      <div class="badge purple">Future</div>
+      <h3>AI Quoting Engine</h3>
+      <p>Submit a risk to CASEY and bypass the rater entirely. AI-powered quoting reads submissions, suggests carriers based on your book, and routes applications — with human judgment on final send. The grunt work disappears.</p>
+      <div class="sim-btn purple" onclick="openM('aiquote')">▶ See It Live</div>
+    </div>
+    <div class="road-col"><div class="node purple" onclick="openM('aiquote')">🤖</div></div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- 12: SaaS — card RIGHT -->
+  <div class="stop-row">
+    <div class="spacer"></div>
+    <div class="road-col"><div class="node purple" onclick="openM('saas')">🏢</div></div>
+    <div class="info-card right purple">
+      <div class="badge purple">Future</div>
+      <h3>SaaS Platform</h3>
+      <p>CASEY becomes a product other agencies can buy. Multi-tenant architecture, per-agency config, scalable infrastructure. Safeshield is customer #1. 40,000+ independent agencies are the market. Built by an agent, for agents.</p>
+      <div class="sim-btn purple" onclick="openM('saas')">▶ See It Live</div>
+    </div>
+  </div>
+
+  <!-- END -->
+  <div class="end-marker"><span>🌙 SAFESHIELD TO THE MOON</span></div>
+
+</div>
+
+<!-- MODAL -->
+<div class="mo" id="mo" onclick="closeM(event)">
+  <div class="md" onclick="event.stopPropagation()">
+    <button class="md-x" onclick="closeM()">✕</button>
+    <div id="mi"></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-in">
+    <h3>Got Ideas? Bring Them.</h3>
+    <p>CASEY evolves based on what we need. If something would make your day easier, bring it to the table. Let's build it.</p>
+    <span class="mn">SAFESHIELD TO THE MOON 🚀</span>
+  </div>
+</div>
+<footer>
+  <div class="fb"><span class="fg">SAFESHIELD</span> <span class="fw">INSURANCE</span></div>
+  <div class="ft">We work for you, not the insurance company.</div>
+</footer>
+
+<script>
+const D={
+intake:{i:'📋',c:'green',t:'Intake Portal',d:'Tell CASEY what you need — instant intake form for any industry.',s:`<div class="cb u">I need an intake form for a general contractor in Stamford</div><div class="cb a">Got it — generating a commercial intake form for a GC. Including fields for business info, GL limits, subcontractor details, and workers comp. One sec...</div><div class="cb s">✓ Intake form generated</div><div class="cb a">Here's your link:<br><span style="color:var(--gold)">intake.gosafeshield.com/gc-martinez-04</span><br><br>When the client submits:<br>• Branded confirmation email sent to them<br>• Entry logged in your intake sheet<br>• NowCerts household created automatically</div><div class="cb u">Perfect, sending it now</div><div class="cb s">✓ Client submitted — NowCerts household created for Martinez Contracting LLC</div>`},
+quote:{i:'📊',c:'green',t:'Quote Portal',d:'Branded side-by-side quote comparisons at a shareable URL.',s:`<div class="cb u" style="margin-bottom:12px">Build me a quote comparison — Rivera's current Travelers HO3 vs my Plymouth Rock quote</div><div class="g2"><div class="gc old"><h4>Current — Travelers</h4><div class="gr"><span>Dwelling</span><span>$425,000</span></div><div class="gr"><span>Liability</span><span>$300,000</span></div><div class="gr"><span>Deductible</span><span>$2,500</span></div><div class="gr"><span>Premium</span><span style="color:#ff6b6b">$3,847/yr</span></div></div><div class="gc new"><h4>Your Quote — Plymouth Rock</h4><div class="gr"><span>Dwelling</span><span>$450,000</span></div><div class="gr"><span>Liability</span><span>$500,000</span></div><div class="gr"><span>Deductible</span><span>$1,000</span></div><div class="gr"><span>Premium</span><span style="color:var(--green)">$3,210/yr</span></div></div></div><div class="ghl">✓ Better coverage + $637 saved → <span style="color:var(--gold)">quotes.gosafeshield.com/rivera-ho3</span></div>`},
+pdf:{i:'📄',c:'green',t:'PDF + Image Reader',d:'Upload anything into chat — CASEY reads it and takes action.',s:`<div class="cb u">📎 <em style="color:var(--grey)">uploaded: dec-page-hoffman.pdf</em></div><div class="cb a">Reading the Dec page... Got it.<br><br>HO3 through Hartford for Sarah Hoffman:<br>• Dwelling: $380,000<br>• Liability: $300,000<br>• Premium: $2,940/yr<br>• Effective: 06/15/25 → 06/15/26<br><br>I can log a deal, create a NowCerts household, draft an email, or build a quote comparison. What do you need?</div><div class="cb u">Create the household and log the deal</div><div class="cb s">✓ NowCerts household created — Sarah Hoffman</div><div class="cb s">✓ Deal logged — $2,940 HO3 / Hartford</div><div class="cb a">All set. Household is live in NowCerts and the deal is on your sheet. Want me to draft a welcome email to Sarah?</div>`},
+auto:{i:'⚡',c:'green',t:'Automation Center',d:'Campaigns, renewals, reports — all with your approval.',s:`<div style="font-family:'Bebas Neue';font-size:13px;letter-spacing:2px;color:var(--gold);margin-bottom:9px">Active Campaigns</div><div class="aw"><div class="aw-i" style="background:rgba(0,201,123,.1)">📨</div><div class="aw-t"><b>60-Day Renewal Reminder</b><span>142 clients · Auto-triggered from IVANS</span></div><div class="bx" style="background:rgba(0,201,123,.12);color:var(--green)">Active</div></div><div class="aw"><div class="aw-i" style="background:rgba(255,163,0,.1)">🎯</div><div class="aw-t"><b>Cross-Sell: No Umbrella</b><span>Eric's campaign · 87 HO clients</span></div><div class="bx" style="background:rgba(255,163,0,.1);color:var(--gold)">Awaiting Approval</div></div><div class="aw"><div class="aw-i" style="background:rgba(59,139,235,.1)">👋</div><div class="aw-t"><b>Welcome Sequence</b><span>New clients · 3-email drip over 14 days</span></div><div class="bx" style="background:rgba(0,201,123,.12);color:var(--green)">Active</div></div><div class="aw"><div class="aw-i" style="background:rgba(168,85,247,.1)">📊</div><div class="aw-t"><b>May Renewals Report</b><span>All policies expiring May 2026</span></div><div class="bx" style="background:rgba(59,139,235,.1);color:var(--blue)">Queued</div></div>`},
+comm:{i:'💰',c:'green',t:'Commission Portal',d:'Earnings, goals, and the What If simulator.',s:`<div class="ssg"><div class="ss"><label>This Month</label><div class="n" style="color:var(--gold)">$8,420</div></div><div class="ss"><label>Year to Date</label><div class="n" style="color:var(--green)">$41,850</div></div><div class="ss"><label>Pending</label><div class="n" style="color:var(--blue)">$3,200</div></div><div class="ss"><label>To Goal</label><div class="n" style="color:var(--purple)">$58,150</div></div></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:7px;padding:9px;opacity:0;animation:fi .35s ease forwards;animation-delay:.8s"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:1px">Goal Progress</span><span style="font-size:9px;color:var(--gold)">42%</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden"><div style="width:42%;height:100%;background:linear-gradient(90deg,var(--green),var(--gold));border-radius:6px"></div></div></div><div class="wf"><h4>⚡ What If Simulator</h4><p>Close <b>Rivera HO3 ($3,210)</b> + <b>Martinez GL ($8,400)</b> → month hits <span style="color:var(--green)">$14,238</span> and you're in <span style="color:var(--gold)">Grit Award ($1,500 bonus)</span> range.</p></div>`},
+nowcerts:{i:'🧠',c:'gold',t:'NowCerts Invisible',d:'Ask CASEY anything — NowCerts works silently in the background.',s:`<div class="cb u">What's the renewal date on the Hoffman account?</div><div class="cb a">Sarah Hoffman's HO3 through Hartford renews <b>June 15, 2026</b>. Current premium: $2,940. Client since 2023, no claims on file. Want me to start the renewal process?</div><div class="cb u">Yeah pull comparable quotes from Plymouth Rock and Travelers</div><div class="cb a">On it. I'll pull her current coverage from NowCerts, submit to both carriers, and have a comparison ready by tomorrow morning.</div><div class="cb s">✓ Renewal workflow initiated — Hoffman / HO3</div>`},
+webhooks:{i:'🔄',c:'gold',t:'Webhook Automations',d:'Real-time events powering your agency automatically.',s:`<div style="font-family:'Bebas Neue';font-size:12px;letter-spacing:2px;color:var(--gold);margin-bottom:8px">Live Event Feed</div><div class="aw"><div class="aw-i" style="background:rgba(0,201,123,.1)">📥</div><div class="aw-t"><b>New Policy Created</b><span>Martinez Contracting — GL / Plymouth Rock</span></div><div style="font-size:9px;color:var(--grey)">2m ago</div></div><div class="aw"><div class="aw-i" style="background:rgba(255,163,0,.1)">🔔</div><div class="aw-t"><b>Endorsement Received</b><span>Hoffman — Scheduled personal property</span></div><div style="font-size:9px;color:var(--grey)">18m ago</div></div><div class="aw"><div class="aw-i" style="background:rgba(255,100,100,.1)">⚠️</div><div class="aw-t"><b>Cancellation Notice</b><span>Rivera Auto — Non-payment / Travelers</span></div><div style="font-size:9px;color:var(--grey)">1h ago</div></div><div class="aw"><div class="aw-i" style="background:rgba(59,139,235,.1)">💵</div><div class="aw-t"><b>Direct Bill Received</b><span>$847.20 commission — Hartford batch</span></div><div style="font-size:9px;color:var(--grey)">3h ago</div></div>`},
+clientdb:{i:'🗂️',c:'blue',t:'Client Database',d:'Full client profiles with coverage gaps and cross-sell opportunities.',s:`<div class="gc" style="border-color:rgba(59,139,235,.12);background:rgba(59,139,235,.03);margin-bottom:8px;animation-delay:.15s"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px"><b style="font-family:'Bebas Neue';font-size:15px;letter-spacing:2px">Sarah Hoffman</b><span style="font-size:8px;padding:2px 6px;background:rgba(0,201,123,.1);color:var(--green);border-radius:3px;letter-spacing:1px;text-transform:uppercase">Low Risk</span></div><div style="font-size:10.5px;color:var(--grey);line-height:1.8"><div class="gr"><span>Policies</span><span style="color:var(--white)">HO3, Auto</span></div><div class="gr"><span>Total Premium</span><span style="color:var(--white)">$5,180/yr</span></div><div class="gr"><span>Client Since</span><span style="color:var(--white)">2023</span></div><div class="gr"><span>Claims</span><span style="color:var(--green)">None</span></div></div></div><div class="gc" style="animation-delay:.5s;border-color:rgba(255,163,0,.1);background:rgba(255,163,0,.03)"><div style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;font-weight:700">⚡ Opportunities</div><div style="font-size:10.5px;color:var(--text);line-height:1.7">• <b>No umbrella</b> — $500K home, recommend $1M<br>• <b>Underinsured dwelling</b> — ZIP avg is $450K<br>• <b>No flood</b> — Zone X moderate risk</div></div>`},
+portal:{i:'🌐',c:'blue',t:'Client Portal',d:'Self-service certificates, endorsements, and documents.',s:`<div style="text-align:center;padding:6px 0 12px;opacity:0;animation:fi .35s ease forwards;animation-delay:.15s"><div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2px">portal.gosafeshield.com</div><div style="font-family:'Bebas Neue';font-size:16px;letter-spacing:2px">Welcome, John</div><div style="font-size:10px;color:var(--grey)">Martinez Contracting LLC</div></div><div class="g2"><div class="gc" style="text-align:center;cursor:pointer;animation-delay:.35s"><div style="font-size:20px;margin-bottom:3px">📜</div><div style="font-size:10.5px;font-weight:700">Generate<br>Certificate</div></div><div class="gc" style="text-align:center;cursor:pointer;animation-delay:.5s"><div style="font-size:20px;margin-bottom:3px">✏️</div><div style="font-size:10.5px;font-weight:700">Request<br>Endorsement</div></div><div class="gc" style="text-align:center;cursor:pointer;animation-delay:.65s"><div style="font-size:20px;margin-bottom:3px">📁</div><div style="font-size:10.5px;font-weight:700">My<br>Documents</div></div><div class="gc" style="text-align:center;cursor:pointer;animation-delay:.8s"><div style="font-size:20px;margin-bottom:3px">💬</div><div style="font-size:10.5px;font-weight:700">Contact<br>My Agent</div></div></div>`},
+data:{i:'📈',c:'purple',t:'Data Intelligence',d:'Carrier leverage, premium trends, cross-sell scoring.',s:`<div class="fx"><div class="fx-i">🎯</div><div><b>Carrier Concentration Alert</b><span>42% of your HO book is with Hartford. Diversification recommended — shift new business to Plymouth Rock or Travelers.</span></div></div><div class="fx"><div class="fx-i">📊</div><div><b>Premium Trend: Fairfield County</b><span>HO3 renewals averaging +11%. Hartford at +14%, Travelers holding at +6%. Remarket opportunity on 23 policies.</span></div></div><div class="fx"><div class="fx-i">💡</div><div><b>Cross-Sell Opportunity</b><span>34 HO clients with no umbrella. Estimated additional premium: $47,600/yr. Top 10 flagged for outreach.</span></div></div>`},
+aiquote:{i:'🤖',c:'purple',t:'AI Quoting Engine',d:'Submit a risk — CASEY suggests carriers and routes submissions.',s:`<div class="cb u">Need quotes for a new restaurant in Norwalk — Mediterranean, 2,500 sqft, liquor license, 15 employees</div><div class="cb a">Based on this risk profile, I'm recommending three carriers:<br><br>1. <b>Employers First</b> — strong on restaurant GL, competitive liquor liability<br>2. <b>Hartford</b> — best BOP package for this size<br>3. <b>BTIS</b> — specialty appetite for Mediterranean restaurants<br><br>Preparing all three submissions now.</div><div class="cb s">✓ 3 submissions queued — awaiting your review before send</div>`},
+saas:{i:'🏢',c:'purple',t:'SaaS Platform',d:'CASEY becomes a product other agencies can buy.',s:`<div class="fx"><div class="fx-i">🔑</div><div><b>Multi-Tenant Architecture</b><span>Each agency gets their own instance — custom branding, carrier list, commission splits, and AI training. Isolated data, shared platform.</span></div></div><div class="fx"><div class="fx-i">💳</div><div><b>Tiered Pricing</b><span>Starter for solo agents. Pro for growing agencies. Enterprise for multi-location shops. Same engine Safeshield runs on today.</span></div></div><div class="fx"><div class="fx-i">🌎</div><div><b>40,000+ Target Agencies</b><span>Independent P&C on NowCerts, AMS360, HawkSoft, EZLynx. Built by an agent, for agents.</span></div></div>`}
+};
+
+function openM(k){const m=D[k];if(!m)return;document.getElementById('mi').innerHTML=`<div class="md-top"><div class="md-ico ${m.c}">${m.i}</div><div><div class="md-t">${m.t}</div><div class="md-d">${m.d}</div></div></div><div class="sim-wrap"><div class="sim-tag">▶ LIVE SIMULATION</div><div class="sim-box"><div class="sim-bar"><div class="sim-bd"></div><div class="sim-bd"></div><div class="sim-bd"></div><div class="sim-u">casey.gosafeshield.com</div></div><div class="sim-inner">${m.s}</div></div></div>`;document.getElementById('mo').classList.add('open');document.body.style.overflow='hidden'}
+function closeM(e){if(e&&e.target!==document.getElementById('mo')&&!e.target.classList.contains('md-x'))return;document.getElementById('mo').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+</script>
 </body>
 </html>
