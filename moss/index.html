@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Your Insurance Transition — Safeshield</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #004B89;
+    --navy-dark: #003A6B;
+    --navy-light: #E6EFF6;
+    --yellow: #FFA300;
+    --yellow-light: #FFF4E0;
+    --ink: #0F1B2D;
+    --ink-muted: #5A6775;
+    --ink-soft: #8A95A1;
+    --bg: #F7F9FC;
+    --surface: #FFFFFF;
+    --border: #E4EAF1;
+    --border-strong: #CBD5E1;
+    --success: #1D9E75;
+    --success-bg: #E1F5EE;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .header {
+    background: var(--navy);
+    color: white;
+    padding: 20px 0;
+    border-bottom: 4px solid var(--yellow);
+  }
+
+  .header-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .brand-tag {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--yellow);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 2px;
+  }
+
+  .header-meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    text-align: right;
+  }
+
+  .hero {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 48px 24px 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--ink-muted);
+    max-width: 620px;
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px 64px;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 32px 0;
+  }
+
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 2px;
+    margin: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+
+  .tab-btn {
+    background: transparent;
+    border: none;
+    padding: 12px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .tab-btn:hover { color: var(--navy); }
+
+  .tab-btn.active {
+    color: var(--navy);
+    border-bottom-color: var(--yellow);
+    font-weight: 600;
+  }
+
+  .tab-content { display: none; animation: fadeIn 0.2s ease; }
+  .tab-content.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 12px;
+  }
+
+  .card-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--yellow);
+    background: var(--yellow-light);
+    padding: 4px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    color: var(--ink-muted);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .card p + p { margin-top: 10px; }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 14px;
+  }
+
+  .pill {
+    background: var(--navy-light);
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    margin: 20px 0 10px;
+  }
+
+  .section-label:first-child { margin-top: 0; }
+
+  .policy-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .policy-row {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .policy-row:last-child { border-bottom: none; }
+
+  .policy-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .policy-meta {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-top: 2px;
+  }
+
+  .policy-premium {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+
+  .policy-status {
+    font-size: 13px;
+    color: var(--success);
+    font-weight: 500;
+    background: var(--success-bg);
+    padding: 4px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: var(--border-strong);
+  }
+
+  .timeline-item { position: relative; margin-bottom: 24px; }
+  .timeline-item:last-child { margin-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -32px;
+    top: 4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--yellow);
+    border: 3px solid var(--surface);
+    box-shadow: 0 0 0 2px var(--navy);
+  }
+
+  .timeline-date {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--yellow);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 2px;
+  }
+
+  .timeline-event {
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .footer {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+
+  .footer a { color: var(--navy); text-decoration: none; font-weight: 500; }
+  .footer a:hover { text-decoration: underline; }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 30px; }
+    .hero p { font-size: 15px; }
+    .stats { grid-template-columns: 1fr; }
+    .header-meta { display: none; }
+    .policy-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .policy-premium, .policy-status { align-self: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div>
+      <div class="brand">SAFESHIELD</div>
+      <div class="brand-tag">Insurance Agency</div>
+    </div>
+    <div class="header-meta">
+      Prepared for Gregory Moss<br>
+      April 17, 2026
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Your insurance transition</h1>
+  <p>Everything we've done, what's coming, and what you need to do, all in one place.</p>
+</section>
+
+<div class="container">
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Policies bound</div>
+      <div class="stat-value">7</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Pending UW</div>
+      <div class="stat-value">1</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Action items</div>
+      <div class="stat-value">3</div>
+    </div>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab-btn active" data-tab="actions">What you need to do</button>
+    <button class="tab-btn" data-tab="policies">Your new policies</button>
+    <button class="tab-btn" data-tab="timeline">Timeline</button>
+    <button class="tab-btn" data-tab="notes">Good to know</button>
+  </div>
+
+  <div id="tab-actions" class="tab-content active">
+    <div class="card">
+      <span class="card-eyebrow">1 of 3</span>
+      <h3>Sign the carrier emails</h3>
+      <p>You'll get signature requests from Kingstone (personal umbrella), Chubb (Cloudadvise BOP), Neptune (flood), and Travelers (BOP and commercial umbrella). Knock them out as they land.</p>
+      <div class="pills">
+        <span class="pill">Kingstone</span>
+        <span class="pill">Chubb</span>
+        <span class="pill">Neptune</span>
+        <span class="pill">Travelers</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-eyebrow">2 of 3</span>
+      <h3>Sign our e-sign packet</h3>
+      <p>One packet from Safeshield containing three things: your D&O application, Broker of Record letters authorizing Safeshield as your new agent, and cancellation forms for your existing policies.</p>
+      <p>Once you sign the cancellation forms, we submit them directly to your current broker to officially end those policies. You don't need to contact your old broker yourself, we handle that entire handoff.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-eyebrow">3 of 3</span>
+      <h3>Heads up on carrier bills</h3>
+      <p>We collected a single payment from you upfront so you don't have to pay each carrier separately. As we remit those payments, Travelers, Neptune, Chubb, and Hanover may send you their own invoices in the mail. You can disregard them, we've got it covered.</p>
+    </div>
+  </div>
+
+  <div id="tab-policies" class="tab-content">
+    <div class="section-label">Personal</div>
+    <div class="policy-group">
+      <div class="policy-row">
+        <div>
+          <div class="policy-name">Home</div>
+          <div class="policy-meta">Kingstone &middot; 4/20/26 &ndash; 4/20/27 &middot; 9 pay</div>
+        </div>
+        <div class="policy-premium">$3,670</div>
+      </div>
+      <div class="policy-row">
+        <div>
+          <div class="policy-name">Auto</div>
+          <div class="policy-meta">Effective 5/16/26</div>
+        </div>
+        <div class="policy-status">Bound</div>
+      </div>
+      <div class="policy-row">
+        <div>
+          <div class="policy-name">Personal umbrella</div>
+          <div class="policy-meta">Kingstone &middot; 5/1/26 &ndash; 5/1/27 &middot; 6 pay &middot; pending UW</div>
+        </div>
+        <div class="policy-premium">$297</div>
+      </div>
+    </div>
+
+    <div class="section-label">Locust Four Residences LLC</div>
+    <div class="policy-group">
+      <div class="policy-row">
+        <div>
+          <div class="policy-name">BOP</div>
+          <div class="policy-meta">Travelers &middot; 4/25/26 &middot; paid in full</div>
+        </div>
+        <div class="policy-premium">$7,016</div>
+      </div>
+      <div class="policy-row">
+        <div>
+          <div class="policy-name">Commercial umbrella</div>
+          <div class="policy-meta">Travelers &middot; $5M &middot; 4/25/26 &middot; paid in full</div>
+        </div>
+        <div class="policy-premium">$3,200</div>
+      </div>
+      <div class="policy-row">
+        <div>
+          <div class="policy-name">Flood</div>
+          <div class="policy-meta">Neptune &middot; policy TNF4298583 &middot; 4/27/26 &middot; paid in full</div>
+        </div>
+        <div class="policy-premium">$2,943</div>
+      </div>
+      <div class="policy-row">
+        <div>
+          <div class="policy-name">D&O</div>
+          <div class="policy-meta">Hanover &middot; 4/25/26 &middot; paid in full</div>
+        </div>
+        <div class="policy-premium">$1,364</div>
+      </div>
+    </div>
+
+    <div class="section-label">Cloudadvise LLC</div>
+    <div class="policy-group">
+      <div class="policy-row">
+        <div>
+          <div class="policy-name">BOP</div>
+          <div class="policy-meta">Chubb &middot; paid in full</div>
+        </div>
+        <div class="policy-premium">$4,723</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-timeline" class="tab-content">
+    <div class="card" style="padding: 28px 32px;">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Apr 20</div>
+          <div class="timeline-event">Home binds &middot; Utica home cancels</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Apr 25</div>
+          <div class="timeline-event">Locust BOP, commercial umbrella, and D&O all bind</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Apr 27</div>
+          <div class="timeline-event">Flood binds &middot; old Locust policies cancel</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">May 1</div>
+          <div class="timeline-event">Personal umbrella binds &middot; Utica umbrella cancels</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">May 16</div>
+          <div class="timeline-event">New auto takes over &middot; Utica auto expires</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-notes" class="tab-content">
+    <div class="card">
+      <h3>Your client portal is coming</h3>
+      <p>Within the next week or so, your personal client portal at gosafeshield.com will go live. Everything lives there, policy documents, billing, certificates, and declarations, all in one place. We'll send login details as soon as it's ready.</p>
+    </div>
+    <div class="card">
+      <h3>Personal umbrella window</h3>
+      <p>Your new home starts 4/20 but the new umbrella not until 5/1. Your existing Utica umbrella stays active through 5/1 to cover the window. No gap in coverage.</p>
+    </div>
+    <div class="card">
+      <h3>Locust flood handoff</h3>
+      <p>Your new Locust coverage starts 4/25, flood starts 4/27. We're keeping the old Builder's Risk alive through 4/27 so there's no flood gap. Small overlap, zero exposure.</p>
+    </div>
+    <div class="card">
+      <h3>Fleetwood Parking</h3>
+      <p>Not being touched. Stays where it is through 9/9/26 renewal. We'll revisit closer to the date.</p>
+    </div>
+    <div class="card">
+      <h3>Refunds from prior carriers</h3>
+      <p>You'll get pro-rata refunds directly from Utica, Evanston, American Zurich, and The Hartford once cancellations process. The Builder's Risk refund should be the largest.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">Safeshield Insurance Agency</div>
+    <p>2777 Summer St, 6th Fl &middot; Stamford, CT 06905</p>
+    <p>(203) 204-2555 &middot; <a href="https://gosafeshield.com">gosafeshield.com</a></p>
+  </div>
+
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      buttons.forEach(b => b.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
