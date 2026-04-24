@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="supported-color-schemes" content="light">
+<title>CASEY · The Commission Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: light only; }
+  @media (prefers-color-scheme: dark) { :root { color-scheme: light only !important; } }
+
+  :root {
+    --bg: #FFFFFF;
+    --bg-soft: #FAFAFA;
+    --bg-panel: #F6F7F9;
+    --bg-subtle: #F0F2F5;
+    --surface: #FFFFFF;
+    --ink: #0A0B0D;
+    --ink-2: #3A3D42;
+    --ink-3: #6B7078;
+    --ink-4: #9CA3AF;
+    --ink-5: #C4C8CE;
+    --border: #E5E7EB;
+    --border-2: #EEF0F3;
+    --brand: #0052FF;
+    --brand-soft: #EBF0FF;
+    --green: #0A8F5C;
+    --green-soft: #E6F4EE;
+    --amber: #B45309;
+    --amber-soft: #FEF6E7;
+    --red: #DC2626;
+    --red-soft: #FEF2F2;
+    --purple: #7C3AED;
+    --purple-soft: #F3EDFE;
+    --teal: #0E7490;
+    --teal-soft: #E0F2F5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html {
+    background: #FFFFFF !important;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: #FFFFFF !important;
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+  }
+
+  .readable, .readable * { -webkit-user-select: text; user-select: text; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  button { font-family: inherit; cursor: pointer; -webkit-appearance: none; appearance: none; border: none; background: none; touch-action: manipulation; }
+  .app { background: #FFFFFF; min-height: 100vh; }
+
+  .topbar {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .logo-mark { width: 24px; height: 24px; background: var(--ink); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .logo-text { font-weight: 700; font-size: 14px; letter-spacing: -0.2px; }
+  .topbar-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+  .period-badge { background: var(--bg-panel); border: 1px solid var(--border); padding: 5px 10px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: var(--ink-2); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .period-dot { width: 6px; height: 6px; background: var(--amber); border-radius: 50%; }
+
+  .wrap { padding: 20px 16px; }
+
+  .toc { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 28px; }
+  .toc-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; font-weight: 600; }
+  .toc-items { display: flex; flex-direction: column; gap: 6px; }
+  .toc-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 7px; text-decoration: none; color: var(--ink); transition: all 0.15s; }
+  .toc-item:active { background: var(--bg-panel); }
+  .toc-num { width: 20px; height: 20px; background: var(--ink); color: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+  .toc-title { font-size: 13px; font-weight: 500; flex: 1; }
+  .toc-arrow { color: var(--ink-4); font-size: 14px; }
+
+  .hero { padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; background: var(--brand-soft); color: var(--brand); border-radius: 100px; font-size: 12px; font-weight: 600; margin-bottom: 18px; }
+  .hero-badge-dot { width: 6px; height: 6px; background: var(--brand); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .hero-title { font-size: 28px; font-weight: 700; line-height: 1.1; letter-spacing: -0.8px; margin-bottom: 14px; }
+  .hero-title .accent { color: var(--brand); }
+  .hero-desc { font-size: 14px; line-height: 1.55; color: var(--ink-3); margin-bottom: 20px; }
+  .hero-principles { display: flex; flex-direction: column; gap: 6px; }
+  .principle { padding: 10px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; font-size: 12px; color: var(--ink-2); display: flex; align-items: center; gap: 10px; }
+  .principle-mark { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: var(--brand); background: var(--brand-soft); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+
+  .section { margin-bottom: 36px; scroll-margin-top: 80px; }
+  .section-header { margin-bottom: 16px; }
+  .section-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; color: var(--ink-3); letter-spacing: 0.5px; text-transform: uppercase; }
+  .section-num { width: 22px; height: 22px; background: var(--ink); color: white; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+  .section-title { font-size: 20px; font-weight: 700; line-height: 1.2; letter-spacing: -0.4px; margin-bottom: 8px; }
+  .section-desc { font-size: 13px; color: var(--ink-3); line-height: 1.55; }
+
+  .spine-diagram { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+  .spine-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-4); letter-spacing: 0.5px; margin-bottom: 12px; }
+  .bank-anchor { background: var(--ink); color: white; border-radius: 12px; padding: 18px; position: relative; margin-bottom: 16px; }
+  .bank-anchor-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #86EFAC; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .bank-anchor-label::before { content: ''; width: 6px; height: 6px; background: #86EFAC; border-radius: 50%; }
+  .bank-anchor-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.3px; }
+  .bank-anchor-desc { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.5; margin-bottom: 14px; }
+  .bank-accounts { display: flex; flex-direction: column; gap: 8px; }
+  .bank-account { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 10px 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .bank-account-name { color: white; font-weight: 600; }
+  .bank-account-role { color: #86EFAC; font-size: 10px; }
+  .arrow-splits { display: flex; justify-content: center; margin: -4px 0 8px; color: var(--ink-4); }
+  .downstream-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-3); text-align: center; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; font-weight: 600; }
+  .lens-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .lens-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 8px; text-align: center; }
+  .lens-icon { width: 24px; height: 24px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: white; margin: 0 auto 6px; }
+  .lens-card[data-lens="ivans"] .lens-icon { background: #2563EB; }
+  .lens-card[data-lens="dl"] .lens-icon { background: var(--green); }
+  .lens-card[data-lens="nc"] .lens-icon { background: var(--purple); }
+  .lens-name { font-size: 11px; font-weight: 600; margin-bottom: 2px; }
+  .lens-role { font-size: 10px; color: var(--ink-3); line-height: 1.3; }
+
+  .pipelines { display: flex; flex-direction: column; gap: 10px; }
+  .pipeline { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .pipeline-header { padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--border-2); background: var(--bg-soft); }
+  .pipeline-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+  .pipeline-num { width: 32px; height: 32px; background: var(--bg-panel); border: 1px solid var(--border); color: var(--ink-3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .pipeline-name { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; line-height: 1.2; }
+  .pipeline-type { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-3); margin-top: 2px; }
+  .pipeline-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; padding: 4px 8px; border-radius: 5px; flex-shrink: 0; letter-spacing: 0.3px; }
+  .pipeline-tag.auto { background: var(--green-soft); color: var(--green); }
+  .pipeline-tag.manual { background: var(--amber-soft); color: var(--amber); }
+  .pipeline-tag.passthrough { background: var(--purple-soft); color: var(--purple); }
+  .pipeline-tag.rebate { background: var(--teal-soft); color: var(--teal); }
+  .pipeline-body { padding: 14px 16px; }
+  .pipeline-carriers { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px; }
+  .carrier-chip { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-2); background: var(--bg-panel); padding: 3px 8px; border-radius: 4px; border: 1px solid var(--border); }
+  .pipeline-desc { font-size: 12px; color: var(--ink-3); line-height: 1.5; margin-bottom: 10px; }
+  .pipeline-flow { background: var(--bg-subtle); border: 1px dashed var(--border); border-radius: 6px; padding: 8px 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-2); line-height: 1.6; }
+  .pipeline-flow .step { color: var(--brand); font-weight: 700; }
+
+  .decision-tree { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+  .tree-root { background: var(--ink); color: white; padding: 14px 16px; border-radius: 10px; margin-bottom: 14px; text-align: center; }
+  .tree-root-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #86EFAC; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
+  .tree-root-q { font-size: 14px; font-weight: 600; line-height: 1.3; }
+  .tree-branch { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; position: relative; }
+  .tree-branch::before { content: ''; position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 2px; height: 8px; background: var(--border); }
+  .tree-branch-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .tree-branch-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .tree-branch-label.skip { background: var(--bg-panel); color: var(--ink-3); }
+  .tree-branch-label.house { background: var(--purple-soft); color: var(--purple); }
+  .tree-branch-label.auto { background: var(--green-soft); color: var(--green); }
+  .tree-branch-label.audit { background: var(--amber-soft); color: var(--amber); }
+  .tree-branch-label.block { background: var(--red-soft); color: var(--red); }
+  .tree-branch-title { font-size: 13px; font-weight: 600; }
+  .tree-branch-desc { font-size: 12px; color: var(--ink-3); line-height: 1.5; }
+  .tree-branch-action { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-2); line-height: 1.5; }
+  .tree-branch-action .tag { color: var(--brand); font-weight: 700; margin-right: 4px; }
+
+  .comp-matrix { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .matrix-tabs { display: flex; padding: 0 8px; border-bottom: 1px solid var(--border); background: var(--bg-soft); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .matrix-tabs::-webkit-scrollbar { display: none; }
+  .matrix-tab { padding: 12px 10px; font-size: 12px; font-weight: 500; color: var(--ink-3); position: relative; white-space: nowrap; flex-shrink: 0; }
+  .matrix-tab.active { color: var(--ink); }
+  .matrix-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 10px; right: 10px; height: 2px; background: var(--brand); border-radius: 2px 2px 0 0; }
+  .matrix-body { padding: 16px; display: none; }
+  .matrix-body.active { display: block; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  .matrix-intro { font-size: 12px; color: var(--ink-3); line-height: 1.5; margin-bottom: 14px; }
+  .split-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--border-2); }
+  .split-row:last-child { border-bottom: none; }
+  .split-scenario { font-size: 12px; }
+  .split-lead { font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .split-note { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-3); }
+  .split-breakdown { display: flex; gap: 4px; flex-shrink: 0; }
+  .split-pill { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 5px; min-width: 56px; text-align: center; }
+  .split-pill .person { font-size: 9px; font-weight: 500; opacity: 0.85; display: block; }
+  .split-pill.writer { background: var(--brand-soft); color: var(--brand); }
+  .split-pill.override { background: var(--teal-soft); color: var(--teal); }
+  .split-pill.house { background: var(--bg-panel); color: var(--ink-3); }
+
+  .package-sim { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .package-header { padding: 14px 16px; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
+  .package-case { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); margin-bottom: 4px; }
+  .package-title { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; }
+  .package-body { padding: 16px; }
+  .bank-event { background: var(--ink); color: white; border-radius: 10px; padding: 12px 14px; margin-bottom: 14px; }
+  .bank-event-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #86EFAC; margin-bottom: 4px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .bank-event-text { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: white; font-weight: 600; }
+  .bank-event-amount { font-size: 20px; font-weight: 700; color: white; margin-top: 2px; letter-spacing: -0.3px; }
+  .pkg-arrow { text-align: center; color: var(--ink-4); margin: -4px 0 8px; }
+  .pkg-realization { background: var(--amber-soft); border: 1px solid #F9D074; border-radius: 8px; padding: 10px 12px; margin-bottom: 14px; font-size: 12px; color: var(--ink-2); line-height: 1.5; }
+  .pkg-realization strong { color: var(--amber); }
+  .pkg-policies-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-3); letter-spacing: 0.5px; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+  .pkg-policies { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .pkg-policy { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; }
+  .pkg-policy-left { min-width: 0; }
+  .pkg-policy-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .pkg-policy-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-3); }
+  .pkg-policy-amount { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; color: var(--ink); }
+  .pkg-policy-writer { font-size: 10px; padding: 2px 6px; border-radius: 4px; background: var(--brand-soft); color: var(--brand); font-weight: 600; margin-top: 2px; display: inline-block; }
+  .pkg-policy-writer.austin-lead { background: var(--teal-soft); color: var(--teal); }
+  .pkg-result { background: var(--green-soft); border: 1px solid #A7E8C7; border-radius: 8px; padding: 10px 12px; display: flex; gap: 10px; align-items: flex-start; }
+  .pkg-result-icon { width: 24px; height: 24px; background: var(--green); color: white; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+  .pkg-result-text { font-size: 12px; color: var(--ink-2); line-height: 1.5; }
+  .pkg-result-text strong { color: var(--green); }
+
+  .period-rules { display: flex; flex-direction: column; gap: 10px; }
+  .period-rule { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; display: grid; grid-template-columns: 32px 1fr; gap: 12px; }
+  .period-rule-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .period-rule-icon.ivans { background: #DCE7FF; color: #2563EB; }
+  .period-rule-icon.non-ivans { background: var(--amber-soft); color: var(--amber); }
+  .period-rule-icon.post-close { background: var(--purple-soft); color: var(--purple); }
+  .period-rule-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+  .period-rule-desc { font-size: 12px; color: var(--ink-3); line-height: 1.5; }
+  .period-rule-example { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border); font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-2); line-height: 1.5; }
+  .period-rule-example .tag { color: var(--brand); font-weight: 700; margin-right: 4px; }
+
+  .learning-layer { background: var(--ink); color: white; border-radius: 14px; overflow: hidden; }
+  .learning-header { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .learning-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #86EFAC; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .learning-label::before { content: ''; width: 6px; height: 6px; background: #86EFAC; border-radius: 50%; animation: pulse 1.5s ease-in-out infinite; }
+  .learning-title { font-size: 16px; font-weight: 700; letter-spacing: -0.2px; margin-bottom: 4px; }
+  .learning-desc { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+  .timeline-grid { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .timeline-month { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 12px; }
+  .timeline-month-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 8px; }
+  .timeline-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #86EFAC; letter-spacing: 0.5px; text-transform: uppercase; font-weight: 600; }
+  .timeline-time { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); }
+  .timeline-metric { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .metric { text-align: center; }
+  .metric-value { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 700; color: white; margin-bottom: 2px; }
+  .metric-value.rules { color: #86EFAC; }
+  .metric-value.audit { color: #FDE68A; }
+  .metric-value.time { color: white; }
+  .metric-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 0.3px; text-transform: uppercase; }
+  .timeline-example { font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.5; padding-top: 8px; border-top: 1px dashed rgba(255,255,255,0.12); }
+  .timeline-example strong { color: #86EFAC; font-weight: 600; }
+
+  .blockers-card { background: var(--red-soft); border: 1px solid #FCA5A5; border-radius: 12px; padding: 14px; }
+  .blockers-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .blockers-icon { width: 32px; height: 32px; background: var(--red); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; }
+  .blockers-title { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .blockers-sub { font-size: 11px; color: var(--ink-3); }
+  .blockers-list { display: flex; flex-direction: column; gap: 6px; }
+  .blocker-item { background: white; border: 1px solid #FCA5A5; border-radius: 8px; padding: 10px 12px; }
+  .blocker-row { display: flex; align-items: center; gap: 10px; margin-bottom: 2px; }
+  .blocker-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--red); font-weight: 700; min-width: 24px; }
+  .blocker-title { font-size: 12px; font-weight: 600; flex: 1; }
+  .blocker-desc { font-size: 11px; color: var(--ink-3); line-height: 1.45; padding-left: 34px; }
+  .close-button { margin-top: 14px; background: var(--ink); color: white; padding: 12px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; text-align: center; letter-spacing: 0.5px; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 8px; opacity: 0.5; }
+  .close-button.ready { opacity: 1; background: var(--green); }
+
+  .closing { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .closing-title { font-size: 20px; font-weight: 700; letter-spacing: -0.4px; line-height: 1.25; margin-bottom: 8px; }
+  .closing-sub { font-size: 13px; color: var(--ink-3); margin-bottom: 18px; line-height: 1.55; }
+  .closing-grid { display: flex; flex-direction: column; gap: 10px; }
+  .closing-card { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+  .closing-num { width: 24px; height: 24px; background: var(--ink); color: white; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+  .closing-card-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .closing-card-desc { font-size: 12px; color: var(--ink-3); line-height: 1.5; }
+
+  .bottom-pad { height: 40px; }
+
+  @media (min-width: 768px) {
+    .wrap { padding: 32px; max-width: 980px; margin: 0 auto; }
+    .hero-title { font-size: 38px; letter-spacing: -1px; }
+    .section-title { font-size: 24px; }
+    .pipelines { display: grid; grid-template-columns: 1fr 1fr; }
+    .closing-grid { flex-direction: row; }
+    .closing-card { flex: 1; }
+    .period-rules { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+    .toc-items { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="logo-mark">C</div>
+    <span class="logo-text">CASEY</span>
+    <div class="topbar-right">
+      <div class="period-badge"><span class="period-dot"></span><span>March 2026</span></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="hero readable">
+      <div class="hero-badge"><span class="hero-badge-dot"></span><span>The Full Engine · Every Layer Visible</span></div>
+      <h1 class="hero-title">The <span class="accent">bank</span> is truth. Every other system exists to explain what it shows.</h1>
+      <p class="hero-desc">This is how CASEY reconciles Safeshield's commission book every month. Ten architectural layers working together to turn bank deposits into accurate producer payouts with a full paper trail.</p>
+      <div class="hero-principles">
+        <div class="principle"><span class="principle-mark">01</span><span>Bank is the non-negotiable source of truth</span></div>
+        <div class="principle"><span class="principle-mark">02</span><span>Deal Log is king for producer attribution</span></div>
+        <div class="principle"><span class="principle-mark">03</span><span>Close only unlocks when bank fully accounted for</span></div>
+        <div class="principle"><span class="principle-mark">04</span><span>Never ask the same question twice</span></div>
+      </div>
+    </div>
+
+    <div class="toc readable">
+      <div class="toc-label">Architecture · 10 layers</div>
+      <div class="toc-items">
+        <a class="toc-item" href="#sec-1"><span class="toc-num">1</span><span class="toc-title">Bank as spine</span><span class="toc-arrow">›</span></a>
+        <a class="toc-item" href="#sec-2"><span class="toc-num">2</span><span class="toc-title">Five revenue pipelines</span><span class="toc-arrow">›</span></a>
+        <a class="toc-item" href="#sec-3"><span class="toc-num">3</span><span class="toc-title">Deposit decision tree</span><span class="toc-arrow">›</span></a>
+        <a class="toc-item" href="#sec-4"><span class="toc-num">4</span><span class="toc-title">Internal transfers &amp; kickers</span><span class="toc-arrow">›</span></a>
+        <a class="toc-item" href="#sec-5"><span class="toc-num">5</span><span class="toc-title">Producer comp matrix</span><span class="toc-arrow">›</span></a>
+        <a class="toc-item" href="#sec-6"><span class="toc-num">6</span><span class="toc-title">Package-aware matching</span><span class="toc-arrow">›</span></a>
+        <a class="toc-item" href="#sec-7"><span class="toc-num">7</span><span class="toc-title">Period membership rules</span><span class="toc-arrow">›</span></a>
+        <a class="toc-item" href="#sec-8"><span class="toc-num">8</span><span class="toc-title">The three verification lenses</span><span class="toc-arrow">›</span></a>
+        <a class="toc-item" href="#sec-9"><span class="toc-num">9</span><span class="toc-title">Learning layer</span><span class="toc-arrow">›</span></a>
+        <a class="toc-item" href="#sec-10"><span class="toc-num">10</span><span class="toc-title">Close blockers</span><span class="toc-arrow">›</span></a>
+      </div>
+    </div>
+
+    <div class="section" id="sec-1">
+      <div class="section-header readable">
+        <div class="section-eyebrow"><span class="section-num">1</span><span>The Spine</span></div>
+        <h2 class="section-title">Every month starts with the bank statement.</h2>
+        <p class="section-desc">The close doesn't start with Ivans downloads. It doesn't start with Deal Log entries. It starts with Chase. Whatever hit the bank is the ground truth, and every other data source in CASEY exists to explain what it shows.</p>
+      </div>
+      <div class="spine-diagram readable">
+        <div class="spine-label">BANK → ENGINE FLOW</div>
+        <div class="bank-anchor">
+          <div class="bank-anchor-label">Source of truth</div>
+          <div class="bank-anchor-title">Chase Bank Statements</div>
+          <div class="bank-anchor-desc">Every deposit, every month. Non-negotiable. The number on the statement is the number CASEY must account for.</div>
+          <div class="bank-accounts">
+            <div class="bank-account"><span class="bank-account-name">···8026 Operating</span><span class="bank-account-role">Net commission revenue</span></div>
+            <div class="bank-account"><span class="bank-account-name">···6900 Premium Trust</span><span class="bank-account-role">AndDone pass-through</span></div>
+          </div>
+        </div>
+        <div class="arrow-splits"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+        <div class="downstream-label">CASEY reads bank · explains with three lenses</div>
+        <div class="lens-strip">
+          <div class="lens-card" data-lens="ivans"><div class="lens-icon">IV</div><div class="lens-name">Ivans</div><div class="lens-role">Carrier statements</div></div>
+          <div class="lens-card" data-lens="dl"><div class="lens-icon">DL</div><div class="lens-name">Deal Log</div><div class="lens-role">Producer &amp; lead</div></div>
+          <div class="lens-card" data-lens="nc"><div class="lens-icon">NC</div><div class="lens-name">NowCerts</div><div class="lens-role">Validation check</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="sec-2">
+      <div class="section-header readable">
+        <div class="section-eyebrow"><span class="section-num">2</span><span>Revenue Pipelines</span></div>
+        <h2 class="section-title">Money arrives five different ways. CASEY handles each.</h2>
+        <p class="section-desc">Different carriers and wholesalers pay Safeshield through different mechanisms. Each pipeline has its own reconciliation pattern. CASEY classifies every deposit into one of these five paths before anything else happens.</p>
+      </div>
+      <div class="pipelines readable">
+        <div class="pipeline">
+          <div class="pipeline-header">
+            <div class="pipeline-left"><div class="pipeline-num">01</div><div><div class="pipeline-name">Ivans DBCDs</div><div class="pipeline-type">auto · nightly pull</div></div></div>
+            <div class="pipeline-tag auto">AUTO</div>
+          </div>
+          <div class="pipeline-body">
+            <div class="pipeline-carriers"><span class="carrier-chip">Travelers</span><span class="carrier-chip">NYCM</span><span class="carrier-chip">Chubb</span><span class="carrier-chip">Utica</span><span class="carrier-chip">Sagesure</span><span class="carrier-chip">Progressive</span><span class="carrier-chip">NatGen</span><span class="carrier-chip">Plymouth</span><span class="carrier-chip">Openly</span></div>
+            <div class="pipeline-desc">Carrier statements arrive via Ivans Exchange every night. Bank deposits from these carriers auto-match against DBCD rows by amount and date.</div>
+            <div class="pipeline-flow"><span class="step">DBCD →</span> carrier pays → <span class="step">bank deposit →</span> auto-match → payout</div>
+          </div>
+        </div>
+        <div class="pipeline">
+          <div class="pipeline-header">
+            <div class="pipeline-left"><div class="pipeline-num">02</div><div><div class="pipeline-name">Non-Ivans ACH</div><div class="pipeline-type">manual · direct deposit</div></div></div>
+            <div class="pipeline-tag manual">MANUAL</div>
+          </div>
+          <div class="pipeline-body">
+            <div class="pipeline-carriers"><span class="carrier-chip">Steadily</span><span class="carrier-chip">Hartford Tabs</span></div>
+            <div class="pipeline-desc">Carriers that ACH directly without Ivans feeds. Commission statements uploaded manually or auto-matched by amount + expected client against Deal Log.</div>
+            <div class="pipeline-flow"><span class="step">ACH arrives →</span> no DBCD → <span class="step">Deal Log search →</span> propose match</div>
+          </div>
+        </div>
+        <div class="pipeline">
+          <div class="pipeline-header">
+            <div class="pipeline-left"><div class="pipeline-num">03</div><div><div class="pipeline-name">Paper Checks</div><div class="pipeline-type">manual · remote deposit</div></div></div>
+            <div class="pipeline-tag manual">MANUAL</div>
+          </div>
+          <div class="pipeline-body">
+            <div class="pipeline-carriers"><span class="carrier-chip">Foremost</span><span class="carrier-chip">American Modern</span></div>
+            <div class="pipeline-desc">Physical checks scanned via Chase mobile deposit ("Remote Online Deposit" in statement). CASEY identifies these by description pattern and routes to Deal Log matching.</div>
+            <div class="pipeline-flow"><span class="step">check deposited →</span> scan description → <span class="step">Deal Log match →</span> propose</div>
+          </div>
+        </div>
+        <div class="pipeline">
+          <div class="pipeline-header">
+            <div class="pipeline-left"><div class="pipeline-num">04</div><div><div class="pipeline-name">AndDone Pass-through</div><div class="pipeline-type">trust · 6900 → 8026</div></div></div>
+            <div class="pipeline-tag passthrough">TRUST</div>
+          </div>
+          <div class="pipeline-body">
+            <div class="pipeline-carriers"><span class="carrier-chip">XS Brokers</span><span class="carrier-chip">National Brokerage</span><span class="carrier-chip">Burns &amp; Wilcox</span></div>
+            <div class="pipeline-desc">Client pays full premium + fee into 6900 trust account. Wholesaler gets paid. Net commission sweeps to 8026. Sweep is an internal transfer, not new revenue.</div>
+            <div class="pipeline-flow"><span class="step">client pays 6900 →</span> wholesaler paid → <span class="step">net sweeps to 8026 →</span> that's the commission</div>
+          </div>
+        </div>
+        <div class="pipeline">
+          <div class="pipeline-header">
+            <div class="pipeline-left"><div class="pipeline-num">05</div><div><div class="pipeline-name">Wholesaler Rebates</div><div class="pipeline-type">pattern · 2-4 week lag</div></div></div>
+            <div class="pipeline-tag rebate">REBATE</div>
+          </div>
+          <div class="pipeline-body">
+            <div class="pipeline-carriers"><span class="carrier-chip">Hull</span><span class="carrier-chip">Orchid</span><span class="carrier-chip">Ace American</span><span class="carrier-chip">ASI Progressive</span></div>
+            <div class="pipeline-desc">Wholesalers rebate commission share on bound policies, typically 2-4 weeks after the original payment. CASEY matches by learned carrier patterns back to the original bind.</div>
+            <div class="pipeline-flow"><span class="step">rebate arrives →</span> learned pattern → <span class="step">original bind →</span> auto-resolve</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="sec-3">
+      <div class="section-header readable">
+        <div class="section-eyebrow"><span class="section-num">3</span><span>Decision Tree</span></div>
+        <h2 class="section-title">For every bank deposit, CASEY walks this path.</h2>
+        <p class="section-desc">Each deposit runs through the same sequence. Internal transfer? Skip. Kicker? Route to house. Known carrier? Match to DBCD. Non-Ivans? Search Deal Log. Unknown? Flag.</p>
+      </div>
+      <div class="decision-tree readable">
+        <div class="tree-root"><div class="tree-root-label">Input</div><div class="tree-root-q">A single bank deposit lands</div></div>
+        <div class="tree-branch">
+          <div class="tree-branch-header"><span class="tree-branch-label skip">Q1 · Skip</span><span class="tree-branch-title">Internal transfer?</span></div>
+          <div class="tree-branch-desc">Is this money moving between Safeshield's own accounts (6900 → 8026 sweep)? Not new revenue. Log and move on.</div>
+          <div class="tree-branch-action"><span class="tag">RESULT</span>Skipped from commission total · logged in audit trail</div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-branch-header"><span class="tree-branch-label house">Q2 · House</span><span class="tree-branch-title">Kicker or bonus?</span></div>
+          <div class="tree-branch-desc">Satellite Agency Q4 bonus, carrier profit share, contingent revenue. No producer split. Routes to house income, not payout.</div>
+          <div class="tree-branch-action"><span class="tag">RESULT</span>100% house · zero to producers · recognized as agency income</div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-branch-header"><span class="tree-branch-label auto">Q3 · Auto</span><span class="tree-branch-title">Ivans DBCD match?</span></div>
+          <div class="tree-branch-desc">Does a carrier statement for this amount exist for this payor? Within $1 is exact. Within $500 is variance-flagged but matched.</div>
+          <div class="tree-branch-action"><span class="tag">RESULT</span>Matched to Ivans rows · producer via Deal Log · split computed · done</div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-branch-header"><span class="tree-branch-label audit">Q4 · Smart Match</span><span class="tree-branch-title">Non-Ivans · Deal Log candidate?</span></div>
+          <div class="tree-branch-desc">For carriers without DBCDs, CASEY searches Deal Log for recent placements matching carrier, expected amount, and date window. Scores and proposes.</div>
+          <div class="tree-branch-action"><span class="tag">RESULT</span>High confidence = 1-click confirm · medium = show options · low = manual</div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-branch-header"><span class="tree-branch-label block">Q5 · Block</span><span class="tree-branch-title">No explanation found?</span></div>
+          <div class="tree-branch-desc">Unknown payor, no DBCD, no Deal Log candidates. CASEY flags it and blocks close until resolved. Austin uploads statement, classifies payor, or marks as non-commission.</div>
+          <div class="tree-branch-action"><span class="tag">RESULT</span>Close locked · resolution required · rule learned for next time</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="sec-4">
+      <div class="section-header readable">
+        <div class="section-eyebrow"><span class="section-num">4</span><span>Non-Commission Flows</span></div>
+        <h2 class="section-title">Not every deposit is commission. CASEY knows the difference.</h2>
+        <p class="section-desc">Two categories of money that hit the bank but must never be counted as producer commission.</p>
+      </div>
+      <div class="pipelines readable">
+        <div class="pipeline">
+          <div class="pipeline-header">
+            <div class="pipeline-left"><div class="pipeline-num">↔</div><div><div class="pipeline-name">Internal Transfers</div><div class="pipeline-type">6900 → 8026 sweeps</div></div></div>
+            <div class="pipeline-tag passthrough">SKIP</div>
+          </div>
+          <div class="pipeline-body">
+            <div class="pipeline-desc">AndDone premium + fees land in 6900 Trust. After wholesaler is paid, net commission sweeps to 8026 Operating. Both the inflow AND the sweep hit the bank. If CASEY counts both, commission is double-counted.</div>
+            <div class="pipeline-flow"><span class="step">DETECT:</span> matched pair between accounts, same-day or near-day transfer<br><span class="step">ACTION:</span> skip both sides · only count the wholesaler-paid commission</div>
+          </div>
+        </div>
+        <div class="pipeline">
+          <div class="pipeline-header">
+            <div class="pipeline-left"><div class="pipeline-num">$</div><div><div class="pipeline-name">Kickers &amp; House Revenue</div><div class="pipeline-type">bonuses · profit share</div></div></div>
+            <div class="pipeline-tag rebate">HOUSE</div>
+          </div>
+          <div class="pipeline-body">
+            <div class="pipeline-carriers"><span class="carrier-chip">Satellite Q4 bonus</span><span class="carrier-chip">Carrier profit share</span><span class="carrier-chip">Contingent revenue</span></div>
+            <div class="pipeline-desc">These arrive as real money but they're earned by the agency as a whole, not by producers on specific policies. 100% routes to house. No producer split. No commission row in payout.</div>
+            <div class="pipeline-flow"><span class="step">CLASSIFY:</span> payor_type = 'kicker' in payor_carrier_map<br><span class="step">ACTION:</span> income_type = 'bonus' · skip comp engine</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="sec-5">
+      <div class="section-header readable">
+        <div class="section-eyebrow"><span class="section-num">5</span><span>Producer Comp Matrix</span></div>
+        <h2 class="section-title">Splits aren't one rule. They're a matrix.</h2>
+        <p class="section-desc">CASEY doesn't just apply "Eric's default 55%" to every deal Eric writes. Who wrote it + whose lead it was determines the split. Cross-case rules apply perpetually on new business AND renewals.</p>
+      </div>
+      <div class="comp-matrix readable">
+        <div class="matrix-tabs">
+          <button class="matrix-tab active" data-matrix="austin" type="button">Austin writes</button>
+          <button class="matrix-tab" data-matrix="eric" type="button">Eric writes</button>
+          <button class="matrix-tab" data-matrix="justin" type="button">Justin writes</button>
+        </div>
+        <div class="matrix-body active" data-matrix-panel="austin">
+          <div class="matrix-intro">When Austin writes a deal, the split depends on the lead source.</div>
+          <div class="split-row">
+            <div class="split-scenario"><div class="split-lead">Austin / Agent / SS / Unknown Lead</div><div class="split-note">NB · renewal · perpetual</div></div>
+            <div class="split-breakdown"><div class="split-pill writer"><span class="person">Austin</span>60/60</div><div class="split-pill house"><span class="person">House</span>40/40</div></div>
+          </div>
+          <div class="split-row">
+            <div class="split-scenario"><div class="split-lead">Dealer Lead</div><div class="split-note">NB · renewal · Eric override</div></div>
+            <div class="split-breakdown"><div class="split-pill writer"><span class="person">Austin</span>50/50</div><div class="split-pill override"><span class="person">Eric</span>40/40</div><div class="split-pill house"><span class="person">House</span>10/10</div></div>
+          </div>
+        </div>
+        <div class="matrix-body" data-matrix-panel="eric">
+          <div class="matrix-intro">Eric's default is 55/60 on his own sourced deals. Cross-case splits apply when Austin sourced the lead. Eric also earns 10% override on Justin's writer production.</div>
+          <div class="split-row">
+            <div class="split-scenario"><div class="split-lead">Own Lead / Own Write</div><div class="split-note">default · NB 55 · renewal 60</div></div>
+            <div class="split-breakdown"><div class="split-pill writer"><span class="person">Eric</span>55/60</div><div class="split-pill house"><span class="person">House</span>45/40</div></div>
+          </div>
+          <div class="split-row">
+            <div class="split-scenario"><div class="split-lead">Austin Lead (cross-case)</div><div class="split-note">perpetual · lead to house</div></div>
+            <div class="split-breakdown"><div class="split-pill writer"><span class="person">Eric</span>40/35</div><div class="split-pill house"><span class="person">House</span>60/65</div></div>
+          </div>
+          <div class="split-row">
+            <div class="split-scenario"><div class="split-lead">Override on Justin's production</div><div class="split-note">aggregated · 10% of Justin's writer side</div></div>
+            <div class="split-breakdown"><div class="split-pill override"><span class="person">Eric</span>+10%</div></div>
+          </div>
+        </div>
+        <div class="matrix-body" data-matrix-panel="justin">
+          <div class="matrix-intro">Justin's default is 45/35. Cross-case splits apply for Austin Lead and Dealer Lead deals. Eric earns a 10% override on Justin's writer side.</div>
+          <div class="split-row">
+            <div class="split-scenario"><div class="split-lead">Own Lead / Own Write</div><div class="split-note">default · NB 45 · renewal 35</div></div>
+            <div class="split-breakdown"><div class="split-pill writer"><span class="person">Justin</span>45/35</div><div class="split-pill house"><span class="person">House</span>55/65</div></div>
+          </div>
+          <div class="split-row">
+            <div class="split-scenario"><div class="split-lead">Austin Lead (cross-case)</div><div class="split-note">perpetual · reduced split</div></div>
+            <div class="split-breakdown"><div class="split-pill writer"><span class="person">Justin</span>40/35</div><div class="split-pill house"><span class="person">House</span>60/65</div></div>
+          </div>
+          <div class="split-row">
+            <div class="split-scenario"><div class="split-lead">Dealer Lead (3-way)</div><div class="split-note">Eric override · house balance</div></div>
+            <div class="split-breakdown"><div class="split-pill writer"><span class="person">Justin</span>30/30</div><div class="split-pill override"><span class="person">Eric</span>40/30</div><div class="split-pill house"><span class="person">House</span>30/40</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="sec-6">
+      <div class="section-header readable">
+        <div class="section-eyebrow"><span class="section-num">6</span><span>Package-Aware Matching</span></div>
+        <h2 class="section-title">HNW clients are one deal, many policies. CASEY tracks the whole package.</h2>
+        <p class="section-desc">Gregory Moss isn't one policy. It's a personal umbrella, a commercial LLC, a BOP, a flood policy, and a D&amp;O. When a carrier deposit comes in, CASEY knows which package it belongs to.</p>
+      </div>
+      <div class="package-sim readable">
+        <div class="package-header">
+          <div class="package-case">CASE · Moss / Albert Package · multi-policy HNW</div>
+          <div class="package-title">One Deal Log entry · five policies · four carriers</div>
+        </div>
+        <div class="package-body">
+          <div class="bank-event">
+            <div class="bank-event-label">Bank deposit arrives</div>
+            <div class="bank-event-text">03/12 · Hanover ACH</div>
+            <div class="bank-event-amount">$6,247.80</div>
+          </div>
+          <div class="pkg-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+          <div class="pkg-realization">Naive matching would look for <strong>one Hanover policy</strong> worth $6,247. Wrong approach. This deposit covers <strong>three separate Hanover policies</strong> bound together as part of the Moss package. CASEY knows the package structure from Deal Log and splits the deposit accordingly.</div>
+          <div class="pkg-policies-label">Policies in package · attribution varies</div>
+          <div class="pkg-policies">
+            <div class="pkg-policy">
+              <div class="pkg-policy-left"><div class="pkg-policy-name">Locust Four Residences LLC · Commercial GL</div><div class="pkg-policy-meta">HANOVER · $3,112.40</div><span class="pkg-policy-writer">Austin writer · own lead</span></div>
+              <div class="pkg-policy-amount">→ Austin 60%</div>
+            </div>
+            <div class="pkg-policy">
+              <div class="pkg-policy-left"><div class="pkg-policy-name">Cloudadvise BOP</div><div class="pkg-policy-meta">HANOVER · $2,287.40</div><span class="pkg-policy-writer austin-lead">Eric writer · Austin Lead</span></div>
+              <div class="pkg-policy-amount">→ Eric 40%</div>
+            </div>
+            <div class="pkg-policy">
+              <div class="pkg-policy-left"><div class="pkg-policy-name">Moss D&amp;O</div><div class="pkg-policy-meta">HANOVER · $848.00</div><span class="pkg-policy-writer">Austin writer · own lead</span></div>
+              <div class="pkg-policy-amount">→ Austin 60%</div>
+            </div>
+          </div>
+          <div class="pkg-result">
+            <div class="pkg-result-icon">✓</div>
+            <div class="pkg-result-text">One $6,247 deposit · <strong>three separate commission rows</strong> · two different writers · two different split structures · all traced to the same Deal Log package. That's why package-aware matching matters.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="sec-7">
+      <div class="section-header readable">
+        <div class="section-eyebrow"><span class="section-num">7</span><span>Period Membership</span></div>
+        <h2 class="section-title">Which month does each row belong to?</h2>
+        <p class="section-desc">Not always the deposit date. CASEY uses different rules for different pipelines so the close stays clean and edits don't retroactively change past payouts.</p>
+      </div>
+      <div class="period-rules readable">
+        <div class="period-rule">
+          <div class="period-rule-icon ivans">IV</div>
+          <div>
+            <div class="period-rule-title">Ivans rows</div>
+            <div class="period-rule-desc">Belong to the <strong>Ivans statement date</strong>, not the bank deposit date. If Ivans says Chubb statement dated 03/28 and bank didn't receive until 04/03, it's still a March row.</div>
+            <div class="period-rule-example"><span class="tag">RULE</span>period = statement_date.month</div>
+          </div>
+        </div>
+        <div class="period-rule">
+          <div class="period-rule-icon non-ivans">NI</div>
+          <div>
+            <div class="period-rule-title">Non-Ivans rows</div>
+            <div class="period-rule-desc">Belong to the <strong>bank-received date</strong>. No statement from Ivans means no statement date to anchor to. If Foremost check deposits 03/10, it's March.</div>
+            <div class="period-rule-example"><span class="tag">RULE</span>period = bank_deposit_date.month</div>
+          </div>
+        </div>
+        <div class="period-rule">
+          <div class="period-rule-icon post-close">+Δ</div>
+          <div>
+            <div class="period-rule-title">Post-close edits</div>
+            <div class="period-rule-desc">After a month is closed, <strong>never retro-edit</strong>. Corrections create a period_adjustment row in the next open period. Prior payouts stay immutable.</div>
+            <div class="period-rule-example"><span class="tag">RULE</span>forward-adjust → next period</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="sec-8">
+      <div class="section-header readable">
+        <div class="section-eyebrow"><span class="section-num">8</span><span>Verification Lenses</span></div>
+        <h2 class="section-title">Three sources. Different roles. Not equal votes.</h2>
+        <p class="section-desc">The triple-check isn't three democratic verifiers. Each has a specific job and authority over specific fields. Deal Log wins on attribution. Ivans wins on amounts. NowCerts validates end-of-month totals only.</p>
+      </div>
+      <div class="pipelines readable">
+        <div class="pipeline">
+          <div class="pipeline-header">
+            <div class="pipeline-left"><div class="pipeline-num" style="background: #DCE7FF; color: #2563EB;">IV</div><div><div class="pipeline-name">Ivans</div><div class="pipeline-type">carrier-authoritative</div></div></div>
+            <div class="pipeline-tag auto">PRIMARY</div>
+          </div>
+          <div class="pipeline-body">
+            <div class="pipeline-desc">Source of truth for: policy numbers, commission amounts, effective dates. If Chubb says $1,007.70 on Ivans, that's what Chubb paid.</div>
+            <div class="pipeline-flow"><span class="step">AUTHORITY:</span> amount · policy_number · carrier<br><span class="step">NOT TRUSTED FOR:</span> producer attribution (hints only)</div>
+          </div>
+        </div>
+        <div class="pipeline">
+          <div class="pipeline-header">
+            <div class="pipeline-left"><div class="pipeline-num" style="background: var(--green-soft); color: var(--green);">DL</div><div><div class="pipeline-name">Deal Log</div><div class="pipeline-type">the king</div></div></div>
+            <div class="pipeline-tag auto">SOURCE</div>
+          </div>
+          <div class="pipeline-body">
+            <div class="pipeline-desc">Source of truth for: writing producer, lead source, cross-case assignment, package grouping. Austin's team enters this at close, so it's the most accurate attribution layer.</div>
+            <div class="pipeline-flow"><span class="step">AUTHORITY:</span> producer · lead_source · package<br><span class="step">WINS TIES AGAINST:</span> Ivans writer hints, NowCerts records</div>
+          </div>
+        </div>
+        <div class="pipeline">
+          <div class="pipeline-header">
+            <div class="pipeline-left"><div class="pipeline-num" style="background: var(--purple-soft); color: var(--purple);">NC</div><div><div class="pipeline-name">NowCerts</div><div class="pipeline-type">validation only</div></div></div>
+            <div class="pipeline-tag rebate">AUDIT</div>
+          </div>
+          <div class="pipeline-body">
+            <div class="pipeline-desc">End-of-month validation. Processes Ivans data through a separate AMS pipeline to catch parse errors, missing policies, or total mismatches. <strong>Never used for producer attribution.</strong></div>
+            <div class="pipeline-flow"><span class="step">AUTHORITY:</span> sanity check on totals<br><span class="step">NOT TRUSTED FOR:</span> producer attribution (data quality known to drift)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="sec-9">
+      <div class="section-header readable">
+        <div class="section-eyebrow"><span class="section-num">9</span><span>The Learning Layer</span></div>
+        <h2 class="section-title">Every decision Austin makes teaches CASEY. The workload trends toward zero.</h2>
+        <p class="section-desc">This is the compounding value. CASEY stores every resolution as a rule with confidence level, pattern trigger, and application count. New situations get easier every month because CASEY already answered them once before.</p>
+      </div>
+      <div class="learning-layer readable">
+        <div class="learning-header">
+          <div class="learning-label">commission_rules table · live</div>
+          <div class="learning-title">How CASEY gets smarter every close</div>
+          <div class="learning-desc">Every rule stores: rule_type, trigger_pattern, action, confidence level (auto / propose / ask), and application_count. The more it runs, the more it handles silently.</div>
+        </div>
+        <div class="timeline-grid">
+          <div class="timeline-month">
+            <div class="timeline-month-header"><span class="timeline-label">Month 1</span><span class="timeline-time">initial close</span></div>
+            <div class="timeline-metric">
+              <div class="metric"><div class="metric-value rules">12</div><div class="metric-label">Rules</div></div>
+              <div class="metric"><div class="metric-value audit">40+</div><div class="metric-label">Audit Items</div></div>
+              <div class="metric"><div class="metric-value time">~45m</div><div class="metric-label">Close Time</div></div>
+            </div>
+            <div class="timeline-example">First time Hull sends a rebate. Austin classifies it manually. <strong>Rule created:</strong> Hull + BHG commercial → typical $200-$400 rebate, 2-4wk lag.</div>
+          </div>
+          <div class="timeline-month">
+            <div class="timeline-month-header"><span class="timeline-label">Month 3</span><span class="timeline-time">learning</span></div>
+            <div class="timeline-metric">
+              <div class="metric"><div class="metric-value rules">58</div><div class="metric-label">Rules</div></div>
+              <div class="metric"><div class="metric-value audit">12</div><div class="metric-label">Audit Items</div></div>
+              <div class="metric"><div class="metric-value time">~15m</div><div class="metric-label">Close Time</div></div>
+            </div>
+            <div class="timeline-example">Hull rebate arrives for 7th Street Homes. <strong>Auto-resolved</strong> via rule 28. Confidence 98%. Austin never sees it.</div>
+          </div>
+          <div class="timeline-month">
+            <div class="timeline-month-header"><span class="timeline-label">Month 6</span><span class="timeline-time">settled</span></div>
+            <div class="timeline-metric">
+              <div class="metric"><div class="metric-value rules">112</div><div class="metric-label">Rules</div></div>
+              <div class="metric"><div class="metric-value audit">3</div><div class="metric-label">Audit Items</div></div>
+              <div class="metric"><div class="metric-value time">&lt;4m</div><div class="metric-label">Close Time</div></div>
+            </div>
+            <div class="timeline-example">Only genuinely new situations come up. Most audit items are <strong>new carriers, new clients, or first-time edge cases</strong>. Everything else is silent.</div>
+          </div>
+          <div class="timeline-month">
+            <div class="timeline-month-header"><span class="timeline-label">Year 2+</span><span class="timeline-time">steady state</span></div>
+            <div class="timeline-metric">
+              <div class="metric"><div class="metric-value rules">200+</div><div class="metric-label">Rules</div></div>
+              <div class="metric"><div class="metric-value audit">0-2</div><div class="metric-label">Audit Items</div></div>
+              <div class="metric"><div class="metric-value time">~2m</div><div class="metric-label">Close Time</div></div>
+            </div>
+            <div class="timeline-example">Close is almost fully automated. Austin reviews a <strong>summary page</strong>, confirms Gusto CSV, done. Every producer payout has a full paper trail.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="sec-10">
+      <div class="section-header readable">
+        <div class="section-eyebrow"><span class="section-num">10</span><span>Close Blockers</span></div>
+        <h2 class="section-title">The close button is locked until these conditions clear.</h2>
+        <p class="section-desc">No producer gets paid while any of these exist in the period. Close is an event, not a button you hit whenever. CASEY enforces the rules.</p>
+      </div>
+      <div class="blockers-card readable">
+        <div class="blockers-header">
+          <div class="blockers-icon">!</div>
+          <div><div class="blockers-title">Conditions that block close</div><div class="blockers-sub">All must be zero before Gusto CSV generates</div></div>
+        </div>
+        <div class="blockers-list">
+          <div class="blocker-item">
+            <div class="blocker-row"><span class="blocker-num">01</span><span class="blocker-title">Unexplained bank deposits</span></div>
+            <div class="blocker-desc">Any deposit CASEY can't attribute to a pipeline. Orphan money with no known source.</div>
+          </div>
+          <div class="blocker-item">
+            <div class="blocker-row"><span class="blocker-num">02</span><span class="blocker-title">Unassigned policies</span></div>
+            <div class="blocker-desc">Commission exists but Deal Log has no writer. Austin must assign before payout.</div>
+          </div>
+          <div class="blocker-item">
+            <div class="blocker-row"><span class="blocker-num">03</span><span class="blocker-title">Unclassified payors</span></div>
+            <div class="blocker-desc">Money arrived from a payor CASEY doesn't know. Must be classified (commission / kicker / rebate / non-comm).</div>
+          </div>
+          <div class="blocker-item">
+            <div class="blocker-row"><span class="blocker-num">04</span><span class="blocker-title">Bank variance over threshold</span></div>
+            <div class="blocker-desc">Sum of explained commissions off from bank total by more than $500. Needs investigation before close.</div>
+          </div>
+          <div class="blocker-item">
+            <div class="blocker-row"><span class="blocker-num">05</span><span class="blocker-title">Open audit disputes</span></div>
+            <div class="blocker-desc">Any triple-check conflict (producer, lead source, etc.) not yet resolved by Austin.</div>
+          </div>
+        </div>
+        <div class="close-button"><span>CLOSE MARCH 2026 · 5 BLOCKERS</span></div>
+      </div>
+    </div>
+
+    <div class="closing readable">
+      <div class="closing-title">This is not a commission calculator. It's an institution.</div>
+      <div class="closing-sub">Every piece of this engine exists because a real edge case forced it. Package deals. Internal transfers. Kickers. Cross-case splits. Rebate lag. Stale NowCerts data. Post-close edits. CASEY handles them all, because Austin built it against the book you actually run.</div>
+      <div class="closing-grid">
+        <div class="closing-card"><div class="closing-num">I</div><div class="closing-card-title">Bank is truth</div><div class="closing-card-desc">Every dollar in Chase has to be explained. The close doesn't happen until it balances.</div></div>
+        <div class="closing-card"><div class="closing-num">II</div><div class="closing-card-title">Deal Log is king</div><div class="closing-card-desc">Producer attribution lives in Deal Log. Nothing overrides it. Not Ivans hints, not NowCerts tags.</div></div>
+        <div class="closing-card"><div class="closing-num">III</div><div class="closing-card-title">CASEY gets smarter</div><div class="closing-card-desc">Every decision becomes a rule. The close gets easier every month. By year two it's almost entirely automated.</div></div>
+      </div>
+    </div>
+
+    <div class="bottom-pad"></div>
+  </div>
+</div>
+
+<script>
+  document.documentElement.style.background = '#FFFFFF';
+  document.body.style.background = '#FFFFFF';
+
+  const matrixTabs = document.querySelectorAll('.matrix-tab');
+  const matrixPanels = document.querySelectorAll('.matrix-body');
+  matrixTabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = tab.dataset.matrix;
+      matrixTabs.forEach(t => t.classList.remove('active'));
+      matrixPanels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      const panel = document.querySelector('[data-matrix-panel="' + target + '"]');
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.toc-item').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
