@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CASEY Payments — Team Launch Guide</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; background:#f2f5f9; color:#1c2733; line-height:1.55; }
+  .wrap { max-width:760px; margin:0 auto; padding:0 18px 80px; }
+  /* HERO */
+  .hero { background:linear-gradient(135deg,#00335e,#004B89); color:#fff; padding:52px 20px 44px; text-align:center; }
+  .hero .brand { font-size:15px; font-weight:800; letter-spacing:3px; color:#ffa300; }
+  .hero h1 { font-size:34px; font-weight:900; margin:14px 0 10px; line-height:1.2; }
+  .hero p { font-size:17px; color:rgba(255,255,255,0.85); max-width:560px; margin:0 auto; }
+  .hero .date { margin-top:18px; font-size:12px; letter-spacing:1.5px; color:rgba(255,255,255,0.5); text-transform:uppercase; }
+  .bigline { background:#ffa300; color:#00335e; font-weight:900; text-align:center; padding:16px 20px; font-size:18px; }
+  /* SECTIONS */
+  h2 { color:#004B89; font-size:23px; margin:46px 0 6px; }
+  h2 .num { display:inline-block; background:#004B89; color:#ffa300; width:34px; height:34px; border-radius:50%; text-align:center; line-height:34px; font-size:17px; margin-right:10px; }
+  .lead { font-size:15.5px; color:#42556b; margin-bottom:16px; }
+  .say { background:#fff; border-left:4px solid #ffa300; padding:12px 16px; border-radius:0 10px 10px 0; margin:14px 0; font-size:15px; box-shadow:0 2px 8px rgba(0,40,80,0.06); }
+  .say b { color:#004B89; }
+  ul.steps { margin:10px 0 8px 22px; font-size:15px; }
+  ul.steps li { margin-bottom:7px; }
+  /* CHAT MOCK */
+  .chatmock { background:#0b1522; border-radius:14px; padding:18px 16px; margin:18px 0; box-shadow:0 10px 28px rgba(0,20,40,0.35); }
+  .chatmock .userbub { background:#1c3350; color:#dbe6f2; border-radius:12px 12px 2px 12px; padding:10px 14px; font-size:13.5px; max-width:85%; margin:0 0 12px auto; width:fit-content; }
+  .chatmock .caseybub { display:flex; gap:10px; }
+  .chatmock .cav { width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,#d4a843,#b8860b); color:#0a1322; font-weight:800; text-align:center; line-height:28px; flex-shrink:0; font-size:13px; }
+  .chatmock .ctext { color:#cdd6e0; font-size:13.5px; margin-bottom:8px; }
+  .pcard { background:linear-gradient(135deg,#0a1322,#0f1c2e); border:1px solid rgba(212,168,67,0.4); border-radius:12px; overflow:hidden; max-width:480px; }
+  .pcard .head { background:linear-gradient(135deg,rgba(212,168,67,0.18),rgba(212,168,67,0.05)); border-bottom:1px solid rgba(212,168,67,0.25); padding:10px 14px; display:flex; align-items:center; gap:8px; }
+  .pcard .ttl { color:#d4a843; font-weight:700; font-size:12.5px; }
+  .pcard .sub { color:#8b98a8; font-size:10px; margin-top:1px; }
+  .badge { margin-left:auto; font-size:9px; font-weight:800; padding:3px 8px; border-radius:9px; letter-spacing:0.5px; }
+  .badge.live { background:rgba(74,222,128,0.15); color:#4ade80; border:1px solid rgba(74,222,128,0.35); }
+  .pcard .bd { padding:12px 14px; }
+  .sec { color:#d4a843; font-size:9px; font-weight:800; letter-spacing:1px; text-transform:uppercase; margin:10px 0 6px; }
+  .sec:first-child { margin-top:0; }
+  .fgrid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .fld label { display:block; color:#748496; font-size:8.5px; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:3px; }
+  .fld .in { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.13); border-radius:7px; padding:7px 9px; color:#e8edf3; font-size:12px; }
+  .fld .in.gold { border-color:rgba(212,168,67,0.5); font-weight:700; }
+  .wide { grid-column:1/-1; }
+  .toggle { border:1.5px dashed rgba(212,168,67,0.5); border-radius:9px; background:rgba(212,168,67,0.05); padding:10px 12px; margin-top:10px; }
+  .toggle .row { color:#d4a843; font-weight:700; font-size:12.5px; display:flex; align-items:center; gap:8px; }
+  .cb { width:14px; height:14px; border-radius:3px; border:1.5px solid rgba(255,255,255,0.35); display:inline-block; flex-shrink:0; }
+  .cb.on { background:#d4a843; border-color:#d4a843; position:relative; }
+  .cb.on:after { content:'✓'; position:absolute; inset:0; color:#0a1322; font-size:11px; font-weight:900; text-align:center; line-height:14px; }
+  .toggle .note { color:#8b98a8; font-size:10.5px; margin-top:4px; }
+  .btnrow { border-top:1px solid rgba(212,168,67,0.18); padding:9px 14px; display:flex; gap:8px; }
+  .gbtn { background:linear-gradient(135deg,#d4a843,#c29a35); color:#0a1322; font-weight:800; font-size:11.5px; border-radius:7px; padding:8px 14px; }
+  .gybtn { background:rgba(255,255,255,0.07); color:#cdd6e0; font-size:11.5px; border-radius:7px; padding:8px 14px; border:1px solid rgba(255,255,255,0.14); }
+  .blbtn { background:rgba(96,165,250,0.13); color:#60a5fa; border:1px solid rgba(96,165,250,0.4); font-size:11.5px; border-radius:7px; padding:8px 14px; }
+  .okbar { background:rgba(74,222,128,0.08); border:1px solid rgba(74,222,128,0.3); border-radius:9px; padding:9px 12px; display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .okbar .amt { color:#4ade80; font-weight:800; font-size:15px; }
+  .okbar .who { color:#cdd6e0; font-size:11.5px; }
+  .linkline { display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+  .lbox { flex:1; min-width:150px; background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.13); border-radius:7px; padding:7px 9px; font-family:ui-monospace,monospace; font-size:10.5px; color:#93c5fd; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .terms { width:100%; border-collapse:collapse; margin-top:10px; font-size:11px; }
+  .terms td { padding:5px 3px; border-bottom:1px solid rgba(255,255,255,0.07); color:#8b98a8; }
+  .terms td:last-child { text-align:right; color:#e8edf3; font-weight:700; }
+  /* GOOGLE CHAT CARD */
+  .gchat { background:#fff; border:1px solid #dde5ee; border-radius:12px; max-width:440px; margin:16px 0; box-shadow:0 6px 20px rgba(0,40,80,0.1); overflow:hidden; }
+  .gchat .gh { display:flex; gap:10px; padding:12px 14px; border-bottom:1px solid #eef2f7; align-items:center; }
+  .gchat .logo { width:34px; height:34px; border-radius:50%; background:#004B89; color:#ffa300; font-weight:900; text-align:center; line-height:34px; font-size:15px; }
+  .gchat .gt { font-weight:800; font-size:14px; color:#1c2733; }
+  .gchat .gs { font-size:12px; color:#5a6b7b; }
+  .gchat .gb { padding:10px 14px 14px; }
+  .grow { margin-bottom:8px; }
+  .grow .lab { font-size:10px; color:#8898a8; text-transform:uppercase; letter-spacing:0.5px; }
+  .grow .val { font-size:13.5px; color:#1c2733; font-weight:600; }
+  .gbtn2 { display:inline-block; background:#e8f0fe; color:#1a73e8; font-weight:700; font-size:12.5px; padding:8px 16px; border-radius:6px; margin-top:4px; }
+  /* CALLOUTS */
+  .rules { background:#00335e; color:#fff; border-radius:14px; padding:22px 24px; margin:40px 0 10px; }
+  .rules h3 { color:#ffa300; font-size:16px; margin-bottom:10px; }
+  .rules li { margin:0 0 8px 20px; font-size:14px; color:rgba(255,255,255,0.9); }
+  .proof { background:#fff; border:2px solid #ffa300; border-radius:14px; padding:20px 24px; margin:34px 0; text-align:center; box-shadow:0 6px 24px rgba(255,163,0,0.15); }
+  .proof .big { font-size:26px; font-weight:900; color:#004B89; }
+  .proof .sm { font-size:13.5px; color:#5a6b7b; margin-top:4px; }
+  .foot { text-align:center; color:#8898a8; font-size:12px; margin-top:44px; }
+  .tag { display:inline-block; background:rgba(0,75,137,0.08); color:#004B89; font-weight:700; font-size:11px; padding:3px 10px; border-radius:10px; margin:2px 3px; }
+</style></head>
+<body>
+
+<div class="hero">
+  <div class="brand">SAFESHIELD INSURANCE · CASEY</div>
+  <h1>CASEY takes payments now.</h1>
+  <p>Invoices, payment links, broker fees, premium financing, and paid-notifications — all inside the chat you already use every day.</p>
+  <div class="date">Launched July 6, 2026 · built &amp; proven with real money the same day</div>
+</div>
+<div class="bigline">The days of "ask Austin to run the payment" are OVER. 🎉</div>
+
+<div class="wrap">
+
+<h2><span class="num">1</span>Make an invoice — just ask</h2>
+<p class="lead">Type what the client owes, paste a screenshot, or attach a dec page. Casey drafts a branded Safeshield invoice into an editable card — you fix any blanks and hit <b>Generate Invoice</b>. PDF, done.</p>
+<div class="say">💬 <b>You say:</b> "make an invoice for me please, client owes this for insurance" <i>(with a screenshot attached)</i></div>
+<div class="chatmock">
+  <div class="userbub">auto down $6,021.20 · gl down $770 · total $6,791.20 — make an invoice for me please 📎</div>
+  <div class="caseybub"><div class="cav">C</div><div style="flex:1;">
+    <div class="ctext">I drafted the invoice for <b style="color:#d4a843;">I Got You Transportation LLC</b> — review the card below, fill the blanks, then click Generate Invoice.</div>
+    <div class="pcard"><div class="head"><div><div class="ttl">📄 Safeshield Invoice</div><div class="sub">Review the fields, fill any blanks, then Generate.</div></div></div>
+    <div class="bd"><div class="sec">Bill To</div>
+      <div class="fgrid"><div class="fld wide"><label>Customer</label><div class="in">I Got You Transportation LLC — 58 Liberty St APT 6, Stamford CT</div></div>
+      <div class="fld"><label>Line item</label><div class="in">Commercial Auto — Down Payment · $6,021.20</div></div>
+      <div class="fld"><label>Line item</label><div class="in">General Liability — Down Payment · $770.00</div></div>
+      <div class="fld wide"><label>Total due</label><div class="in gold">$6,791.20 · Upon Receipt</div></div></div>
+    </div><div class="btnrow"><div class="gbtn">⬇ Generate Invoice</div><div class="gybtn">Cancel</div></div></div>
+  </div></div>
+</div>
+
+<h2><span class="num">2</span>Turn it into a payment link — one sentence</h2>
+<p class="lead">Say <b>"make me a payment link"</b> and Casey stages the Payment Link card — amount, invoice #, client name, even their email and phone pulled straight from NowCerts. Pick card/ACH, hit <b>Create</b>. You get the live link with <b>Copy</b> and <b>✉ Email to client</b> (the email sends from <u>your</u> address, and you approve it first). Nothing ever goes to a client automatically.</p>
+<div class="chatmock">
+  <div class="userbub">awesome, please make me a payment link 📎</div>
+  <div class="caseybub"><div class="cav">C</div><div style="flex:1;">
+    <div class="pcard"><div class="head"><div><div class="ttl" style="color:#4ade80;">✅ Payment link created</div><div class="sub">Nothing sent yet — you deliver it.</div></div><span class="badge live">PRODUCTION</span></div>
+    <div class="bd">
+      <div class="okbar"><span class="amt">$6,791.20</span><span class="who">I Got You Transportation LLC · 456456</span></div>
+      <div class="linkline"><div class="lbox">https://link.anddone.com/#/0xWqKDMd</div><div class="gybtn">Copy</div><div class="blbtn">✉ Email to client</div></div>
+    </div></div>
+  </div></div>
+</div>
+
+<h2><span class="num">3</span>Charging a broker fee? It's a checkbox now</h2>
+<p class="lead">Every payment card has an <b>"Add broker fee"</b> box. Tick it, enter the fee, and it's added on top of the amount — <b>itemized to the client</b>, never hidden. The system hard-caps any fee at <b>11% of the premium</b> and hands you the signed-disclosure form automatically.</p>
+<div class="chatmock"><div class="pcard" style="max-width:480px;">
+  <div class="bd">
+    <div class="toggle"><div class="row"><span class="cb on"></span> Add broker fee</div>
+      <div class="note">Added on top of the amount and itemized to the client. Max 11% of premium. A disclosure form is generated for signature.</div>
+      <div class="fgrid" style="margin-top:8px;"><div class="fld"><label>Broker fee (USD)</label><div class="in gold">500.00</div></div>
+      <div class="fld"><label>Client state</label><div class="in">CT</div></div>
+      <div class="fld"><label>Line of business</label><div class="in">COMMERCIAL ▾</div></div>
+      <div class="fld"><label>Compliance</label><div class="in">☑ Signed fee disclosure on file</div></div></div>
+    </div>
+  </div></div></div>
+<ul class="steps">
+  <li>After creating the link, the card shows <b>⬇ Fee disclosure PDF</b> — a branded form with the premium + fee itemized and signature lines.</li>
+  <li>Send it through <b>RabbitSign</b> with the rest of the policy docs, signed copy goes in the client file. Same flow you already know.</li>
+</ul>
+
+<h2><span class="num">4</span>Premium financing — the client gets a choice 💳➗</h2>
+<p class="lead">For agency-billed accounts, tick <b>"Offer premium financing (IPFS)"</b> on the card ($1,000+ premiums). The client's payment page then shows <b>pay-in-full OR monthly payments</b> — they pick. It's activating with AndDone now; until it flips on, ticked links simply create as pay-in-full — <b>so build the habit today.</b></p>
+<div class="chatmock"><div class="pcard" style="max-width:480px;"><div class="bd">
+  <div class="toggle"><div class="row"><span class="cb on"></span> Offer premium financing (IPFS)</div>
+    <div class="note">Client sees pay-in-full AND a monthly option on the same page. Premium must be $1,000+.</div></div>
+</div></div></div>
+<div class="say" style="font-size:16.5px;">⭐ <b>OR — JUST ASK CASEY IN CHAT:</b> want to know what financing would look like <i>before</i> the client ever sees anything? Ask.</div>
+<div class="chatmock">
+  <div class="userbub">get me a financing quote on this 📎 <i>(dec page attached)</i></div>
+  <div class="caseybub"><div class="cav">C</div><div style="flex:1;">
+    <div class="ctext">Here are the IPFS terms for the $6,791 premium:</div>
+    <div class="pcard" style="max-width:400px;"><div class="bd">
+      <table class="terms">
+        <tr><td>Down payment (20%)</td><td>$1,358.24</td></tr>
+        <tr><td>Then</td><td>10 × $567.42/mo</td></tr>
+        <tr><td>APR</td><td>~11%</td></tr>
+      </table>
+    </div></div>
+    <div class="ctext" style="margin-top:8px;">Want me to make the payment link so the client can choose pay-in-full or these monthly terms?</div>
+  </div></div>
+</div>
+<p class="lead" style="font-size:13px;"><i>(Example numbers — Casey pulls real terms from IPFS for each quote.)</i></p>
+
+<h2><span class="num">5</span>When the client pays — the whole team knows instantly</h2>
+<p class="lead">The moment a payment lands, a card posts in our team Google Chat automatically: who paid, how much, card or ACH, pay-in-full or financed — with a one-click <b>Receipt PDF</b>. Refunds and <b>chargebacks post too</b> (loudly), so we respond same-day instead of finding out weeks later.</p>
+<div class="gchat">
+  <div class="gh"><div class="logo">S</div><div><div class="gt">💰 Payment received — $6,791.20</div><div class="gs">I Got You Transportation LLC</div></div></div>
+  <div class="gb">
+    <div class="grow"><div class="lab">Amount</div><div class="val">$6,791.20 · ACH · client paid $6,795.20 incl. $4.00 processing fee</div></div>
+    <div class="grow"><div class="lab">Option</div><div class="val">Paid in full</div></div>
+    <div class="grow"><div class="lab">Reference</div><div class="val">Invoice SSI-2026-596143</div></div>
+    <div class="gbtn2">Receipt PDF</div>
+  </div>
+</div>
+
+<div class="proof">
+  <div class="big">$6,791.20</div>
+  <div class="sm">First real client payment flowed through the whole pipeline on launch day —<br>invoice → payment link → paid via ACH → receipt. <b>This isn't a demo. It's live.</b></div>
+</div>
+
+<div class="rules">
+  <h3>📏 Rules of the road</h3>
+  <ul>
+    <li><b>Never send a client anything marked UAT or TEST.</b> Production cards say PRODUCTION in green.</li>
+    <li><b>Always collect through the card.</b> It's our system of record — every link, fee, and payment is logged.</li>
+    <li><b>Every broker fee gets the disclosure form signed</b> — download it from the card, RabbitSign it, file it. Fees are always itemized to the client and never exceed 11% of premium.</li>
+    <li><b>The client always sees exactly what they're paying and why.</b> Casey never sends anything to a client without you clicking send.</li>
+  </ul>
+</div>
+
+<p class="lead" style="text-align:center; margin-top:30px;">
+  <span class="tag">make an invoice</span><span class="tag">make me a payment link</span><span class="tag">add a $500 broker fee</span><span class="tag">get a financing quote on this</span><span class="tag">email it to the client</span>
+</p>
+<p class="lead" style="text-align:center;">That's the whole feature. Try it on your next real account.<br><b>Questions → Austin.</b></p>
+
+<div class="foot">Safeshield Insurance · CASEY Payments · Built July 6, 2026</div>
+</div>
+</body></html>
