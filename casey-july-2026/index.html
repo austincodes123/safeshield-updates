@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What's new in CASEY | Safeshield team update, June 1 to July 27 2026</title>
+<meta name="description" content="Safeshield team update: everything that changed in CASEY between June 1 and July 27, 2026. Interactive walkthroughs of Safeshield Secure, proposals, Canopy Connect and Chat.">
+<meta name="theme-color" content="#0a1628">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#004B89; --navy-2:#0B63A8; --deep:#0a1628; --deep-2:#12233B;
+  --amber:#FFA300; --amber-soft:#FFE7BC;
+  --paper:#FAFAF8; --white:#fff;
+  --ink:#0a1628; --body:#2C3A48; --mute:#65788A;
+  --line:#E3E8ED; --line-2:#CFD8E0;
+  --ok:#0F7A4F; --ok-bg:#E4F3EC;
+  --warn:#9A5A11; --warn-bg:#FFF1D9;
+  --stop:#A32B21; --stop-bg:#FBE7E4;
+  --disp:"Playfair Display",Georgia,serif;
+  --sans:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Consolas,monospace;
+  --sh:0 1px 2px rgba(10,22,40,.05),0 8px 24px -12px rgba(10,22,40,.18);
+  --sh-lg:0 2px 4px rgba(10,22,40,.06),0 24px 60px -24px rgba(10,22,40,.34);
+  --r:14px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;overflow-x:clip;background:var(--paper);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--disp);color:var(--ink);font-weight:900;line-height:1.08;letter-spacing:-.015em;margin:0}
+p{margin:0 0 1em}
+a{color:var(--navy)}
+b,strong{font-weight:600;color:var(--ink)}
+img,svg{max-width:100%}
+::selection{background:var(--amber);color:var(--deep)}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin:0 0 14px}
+.eyebrow--ink{color:var(--navy)}
+.lede{font-size:clamp(1.05rem,2.2vw,1.28rem);color:var(--mute);font-weight:300}
+
+/* ============ HERO ============ */
+.hero{position:relative;background:var(--deep);color:#E9EFF5;overflow:hidden;padding:clamp(34px,6vw,56px) 0 clamp(50px,8vw,86px)}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(900px 460px at 88% -10%,rgba(255,163,0,.20),transparent 62%),
+  radial-gradient(760px 520px at 6% 106%,rgba(0,75,137,.66),transparent 66%);}
+.hero::after{content:"";position:absolute;inset:0;opacity:.06;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(to bottom,#000,transparent 78%)}
+.hero .wrap{position:relative;z-index:2}
+.brandbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:clamp(30px,6vw,58px)}
+.brandbar__mark{display:flex;align-items:center;gap:9px;font-weight:600;letter-spacing:-.01em;color:#fff;font-size:1.02rem}
+.brandbar__mark svg{width:22px;height:26px;display:block}
+.brandbar__sep{flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.28),transparent)}
+.brandbar__meta{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(233,239,245,.62);font-weight:500}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:clamp(28px,5vw,64px);align-items:center}
+.hero h1{color:#fff;font-size:clamp(2.6rem,7.6vw,5rem);letter-spacing:-.03em}
+.hero h1 em{font-style:normal;position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.07em;height:.16em;background:var(--amber);z-index:-1;transform:scaleX(0);transform-origin:left;animation:swipe .7s .5s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes swipe{to{transform:scaleX(1)}}
+.hero__dek{font-size:clamp(1.02rem,2.2vw,1.22rem);color:rgba(233,239,245,.8);font-weight:300;max-width:46ch;margin:22px 0 0}
+.hero__dek b{color:#fff;font-weight:500}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:100px;font-family:var(--sans);font-size:.95rem;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease,border-color .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn--amber{background:var(--amber);color:var(--deep)}
+.btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.34)}
+.btn--ghost:hover{border-color:#fff}
+.btn--navy{background:var(--navy);color:#fff}
+.btn--quiet{background:var(--white);color:var(--ink);border-color:var(--line-2)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);border-radius:12px;overflow:hidden;margin-top:clamp(34px,5vw,52px)}
+.stats div{background:rgba(10,22,40,.55);padding:16px 18px}
+.stats .n{font-family:var(--disp);font-size:clamp(1.5rem,3.4vw,2.1rem);color:#fff;line-height:1;display:block}
+.stats .n span{color:var(--amber)}
+.stats .l{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:rgba(233,239,245,.6);margin-top:7px;display:block;font-weight:500}
+
+/* fake CASEY chat in hero */
+.chatwin{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:14px;backdrop-filter:blur(6px);box-shadow:var(--sh-lg)}
+.chatwin__bar{display:flex;align-items:center;gap:8px;padding:2px 4px 12px}
+.chatwin__dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.22)}
+.chatwin__title{margin-left:6px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(233,239,245,.55);font-weight:500}
+.msg{display:flex;gap:10px;align-items:flex-start;margin-bottom:11px;opacity:0;transform:translateY(6px);animation:pop .45s forwards}
+@keyframes pop{to{opacity:1;transform:none}}
+.msg__av{flex:0 0 auto;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-size:11px;font-weight:700;letter-spacing:.02em}
+.msg--you .msg__av{background:rgba(255,255,255,.16);color:#fff}
+.msg--c .msg__av{background:var(--amber);color:var(--deep)}
+.msg__b{background:rgba(255,255,255,.09);border-radius:4px 13px 13px 13px;padding:10px 14px;font-size:.93rem;color:#EEF3F8;min-width:0;overflow-wrap:break-word}
+.msg{min-width:0}
+.msg__b b,.msg__b strong{color:#fff;font-weight:600}
+.fmtbar button b,.fmtbar button i,.fmtbar button u{color:inherit}
+.msg--c .msg__b{background:rgba(255,163,0,.13);border:1px solid rgba(255,163,0,.22)}
+.msg__b ol{margin:8px 0 0;padding-left:18px}
+.msg__b li{margin-bottom:3px}
+.msg__b li::marker{color:var(--amber);font-weight:600}
+.caret{display:inline-block;width:8px;height:15px;background:var(--amber);vertical-align:-2px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ============ STICKY NAV ============ */
+.nav{position:sticky;top:0;z-index:60;background:rgba(250,250,248,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav__in{display:flex;align-items:center;gap:14px;max-width:1140px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.nav__brand{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);font-size:.92rem;padding:11px 0;flex:0 0 auto}
+.nav__brand svg{width:16px;height:19px}
+.nav__scroll{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;padding:6px 0}
+.nav__scroll::-webkit-scrollbar{display:none}
+.nav__scroll a{flex:0 0 auto;padding:7px 11px;border-radius:100px;font-size:.83rem;font-weight:500;color:var(--mute);text-decoration:none;white-space:nowrap;transition:background .15s,color .15s}
+.nav__scroll a:hover{background:var(--white);color:var(--ink)}
+.nav__scroll a.on{background:var(--navy);color:#fff}
+.nav__prog{position:absolute;left:0;bottom:-1px;height:2px;background:var(--amber);width:0}
+.nav{position:sticky}
+.navwrap{position:relative}
+
+/* ============ PRIORITY CARDS ============ */
+.first{padding:clamp(44px,7vw,76px) 0 0}
+.first__head{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;margin-bottom:26px}
+.first h2{font-size:clamp(1.7rem,4vw,2.5rem)}
+.four{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:12px}
+.four a{display:flex;flex-direction:column;gap:11px;background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:18px;text-decoration:none;color:var(--body);transition:transform .18s ease,box-shadow .18s ease,border-color .18s}
+.four a:hover{transform:translateY(-3px);box-shadow:var(--sh);border-color:var(--line-2)}
+.four .ic{width:40px;height:40px;border-radius:11px;background:var(--deep);display:grid;place-items:center;color:var(--amber)}
+.four .ic svg{width:20px;height:20px}
+.four h3{font-family:var(--sans);font-weight:600;font-size:1.02rem;letter-spacing:-.01em}
+.four p{font-size:.88rem;color:var(--mute);margin:0}
+.four .go{margin-top:auto;font-size:.8rem;font-weight:600;color:var(--navy);letter-spacing:.02em}
+
+/* ============ SECTIONS ============ */
+main{padding-bottom:60px}
+.sec{padding:clamp(48px,7vw,86px) 0 0;scroll-margin-top:64px}
+.sec__head{display:grid;grid-template-columns:auto 1fr auto;gap:16px 20px;align-items:start;padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:30px}
+.sec__num{font-family:var(--disp);font-size:clamp(2rem,5vw,3rem);line-height:.8;color:var(--line-2)}
+.sec--key .sec__num{color:var(--amber)}
+.sec h2{font-size:clamp(1.6rem,4.2vw,2.6rem)}
+.sec__dek{margin:10px 0 0;font-size:clamp(1rem,2.2vw,1.14rem);color:var(--mute);font-weight:300;max-width:58ch}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.chip--live{background:var(--ok-bg);color:var(--ok)}
+.chip--part{background:var(--warn-bg);color:var(--warn)}
+.chip--stop{background:var(--stop-bg);color:var(--stop)}
+.chip--new{background:var(--amber-soft);color:#8A5800}
+.chip--plain{background:#EDF1F5;color:var(--mute)}
+.chip--flat::before{display:none}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.sec p{max-width:70ch}
+.h4{font-family:var(--sans);font-weight:600;font-size:1.02rem;color:var(--ink);margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+.h4::after{content:"";flex:1;height:1px;background:var(--line)}
+ul.tick{list-style:none;margin:0 0 18px;padding:0;max-width:70ch}
+ul.tick li{position:relative;padding-left:28px;margin-bottom:11px}
+ul.tick li::before{content:"";position:absolute;left:0;top:.42em;width:16px;height:16px;border-radius:5px;background:var(--amber-soft)}
+ul.tick li::after{content:"";position:absolute;left:5px;top:.7em;width:5px;height:8px;border:solid var(--navy);border-width:0 2px 2px 0;transform:rotate(42deg)}
+
+/* ============ DEMO SHELL ============ */
+.demo{background:var(--white);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:22px 0 26px;box-shadow:var(--sh)}
+.demo__bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:11px 18px;background:var(--deep);color:#fff}
+.demo__bar .t{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--amber)}
+.demo__bar .s{font-size:.86rem;color:rgba(233,239,245,.72);font-weight:300}
+.demo__bar .s b{color:#fff;font-weight:500}
+.demo__body{padding:clamp(16px,3vw,26px)}
+.demo__split{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:0}
+.demo__split > *{padding:clamp(16px,3vw,26px)}
+.demo__split > *:first-child{border-right:1px solid var(--line);background:#F7F9FB}
+.fieldlabel{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:block;margin:0 0 7px}
+.field{margin-bottom:18px}
+.inp{width:100%;padding:10px 12px;border:1px solid var(--line-2);border-radius:9px;font-family:var(--sans);font-size:.92rem;color:var(--ink);background:var(--white)}
+.seg{display:inline-flex;background:#EDF1F5;border-radius:100px;padding:3px;gap:2px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;padding:7px 14px;border-radius:100px;font-family:var(--sans);font-size:.85rem;font-weight:500;color:var(--mute);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--white);color:var(--ink);box-shadow:0 1px 3px rgba(10,22,40,.14)}
+.tog{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line-2);border-radius:11px;background:var(--white);cursor:pointer;width:100%;text-align:left;font-family:var(--sans)}
+.tog__sw{flex:0 0 auto;width:44px;height:25px;border-radius:100px;background:var(--line-2);position:relative;transition:background .2s}
+.tog__sw::after{content:"";position:absolute;top:3px;left:3px;width:19px;height:19px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s}
+.tog[aria-pressed="true"] .tog__sw{background:var(--ok)}
+.tog[aria-pressed="true"] .tog__sw::after{transform:translateX(19px)}
+.tog__t{font-size:.93rem;font-weight:500;color:var(--ink)}
+.tog__s{font-size:.8rem;color:var(--mute);display:block;margin-top:2px;line-height:1.4}
+
+/* browser mock */
+.mock{border:1px solid var(--line-2);border-radius:12px;overflow:hidden;background:var(--white);box-shadow:var(--sh)}
+.mock__url{display:flex;align-items:center;gap:8px;padding:9px 12px;background:#EDF1F5;border-bottom:1px solid var(--line-2);font-size:.78rem;color:var(--mute)}
+.mock__url i{width:8px;height:8px;border-radius:50%;background:#CBD5DD;display:block}
+.mock__url span{background:var(--white);border:1px solid var(--line);border-radius:100px;padding:4px 12px;flex:1;color:var(--body);font-family:var(--mono);font-size:.72rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mock__screen{padding:20px;min-height:290px;position:relative}
+.codebox{display:flex;gap:8px;justify-content:center;margin:18px 0}
+.codebox b{width:38px;height:48px;border:1px solid var(--line-2);border-radius:9px;display:grid;place-items:center;font-size:1.3rem;font-family:var(--disp);color:var(--ink);background:#F7F9FB}
+.codebox b.f{border-color:var(--navy);background:var(--white)}
+.docpage{border:1px solid var(--line);border-radius:8px;padding:16px;background:var(--white);position:relative;overflow:hidden}
+.docpage .ln{height:8px;background:#EDF1F5;border-radius:4px;margin-bottom:9px}
+.docpage .ln.w1{width:56%}.docpage .ln.w2{width:88%}.docpage .ln.w3{width:72%}.docpage .ln.w4{width:40%}
+.wmk{position:absolute;inset:-30%;pointer-events:none;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:26px 30px;transform:rotate(-22deg);overflow:hidden}
+.wmk span{font-size:.66rem;color:rgba(0,75,137,.17);white-space:nowrap;font-weight:600;letter-spacing:.04em}
+.pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;background:#EDF1F5;font-size:.78rem;color:var(--mute);font-weight:500}
+.pill--ok{background:var(--ok-bg);color:var(--ok)}
+.pill--stop{background:var(--stop-bg);color:var(--stop)}
+
+/* flow diagram */
+.flow{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:0;margin:6px 0 4px;overflow-x:auto}
+.flow__n{position:relative;padding:0 14px;text-align:center}
+.flow__n:not(:last-child)::after{content:"";position:absolute;top:21px;right:-11px;width:22px;height:2px;background:var(--line-2)}
+.flow__d{width:42px;height:42px;margin:0 auto 10px;border-radius:12px;background:var(--white);border:1px solid var(--line-2);display:grid;place-items:center;color:var(--navy);font-weight:700;font-family:var(--disp);position:relative;z-index:1}
+.flow__n.act .flow__d{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:0 0 0 5px rgba(0,75,137,.12)}
+.flow__t{font-size:.83rem;font-weight:600;color:var(--ink);display:block;line-height:1.3}
+.flow__s{font-size:.78rem;color:var(--mute);display:block;margin-top:3px;line-height:1.4}
+
+/* tables */
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tbl{width:100%;min-width:520px;border-collapse:collapse;font-size:.9rem;background:var(--white)}
+.tbl th{text-align:left;padding:10px 13px;background:#F2F5F8;border-bottom:1px solid var(--line-2);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:600;white-space:nowrap}
+.tbl td{padding:12px 13px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .num{font-family:var(--mono);font-size:.82rem}
+.bar{height:7px;border-radius:4px;background:#EDF1F5;overflow:hidden;min-width:64px}
+.bar i{display:block;height:100%;background:var(--navy);border-radius:4px}
+.bar.low i{background:var(--line-2)}
+.strike{opacity:.42;text-decoration:line-through}
+
+/* callout */
+.note{display:flex;gap:14px;padding:16px 18px;border-radius:12px;background:var(--amber-soft);border:1px solid #F2D6A0;margin:20px 0}
+.note svg{flex:0 0 auto;width:20px;height:20px;color:#8A5800;margin-top:2px}
+.note p{margin:0;font-size:.94rem;color:#4A3411;max-width:none}
+.note b{color:#3A2808}
+.note--navy{background:#EDF3F9;border-color:#CFE0EE}
+.note--navy svg,.note--navy b{color:var(--navy)}
+.note--navy p{color:#26445F}
+
+/* mini proposal mocks */
+.looks{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.look{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--white)}
+.look__cap{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 14px;border-top:1px solid var(--line);font-size:.85rem;font-weight:600;color:var(--ink)}
+.look__cap span{font-size:.76rem;font-weight:400;color:var(--mute)}
+.mini{font-size:10px;line-height:1.42;padding:16px clamp(14px,calc(50% - 158px),220px);min-height:238px;overflow:hidden;position:relative}
+.mini h5{margin:0;font-size:14px;font-family:var(--disp);font-weight:800;letter-spacing:-.01em}
+.mini .tabs{display:flex;gap:4px;margin:8px 0}
+.mini .tabs b{padding:3px 8px;border-radius:100px;font-size:8px;font-weight:600}
+.mini .tile{border-radius:6px;padding:7px 8px;margin-bottom:5px;display:flex;justify-content:space-between;align-items:center}
+.mini .price{font-family:var(--disp);font-size:21px;font-weight:900;letter-spacing:-.02em}
+/* classic palette */
+.mini--classic{background:#F6F9FC;color:#33475B}
+.mini--classic h5{color:var(--navy)}
+.mini--classic .tabs b:first-child{background:var(--navy);color:#fff}
+.mini--classic .tabs b:last-child{background:#E4EDF5;color:var(--navy)}
+.mini--classic .tile{background:#fff;border:1px solid #DCE7F1}
+.mini--classic .price{color:var(--navy)}
+.mini--classic .amb{color:#B87400;font-weight:700}
+/* editorial palette */
+.mini--edit{background:#F5EFE6;color:#4A4034}
+.mini--edit .mhero{background:#12314F;color:#fff;border-radius:8px;padding:10px;position:static;margin-bottom:-16px}
+.mini--edit h5{color:#fff}
+.mini--edit .panel{background:#fff;border-radius:8px;padding:9px 11px;margin:0 8px 8px;box-shadow:0 8px 20px -10px rgba(10,22,40,.4);position:relative}
+.mini--edit .price{color:#12314F}
+.mini--edit .rib{background:#E2701A;color:#fff;border-radius:100px;padding:2px 7px;font-size:8px;font-weight:700;display:inline-block}
+.mini--edit .tabs b:first-child{background:#12314F;color:#fff}
+.mini--edit .tabs b:last-child{background:#E8DCC9;color:#6B5A42}
+.mini .row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.07)}
+
+/* quiz */
+.quiz{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:20px;align-items:start}
+.quizchips{display:flex;flex-wrap:wrap;gap:8px}
+.qc{border:1px solid var(--line-2);background:var(--white);border-radius:100px;padding:8px 14px;font-family:var(--sans);font-size:.87rem;font-weight:500;color:var(--body);cursor:pointer;transition:all .15s}
+.qc:hover{border-color:var(--navy)}
+.qc[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.verdict{border:1px solid var(--line);border-radius:12px;padding:18px;background:#F7F9FB}
+.verdict__k{font-family:var(--disp);font-size:1.9rem;color:var(--ink);margin:6px 0 8px;line-height:1}
+.verdict__w{font-size:.9rem;color:var(--mute);margin:0}
+
+/* editable demo */
+.edit{border:1px solid var(--line-2);border-radius:12px;padding:20px;background:var(--white);position:relative}
+.edit [contenteditable]{outline:0;border-radius:5px;transition:box-shadow .15s,background .15s}
+.edit [contenteditable]:hover{background:#FFF8EA}
+.edit [contenteditable]:focus{background:#FFF8EA;box-shadow:0 0 0 2px var(--amber)}
+.edit__block{margin-bottom:14px;position:relative;padding-right:82px}
+.edit__block:last-child{margin-bottom:0}
+.blockctl{position:absolute;right:0;top:0;display:flex;gap:4px;opacity:0;transition:opacity .15s}
+.edit__block:hover .blockctl,.edit__block:focus-within .blockctl{opacity:1}
+.blockctl button{width:26px;height:26px;border-radius:7px;border:1px solid var(--line-2);background:var(--white);cursor:pointer;font-size:12px;line-height:1;color:var(--mute);display:grid;place-items:center;font-family:var(--sans)}
+.blockctl button:hover{border-color:var(--navy);color:var(--navy)}
+.fmtbar{display:flex;gap:4px;padding:6px;background:var(--deep);border-radius:9px;position:absolute;top:-14px;left:20px;box-shadow:var(--sh-lg);z-index:5}
+.fmtbar button{width:28px;height:28px;border:0;border-radius:6px;background:transparent;color:#fff;cursor:pointer;font-family:var(--disp);font-size:.9rem}
+.fmtbar button:hover{background:rgba(255,255,255,.16)}
+.hidden{display:none!important}
+.isoff{opacity:.28;filter:grayscale(1)}
+
+/* timeline */
+.tl{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 22px}
+.tl::before{content:"";position:absolute;left:6%;right:6%;top:19px;height:2px;background:var(--line-2)}
+.tlb{background:transparent;border:0;cursor:pointer;text-align:center;font-family:var(--sans);padding:0;position:relative}
+.tlb .d{width:38px;height:38px;margin:0 auto 10px;border-radius:50%;background:var(--white);border:2px solid var(--line-2);display:grid;place-items:center;color:var(--mute);transition:all .18s;position:relative;z-index:1}
+.tlb .d svg{width:17px;height:17px}
+.tlb[aria-selected="true"] .d{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 0 0 5px rgba(0,75,137,.12)}
+.tlb .t{font-size:.83rem;font-weight:600;color:var(--ink);display:block}
+.tlb .s{font-size:.76rem;color:var(--mute);display:block}
+/* google chat mock */
+.gchat{background:#F7F9FB;border:1px solid var(--line);border-radius:12px;padding:16px}
+.gmsg{display:flex;gap:11px}
+.gmsg__av{width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.85rem;flex:0 0 auto}
+.gcard{background:var(--white);border:1px solid var(--line);border-radius:11px;overflow:hidden;max-width:430px;box-shadow:var(--sh)}
+.gcard__h{background:var(--deep);color:#fff;padding:11px 14px;font-size:.86rem;font-weight:600;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.gcard__h span{font-size:.72rem;color:var(--amber);font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.gcard__b{padding:14px}
+.kpi{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--line)}
+.kpi:last-of-type{border-bottom:0}
+.kpi b{font-family:var(--disp);font-size:1.1rem;color:var(--ink)}
+.kpi span{font-size:.82rem;color:var(--mute)}
+.gname{font-size:.86rem;font-weight:600;color:var(--ink)}
+.gtime{font-size:.76rem;color:var(--mute);font-weight:400;margin-left:6px}
+
+/* state tiles */
+.states{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:10px;margin-bottom:18px}
+.st{border:1px solid var(--line-2);border-radius:12px;padding:14px 10px;text-align:center;cursor:pointer;background:var(--white);font-family:var(--sans);transition:all .16s}
+.st:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+.st b{display:block;font-family:var(--disp);font-size:1.5rem;color:var(--ink);line-height:1}
+.st i{display:block;font-style:normal;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-top:8px}
+.st--live{border-color:#B7DFCB;background:var(--ok-bg)} .st--live i{color:var(--ok)}
+.st--part{border-color:#F0D6A4;background:var(--warn-bg)} .st--part i{color:var(--warn)}
+.st--stop{border-color:#EEC4BE;background:var(--stop-bg)} .st--stop i{color:var(--stop)}
+.st[aria-pressed="true"]{outline:3px solid var(--navy);outline-offset:2px}
+
+/* meter */
+.meter{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.meter .lb{font-size:.88rem;min-width:150px;color:var(--ink);font-weight:500}
+.meter .tr{flex:1;height:9px;background:#EDF1F5;border-radius:5px;overflow:hidden}
+.meter .tr i{display:block;height:100%;background:var(--ok);border-radius:5px}
+.meter .tr.pend i{background:var(--amber)}
+.meter .vl{font-size:.8rem;color:var(--mute);min-width:74px;text-align:right;font-family:var(--mono)}
+
+/* phone mock */
+.phone{width:230px;border:9px solid var(--deep);border-radius:30px;overflow:hidden;background:var(--white);box-shadow:var(--sh-lg);flex:0 0 auto}
+.phone__top{background:var(--deep);height:16px}
+.phone__b{padding:14px}
+
+/* receipt */
+.receipt{border:1px solid var(--line-2);border-radius:12px;overflow:hidden;max-width:420px;background:var(--white)}
+.receipt__h{background:var(--navy);color:#fff;padding:16px;display:flex;justify-content:space-between;align-items:center}
+.receipt__h b{font-family:var(--disp);font-size:1.15rem;color:#fff}
+.badge{background:#12A05F;color:#fff;font-size:11px;font-weight:700;letter-spacing:.14em;padding:5px 10px;border-radius:5px}
+.receipt__b{padding:16px}
+.rrow{display:flex;justify-content:space-between;padding:8px 0;font-size:.9rem;border-bottom:1px dashed var(--line-2)}
+.rrow:last-child{border:0;font-weight:600;color:var(--ink)}
+
+/* misc */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.box{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--white)}
+.box h4{font-family:var(--sans);font-size:.95rem;font-weight:600;margin-bottom:6px}
+.box p{font-size:.88rem;color:var(--mute);margin:0}
+.box .ic{width:32px;height:32px;border-radius:9px;background:#EDF3F9;color:var(--navy);display:grid;place-items:center;margin-bottom:11px}
+.box .ic svg{width:16px;height:16px}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* finder + footer */
+.finder{margin-top:clamp(50px,7vw,80px);background:var(--white);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.finder__h{padding:18px 22px;background:var(--deep);color:#fff}
+.finder__h h2{color:#fff;font-size:1.4rem}
+.finder__h p{margin:6px 0 0;color:rgba(233,239,245,.7);font-size:.9rem}
+footer{background:var(--deep);color:rgba(233,239,245,.66);margin-top:clamp(48px,7vw,80px);padding:clamp(34px,5vw,54px) 0}
+footer .fx{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:flex-end}
+footer h3{color:#fff;font-size:clamp(1.3rem,3vw,1.8rem)}
+footer p{margin:8px 0 0;font-size:.94rem;max-width:44ch}
+footer .meta{font-size:11px;letter-spacing:.15em;text-transform:uppercase}
+footer a{color:var(--amber);text-decoration:none}
+
+@media (max-width:900px){
+  .hero__grid{grid-template-columns:1fr}
+  .four{grid-template-columns:repeat(2,1fr)}
+  .demo__split{grid-template-columns:1fr}
+  .demo__split > *:first-child{border-right:0;border-bottom:1px solid var(--line)}
+  .quiz,.looks{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  .four{grid-template-columns:1fr}
+  .sec__head{grid-template-columns:auto 1fr}
+  .sec__head .chip{grid-column:2}
+  .tl{grid-template-columns:repeat(2,1fr);gap:18px}
+  .tl::before{display:none}
+  .flow{grid-auto-flow:row;gap:14px}
+  .flow__n:not(:last-child)::after{display:none}
+  .flow__n{display:grid;grid-template-columns:42px 1fr;gap:12px;text-align:left;padding:0}
+  .flow__d{margin:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .msg{opacity:1;transform:none;animation:none}
+  .hero h1 em::after{animation:none;transform:scaleX(1)}
+  .caret{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="brandbar">
+      <span class="brandbar__mark">
+        <svg viewBox="0 0 22 26" fill="none" aria-hidden="true"><path d="M11 1 20.5 4.6v8.1c0 6.2-4 10.4-9.5 12.3C5.5 23.1 1.5 18.9 1.5 12.7V4.6L11 1Z" fill="#004B89" stroke="#FFA300" stroke-width="1.5"/><path d="m6.8 12.6 3 3.1 5.4-6.1" stroke="#FFA300" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Safeshield
+      </span>
+      <span class="brandbar__sep"></span>
+      <span class="brandbar__meta">Internal team update</span>
+      <span class="brandbar__meta">Jun 1 to Jul 27, 2026</span>
+    </div>
+
+    <div class="hero__grid">
+      <div>
+        <p class="eyebrow">Release notes</p>
+        <h1>What's new in <em>CASEY</em></h1>
+        <p class="hero__dek">Two months of work, thirteen areas, and five things that change what you do tomorrow. Everything below is interactive: <b>click it, drag it, and try it right here</b> before you touch a live client file.</p>
+        <div class="hero__cta">
+          <a class="btn btn--amber" href="#first">Start with the big four
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3.5 8.5 8 13l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#finder">Where to find things</a>
+        </div>
+        <div class="stats">
+          <div><span class="n">13</span><span class="l">Areas rebuilt</span></div>
+          <div><span class="n">8</span><span class="l">Weeks of work</span></div>
+          <div><span class="n"><span>13</span></span><span class="l">Live for you now</span></div>
+          <div><span class="n"><span>5</span></span><span class="l">To try this week</span></div>
+        </div>
+      </div>
+
+      <div class="chatwin" aria-hidden="true">
+        <div class="chatwin__bar">
+          <i class="chatwin__dot"></i><i class="chatwin__dot"></i><i class="chatwin__dot"></i>
+          <span class="chatwin__title">CASEY &middot; team space</span>
+        </div>
+        <div id="heroChat"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= NAV ================= -->
+<div class="navwrap">
+<nav class="nav" aria-label="Sections">
+  <div class="nav__in">
+    <span class="nav__brand">
+      <svg viewBox="0 0 22 26" fill="none" aria-hidden="true"><path d="M11 1 20.5 4.6v8.1c0 6.2-4 10.4-9.5 12.3C5.5 23.1 1.5 18.9 1.5 12.7V4.6L11 1Z" fill="#004B89"/><path d="m6.8 12.6 3 3.1 5.4-6.1" stroke="#FFA300" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      CASEY
+    </span>
+    <div class="nav__scroll" id="navScroll">
+      <a href="#s1">1. Proposals</a>
+      <a href="#s2">2. Canopy</a>
+      <a href="#s3">3. Payments</a>
+      <a href="#s4">4. Invoices &amp; receipts</a>
+      <a href="#s5">5. Secure</a>
+      <a href="#s6">6. Renewals</a>
+      <a href="#s7">7. Chat</a>
+      <a href="#s8">8. Portal</a>
+      <a href="#s9">9. Quoting</a>
+      <a href="#s10">10. Commissions</a>
+      <a href="#s11">11. The brain</a>
+      <a href="#s12">12. Claude</a>
+      <a href="#s13">13. Under the hood</a>
+    </div>
+  </div>
+  <i class="nav__prog" id="prog"></i>
+</nav>
+</div>
+
+<div class="wrap">
+
+<!-- ================= PRIORITY FOUR ================= -->
+<section class="first" id="first">
+  <div class="first__head">
+    <div>
+      <p class="eyebrow eyebrow--ink">If you read nothing else</p>
+      <h2>These five change what you do tomorrow</h2>
+    </div>
+    <p class="lede" style="max-width:32ch;margin:0">The rest is worth knowing. These five you will use this week.</p>
+  </div>
+  <div class="four">
+    <a href="#s1">
+      <span class="ic"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 3.5h8l3.5 3.5v9.5h-11.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 3.5V7h3.5M7 11h6M7 13.5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+      <h3>Proposals</h3>
+      <p>CASEY designs them, picks the look, and you edit the live page in the browser.</p>
+      <span class="go">Pick a look &rarr;</span>
+    </a>
+    <a href="#s2">
+      <span class="ic"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v9m0 0 3.5-3.5M10 12 6.5 8.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 13v2.5h13V13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+      <h3>Canopy Connect leads</h3>
+      <p>The prospect hands over their whole current policy, and CASEY emails you the second one lands.</p>
+      <span class="go">See the flow &rarr;</span>
+    </a>
+    <a href="#s3">
+      <span class="ic"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="5" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 8.5h15" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 12h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+      <h3>Payment links</h3>
+      <p>Collect on an agency billed account without leaving CASEY. Fees are compliance checked on every path.</p>
+      <span class="go">Build a link &rarr;</span>
+    </a>
+    <a href="#s4">
+      <span class="ic"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 3.5h11v13l-2-1.4-1.8 1.4-1.7-1.4-1.7 1.4-1.8-1.4-2 1.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m7.6 9.6 1.7 1.7 3.2-3.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <h3>Invoices and receipts</h3>
+      <p>Generate an invoice or a receipt in a click, and know the second a folder is fully signed.</p>
+      <span class="go">Generate one &rarr;</span>
+    </a>
+    <a href="#s5">
+      <span class="ic"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3.5" y="8.5" width="13" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M6.5 8.5V6a3.5 3.5 0 1 1 7 0v2.5" stroke="currentColor" stroke-width="1.6"/><circle cx="10" cy="13" r="1.3" fill="currentColor"/></svg></span>
+      <h3>Safeshield Secure</h3>
+      <p>Stop attaching client documents to email. Send a link that expires and needs a code.</p>
+      <span class="go">Try the sender &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<main>
+
+<!-- ========== 1. PROPOSALS ========== -->
+<section class="sec sec--key reveal" id="s1">
+  <div class="sec__head">
+    <span class="sec__num">01</span>
+    <div>
+      <h2>Proposals</h2>
+      <p class="sec__dek">CASEY designs them now, and you can edit them in the browser. The generator went from "it makes a page" to something you would hand a client without touching it. This is the biggest change on the list.</p>
+    </div>
+    <span class="chip chip--new">Rebuilt</span>
+  </div>
+
+  <h3 class="h4">Two signature looks, and CASEY picks</h3>
+  <p>Both are built from proposals Austin shipped by hand, so they are house style, not a template pack.</p>
+
+  <div class="looks">
+    <div class="look">
+      <div class="mini mini--classic">
+        <h5>Martinez, home + auto</h5>
+        <div class="tabs"><b>Proposal</b><b>Compare</b></div>
+        <div class="tile"><span>Dwelling A</span><b>$780,000</b></div>
+        <div class="tile"><span>Liability</span><b>$500,000</b></div>
+        <div class="tile"><span>Auto, 2 vehicles</span><b>100/300/100</b></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:8px">
+          <div><div style="font-size:8px">Pay in full</div><div class="price">$4,182</div></div>
+          <div class="amb">or $362/mo</div>
+        </div>
+        <div class="tile" style="margin-top:6px"><span>+ Add water backup</span><b class="amb">+$48</b></div>
+      </div>
+      <div class="look__cap">Classic <span>Light navy and amber</span></div>
+    </div>
+    <div class="look">
+      <div class="mini mini--edit">
+        <div class="mhero"><div style="font-size:8px;letter-spacing:.14em;text-transform:uppercase;opacity:.7">Prepared for</div><h5>The Cullen family</h5></div>
+        <div class="panel">
+          <div class="tabs"><b>Home only</b><b>Home + auto</b></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end">
+            <div class="price">$2,940</div><span class="rib">Save $610</span>
+          </div>
+        </div>
+        <div class="row"><span>Roof, replacement cost</span><span>Included</span></div>
+        <div class="row"><span>Water backup</span><span>$10,000</span></div>
+        <div class="row"><span>Deductible</span><span>$2,500</span></div>
+        <div style="margin-top:8px;font-size:8px;opacity:.7">4.9 average from 212 reviews</div>
+      </div>
+      <div class="look__cap">Editorial <span>Warm paper, deep navy and orange</span></div>
+    </div>
+  </div>
+
+  <div class="demo">
+    <div class="demo__bar"><span class="t">Which look does she pick?</span><span class="s">Tap the signals in your quote and see the call CASEY makes</span></div>
+    <div class="demo__body">
+      <div class="quiz">
+        <div>
+          <span class="fieldlabel">Signals in the quote</span>
+          <div class="quizchips" id="quizChips">
+            <button class="qc" type="button" aria-pressed="false" data-v="e">Single line</button>
+            <button class="qc" type="button" aria-pressed="false" data-v="e">Purchase moment</button>
+            <button class="qc" type="button" aria-pressed="false" data-v="e">Either or pricing</button>
+            <button class="qc" type="button" aria-pressed="false" data-v="c">Multi line</button>
+            <button class="qc" type="button" aria-pressed="false" data-v="c">Commercial</button>
+            <button class="qc" type="button" aria-pressed="false" data-v="c">Side by side compare</button>
+          </div>
+          <p style="font-size:.88rem;color:var(--mute);margin-top:16px">You don't pick, CASEY does, while she is building. She reads the quote's own signals and tells you which she used and why in one line when she hands it over.</p>
+        </div>
+        <div class="verdict">
+          <span class="fieldlabel">CASEY builds</span>
+          <div class="verdict__k" id="verdictK">Pick a signal</div>
+          <p class="verdict__w" id="verdictW">Editorial for a single line at a purchase moment or an either or pricing decision. Classic for multi line, commercial, or side by side comparisons.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.5 12.4 7l5 .7-3.6 3.5.9 5-4.7-2.5-4.7 2.5.9-5L2.6 7.7l5-.7L10 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+    <p><b>If you disagree,</b> there is a "Change the look" control on the proposal card. One click to switch, or "Mix" to pull a component from the other look. Fair warning: switching rebuilds the whole page, so settle on one and then make targeted tweaks rather than flipping back and forth.</p>
+  </div>
+
+  <h3 class="h4">Every page is interactive now</h3>
+  <p>House rule: every client facing page CASEY builds uses the interactive light style, so clickable links, tabs, expandable tiles, live toggles. Never a static wall of text, and the old dark theme is retired.</p>
+
+  <h3 class="h4">The in-chat editor</h3>
+  <p>You no longer wait for a regeneration to fix a typo. Adjustments happen in the browser.</p>
+
+  <div class="demo">
+    <div class="demo__bar"><span class="t">Live editor</span><span class="s">Click any text below and type. Use the block buttons to hide or reorder.</span></div>
+    <div class="demo__body">
+      <div class="edit" id="editDemo">
+        <div class="fmtbar" id="fmtbar">
+          <button type="button" data-c="bold" title="Bold"><b>B</b></button>
+          <button type="button" data-c="italic" title="Italic"><i>I</i></button>
+          <button type="button" data-c="underline" title="Underline"><u>U</u></button>
+          <button type="button" data-c="big" title="Bigger">A+</button>
+          <button type="button" data-c="small" title="Smaller">A-</button>
+        </div>
+        <div class="edit__block">
+          <div class="blockctl"><button type="button" data-a="up" title="Move up">&uarr;</button><button type="button" data-a="down" title="Move down">&darr;</button><button type="button" data-a="hide" title="Hide block">&#128065;</button></div>
+          <h4 style="font-family:var(--disp);font-size:1.5rem;margin:0 0 4px" contenteditable="true">Prepared for the Cullen family</h4>
+          <p style="margin:0;color:var(--mute)" contenteditable="true">Coverage effective September 1, 2026</p>
+        </div>
+        <div class="edit__block" data-price="1">
+          <div class="blockctl"><button type="button" data-a="up" title="Move up">&uarr;</button><button type="button" data-a="down" title="Move down">&darr;</button><button type="button" data-a="hide" title="Hide block">&#128065;</button></div>
+          <div style="background:#F7F9FB;border:1px solid var(--line);border-radius:11px;padding:14px">
+            <span class="fieldlabel">Annual premium</span>
+            <div style="font-family:var(--disp);font-size:2rem;color:var(--navy);line-height:1" contenteditable="true">$2,940</div>
+          </div>
+        </div>
+        <div class="edit__block">
+          <div class="blockctl"><button type="button" data-a="up" title="Move up">&uarr;</button><button type="button" data-a="down" title="Move down">&darr;</button><button type="button" data-a="hide" title="Hide block">&#128065;</button></div>
+          <p style="margin:0" contenteditable="true">Replacement cost on the roof, water backup at $10,000, and a $2,500 deductible. Ask me anything before you sign.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;align-items:center">
+        <button class="btn btn--navy" type="button" id="editSave" style="padding:10px 18px;font-size:.88rem">Save &amp; publish</button>
+        <button class="btn btn--quiet" type="button" id="editUndo" style="padding:10px 18px;font-size:.88rem">Undo everything</button>
+        <span style="font-size:.85rem;color:var(--mute)" id="editMsg">Editor chrome is stripped on save, so the live page is clean.</span>
+      </div>
+    </div>
+  </div>
+
+  <ul class="tick">
+    <li><b>Click any text to edit it</b>, with a floating bold, italic, underline and size bar.</li>
+    <li><b>Show or hide any block</b>, including the price, per proposal and reversible.</li>
+    <li><b>Reorder sections</b>, and <b>undo</b> on everything, so experimenting is safe.</li>
+    <li>Save, or Save and publish. On a phone, Save, Publish and Exit are pinned to a bottom bar.</li>
+  </ul>
+
+  <h3 class="h4">Photos</h3>
+  <p>Add a photo, and camera capture works on mobile, then <b>CASEY places and sizes it based on what it is</b>.</p>
+  <div class="grid2">
+    <div class="box">
+      <div style="border-radius:8px;overflow:hidden;margin-bottom:12px;background:linear-gradient(160deg,#B9CFE2,#7FA3C1);height:74px;position:relative"><span style="position:absolute;left:8px;bottom:6px;font-size:10px;color:#fff;font-weight:600;letter-spacing:.1em">FULL WIDTH</span></div>
+      <h4>A house photo</h4>
+      <p>Becomes a full width hero at the top of the proposal.</p>
+    </div>
+    <div class="box">
+      <div style="display:flex;gap:8px;margin-bottom:12px;align-items:flex-start"><div style="width:46px;height:46px;border-radius:6px;background:linear-gradient(160deg,#CFDCE7,#9AB6CD);flex:0 0 auto"></div><div style="flex:1"><div style="height:6px;background:#EDF1F5;border-radius:3px;margin-bottom:5px"></div><div style="height:6px;background:#EDF1F5;border-radius:3px;width:70%"></div></div></div>
+      <h4>A supporting shot</h4>
+      <p>Goes inline next to the copy, sized down.</p>
+    </div>
+    <div class="box">
+      <div style="border-radius:8px;overflow:hidden;margin-bottom:12px;background:linear-gradient(160deg,#B9CFE2,#7FA3C1);height:44px;position:relative"><span style="position:absolute;right:8px;top:6px;font-size:9px;color:#fff;font-weight:600;background:rgba(10,22,40,.4);padding:2px 6px;border-radius:4px">2.5:1</span></div>
+      <h4>Hero banner option</h4>
+      <p>Crops to a clean 2.5:1 banner biased toward the top of the frame, where the house is. Auto brightens flat or dark photos and compresses it. Re-running replaces the banner instead of stacking a second one.</p>
+    </div>
+  </div>
+
+  <h3 class="h4">"Questions? Message me"</h3>
+  <div class="demo">
+    <div class="demo__bar"><span class="t">On every published proposal</span><span class="s">Click the button the client sees</span></div>
+    <div class="demo__body">
+      <div style="position:relative;border:1px solid var(--line);border-radius:12px;background:#F7F9FB;padding:20px;min-height:180px" id="msgStage">
+        <div style="max-width:60%">
+          <div style="height:9px;background:#E4EAEF;border-radius:4px;width:56%;margin-bottom:9px"></div>
+          <div style="height:9px;background:#E4EAEF;border-radius:4px;width:84%;margin-bottom:9px"></div>
+          <div style="height:9px;background:#E4EAEF;border-radius:4px;width:68%"></div>
+        </div>
+        <button class="btn btn--navy" id="msgBtn" type="button" style="position:absolute;right:18px;bottom:18px;padding:11px 18px;font-size:.87rem;box-shadow:var(--sh-lg)">Questions? Message Alyssa</button>
+        <div id="msgPanel" class="hidden" style="position:absolute;right:18px;bottom:18px;width:min(320px,86%);background:var(--white);border:1px solid var(--line-2);border-radius:12px;box-shadow:var(--sh-lg);padding:14px">
+          <span class="fieldlabel">To Alyssa</span>
+          <textarea class="inp" rows="2" style="resize:none">Can we add the water backup? Also, when does this start?</textarea>
+          <button class="btn btn--amber" type="button" id="msgSend" style="width:100%;justify-content:center;margin-top:10px;padding:10px;font-size:.87rem">Send</button>
+          <p id="msgDone" class="hidden" style="margin:10px 0 0;font-size:.82rem;color:var(--ok)"><b>Delivered to the agent who built this proposal.</b> Reply-to is set to the client, so you just hit reply.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>Every published proposal carries a floating button bottom right with <b>your</b> name on it. It was applied retroactively, so proposals built before this feature have it too.</p>
+</section>
+
+<!-- ========== 2. CANOPY ========== -->
+<section class="sec sec--key reveal" id="s2">
+  <div class="sec__head">
+    <span class="sec__num">02</span>
+    <div>
+      <h2>Canopy Connect leads</h2>
+      <p class="sec__dek">The prospect hands us their whole policy, and the lead comes straight to you. We had Canopy access approved for months and never turned it on. It is on.</p>
+    </div>
+    <span class="chip chip--live">Live now</span>
+  </div>
+
+  <div class="demo">
+    <div class="demo__bar"><span class="t">Walkthrough</span><span class="s">Plays on its own. Click a step to jump.</span>
+      <button class="btn btn--ghost" id="canopyPlay" type="button" style="margin-left:auto;padding:6px 14px;font-size:.8rem">Pause</button>
+    </div>
+    <div class="demo__body">
+      <div class="flow" id="canopyFlow">
+        <div class="flow__n act" role="button" tabindex="0"><span class="flow__d">1</span><span class="flow__t">Prospect clicks your link</span></div>
+        <div class="flow__n" role="button" tabindex="0"><span class="flow__d">2</span><span class="flow__t">They log into their carrier</span></div>
+        <div class="flow__n" role="button" tabindex="0"><span class="flow__d">3</span><span class="flow__t">CASEY receives everything</span></div>
+        <div class="flow__n" role="button" tabindex="0"><span class="flow__d">4</span><span class="flow__t">You get one email</span></div>
+      </div>
+      <div id="canopyStage" style="margin-top:22px;min-height:210px"></div>
+    </div>
+  </div>
+
+  <h3 class="h4">What happens next is automatic</h3>
+  <div class="grid2">
+    <div class="box">
+      <span class="ic"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2.5" y="3" width="11" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2.5 6.5h11M6 3v10" stroke="currentColor" stroke-width="1.5"/></svg></span>
+      <h4>NowCerts gets populated</h4>
+      <p>New prospects get a household with drivers, vehicles, policies, and a note tagged "Canopy Connect." Dec pages are uploaded to the household. Existing customers get a note only, never a duplicate.</p>
+    </div>
+    <div class="box">
+      <span class="ic"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="m10.5 10.5 3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+      <h4>We check whether we know them</h4>
+      <p>CASEY scrubs the Deal Log and NowCerts for prior history. If they were ours before, the email leads with a banner showing when, and who the agent was.</p>
+    </div>
+    <div class="box">
+      <span class="ic"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3.5" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="m2.6 4.6 5.4 4 5.4-4" stroke="currentColor" stroke-width="1.5"/></svg></span>
+      <h4>You get one email with everything in it</h4>
+      <p>The goal is that nobody ever logs into Canopy. Premium to beat is at the top, dec pages come attached.</p>
+    </div>
+  </div>
+
+  <div class="note note--navy">
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="4.5" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m2.8 5.8 7.2 5.4 7.2-5.4" stroke="currentColor" stroke-width="1.6"/></svg>
+    <p><b>No more leads dying in a portal.</b> Nobody has to remember to go log into Canopy and check. The moment a prospect finishes sharing, CASEY emails you the whole thing, with the premium to beat at the top and the dec pages attached.</p>
+  </div>
+
+  <h3 class="h4">Your link routes to you</h3>
+  <div class="grid2">
+    <div class="box"><h4>Personal link</h4><p>Goes to you and Austin.</p></div>
+    <div class="box"><h4>Shared links</h4><p>Site, Google and Meta go to the whole team.</p></div>
+    <div class="box"><h4>Unrecognized link</h4><p>Goes to everybody, so nothing gets dropped.</p></div>
+  </div>
+</section>
+
+<!-- ========== 3. PAYMENTS ========== -->
+<section class="sec sec--key reveal" id="s3">
+  <div class="sec__head">
+    <span class="sec__num">03</span>
+    <div>
+      <h2>Payments</h2>
+      <p class="sec__dek">Take money without leaving CASEY. Ask her for a payment link, review the card, send it. This is the one that changes how you collect.</p>
+    </div>
+    <span class="chip chip--live">Links live</span>
+  </div>
+
+  <div class="note note--navy">
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <p><b>This is for agency billed accounts.</b> The ones where the client pays us and we pay the carrier. Direct billed policies still pay the carrier the way they always have, so do not send one of these for those.</p>
+  </div>
+
+  <p>Broker fees, when they apply, are checked on every path, so you cannot accidentally bake one into an amount, and <b>every fee generates its signed disclosure PDF automatically</b>.</p>
+
+  <div class="demo">
+    <div class="demo__bar">
+      <span class="t">Build a payment link</span>
+      <span class="s">Add a fee and change the line. She sorts out whether it applies.</span>
+    </div>
+    <div class="demo__split">
+      <div>
+        <div class="field">
+          <label class="fieldlabel" for="payAcct">Agency billed account</label>
+          <select class="inp" id="payAcct">
+            <option>Sycamore Collection, GL package</option>
+            <option>I Got You Transportation, commercial auto</option>
+            <option>Villa Maria School, passenger van</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="fieldlabel" for="payAmt">Premium due</label>
+          <input class="inp" id="payAmt" type="text" inputmode="decimal" value="1500.00">
+        </div>
+        <div class="field">
+          <span class="fieldlabel">State</span>
+          <div class="seg" id="payState" role="group" aria-label="State">
+            <button type="button" aria-pressed="true">NY</button>
+            <button type="button" aria-pressed="false">CT</button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="fieldlabel">Line</span>
+          <div class="seg" id="payLine" role="group" aria-label="Line of business">
+            <button type="button" aria-pressed="true">Auto</button>
+            <button type="button" aria-pressed="false">Surplus</button>
+            <button type="button" aria-pressed="false">Other</button>
+          </div>
+        </div>
+        <div class="field">
+          <button class="tog" id="payFee" type="button" aria-pressed="false">
+            <span class="tog__sw"></span>
+            <span><span class="tog__t">Add a broker fee</span>
+            <span class="tog__s">She checks the schedule before one can attach.</span></span>
+          </button>
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <button class="btn btn--navy" id="paySend" type="button" style="width:100%;justify-content:center">Send the link</button>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow eyebrow--ink" style="margin-bottom:16px">The card you review before it goes</p>
+        <div id="payOut"></div>
+        <div id="payChat" class="hidden" style="margin-top:16px">
+          <span class="fieldlabel">Then, in the team space</span>
+          <div class="gchat" style="padding:12px">
+            <div class="gmsg"><span class="gmsg__av">C</span><div style="flex:1">
+              <div><span class="gname">CASEY</span><span class="gtime">webhook</span></div>
+              <p style="margin:6px 0 0;font-size:.9rem"><b id="payPaid">Paid $1,500.00</b><br><span style="color:var(--mute)">Sycamore Collection. The link is closed.</span></p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note note--navy">
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.6"/><path d="m6.5 10.2 2.4 2.4 4.6-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <p><b>You do not have to memorize where a fee is allowed.</b> Fees are available in New York, and in Connecticut on auto, assigned risk and surplus lines. Anywhere else, CASEY simply leaves the fee off and tells you on the card before the link goes out. The link still sends either way.</p>
+  </div>
+
+  <h3 class="h4">Premium financing, PF Lite</h3>
+  <p>Built and carrier matched, with <b>86 carriers mapped from AndDone's workbook</b>. Two known gaps worth remembering: Coterie and National General are not financeable through IPFS.</p>
+  <div class="demo"><div class="demo__body">
+    <div class="meter"><span class="lb">Built</span><span class="tr"><i style="width:100%"></i></span><span class="vl">Done</span></div>
+    <div class="meter"><span class="lb">Carriers mapped</span><span class="tr"><i style="width:100%"></i></span><span class="vl">86 of 86</span></div>
+    <div class="meter"><span class="lb">Quote and payment link in one flow</span><span class="tr"><i style="width:100%"></i></span><span class="vl">Done</span></div>
+  </div></div>
+
+  <div class="note note--navy">
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.6"/><path d="m6.5 10.2 2.4 2.4 4.6-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <p><b>Payment webhooks post back into chat</b>, so a paid link tells you it was paid. You do not have to go looking.</p>
+  </div>
+</section>
+
+<!-- ========== 4. RECEIPTS ========== -->
+<section class="sec sec--key reveal" id="s4">
+  <div class="sec__head">
+    <span class="sec__num">04</span>
+    <div>
+      <h2>Invoices, receipts, and signed documents</h2>
+      <p class="sec__dek">Invoices were already there. Receipts are new, and signed documents now announce themselves instead of sitting in one inbox.</p>
+    </div>
+    <span class="chip chip--new">New</span>
+  </div>
+
+  <p>Receipts cover the case you hit constantly: the client pays part of it, and you need to hand them something that says what landed and what is still owed. <b>The balance is always recalculated on the server</b>, so the printed figure cannot be fudged from the card.</p>
+
+  <div class="demo">
+    <div class="demo__bar">
+      <span class="t">Invoice or receipt</span>
+      <span class="s">Generate either one. The balance recalculates the way the server does it.</span>
+    </div>
+    <div class="demo__split">
+      <div>
+        <div class="field">
+          <span class="fieldlabel">What are you sending</span>
+          <div class="seg" id="rcpMode" role="group" aria-label="Document type">
+            <button type="button" aria-pressed="false">Invoice</button>
+            <button type="button" aria-pressed="true">Receipt</button>
+          </div>
+        </div>
+        <div class="field">
+          <label class="fieldlabel" for="rcpAcct">Account</label>
+          <select class="inp" id="rcpAcct">
+            <option>Sycamore Collection, GL package</option>
+            <option>I Got You Transportation, commercial auto</option>
+            <option>Villa Maria School, passenger van</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="fieldlabel" for="rcpTotal">Total premium</label>
+          <input class="inp" id="rcpTotal" type="text" inputmode="decimal" value="4182.00">
+        </div>
+        <div class="field" id="rcpPaidWrap">
+          <label class="fieldlabel" for="rcpPaid">Paid today</label>
+          <input class="inp" id="rcpPaid" type="text" inputmode="decimal" value="1500.00">
+        </div>
+        <p style="font-size:.84rem;color:var(--mute);margin:0">Try entering a payment larger than the premium and watch what the receipt refuses to print.</p>
+      </div>
+      <div>
+        <p class="eyebrow eyebrow--ink" style="margin-bottom:16px">The branded PDF the client gets</p>
+        <div id="rcpOut"></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="h4">Signed documents announce themselves</h3>
+  <p>When every signer finishes a RabbitSign folder, so AOR forms and anything else the team sends out, CASEY posts a card to the team Chat space with the signer names and download buttons for the signed doc and the audit trail. <b>Previously those only surfaced as RabbitSign emails to Austin.</b></p>
+
+  <div class="demo">
+    <div class="demo__body">
+      <div class="flow">
+        <div class="flow__n act"><span class="flow__d">1</span><span class="flow__t">Last signer finishes</span><span class="flow__s">The folder closes on RabbitSign</span></div>
+        <div class="flow__n act"><span class="flow__d">2</span><span class="flow__t">CASEY posts the card</span><span class="flow__s">Team space, with the signer names on it</span></div>
+        <div class="flow__n act"><span class="flow__d">3</span><span class="flow__t">Anyone can pull it</span><span class="flow__s">Signed doc and audit trail, both one click</span></div>
+      </div>
+      <div class="gchat" style="margin-top:22px">
+        <div class="gmsg"><span class="gmsg__av">C</span><div style="flex:1">
+          <div><span class="gname">CASEY</span><span class="gtime">2:14 PM</span></div>
+          <div class="gcard" style="margin-top:8px">
+            <div class="gcard__h">Fully signed<span>RabbitSign</span></div>
+            <div class="gcard__b">
+              <p style="margin:0 0 10px;font-size:.9rem"><b>AOR, Sycamore Collection</b><br><span style="color:var(--mute)">Signed by Brett Berliner and Austin Glazer</span></p>
+              <div class="pillrow"><span class="pill pill--ok">Download signed doc</span><span class="pill">Audit trail</span></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note note--navy">
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M10 6v4.3l2.8 1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <p><b>Nothing gets missed during a deploy.</b> On restart she sweeps the last 48 hours, so anything that finished signing while she was down still posts.</p>
+  </div>
+</section>
+
+<!-- ========== 5. SAFESHIELD SECURE ========== -->
+<section class="sec sec--key reveal" id="s5">
+  <div class="sec__head">
+    <span class="sec__num">05</span>
+    <div>
+      <h2>Safeshield Secure</h2>
+      <p class="sec__dek">Send documents as links, not attachments. This is now how we send anything with a client's name and policy number on it: dec pages, ID cards, proposals, loss runs, P&amp;Ls.</p>
+    </div>
+    <span class="chip chip--live">Live now</span>
+  </div>
+
+  <p>New item in the left nav. Pick a file, add the recipient, and write one line on <i>why</i> you're sending it. CASEY drafts the subject and message from there, and you edit before it goes. The client gets a link that expires, 7 days by default, up to 90.</p>
+
+  <div class="flow" id="secFlow" role="list">
+    <div class="flow__n" role="listitem"><span class="flow__d">1</span><span class="flow__t">Pick the file</span><span class="flow__s">Plus one line on why you're sending it</span></div>
+    <div class="flow__n" role="listitem"><span class="flow__d">2</span><span class="flow__t">CASEY drafts it</span><span class="flow__s">Subject and message, you edit before it goes</span></div>
+    <div class="flow__n" role="listitem"><span class="flow__d">3</span><span class="flow__t">Client gets a link</span><span class="flow__s">Expires in 7 days by default</span></div>
+    <div class="flow__n" role="listitem"><span class="flow__d">4</span><span class="flow__t">A code hits their inbox</span><span class="flow__s">6 digits, once per device, remembered 30 days</span></div>
+    <div class="flow__n" role="listitem"><span class="flow__d">5</span><span class="flow__t">You watch it land</span><span class="flow__s">Opens, downloads, and real reading time</span></div>
+  </div>
+
+  <div class="note note--navy">
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <p><b>Why the code matters.</b> A link that leaks or gets forwarded is worth nothing without control of their inbox. It is asked once per device, then remembered for 30 days, so it is not a nuisance for them and there is nothing for you to share.</p>
+  </div>
+
+  <!-- INTERACTIVE SENDER -->
+  <div class="demo">
+    <div class="demo__bar">
+      <span class="t">Try it</span>
+      <span class="s">Flip <b>Let them download it</b> and watch the client's screen change</span>
+    </div>
+    <div class="demo__split">
+      <div>
+        <p class="eyebrow eyebrow--ink" style="margin-bottom:16px">Your send screen</p>
+        <div class="field">
+          <label class="fieldlabel" for="secFile">Document</label>
+          <select class="inp" id="secFile">
+            <option>Proposal, Martinez home and auto.pdf</option>
+            <option>Auto ID cards, 2026.pdf</option>
+            <option>Dec page, HO3 renewal.pdf</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="fieldlabel" for="secTo">Send to</label>
+          <input class="inp" id="secTo" type="email" value="client@example.com">
+        </div>
+        <div class="field">
+          <span class="fieldlabel">Link expires in</span>
+          <div class="seg" id="secExp" role="group" aria-label="Expiry">
+            <button type="button" aria-pressed="true">7 days</button>
+            <button type="button" aria-pressed="false">30 days</button>
+            <button type="button" aria-pressed="false">90 days</button>
+          </div>
+        </div>
+        <div class="field">
+          <button class="tog" id="secDl" type="button" aria-pressed="false">
+            <span class="tog__sw"></span>
+            <span><span class="tog__t">Let them download it</span>
+            <span class="tog__s" id="secDlHint">Off: view only, watermarked with their email.</span></span>
+          </button>
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <button class="btn btn--navy" id="secSend" type="button" style="width:100%;justify-content:center">Send it</button>
+        </div>
+      </div>
+
+      <div>
+        <p class="eyebrow eyebrow--ink" style="margin-bottom:16px">What the client sees</p>
+        <div class="mock">
+          <div class="mock__url"><i></i><span id="secUrl">docs.gosafeshield.com/d/8f2a4c</span></div>
+          <div class="mock__screen" id="secScreen"></div>
+        </div>
+        <div class="pillrow" id="secPills"></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="h4">The one setting worth thinking about</h3>
+  <div class="grid2">
+    <div class="box">
+      <span class="ic" style="background:var(--ok-bg);color:var(--ok)"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v8m0 0 3-3M8 10 5 7M2.5 11v2.5h11V11" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <h4>Download on</h4>
+      <p>They can save the file. Right for an ID card or a dec page they need to keep.</p>
+    </div>
+    <div class="box">
+      <span class="ic"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1.8 8s2.4-4.2 6.2-4.2S14.2 8 14.2 8s-2.4 4.2-6.2 4.2S1.8 8 1.8 8Z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="1.8" stroke="currentColor" stroke-width="1.5"/></svg></span>
+      <h4>Download off</h4>
+      <p>View only. The original file never reaches their browser at all. CASEY renders the pages as images watermarked with <i>their</i> email and the date. Right for a proposal, or anything you don't want circulating.</p>
+    </div>
+  </div>
+  <p style="margin-top:18px">PDFs open in a reader with the sections listed down the left, so a long proposal is navigable instead of an endless scroll.</p>
+
+  <h3 class="h4">Copying people</h3>
+  <p>Add anyone under "Also send to." Everyone named gets their own link, own code, and own tracking, so "did the client open it" and "did Eric open it" stay separate answers, and cutting one person off doesn't touch anyone else. <b>Copy me</b> is on by default so a record lands in your own inbox.</p>
+
+  <h3 class="h4">Then check "Sent documents"</h3>
+  <p>Recipient, status, opens, downloads, expiry, and <b>time actually spent reading</b>, which is the number that tells you whether a proposal was read or just opened. It only counts while the tab is in front of them, so a document left open overnight doesn't come back as eight hours of interest.</p>
+
+  <div class="demo">
+    <div class="demo__bar"><span class="t">Sent documents</span><span class="s">Sample rows. Hit <b>Revoke</b> and the link dies instantly.</span></div>
+    <div class="tblwrap"><table class="tbl" id="sentTbl">
+      <thead><tr><th>Recipient</th><th>Document</th><th>Status</th><th>Time reading</th><th>Expires</th><th></th></tr></thead>
+      <tbody>
+        <tr>
+          <td>wayne@example.com</td><td>Proposal, home and auto</td>
+          <td><span class="chip chip--live chip--flat" style="padding:3px 9px">Read</span></td>
+          <td><div style="display:flex;align-items:center;gap:8px"><div class="bar" style="width:72px"><i style="width:82%"></i></div><span class="num">6m 41s</span></div></td>
+          <td class="num">Aug 3</td>
+          <td><button class="btn btn--quiet revoke" type="button" style="padding:6px 14px;font-size:.8rem">Revoke</button></td>
+        </tr>
+        <tr>
+          <td>eric@gosafeshield.com</td><td>Proposal, home and auto</td>
+          <td><span class="chip chip--plain chip--flat" style="padding:3px 9px">Opened</span></td>
+          <td><div style="display:flex;align-items:center;gap:8px"><div class="bar low" style="width:72px"><i style="width:9%"></i></div><span class="num">0m 11s</span></div></td>
+          <td class="num">Aug 3</td>
+          <td><button class="btn btn--quiet revoke" type="button" style="padding:6px 14px;font-size:.8rem">Revoke</button></td>
+        </tr>
+        <tr>
+          <td>jose.o@example.com</td><td>Dec page, HO3</td>
+          <td><span class="chip chip--part chip--flat" style="padding:3px 9px">Not opened</span></td>
+          <td><div style="display:flex;align-items:center;gap:8px"><div class="bar low" style="width:72px"><i style="width:0%"></i></div><span class="num">None</span></div></td>
+          <td class="num">Jul 31</td>
+          <td><button class="btn btn--quiet revoke" type="button" style="padding:6px 14px;font-size:.8rem">Revoke</button></td>
+        </tr>
+      </tbody>
+    </table></div>
+  </div>
+  <p><b>You see what you sent. Admins see the agency.</b></p>
+
+  <div class="note">
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.5 12.4 7l5 .7-3.6 3.5.9 5-4.7-2.5-4.7 2.5.9-5L2.6 7.7l5-.7L10 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+    <p><b>Try it for real:</b> send yourself something with download turned off, so you see exactly what the client sees. It works from CASEY chat too if you would rather just ask her.</p>
+  </div>
+</section>
+
+<!-- ========== 6. RENEWALS ========== -->
+<section class="sec reveal" id="s6">
+  <div class="sec__head">
+    <span class="sec__num">06</span>
+    <div>
+      <h2>Renewals</h2>
+      <p class="sec__dek">A real worklist, not a spreadsheet. The renewals surface got rebuilt around actually working the list.</p>
+    </div>
+    <span class="chip chip--new">Rebuilt</span>
+  </div>
+
+  <div class="demo">
+    <div class="demo__bar"><span class="t">A worklist card</span><span class="s">Pick an outcome. Watch what "Other" now asks for.</span></div>
+    <div class="demo__body">
+      <div style="border:1px solid var(--line-2);border-radius:12px;padding:18px;background:var(--white);max-width:560px">
+        <div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start">
+          <div>
+            <div style="font-family:var(--disp);font-size:1.25rem;color:var(--ink)">Martinez, Frank</div>
+            <div style="font-size:.85rem;color:var(--mute)">HO3 &middot; renews Aug 1 &middot; producer: Austin</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Year over year</div>
+            <div style="font-family:var(--disp);font-size:1.4rem;color:var(--warn)">+18.4%</div>
+          </div>
+        </div>
+        <div class="pillrow" style="margin-top:12px">
+          <span class="pill">$4,182 &rarr; $4,951</span>
+          <span class="pill">Open in NowCerts</span>
+          <span class="pill">Snooze</span>
+        </div>
+        <div style="margin-top:16px">
+          <span class="fieldlabel">Close it out</span>
+          <div class="quizchips" id="rnwChips">
+            <button class="qc" type="button" aria-pressed="false">Renewed as is</button>
+            <button class="qc" type="button" aria-pressed="false">Remarketed</button>
+            <button class="qc" type="button" aria-pressed="false">Rewrite</button>
+            <button class="qc" type="button" aria-pressed="false">Non renewal</button>
+            <button class="qc" type="button" aria-pressed="false">Cancellation</button>
+            <button class="qc" type="button" aria-pressed="false">Duplicate</button>
+            <button class="qc" type="button" aria-pressed="false">Lost</button>
+            <button class="qc" type="button" aria-pressed="false" data-other="1">Other</button>
+          </div>
+          <div id="rnwNote" class="hidden" style="margin-top:12px">
+            <label class="fieldlabel" for="rnwNoteI">Note required</label>
+            <input class="inp" id="rnwNoteI" placeholder="Say what actually happened">
+          </div>
+          <p id="rnwOut" style="font-size:.86rem;color:var(--mute);margin:12px 0 0">Whatever you pick writes back to NowCerts on the household. No double entry.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="tick">
+    <li><b>Daily worklist cards</b> with year over year premium, the real producer, and a NowCerts link straight to the insured.</li>
+    <li><b>Eight specific close out outcomes</b> instead of four. "Other" now requires a note, so it cannot quietly absorb everything.</li>
+    <li><b>Per renewal notes history</b>, a <b>Snooze</b> button, and worked items stay visible instead of vanishing.</li>
+    <li><b>Accountability built in:</b> 15 day escalation, follow up pings, big jump alerts, and a Friday recap.</li>
+    <li>Duplicate policy rows, the $0 sibling problem, are collapsed automatically.</li>
+    <li>The page reads from cache during the day, so it no longer stalls waiting on NowCerts.</li>
+  </ul>
+</section>
+
+<!-- ========== 7. CHAT ========== -->
+<section class="sec reveal" id="s7">
+  <div class="sec__head">
+    <span class="sec__num">07</span>
+    <div>
+      <h2>CASEY lives in Google Chat now</h2>
+      <p class="sec__dek">Tag her in a space and she answers, the same brain as the web app, inside the conversation you are already having.</p>
+    </div>
+    <span class="chip chip--live">Live now</span>
+  </div>
+
+  <div class="demo">
+    <div class="demo__bar"><span class="t">Your day in the team space</span><span class="s">Click a time to see what lands</span></div>
+    <div class="demo__body">
+      <div class="tl" id="chatTL" role="tablist" aria-label="Scheduled posts">
+        <button class="tlb" type="button" role="tab" aria-selected="true">
+          <span class="d"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="3.4" stroke="currentColor" stroke-width="1.6"/><path d="M9 1.4v2M9 14.6v2M1.4 9h2M14.6 9h2M3.6 3.6l1.4 1.4M13 13l1.4 1.4M14.4 3.6 13 5M5 13l-1.4 1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          <span class="t">9:00 AM</span><span class="s">Morning briefing</span>
+        </button>
+        <button class="tlb" type="button" role="tab" aria-selected="false">
+          <span class="d"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 4.5h12M3 9h12M3 13.5h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="t">9:30 AM</span><span class="s">Renewals worklist</span>
+        </button>
+        <button class="tlb" type="button" role="tab" aria-selected="false">
+          <span class="d"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 2v7l4 2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <span class="t">12:00 PM</span><span class="s">Attention items</span>
+        </button>
+        <button class="tlb" type="button" role="tab" aria-selected="false">
+          <span class="d"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2.5" y="3.5" width="13" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2.5 7h13M6 2v3M12 2v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          <span class="t">Friday</span><span class="s">Weekly recap</span>
+        </button>
+      </div>
+      <div class="gchat"><div class="gmsg"><span class="gmsg__av">C</span><div style="flex:1"><div><span class="gname">CASEY</span><span class="gtime" id="chatTime">9:00 AM</span></div><div id="chatStage" style="margin-top:8px"></div></div></div></div>
+      <p style="font-size:.88rem;color:var(--mute);margin:14px 0 0">Type <b>briefing</b> or <b>standup</b> to pull the morning card on demand.</p>
+    </div>
+  </div>
+
+  <h3 class="h4">Guardrails</h3>
+  <div class="grid2">
+    <div class="box"><h4>Client data is gated by tier</h4><p>What you can pull in Chat matches what you can pull anywhere else.</p></div>
+    <div class="box"><h4>Commissions are not available in Chat at all</h4><p>Not gated, not there. Use the commissions page.</p></div>
+    <div class="box"><h4>Everything is on the record</h4><p>Every conversation is written to a durable audit trail, and admins can search it in plain language.</p></div>
+    <div class="box"><h4>The carrier brain came with her</h4><p>Appetite, appointments, and who writes what, behind the same guardrails.</p></div>
+  </div>
+</section>
+
+<!-- ========== 8. PORTAL ========== -->
+<section class="sec reveal" id="s8">
+  <div class="sec__head">
+    <span class="sec__num">08</span>
+    <div>
+      <h2>Client portal</h2>
+      <p class="sec__dek">What the client sees when they log in, and it is now all of it.</p>
+    </div>
+    <span class="chip chip--live">Live</span>
+  </div>
+
+  <div class="demo">
+    <div class="demo__bar"><span class="t">At login</span><span class="s">Flip between the old behaviour and the new one</span></div>
+    <div class="demo__body">
+      <div class="seg" id="portalSeg" role="group" aria-label="Portal view" style="margin-bottom:16px">
+        <button type="button" aria-pressed="false">Before</button>
+        <button type="button" aria-pressed="true">Now</button>
+      </div>
+      <div id="portalStage"></div>
+    </div>
+  </div>
+
+  <ul class="tick">
+    <li>Identity is still proven by email plus last name plus phone first.</li>
+    <li>Policies show the <b>renewing term next to the current term</b>, so new premium, new dates and the change, pulled from carrier renewal notices.</li>
+    <li>Coverage detail and certificate generation on the same screen.</li>
+  </ul>
+</section>
+
+<!-- ========== 9. QUOTING ========== -->
+<section class="sec reveal" id="s9">
+  <div class="sec__head">
+    <span class="sec__num">09</span>
+    <div>
+      <h2>Quoting</h2>
+      <p class="sec__dek">Home quoting through PL Rater works. That was the bulk of June.</p>
+    </div>
+    <span class="chip chip--live">Live</span>
+  </div>
+
+  <p>Dozens of fixes to get the Telerik form fields to commit reliably, the coverage rules standardized, protection class lookups accurate, and the live viewer stable on mobile with an exit button you can always reach.</p>
+
+  <div class="demo">
+    <div class="demo__bar"><span class="t">Paste to quote</span><span class="s">Drop in a screenshot or a block of text. Try it with the sample.</span></div>
+    <div class="demo__split">
+      <div>
+        <span class="fieldlabel">Paste anything</span>
+        <textarea class="inp" id="pasteBox" rows="7" style="resize:vertical;font-size:.86rem;line-height:1.5">Frank Martinez
+118 Rowayton Ave, Norwalk CT 06853
+built 1962, 2,410 sq ft, asphalt roof replaced 2019
+current carrier Travelers, $4,182, renews 8/1
+wants Cov A around 780k, 2500 ded</textarea>
+        <button class="btn btn--navy" id="pasteGo" type="button" style="width:100%;justify-content:center;margin-top:12px">Build the quote</button>
+      </div>
+      <div>
+        <span class="fieldlabel">What CASEY pulled out</span>
+        <div id="pasteOut" style="margin-top:8px"></div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="tick">
+    <li><b>OCR included</b>, so a screenshot of a dec page works as well as text.</li>
+    <li><b>"Just an auto quote" is respected literally.</b> She will not run a package.</li>
+    <li>Direct quotes quietly upsert the household into NowCerts in the background, so quoting from chat does not leave the AMS behind.</li>
+    <li><b>NowCerts never blocks a quote.</b> If it is slow, the quote goes anyway.</li>
+    <li>Speed package behind a flag, plus a narrated <b>PL Rater credentials training video</b>.</li>
+  </ul>
+</section>
+
+<!-- ========== 10. COMMISSIONS ========== -->
+<section class="sec reveal" id="s10">
+  <div class="sec__head">
+    <span class="sec__num">10</span>
+    <div>
+      <h2>Commission close</h2>
+      <p class="sec__dek">Mostly Austin's screen. These are the parts that reach producers.</p>
+    </div>
+    <span class="chip chip--plain">Producer facing</span>
+  </div>
+
+  <div class="cols">
+    <div>
+      <ul class="tick">
+        <li><b>Ask Casey</b> is built into the commissions page, and the <b>producer review is mobile friendly</b>, so you can check your own numbers from your phone.</li>
+        <li><b>All in monthly total</b>, commission plus salary, on the cards.</li>
+        <li><b>Lock emails are per producer private</b> and properly branded. You see yours.</li>
+        <li>Trent's comp is in, May effective, and producer attribution now always trusts the Deal Log agent over the NowCerts producer field.</li>
+        <li>Closed months stay pinned in memory, so the page stops recomputing history.</li>
+        <li><b>Duplicate payment watchdog</b>, read only, flags a carrier paying twice.</li>
+        <li><b>AndDone collections auto stage</b> into the close.</li>
+        <li>Agency wide policy search was fixed, and it returns written premium totals.</li>
+      </ul>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <div class="phone">
+        <div class="phone__top"></div>
+        <div class="phone__b">
+          <p class="eyebrow eyebrow--ink" style="margin-bottom:10px">June, locked</p>
+          <div class="kpi"><span>Commission</span><b>$6,412</b></div>
+          <div class="kpi"><span>Salary</span><b>$3,750</b></div>
+          <div class="kpi" style="border-top:2px solid var(--ink);margin-top:6px;padding-top:10px"><span style="color:var(--ink);font-weight:600">All in</span><b style="color:var(--navy)">$10,162</b></div>
+          <div style="margin-top:14px;padding:10px;background:#F7F9FB;border-radius:9px;font-size:.72rem;color:var(--mute)">Sample numbers. Ask Casey right on the page: "why is my June lower than May?"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="h4">SAN and ISM remittance</h3>
+  <p>The <b>monthly SAN/ISM remittance report</b> builds itself and emails Austin on the 15th, in the SAN form's exact row order, with a CSV attached. Nothing is submitted automatically. A <b>pre-close estimate</b> now cross references written production against incoming commissions, Ivans plus Plaid, so SAN can be filed a month out, and a hard sanity gate blocks implausible blended rates from ever shipping.</p>
+</section>
+
+<!-- ========== 11. THE BRAIN ========== -->
+<section class="sec reveal" id="s11">
+  <div class="sec__head">
+    <span class="sec__num">11</span>
+    <div>
+      <h2>CASEY got noticeably smarter and faster</h2>
+      <p class="sec__dek">She knows the agency, she knows herself, and she stopped writing like a robot.</p>
+    </div>
+    <span class="chip chip--live">Live</span>
+  </div>
+
+  <div class="demo">
+    <div class="demo__bar"><span class="t">Ask her something</span><span class="s">Pick a question and watch the answer</span></div>
+    <div class="demo__body">
+      <div class="quizchips" id="askChips" style="margin-bottom:16px">
+        <button class="qc" type="button" aria-pressed="true" data-i="0">What does Alyssa do?</button>
+        <button class="qc" type="button" aria-pressed="false" data-i="1">How do we request a loss run?</button>
+        <button class="qc" type="button" aria-pressed="false" data-i="2">What does training say about cross selling?</button>
+        <button class="qc" type="button" aria-pressed="false" data-i="3">Are payments live?</button>
+        <button class="qc" type="button" aria-pressed="false" data-i="4">Who handles kayak insurance?</button>
+      </div>
+      <div class="gchat"><div class="gmsg"><span class="gmsg__av">C</span><div style="flex:1"><div><span class="gname">CASEY</span></div><div id="askStage" style="margin-top:8px;font-size:.94rem"></div></div></div></div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="box"><h4>She knows the agency</h4><p>The Master SOP, the runbooks, the training curriculum, the quoting guide and the carrier data are all searchable now. <b>If something is not documented, she says so instead of inventing a procedure.</b></p></div>
+    <div class="box"><h4>She knows herself</h4><p>"What can you do?" and "are payments live?" get real answers, built from what is actually turned on in this deployment.</p></div>
+    <div class="box"><h4>Faster</h4><p>Responses stream, the prompt cache holds for an hour, and long presentation and quote page jobs stopped timing out.</p></div>
+    <div class="box"><h4>Client emails read like a person wrote them</h4><p>ALL CAPS names get title cased, and she stopped referring to the agent as "they."</p></div>
+    <div class="box"><h4>Welcome emails behave</h4><p>They do not welcome existing clients on a carrier move or rewrite, and there is a <b>win back campaign</b> for clients who have left.</p></div>
+  </div>
+</section>
+
+<!-- ========== 12. CLAUDE ========== -->
+<section class="sec reveal" id="s12">
+  <div class="sec__head">
+    <span class="sec__num">12</span>
+    <div>
+      <h2>CASEY connects to Claude directly</h2>
+      <p class="sec__dek">Mostly Austin's tool, but worth knowing it exists.</p>
+    </div>
+    <span class="chip chip--plain">Admin</span>
+  </div>
+
+  <p>CASEY now exposes herself to Claude through a secured connector, so a Claude conversation can search clients, stage deals, write to NowCerts, pull commissions, check secure sends, and read CASEY's own source code, without anyone copying data between windows.</p>
+
+  <div class="demo"><div class="demo__body">
+    <div class="flow">
+      <div class="flow__n"><span class="flow__d">
+        <svg viewBox="0 0 18 18" fill="none" width="18" height="18" aria-hidden="true"><rect x="3" y="7.5" width="12" height="8" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M6 7.5V5.5a3 3 0 1 1 6 0v2" stroke="currentColor" stroke-width="1.6"/></svg>
+      </span><span class="flow__t">OAuth protected</span><span class="flow__s">Single use codes and rate limiting</span></div>
+      <div class="flow__n"><span class="flow__d">R</span><span class="flow__t">Reads freely</span><span class="flow__s">Clients, commissions, sends, source code</span></div>
+      <div class="flow__n"><span class="flow__d">W</span><span class="flow__t">Writes ask first</span><span class="flow__s">Creating a household or sending a cancellation needs an explicit confirmation</span></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ========== 13. UNDER THE HOOD ========== -->
+<section class="sec reveal" id="s13">
+  <div class="sec__head">
+    <span class="sec__num">13</span>
+    <div>
+      <h2>Behind the scenes</h2>
+      <p class="sec__dek">Nothing you have to do, but worth knowing it happened.</p>
+    </div>
+    <span class="chip chip--plain">Infrastructure</span>
+  </div>
+
+  <div class="grid2">
+    <div class="box"><h4>Security pass</h4><p>Security headers, database TLS verification, public exposure cleanup, endpoint hardening, and client facing pages no longer call out to Google for fonts.</p></div>
+    <div class="box"><h4>Backups</h4><p>Nightly snapshots now store as GitHub release assets, which fixed the silent failures on large bundles.</p></div>
+    <div class="box"><h4>Ops alerts</h4><p>Alerts on silent failures and a real uptime endpoint. Things that break now say so.</p></div>
+    <div class="box"><h4>Travelers billing migration blast</h4><p>Went out through the mail merge pipeline, household combined and compliance checked, signed by Casey Jones.</p></div>
+    <div class="box"><h4>Interactive product walkthrough</h4><p>A self advancing demo of the whole product, built for the Travelers API meeting.</p></div>
+  </div>
+</section>
+
+<!-- ========== FINDER ========== -->
+<section class="finder reveal" id="finder">
+  <div class="finder__h">
+    <h2>Where to find things</h2>
+    <p>Six places, and most of them are just asking her.</p>
+  </div>
+  <div class="tblwrap"><table class="tbl">
+    <tbody>
+      <tr><td style="width:34%"><b>Safeshield Secure</b></td><td>Left nav in CASEY, then <b>Safeshield Secure</b></td></tr>
+      <tr><td><b>Build a proposal</b></td><td>Ask CASEY in chat. She picks the look and tells you which.</td></tr>
+      <tr><td><b>Edit a proposal</b></td><td><b>Edit</b> on the proposal card in chat</td></tr>
+      <tr><td><b>Renewals worklist</b></td><td>Left nav, then <b>Renewals</b>, or the 9:30 AM Chat post</td></tr>
+      <tr><td><b>Morning briefing</b></td><td>Google Chat team space, 9 AM weekdays, or type <b>briefing</b></td></tr>
+      <tr><td><b>Canopy link</b></td><td>Ask CASEY for your personal link</td></tr>
+      <tr><td><b>Payment link</b></td><td>Ask CASEY in chat</td></tr>
+      <tr><td><b>Your commissions</b></td><td>Commissions page, then producer review. Works on your phone.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+</main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="fx">
+      <div>
+        <h3>Anything here that doesn't behave the way it reads, tell Austin.</h3>
+        <p>Nothing on this page is a mock-up of something we plan to build. Every one of these is live and waiting for you to use it.</p>
+      </div>
+      <div class="meta">
+        <div>Safeshield Insurance</div>
+        <div style="margin-top:6px">CASEY release notes</div>
+        <div style="margin-top:6px">Jun 1 to Jul 27, 2026</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var $  = function(s,r){return (r||document).querySelector(s);};
+var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
+function press(list,el){list.forEach(function(b){b.setAttribute('aria-pressed', b===el ? 'true':'false');});}
+
+/* ---------- hero chat ---------- */
+(function(){
+  var host = $('#heroChat'); if(!host) return;
+  var seq = [
+    {w:'you', n:'AB', h:'Casey, what changed while I was out?'},
+    {w:'c',   n:'C',  h:'Five things you will actually feel:<ol><li><b>Proposals</b> I design and you edit in the browser</li><li><b>Canopy Connect leads</b>, and I email you the second one lands</li><li><b>Payment links</b> for agency billed accounts</li><li><b>Invoices and receipts</b>, generated in a click</li><li><b>Safeshield Secure</b>, links instead of attachments</li></ol>'},
+    {w:'you', n:'AB', h:'And the rest?'},
+    {w:'c',   n:'C',  h:'Nine more areas. Scroll down, everything on this page is clickable.'}
+  ];
+  function add(m,i){
+    var d = document.createElement('div');
+    d.className = 'msg msg--'+(m.w==='c'?'c':'you');
+    d.style.animationDelay = RM ? '0s' : (0.35+i*0.85)+'s';
+    d.innerHTML = '<span class="msg__av">'+m.n+'</span><div class="msg__b">'+m.h+'</div>';
+    host.appendChild(d);
+  }
+  seq.forEach(add);
+})();
+
+/* ---------- reveal + nav ---------- */
+(function(){
+  var els = $$('.reveal');
+  if('IntersectionObserver' in window && !RM){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{rootMargin:'0px 0px -6% 0px',threshold:.04});
+    els.forEach(function(e){io.observe(e);});
+  } else { els.forEach(function(e){e.classList.add('in');}); }
+
+  var links = $$('#navScroll a'), secs = links.map(function(a){return $(a.getAttribute('href'));}), prog = $('#prog');
+  function onScroll(){
+    var h = document.documentElement;
+    var pct = h.scrollTop / Math.max(1,(h.scrollHeight - h.clientHeight));
+    if(prog) prog.style.width = Math.min(100,pct*100)+'%';
+    var y = h.scrollTop + 140, cur = -1;
+    secs.forEach(function(s,i){ if(s && s.offsetTop <= y) cur = i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+    if(cur>-1){
+      var a = links[cur], sc = a.parentNode;
+      if(sc.scrollWidth > sc.clientWidth){
+        var t = a.offsetLeft - sc.clientWidth/2 + a.offsetWidth/2;
+        sc.scrollLeft += (t - sc.scrollLeft)*0.34;
+      }
+    }
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll); onScroll();
+})();
+
+/* ---------- 1. secure sender ---------- */
+(function(){
+  var screen = $('#secScreen'); if(!screen) return;
+  var dl = $('#secDl'), hint = $('#secDlHint'), pills = $('#secPills'), send = $('#secSend'), state='doc', timer=null;
+  var today = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+
+  function pillRow(){
+    var on = dl.getAttribute('aria-pressed')==='true';
+    pills.innerHTML =
+      '<span class="pill pill--ok">Code verified</span>'+
+      (on ? '<span class="pill pill--ok">Can save the file</span>' : '<span class="pill pill--stop">No download</span><span class="pill pill--stop">Original file never leaves the server</span>')+
+      '<span class="pill">Reading time counted</span>';
+  }
+  function docScreen(){
+    var on = dl.getAttribute('aria-pressed')==='true';
+    var to = ($('#secTo').value||'client@example.com');
+    var wm = '';
+    if(!on){ for(var i=0;i<9;i++){ wm += '<span>'+to+' &middot; '+today+'</span>'; } }
+    screen.innerHTML =
+      '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap">'+
+        '<div><div style="font-weight:600;color:var(--ink);font-size:.92rem">'+$('#secFile').value+'</div>'+
+        '<div style="font-size:.78rem;color:var(--mute)">Shared by Safeshield &middot; expires '+$('#secExp').querySelector('[aria-pressed="true"]').textContent.trim()+'</div></div>'+
+        (on
+          ? '<button class="btn btn--navy" type="button" style="padding:8px 15px;font-size:.82rem">Download</button>'
+          : '<span class="chip chip--part chip--flat" style="padding:5px 11px">View only</span>')+
+      '</div>'+
+      '<div class="docpage">'+
+        '<div class="ln w1"></div><div class="ln w2"></div><div class="ln w3"></div><div class="ln w2"></div><div class="ln w4"></div>'+
+        '<div class="ln w2" style="margin-top:16px"></div><div class="ln w3"></div><div class="ln w1"></div>'+
+        (on ? '' : '<div class="wmk">'+wm+'</div>')+
+      '</div>'+
+      (on ? '' : '<p style="font-size:.78rem;color:var(--mute);margin:12px 0 0">Pages are rendered as images, watermarked with their email and the date.</p>');
+    pillRow();
+  }
+  function codeScreen(){
+    screen.innerHTML =
+      '<div style="text-align:center;padding:22px 0">'+
+        '<div style="width:44px;height:44px;border-radius:13px;background:#EDF3F9;color:var(--navy);display:grid;place-items:center;margin:0 auto 14px">'+
+        '<svg viewBox="0 0 20 20" width="20" height="20" fill="none"><rect x="3.5" y="8.5" width="13" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M6.5 8.5V6a3.5 3.5 0 1 1 7 0v2.5" stroke="currentColor" stroke-width="1.6"/></svg></div>'+
+        '<div style="font-family:var(--disp);font-size:1.3rem;color:var(--ink)">Enter your 6 digit code</div>'+
+        '<p style="font-size:.86rem;color:var(--mute);margin:6px 0 0">We emailed it to '+($('#secTo').value||'client@example.com')+'</p>'+
+        '<div class="codebox" id="cb"><b></b><b></b><b></b><b></b><b></b><b></b></div>'+
+        '<p style="font-size:.78rem;color:var(--mute);margin:0">Asked once per device, then remembered for 30 days.</p>'+
+      '</div>';
+    pills.innerHTML = '<span class="pill">Waiting on the code</span>';
+    var boxes = $$('#cb b'), code='481902', i=0;
+    if(RM){ boxes.forEach(function(b,n){b.textContent=code[n];b.classList.add('f');}); state='doc'; docScreen(); return; }
+    clearInterval(timer);
+    timer = setInterval(function(){
+      if(i>=6){ clearInterval(timer); setTimeout(function(){ state='doc'; docScreen(); },520); return; }
+      boxes[i].textContent = code[i]; boxes[i].classList.add('f'); i++;
+    },230);
+  }
+  dl.addEventListener('click',function(){
+    var on = dl.getAttribute('aria-pressed')==='true';
+    dl.setAttribute('aria-pressed', on?'false':'true');
+    hint.textContent = on ? 'Off: view only, watermarked with their email.' : 'On: they can save the file and keep it.';
+    if(state==='doc') docScreen();
+  });
+  $$('#secExp button').forEach(function(b){
+    b.addEventListener('click',function(){ press($$('#secExp button'),b); if(state==='doc') docScreen(); });
+  });
+  $('#secTo').addEventListener('input',function(){ if(state==='doc') docScreen(); });
+  $('#secFile').addEventListener('change',function(){ if(state==='doc') docScreen(); });
+  send.addEventListener('click',function(){ state='code'; codeScreen(); });
+  docScreen();
+
+  $$('.revoke').forEach(function(b){
+    b.addEventListener('click',function(){
+      var tr = b.closest('tr');
+      if(tr.classList.contains('strike')){ tr.classList.remove('strike'); b.textContent='Revoke'; }
+      else { tr.classList.add('strike'); b.textContent='Revoked'; }
+    });
+  });
+})();
+
+/* ---------- 2a. look picker ---------- */
+(function(){
+  var chips = $$('#quizChips .qc'); if(!chips.length) return;
+  var k = $('#verdictK'), w = $('#verdictW');
+  function calc(){
+    var e=0,c=0;
+    chips.forEach(function(b){ if(b.getAttribute('aria-pressed')==='true'){ b.dataset.v==='e'?e++:c++; } });
+    if(!e && !c){ k.textContent='Pick a signal'; w.textContent='Editorial for a single line at a purchase moment or an either or pricing decision. Classic for multi line, commercial, or side by side comparisons.'; return; }
+    if(c>=e){ k.textContent='Classic'; w.innerHTML='Multi line, commercial, or a side by side comparison. Expandable coverage tiles, Proposal and Compare tabs, a pay in full versus monthly toggle, optional add ons the client can opt into, tooltips.'; }
+    else { k.textContent='Editorial'; w.innerHTML='A single line at a purchase moment, or an either or pricing decision. Navy hero with the price panel overlapping it, Home Only versus Home + Auto tabs that flip the price live with a savings ribbon and discount chips, coverage rows that expand into real life examples.'; }
+  }
+  chips.forEach(function(b){ b.addEventListener('click',function(){ b.setAttribute('aria-pressed', b.getAttribute('aria-pressed')==='true'?'false':'true'); calc(); }); });
+})();
+
+/* ---------- 2b. live editor ---------- */
+(function(){
+  var root = $('#editDemo'); if(!root) return;
+  var bar = $('#fmtbar'), msg = $('#editMsg');
+  var original = $$('.edit__block',root).map(function(b){return b.outerHTML;}).join('');
+  bar.classList.add('hidden');
+  function wire(){
+    $$('[contenteditable]',root).forEach(function(el){
+      el.addEventListener('focus',function(){
+        bar.classList.remove('hidden');
+        var r = el.getBoundingClientRect(), p = root.getBoundingClientRect();
+        bar.style.top = Math.max(-14,(r.top-p.top-44))+'px';
+        bar.style.left = '20px';
+        bar.dataset.target = '1'; bar._el = el;
+      });
+    });
+    $$('.blockctl button',root).forEach(function(b){
+      b.addEventListener('click',function(){
+        var blk = b.closest('.edit__block'), a = b.dataset.a;
+        if(a==='hide'){ var body = blk.children[1]; if(body){ body.classList.toggle('isoff'); msg.textContent = body.classList.contains('isoff') ? 'Block hidden on the client copy. Reversible, per proposal.' : 'Block is showing again.'; } }
+        if(a==='up' && blk.previousElementSibling && blk.previousElementSibling.classList.contains('edit__block')) blk.parentNode.insertBefore(blk, blk.previousElementSibling);
+        if(a==='down' && blk.nextElementSibling && blk.nextElementSibling.classList.contains('edit__block')) blk.parentNode.insertBefore(blk.nextElementSibling, blk);
+      });
+    });
+  }
+  bar.addEventListener('mousedown',function(e){ e.preventDefault(); });
+  $$('button',bar).forEach(function(b){
+    b.addEventListener('click',function(){
+      var c = b.dataset.c, el = bar._el; if(!el) return;
+      try{
+        if(c==='big'||c==='small'){
+          var cur = parseFloat(window.getComputedStyle(el).fontSize);
+          el.style.fontSize = (c==='big' ? cur*1.14 : cur/1.14).toFixed(1)+'px';
+        } else { document.execCommand(c,false,null); }
+      }catch(err){}
+      msg.textContent = 'Formatting applied. Undo puts everything back.';
+    });
+  });
+  $('#editUndo').addEventListener('click',function(){
+    $$('.edit__block',root).forEach(function(b){ b.parentNode.removeChild(b); });
+    bar.insertAdjacentHTML('afterend', original);
+    bar.classList.add('hidden'); bar._el = null; wire();
+    msg.textContent = 'Back to the original. Undo covers everything, so experimenting is safe.';
+  });
+  $('#editSave').addEventListener('click',function(){
+    msg.innerHTML = '<b style="color:var(--ok)">Published.</b> Editor chrome is stripped on save, so the live page is clean.';
+  });
+  wire();
+})();
+
+/* ---------- 2c. message me ---------- */
+(function(){
+  var btn = $('#msgBtn'); if(!btn) return;
+  btn.addEventListener('click',function(){ btn.classList.add('hidden'); $('#msgPanel').classList.remove('hidden'); });
+  $('#msgSend').addEventListener('click',function(){ $('#msgDone').classList.remove('hidden'); });
+})();
+
+/* ---------- 3. canopy walkthrough ---------- */
+(function(){
+  var flow = $('#canopyFlow'); if(!flow) return;
+  var nodes = $$('.flow__n',flow), stage = $('#canopyStage'), i=0, auto=null, playing=!RM;
+  var frames = [
+    '<div class="mock" style="max-width:420px;margin:0 auto"><div class="mock__url"><i></i><span>gosafeshield.com/share-my-policy</span></div><div class="mock__screen" style="min-height:150px;text-align:center;padding:26px"><div style="font-family:var(--disp);font-size:1.2rem;color:var(--ink)">Share your current policy</div><p style="font-size:.86rem;color:var(--mute);margin:6px 0 16px">Takes about a minute. We only read it.</p><span class="btn btn--navy" style="padding:10px 18px;font-size:.86rem">Continue</span></div></div>',
+    '<div class="mock" style="max-width:420px;margin:0 auto"><div class="mock__url"><i></i><span>secure carrier login</span></div><div class="mock__screen" style="min-height:150px;padding:26px"><div style="font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:12px">Their carrier</div><div class="inp" style="margin-bottom:10px;color:var(--mute)">username</div><div class="inp" style="color:var(--mute)">&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</div><p style="font-size:.78rem;color:var(--mute);margin:14px 0 0">Credentials go to the carrier, never to us.</p></div></div>',
+    '<div class="grid2">'+
+      ['Policies, limits and deductibles','Drivers, DOB and license numbers','VINs on every vehicle','Claims history','The actual dec page PDFs','Current premium to beat'].map(function(t){
+        return '<div class="box" style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px"><span style="color:var(--ok);font-weight:700">&#10003;</span><span style="font-size:.88rem;color:var(--ink)">'+t+'</span></div>';
+      }).join('')+'</div>',
+    '<div class="gcard" style="max-width:460px;margin:0 auto"><div class="gcard__h">Canopy pull, Ryan McLean<span>To you</span></div><div class="gcard__b">'+
+      '<div style="background:var(--amber-soft);border-radius:8px;padding:9px 12px;font-size:.83rem;color:#4A3411;margin-bottom:12px"><b>We know them.</b> Quoted Aug 2024 by Eric.</div>'+
+      '<div class="kpi"><span>Premium to beat</span><b>$2,884</b></div>'+
+      '<div class="kpi"><span>Carrier</span><b>Travelers</b></div>'+
+      '<div class="kpi"><span>NowCerts</span><b>Household created</b></div>'+
+      '<div class="pillrow" style="margin-top:10px"><span class="pill pill--ok">dec-page.pdf attached</span><span class="pill">Open in NowCerts</span></div></div></div>'
+  ];
+  function go(n){
+    i = (n+frames.length)%frames.length;
+    nodes.forEach(function(el,x){ el.classList.toggle('act', x===i); });
+    stage.innerHTML = frames[i];
+  }
+  nodes.forEach(function(el,x){
+    el.addEventListener('click',function(){ go(x); stop(); });
+    el.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(x); stop(); } });
+  });
+  function stop(){ clearInterval(auto); playing=false; $('#canopyPlay').textContent='Play'; }
+  function start(){ clearInterval(auto); auto=setInterval(function(){go(i+1);},3400); playing=true; $('#canopyPlay').textContent='Pause'; }
+  $('#canopyPlay').addEventListener('click',function(){ playing?stop():start(); });
+  go(0); if(!RM) start(); else $('#canopyPlay').textContent='Play';
+})();
+
+/* ---------- 4. chat timeline ---------- */
+(function(){
+  var tl = $('#chatTL'); if(!tl) return;
+  var btns = $$('.tlb',tl), stage = $('#chatStage'), time = $('#chatTime');
+  var cards = [
+    {t:'9:00 AM', h:'<div class="gcard"><div class="gcard__h">Morning briefing<span>Sample</span></div><div class="gcard__b">'+
+      '<p style="margin:0 0 10px;font-size:.86rem;color:var(--mute)">Stamford, 74&deg; and clear</p>'+
+      '<div class="kpi"><span>New business, month to date</span><b>$161,163</b></div>'+
+      '<div class="kpi"><span>Renewals, month to date</span><b>$184,069</b></div>'+
+      '<div class="kpi"><span>Total written</span><b>$345,232</b></div>'+
+      '<p style="margin:12px 0 0;font-size:.84rem;color:var(--mute)"><b style="color:var(--ink)">Quote of the day</b><br>Discipline is choosing between what you want now and what you want most.</p>'+
+      '<p style="margin:8px 0 0;font-size:.84rem;color:var(--mute)"><b style="color:var(--ink)">Song of the day</b><br>Something to carry the morning.</p></div></div>'},
+    {t:'9:30 AM', h:'<div class="gcard"><div class="gcard__h">Renewals worklist<span>12 to work</span></div><div class="gcard__b">'+
+      '<div class="kpi"><span>Martinez, Frank &middot; Aug 1</span><b style="color:var(--warn)">+18.4%</b></div>'+
+      '<div class="kpi"><span>Olivier, Armstrong &middot; Aug 4</span><b style="color:var(--warn)">+11.2%</b></div>'+
+      '<div class="kpi"><span>Cullen, Patrick &middot; Aug 9</span><b>+2.1%</b></div>'+
+      '<div class="pillrow" style="margin-top:10px"><span class="pill">Open the worklist</span></div></div></div>'},
+    {t:'12:00 PM', h:'<div class="gcard"><div class="gcard__h">Attention items<span>Midday</span></div><div class="gcard__b">'+
+      '<p style="margin:0 0 10px;font-size:.9rem"><b>2 big premium jumps</b> came in since this morning.</p>'+
+      '<div class="kpi"><span>Yudowitch &middot; Travelers</span><b style="color:var(--stop)">+34%</b></div>'+
+      '<div class="kpi"><span>Ortiz &middot; SageSure</span><b style="color:var(--stop)">+29%</b></div>'+
+      '<p style="margin:10px 0 0;font-size:.82rem;color:var(--mute)">Anything already worked today is skipped.</p></div></div>'},
+    {t:'Friday', h:'<div class="gcard"><div class="gcard__h">Weekly recap<span>Friday</span></div><div class="gcard__b">'+
+      '<div class="kpi"><span>Renewals worked</span><b>41</b></div>'+
+      '<div class="kpi"><span>Still open past 15 days</span><b style="color:var(--stop)">3</b></div>'+
+      '<div class="kpi"><span>New business written</span><b>$38,410</b></div>'+
+      '<p style="margin:10px 0 0;font-size:.82rem;color:var(--mute)">Sample figures.</p></div></div>'}
+  ];
+  function go(n){
+    btns.forEach(function(b,x){ b.setAttribute('aria-selected', x===n?'true':'false'); });
+    stage.innerHTML = cards[n].h; time.textContent = cards[n].t;
+  }
+  btns.forEach(function(b,x){ b.addEventListener('click',function(){go(x);}); });
+  go(0);
+})();
+
+/* ---------- 5. renewals ---------- */
+(function(){
+  var chips = $$('#rnwChips .qc'); if(!chips.length) return;
+  var note = $('#rnwNote'), out = $('#rnwOut');
+  chips.forEach(function(b){
+    b.addEventListener('click',function(){
+      press(chips,b);
+      var other = b.dataset.other==='1';
+      note.classList.toggle('hidden', !other);
+      out.innerHTML = other
+        ? '<b style="color:var(--warn)">A note is required on "Other."</b> That is the point: it can no longer quietly absorb everything.'
+        : '<b>'+b.textContent+'</b> writes back to NowCerts on the household, same mapping the dealership flow uses. The item stays visible instead of vanishing.';
+    });
+  });
+})();
+
+/* ---------- 8. portal ---------- */
+(function(){
+  var seg = $('#portalSeg'); if(!seg) return;
+  var btns = $$('button',seg), stage = $('#portalStage');
+  function row(n,s,extra){
+    return '<div class="box" style="display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:8px"><div><div style="font-weight:600;color:var(--ink)">'+n+'</div><div style="font-size:.83rem;color:var(--mute)">'+s+'</div></div>'+(extra||'')+'</div>';
+  }
+  function go(n){
+    press(btns,btns[n]);
+    if(n===0){
+      stage.innerHTML = row('Martinez, Frank','HO3, current term only')+
+        '<p style="font-size:.87rem;color:var(--mute);margin:10px 0 0">The LLC and the rental property were invisible, because the last name did not match.</p>';
+    } else {
+      stage.innerHTML = row('Martinez, Frank','HO3 &middot; current term and renewing term','<span class="chip chip--plain chip--flat">$4,182 &rarr; $4,951</span>')+
+        row('Rowayton Holdings LLC','DP3 rental','<span class="chip chip--plain chip--flat">$2,140</span>')+
+        row('Martinez, Frank &amp; Sharon','Personal auto, 2 vehicles','<span class="chip chip--plain chip--flat">$3,006</span>')+
+        '<p style="font-size:.87rem;color:var(--mute);margin:10px 0 0">Entities and LLCs sharing an email consolidate correctly. Certificates and coverage detail are on the same screen.</p>';
+    }
+  }
+  btns.forEach(function(b,x){ b.addEventListener('click',function(){go(x);}); });
+  go(1);
+})();
+
+/* ---------- 9. paste to quote ---------- */
+(function(){
+  var go = $('#pasteGo'); if(!go) return;
+  var out = $('#pasteOut');
+  var fields = [
+    ['Named insured','Frank Martinez'],['Address','118 Rowayton Ave, Norwalk CT 06853'],
+    ['Year built','1962'],['Square feet','2,410'],['Roof','Asphalt, 2019'],
+    ['Coverage A','$780,000'],['Deductible','$2,500'],['Prior carrier','Travelers, $4,182'],
+    ['Effective','Aug 1, 2026']
+  ];
+  function render(){
+    out.innerHTML = '';
+    fields.forEach(function(f,i){
+      var d = document.createElement('div');
+      d.style.cssText = 'display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.88rem;opacity:0;transform:translateY(5px);transition:all .3s';
+      d.innerHTML = '<span style="color:var(--mute)">'+f[0]+'</span><b style="text-align:right">'+f[1]+'</b>';
+      out.appendChild(d);
+      setTimeout(function(){ d.style.opacity='1'; d.style.transform='none'; }, RM?0:90*i);
+    });
+    setTimeout(function(){
+      var p = document.createElement('p');
+      p.style.cssText='font-size:.84rem;color:var(--ok);margin:14px 0 0;font-weight:500';
+      p.innerHTML='&#10003; Household upserted into NowCerts in the background.';
+      out.appendChild(p);
+    }, RM?0:90*fields.length+150);
+  }
+  go.addEventListener('click',render);
+  out.innerHTML = '<p style="font-size:.88rem;color:var(--mute);margin:0">Hit <b>Build the quote</b> and watch her pull the fields out. OCR works the same way on a screenshot.</p>';
+})();
+
+/* ---------- 4. payment link builder ---------- */
+(function(){
+  var out = $('#payOut'); if(!out) return;
+  var amt=$('#payAmt'), fee=$('#payFee'), sBtns=$$('#payState button'), lBtns=$$('#payLine button'), chat=$('#payChat');
+  function money(n){ return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+  function cur(list){ var f=list.filter(function(b){return b.getAttribute('aria-pressed')==='true';})[0]; return f?f.textContent.trim():''; }
+  function rule(){
+    var st=cur(sBtns), ln=cur(lBtns);
+    if(st==='NY') return {ok:true, amt:null, why:'Broker role only, signed memo, never as appointed agent.'};
+    if(st==='CT'){
+      if(ln==='Auto')    return {ok:true, amt:35,  why:'CT auto sits on the verified schedule at $35.'};
+      if(ln==='Surplus') return {ok:true, amt:250, why:'CT surplus lines, $250 or 5%, whichever the schedule calls for.'};
+      return {ok:false, why:'A fee is not available on this line yet.'};
+    }
+    return {ok:true, amt:null, why:'Broker role only, signed memo, never as appointed agent.'};
+  }
+  function render(){
+    var p = parseFloat(String(amt.value).replace(/[^0-9.]/g,'')) || 0;
+    var wantFee = fee.getAttribute('aria-pressed')==='true';
+    var r = rule(), f = 0, rows = '', pills = '', warn = '';
+    rows += '<div class="rrow"><span>'+$('#payAcct').value+'</span><span class="num">'+money(p)+'</span></div>';
+    if(wantFee){
+      if(r.ok){
+        f = r.amt===null ? 75 : r.amt;
+        rows += '<div class="rrow"><span>Broker fee, '+cur(sBtns)+'</span><span class="num">'+money(f)+'</span></div>';
+        pills = '<span class="pill pill--ok">Compliance check passed</span><span class="pill pill--ok">Signed disclosure PDF generated</span>';
+        warn = '<p style="font-size:.82rem;color:var(--mute);margin:12px 0 0">'+r.why+'</p>';
+      } else {
+        pills = '<span class="pill">No fee attached</span>';
+        warn = '<p style="font-size:.82rem;color:var(--mute);margin:12px 0 0"><b>'+r.why+'</b> CASEY leaves it off and the link sends without it.</p>';
+      }
+    } else {
+      pills = '<span class="pill">No fee attached</span>';
+    }
+    rows += '<div class="rrow"><span>Total the client pays</span><span class="num">'+money(p+f)+'</span></div>';
+    out.innerHTML = '<div class="receipt"><div class="receipt__h"><b>Payment request</b><span class="badge" style="background:#0B63A8">AGENCY BILLED</span></div>'+
+      '<div class="receipt__b">'+rows+'<div class="pillrow">'+pills+'</div>'+warn+'</div></div>';
+    $('#payPaid').textContent = 'Paid '+money(p+f);
+    chat.classList.add('hidden');
+  }
+  fee.addEventListener('click',function(){ fee.setAttribute('aria-pressed', fee.getAttribute('aria-pressed')==='true'?'false':'true'); render(); });
+  sBtns.forEach(function(b){ b.addEventListener('click',function(){ press(sBtns,b); render(); }); });
+  lBtns.forEach(function(b){ b.addEventListener('click',function(){ press(lBtns,b); render(); }); });
+  amt.addEventListener('input',render);
+  $('#payAcct').addEventListener('change',render);
+  $('#paySend').addEventListener('click',function(){ chat.classList.remove('hidden'); });
+  render();
+})();
+
+/* ---------- 5. invoice and receipt builder ---------- */
+(function(){
+  var out = $('#rcpOut'); if(!out) return;
+  var mode = $$('#rcpMode button'), total=$('#rcpTotal'), paid=$('#rcpPaid'), wrap=$('#rcpPaidWrap'), acct=$('#rcpAcct');
+  function num(el){ return parseFloat(String(el.value).replace(/[^0-9.]/g,'')) || 0; }
+  function money(n){ return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+  function isReceipt(){ return mode[1].getAttribute('aria-pressed')==='true'; }
+  function render(){
+    var t = num(total), pRaw = num(paid), p = Math.min(pRaw, t), bal = Math.max(0, t - p);
+    wrap.classList.toggle('hidden', !isReceipt());
+    if(!isReceipt()){
+      out.innerHTML = '<div class="receipt"><div class="receipt__h"><b>Invoice</b><span class="badge" style="background:#0B63A8">DUE</span></div>'+
+        '<div class="receipt__b">'+
+        '<div class="rrow"><span>'+acct.value+'</span><span class="num">'+money(t)+'</span></div>'+
+        '<div class="rrow"><span>Amount due</span><span class="num">'+money(t)+'</span></div>'+
+        '<div class="pillrow"><span class="pill pill--ok">Payment link attached</span><span class="pill">Agency billed</span></div>'+
+        '<p style="font-size:.82rem;color:var(--mute);margin:12px 0 0">The client pays from the invoice itself. The webhook posts back when they do.</p>'+
+        '</div></div>';
+      return;
+    }
+    var full = bal === 0 && t > 0;
+    out.innerHTML = '<div class="receipt"><div class="receipt__h"><b>Payment receipt</b><span class="badge">PAID</span></div>'+
+      '<div class="receipt__b">'+
+      '<div class="rrow"><span>Total premium</span><span class="num">'+money(t)+'</span></div>'+
+      '<div class="rrow"><span>Paid today</span><span class="num">'+money(p)+'</span></div>'+
+      '<div class="rrow"><span>'+(full?'Paid in full':'Balance to follow')+'</span><span class="num">'+money(bal)+'</span></div>'+
+      (pRaw > t
+        ? '<p style="font-size:.82rem;color:var(--warn);margin:12px 0 0"><b>The server capped that at the premium.</b> The balance cannot print negative, no matter what the card says.</p>'
+        : '<p style="font-size:.78rem;color:var(--mute);margin:12px 0 0">Balance computed server side at the moment of payment.</p>')+
+      '</div></div>';
+  }
+  mode.forEach(function(b){ b.addEventListener('click',function(){ press(mode,b); render(); }); });
+  [total,paid].forEach(function(el){ el.addEventListener('input',render); });
+  acct.addEventListener('change',render);
+  render();
+})();
+
+/* ---------- 11. ask casey ---------- */
+(function(){
+  var chips = $$('#askChips .qc'); if(!chips.length) return;
+  var stage = $('#askStage');
+  var answers = [
+    'Alyssa is on service and retention. She handles endorsements, certificates, billing questions and the renewal follow ups that come off the 9:30 worklist. The Master SOP has her full remit under "Service."',
+    'Email the carrier\'s underwriting box with the named insured, policy number and the period you need, usually five years. The runbook has the template and the carrier specific addresses. Most come back in two to three business days.',
+    'The training curriculum puts cross selling at the quote, not at renewal. If you are writing the home, you ask for the auto in the same conversation, because the second line is where the retention lift actually comes from.',
+    'Payment links are live for agency billed accounts. Broker fees are available in NY, and in CT on auto, assigned risk and surplus. Premium financing is built and carrier matched, 86 of them.',
+    '<b>That is not documented anywhere I can see.</b> I am not going to invent a procedure for it. Ask Austin, and if there is an answer worth keeping, put it in the SOP so I have it next time.'
+  ];
+  function go(b){
+    press(chips,b);
+    stage.innerHTML = '<span class="caret"></span>';
+    var txt = answers[+b.dataset.i];
+    if(RM){ stage.innerHTML = txt; return; }
+    setTimeout(function(){ stage.innerHTML = txt; }, 420);
+  }
+  chips.forEach(function(b){ b.addEventListener('click',function(){go(b);}); });
+  go(chips[0]);
+})();
+
+})();
+</script>
+</body>
+</html>
