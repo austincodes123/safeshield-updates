@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Safeshield Secure just became a smart document studio | CASEY team update</title>
-<meta name="description" content="Safeshield team launch guide for CASEY's smart ACORD builder, official NYS insurance ID cards, template-free e-sign, secure delivery, NowCerts filing, and signature audit center.">
+<meta name="description" content="Safeshield team launch guide for CASEY's smart ACORD library, learning field placement, official NYS insurance ID cards, template-free e-sign, secure delivery, NowCerts filing, and signature audit center.">
 <meta name="theme-color" content="#0a1628">
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,16 +103,19 @@ img{max-width:100%;display:block}::selection{background:var(--gold);color:var(--
 /* overseer */
 .overseer{position:relative;overflow:hidden;margin-top:32px;padding:clamp(24px,5vw,44px);background:var(--deep);color:#e9eff5}.overseer:before{content:"";position:absolute;inset:0;background:radial-gradient(520px 300px at 100% 0,rgba(255,163,0,.18),transparent 65%)}.overseer>*{position:relative}.overseer h3{color:#fff;font-size:clamp(1.7rem,4vw,2.5rem)}.overseer p{max-width:70ch;color:#aab9c7}.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}.learn{padding:18px;border:1px solid rgba(255,255,255,.13);border-radius:12px;background:rgba(255,255,255,.055)}.learn b{display:block;color:#fff}.learn small{display:block;margin-top:5px;color:#9eb0c2}.guardrails{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.guardrails span{padding:7px 10px;border-radius:999px;background:rgba(255,163,0,.12);color:var(--gold2);font-size:.75rem;font-weight:700}
 
+/* ACORD library */
+.library-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}.library-stat{padding:20px;border:1px solid var(--line);border-radius:13px;background:#fff}.library-stat b{display:block;color:var(--navy);font:900 2rem/1 var(--disp)}.library-stat small{display:block;margin-top:8px;color:var(--mute);font-size:.77rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.form-library{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:18px}.form-tier{overflow:hidden;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow)}.form-tier summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;cursor:pointer;list-style:none;color:var(--ink);font-weight:800}.form-tier summary::-webkit-details-marker{display:none}.form-tier summary:after{content:"+";color:var(--gold);font-size:1.35rem}.form-tier[open] summary:after{content:"−"}.form-tier summary small{display:block;color:var(--mute);font-size:.72rem;font-weight:500}.form-list{display:grid;gap:0;padding:0 20px 16px}.form-row{display:grid;grid-template-columns:58px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:.82rem;line-height:1.35}.form-row b{color:var(--navy);font:800 .76rem var(--sans)}.form-row span{color:var(--body)}.form-note{margin-top:18px;padding:17px 19px;border-left:4px solid var(--gold);border-radius:0 10px 10px 0;background:#fff7e8;font-size:.9rem}.ready-label{display:inline-flex;margin-left:8px;padding:3px 7px;border-radius:999px;background:var(--okbg);color:var(--ok);font-size:.62rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+
 /* guide */
 .guide{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}.guide-card{padding:23px}.guide-card h3{font:800 1.3rem var(--sans)}.prompt{margin:15px 0;padding:15px;border:1px solid var(--line2);border-radius:10px;background:#f7f9fb;color:var(--ink);font-size:.92rem}.prompt:before{content:"You can type:";display:block;margin-bottom:7px;color:var(--navy);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.guide ol{margin:16px 0 0;padding-left:22px}.guide li{margin:9px 0}
 .cta{margin-top:clamp(70px,9vw,110px);padding:clamp(38px,7vw,70px);border-radius:22px;background:var(--deep);color:#dfe8f0;text-align:center}.cta h2{color:#fff;font-size:clamp(2rem,5vw,3.5rem)}.cta p{max-width:60ch;margin:16px auto 25px;color:#a7b7c6}.footer{padding:36px 0;color:var(--mute);font-size:.8rem;text-align:center}
 .mobile-callout{display:none}
 
 @media(max-width:980px){
-  .hero-grid,.section-grid,.section-grid.flip{grid-template-columns:1fr}.section-grid.flip .copy{order:0}.feature-grid{grid-template-columns:1fr 1fr}.flow{grid-template-columns:repeat(3,1fr)}.learn-grid{grid-template-columns:1fr}
+  .hero-grid,.section-grid,.section-grid.flip{grid-template-columns:1fr}.section-grid.flip .copy{order:0}.feature-grid{grid-template-columns:1fr 1fr}.flow{grid-template-columns:repeat(3,1fr)}.learn-grid{grid-template-columns:1fr}.form-library{grid-template-columns:1fr}
 }
 @media(max-width:700px){
-  body{font-size:16px}.brandmeta,.brandline{display:none}.hero-grid{display:block}.casey-panel{margin-top:34px}.hero-stats{grid-template-columns:1fr 1fr}.feature-grid,.guide{grid-template-columns:1fr}.sec-title{gap:12px}.sec-num{font-size:2rem}.section-grid,.section-grid.flip{display:block}.copy{margin-bottom:24px}.edit-workspace,.signscreen{grid-template-columns:1fr}.field-list{display:none}.paper{min-height:300px}.edit-pop{right:8px;top:105px;width:168px}.how{padding-bottom:8px}.flow{grid-template-columns:1fr 1fr}.screenshot{border-radius:10px}.nav-brand span{display:none}.mobile-callout{display:block;margin-top:10px;color:var(--mute);font-size:.8rem}.app-tabs{display:none}
+  body{font-size:16px}.brandmeta,.brandline{display:none}.hero-grid{display:block}.casey-panel{margin-top:34px}.hero-stats{grid-template-columns:1fr 1fr}.feature-grid,.guide{grid-template-columns:1fr}.sec-title{gap:12px}.sec-num{font-size:2rem}.section-grid,.section-grid.flip{display:block}.copy{margin-bottom:24px}.edit-workspace,.signscreen{grid-template-columns:1fr}.field-list{display:none}.paper{min-height:300px}.edit-pop{right:8px;top:105px;width:168px}.how{padding-bottom:8px}.flow{grid-template-columns:1fr 1fr}.screenshot{border-radius:10px}.nav-brand span{display:none}.mobile-callout{display:block;margin-top:10px;color:var(--mute);font-size:.8rem}.app-tabs{display:none}.library-stats{grid-template-columns:1fr}
 }
 @media(max-width:430px){
   .hero{padding-top:24px}.hero h1{font-size:2.7rem}.hero-stats{display:none}.feature-grid,.flow{grid-template-columns:1fr}.intake,.two-docs{grid-template-columns:1fr}.paper{padding:14px}.edit-pop{position:relative;right:auto;top:auto;width:auto;margin-top:8px}.signcard{padding:18px}.nav-scroll a{padding:8px 9px}.idgrid{grid-template-columns:1fr 1fr}.idgrid div:last-child{display:none}
@@ -131,7 +134,7 @@ img{max-width:100%;display:block}::selection{background:var(--gold);color:var(--
         <p class="hero-dek">Safeshield Secure is now a <strong>smart insurance document studio</strong>. Ask CASEY for what you need—or start in the portal—and she can choose the form, read the policy, fill it, create an official NYS ID card, place signing fields, send it securely, and preserve the finished record.</p>
         <div class="hero-actions"><a class="btn gold" href="#try">See how to use it</a><a class="btn ghost" href="https://casey.gosafeshield.com/secure-docs.html" target="_blank" rel="noopener">Open Safeshield Secure ↗</a></div>
         <div class="hero-stats">
-          <div><b>2</b><small>Ways to start</small></div><div><b>1</b><small>Shared intake</small></div><div><b>0</b><small>RabbitSign templates</small></div><div><b>24/7</b><small>Audit trail</small></div>
+          <div><b>53</b><small>Modeled workflows</small></div><div><b>11</b><small>Mastered now</small></div><div><b>0</b><small>RabbitSign templates</small></div><div><b>24/7</b><small>Audit trail</small></div>
         </div>
       </div>
       <div class="casey-panel" aria-label="Sample CASEY document request">
@@ -148,14 +151,14 @@ img{max-width:100%;display:block}::selection{background:var(--gold);color:var(--
     </div>
   </div>
 </header>
-<div class="nav"><div class="nav-in"><div class="nav-brand"><i></i><span>Safeshield Secure</span></div><nav class="nav-scroll" aria-label="Sections"><a href="#start">Start</a><a href="#smart">Smart docs</a><a href="#nys">NY ID cards</a><a href="#esign">E-sign</a><a href="#security">Security</a><a href="#records">Records</a><a href="#learning">Learning</a><a href="#try">Use it</a></nav></div><div class="progress" id="progress"></div></div>
+<div class="nav"><div class="nav-in"><div class="nav-brand"><i></i><span>Safeshield Secure</span></div><nav class="nav-scroll" aria-label="Sections"><a href="#start">Start</a><a href="#smart">Smart docs</a><a href="#forms">ACORD library</a><a href="#nys">NY ID cards</a><a href="#esign">E-sign</a><a href="#security">Security</a><a href="#records">Records</a><a href="#learning">Learning</a><a href="#try">Use it</a></nav></div><div class="progress" id="progress"></div></div>
 
 <main>
 <section class="priority">
   <div class="wrap">
     <div class="priority-head"><div><p class="eyebrow">If you read nothing else</p><h2>These change the job.</h2></div><span class="chip live">Live now</span></div>
     <div class="feature-grid">
-      <a class="feature-link card" href="#smart"><span class="feature-icon">✦</span><h3>Plain English → correct form</h3><p>Say “property proof for this lender.” CASEY chooses the right ACORD and explains why.</p></a>
+      <a class="feature-link card" href="#forms"><span class="feature-icon">53</span><h3>Smart ACORD library</h3><p>Mastered editions reuse exact field and signing coordinates—and improve safely from corrections.</p></a>
       <a class="feature-link card" href="#nys"><span class="feature-icon">NY</span><h3>Official NYS ID cards</h3><p>Create the real FS-20 yourself—with the state barcode—without leaving CASEY.</p></a>
       <a class="feature-link card" href="#esign"><span class="feature-icon">✍</span><h3>Template-free e-sign</h3><p>Upload a PDF. CASEY finds the signature spots, then you review and send.</p></a>
       <a class="feature-link card" href="#records"><span class="feature-icon">✓</span><h3>Finished means filed</h3><p>Signed PDF, audit certificate, Google Chat notification, and NowCerts record.</p></a>
@@ -236,9 +239,97 @@ img{max-width:100%;display:block}::selection{background:var(--gold);color:var(--
   </div>
 </section>
 
+<section class="sec sec-key" id="forms">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">03</span><div><p class="eyebrow">The smart ACORD library</p><h2>CASEY knows the form—and remembers the placement.</h2><p class="sec-dek">CASEY's current catalog models 53 ACORD workflows. Eleven high-use forms are already mastered for generation, exact field coordinates, signing roles, live editing, and document checks; the rest are organized into the mastering queue instead of living as mystery PDFs.</p></div></div><span class="chip live">Live and growing</span></div>
+    <div class="library-stats">
+      <div class="library-stat"><b>53</b><small>Modeled ACORD workflows</small></div>
+      <div class="library-stat"><b>11</b><small>Mastered and automated now</small></div>
+      <div class="library-stat"><b>1 map</b><small>Reused per verified edition</small></div>
+    </div>
+    <div class="form-note"><strong>Why this matters:</strong> CASEY does not rediscover every box every time. A mastered form edition reuses its verified data and signing coordinates instantly. Live edits and completed signing layouts become structured feedback; repeated corrections are promoted to an admin-reviewed lesson, tested, and then used to double-check future documents. Nothing silently moves or rewrites policy facts.</div>
+    <div class="form-library">
+      <details class="form-tier" open>
+        <summary><span>Mastered now <span class="ready-label">Ready</span><small>Generation, placement, review, and signing behavior are mapped</small></span></summary>
+        <div class="form-list">
+          <div class="form-row"><b>ACORD 24</b><span>Certificate of Property Insurance</span></div>
+          <div class="form-row"><b>ACORD 25</b><span>Certificate of Liability Insurance</span></div>
+          <div class="form-row"><b>ACORD 27</b><span>Evidence of Property Insurance</span></div>
+          <div class="form-row"><b>ACORD 28</b><span>Evidence of Commercial Property Insurance</span></div>
+          <div class="form-row"><b>ACORD 35</b><span>Cancellation Request / Policy Release</span></div>
+          <div class="form-row"><b>ACORD 36</b><span>Agent / Broker of Record Change</span></div>
+          <div class="form-row"><b>ACORD 37</b><span>Statement of No Loss</span></div>
+          <div class="form-row"><b>ACORD 45</b><span>Additional Interest Schedule</span></div>
+          <div class="form-row"><b>ACORD 75</b><span>Insurance Binder</span></div>
+          <div class="form-row"><b>ACORD 90</b><span>New York Personal Auto Application</span></div>
+          <div class="form-row"><b>ACORD 101</b><span>Additional Remarks Schedule</span></div>
+        </div>
+      </details>
+      <details class="form-tier">
+        <summary><span>Commercial application library<small>Modeled and prioritized for edition-by-edition mastering</small></span></summary>
+        <div class="form-list">
+          <div class="form-row"><b>ACORD 125</b><span>Commercial Insurance Application — Applicant Information</span></div>
+          <div class="form-row"><b>ACORD 126</b><span>Commercial General Liability Section</span></div>
+          <div class="form-row"><b>ACORD 127</b><span>Business Auto Section</span></div>
+          <div class="form-row"><b>ACORD 129</b><span>Vehicle Schedule</span></div>
+          <div class="form-row"><b>ACORD 130</b><span>Workers Compensation Application</span></div>
+          <div class="form-row"><b>ACORD 131</b><span>Umbrella / Excess Section</span></div>
+          <div class="form-row"><b>ACORD 137</b><span>Commercial Auto Coverages / Limits — State Specific</span></div>
+          <div class="form-row"><b>ACORD 139</b><span>Statement of Values</span></div>
+          <div class="form-row"><b>ACORD 140</b><span>Property Section</span></div>
+          <div class="form-row"><b>ACORD 146</b><span>Equipment Floater / Contractors Equipment</span></div>
+          <div class="form-row"><b>ACORD 152</b><span>Commercial Inland Marine Application</span></div>
+        </div>
+      </details>
+      <details class="form-tier">
+        <summary><span>Personal lines, service, and claims<small>Common applications, changes, certificates, and loss notices</small></span></summary>
+        <div class="form-list">
+          <div class="form-row"><b>ACORD 1</b><span>Property Loss Notice</span></div>
+          <div class="form-row"><b>ACORD 2</b><span>Automobile Loss Notice</span></div>
+          <div class="form-row"><b>ACORD 3</b><span>General Liability Notice of Occurrence / Claim</span></div>
+          <div class="form-row"><b>ACORD 4</b><span>First Report of Injury</span></div>
+          <div class="form-row"><b>ACORD 23</b><span>Vehicle or Equipment Certificate of Insurance</span></div>
+          <div class="form-row"><b>ACORD 70</b><span>Personal Lines Policy Change Request — Non-Auto</span></div>
+          <div class="form-row"><b>ACORD 71</b><span>Personal Auto Policy Change Request</span></div>
+          <div class="form-row"><b>ACORD 80</b><span>Homeowner Application</span></div>
+          <div class="form-row"><b>ACORD 81</b><span>Personal Inland Marine Application</span></div>
+          <div class="form-row"><b>ACORD 83</b><span>Personal Umbrella Application</span></div>
+          <div class="form-row"><b>ACORD 84</b><span>Dwelling Fire Application</span></div>
+          <div class="form-row"><b>ACORD 175</b><span>Commercial Policy Change Request</span></div>
+          <div class="form-row"><b>ACORD 301</b><span>Flood Insurance Application</span></div>
+        </div>
+      </details>
+      <details class="form-tier">
+        <summary><span>Specialty, schedules, and administration<small>Indexed workflows ready to be mastered as business use demands</small></span></summary>
+        <div class="form-list">
+          <div class="form-row"><b>ACORD 38</b><span>Notice of Information Practices</span></div>
+          <div class="form-row"><b>ACORD 60</b><span>Business Owners Section</span></div>
+          <div class="form-row"><b>ACORD 63</b><span>Fraud Statements</span></div>
+          <div class="form-row"><b>ACORD 82</b><span>Watercraft Application</span></div>
+          <div class="form-row"><b>ACORD 105</b><span>Apartment Building Supplement</span></div>
+          <div class="form-row"><b>ACORD 106</b><span>Vacant Building Supplement</span></div>
+          <div class="form-row"><b>ACORD 132</b><span>Truckers / Motor Carriers Section</span></div>
+          <div class="form-row"><b>ACORD 133</b><span>Workers Compensation Assigned Risk Plan Section</span></div>
+          <div class="form-row"><b>ACORD 138</b><span>Garage and Dealers Application</span></div>
+          <div class="form-row"><b>ACORD 141</b><span>Crime Section</span></div>
+          <div class="form-row"><b>ACORD 144</b><span>Glass and Sign Section</span></div>
+          <div class="form-row"><b>ACORD 145</b><span>Accounts Receivable / Valuable Papers</span></div>
+          <div class="form-row"><b>ACORD 147</b><span>Installation / Builders Risk Section</span></div>
+          <div class="form-row"><b>ACORD 148</b><span>Electronic Data Processing Section</span></div>
+          <div class="form-row"><b>ACORD 149</b><span>Dealers Section</span></div>
+          <div class="form-row"><b>ACORD 163</b><span>Commercial Auto Driver Information Schedule</span></div>
+          <div class="form-row"><b>ACORD 180</b><span>Technology E&amp;O Section</span></div>
+          <div class="form-row"><b>ACORD 194</b><span>Truckers / Motor Carrier Supplement</span></div>
+        </div>
+      </details>
+    </div>
+    <p class="mobile-callout">On a phone, tap any library group to expand its complete form list.</p>
+  </div>
+</section>
+
 <section class="sec sec-key" id="nys">
   <div class="wrap">
-    <div class="sec-head"><div class="sec-title"><span class="sec-num">03</span><div><p class="eyebrow">The showstopper</p><h2>You can create official NYS ID cards.</h2><p class="sec-dek">Not a screenshot. Not a generic PDF. Safeshield Secure sends verified policy data through our licensed New York generator and returns the official FS-20 with the state barcode.</p></div></div><span class="chip live">Live now</span></div>
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">04</span><div><p class="eyebrow">The showstopper</p><h2>You can create official NYS ID cards.</h2><p class="sec-dek">Not a screenshot. Not a generic PDF. Safeshield Secure sends verified policy data through our licensed New York generator and returns the official FS-20 with the state barcode.</p></div></div><span class="chip live">Live now</span></div>
     <div class="section-grid">
       <div class="copy">
         <h3>Ask for the card—or let CASEY infer it.</h3>
@@ -279,7 +370,7 @@ img{max-width:100%;display:block}::selection{background:var(--gold);color:var(--
 
 <section class="sec sec-key" id="esign">
   <div class="wrap">
-    <div class="sec-head"><div class="sec-title"><span class="sec-num">04</span><div><p class="eyebrow">Safeshield Secure Sign</p><h2>E-sign without building a template first.</h2><p class="sec-dek">Upload a finished PDF or generate one with CASEY. Known forms already know their signature roles; unfamiliar PDFs are inspected for printed signing lines and boxes, then shown in the visual editor.</p></div></div><span class="chip live">Live now</span></div>
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">05</span><div><p class="eyebrow">Safeshield Secure Sign</p><h2>E-sign without building a template first.</h2><p class="sec-dek">Upload a finished PDF or generate one with CASEY. Known forms already know their signature roles; unfamiliar PDFs are inspected for printed signing lines and boxes, then shown in the visual editor.</p></div></div><span class="chip live">Live now</span></div>
     <div class="section-grid flip">
       <div class="copy">
         <h3>The signer gets a clean, mobile-first experience.</h3>
@@ -306,7 +397,7 @@ img{max-width:100%;display:block}::selection{background:var(--gold);color:var(--
 
 <section class="sec" id="security">
   <div class="wrap">
-    <div class="sec-head"><div class="sec-title"><span class="sec-num">05</span><div><p class="eyebrow">Per-send controls</p><h2>Secure when it needs to be. Human when it should be.</h2><p class="sec-dek">The agent decides the security and customer-experience settings for each send. Advanced options stay tucked away until you need them.</p></div></div><span class="chip live">Live now</span></div>
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">06</span><div><p class="eyebrow">Per-send controls</p><h2>Secure when it needs to be. Human when it should be.</h2><p class="sec-dek">The agent decides the security and customer-experience settings for each send. Advanced options stay tucked away until you need them.</p></div></div><span class="chip live">Live now</span></div>
     <div class="section-grid">
       <div class="card options">
         <div class="opt"><button class="toggle on" aria-pressed="true"></button><div><b>File automatically in NowCerts</b><small>Recommended. CASEY matches and files the PDF plus a readable audit note in the background.</small></div></div>
@@ -330,14 +421,14 @@ img{max-width:100%;display:block}::selection{background:var(--gold);color:var(--
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec-head"><div class="sec-title"><span class="sec-num">06</span><div><p class="eyebrow">The secure sender</p><h2>Send one file—or a whole package.</h2><p class="sec-dek">Drag in PDFs, Word files, spreadsheets, images, or ZIPs. Multiple recipients receive their own private link and access code, and multiple selected documents can travel in one clean email.</p></div></div><span class="chip live">Live now</span></div>
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">07</span><div><p class="eyebrow">The secure sender</p><h2>Send one file—or a whole package.</h2><p class="sec-dek">Drag in PDFs, Word files, spreadsheets, images, or ZIPs. Multiple recipients receive their own private link and access code, and multiple selected documents can travel in one clean email.</p></div></div><span class="chip live">Live now</span></div>
     <figure class="screenshot"><img src="assets/secure-sender.png" alt="Safeshield Secure sender with recipient, NowCerts, watermark, emailed code, document reader, and expiration controls"><figcaption class="caption">Live Safeshield Secure sender. The technical controls stay below the message, so the everyday path remains simple.</figcaption></figure>
   </div>
 </section>
 
 <section class="sec sec-key" id="records">
   <div class="wrap">
-    <div class="sec-head"><div class="sec-title"><span class="sec-num">07</span><div><p class="eyebrow">Nothing disappears after “send”</p><h2>A signed document becomes a complete record.</h2><p class="sec-dek">Safeshield Secure tracks delivery and signing, keeps the evidence package, and routes the finished work to the systems the team already uses.</p></div></div><span class="chip live">Live now</span></div>
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">08</span><div><p class="eyebrow">Nothing disappears after “send”</p><h2>A signed document becomes a complete record.</h2><p class="sec-dek">Safeshield Secure tracks delivery and signing, keeps the evidence package, and routes the finished work to the systems the team already uses.</p></div></div><span class="chip live">Live now</span></div>
     <div class="flow">
       <div class="flow-card"><span class="n">1</span><b>Secure request sent</b><small>Branded email, private link, optional password or code.</small></div>
       <div class="flow-card"><span class="n">2</span><b>Signer completes</b><small>Consent, signature method, time, IP, browser, and fingerprint.</small></div>
@@ -370,24 +461,24 @@ img{max-width:100%;display:block}::selection{background:var(--gold);color:var(--
 
 <section class="sec" id="learning">
   <div class="wrap">
-    <div class="sec-head"><div class="sec-title"><span class="sec-num">08</span><div><p class="eyebrow">The intelligence layer</p><h2>Fast today. Smarter every time.</h2><p class="sec-dek">The current system already uses mastered form maps, deterministic checks, source evidence, safe retries, and audit trails. The next deployment adds the full Overseer feedback loop.</p></div></div><span class="chip next">Next deployment</span></div>
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">09</span><div><p class="eyebrow">The intelligence layer</p><h2>Fast today. Smarter every time.</h2><p class="sec-dek">Overseer is live. It checks generated documents without slowing the main workflow, learns safely from repeated corrections, and gives administrators control over which lessons should influence future reviews.</p></div></div><span class="chip live">Live now</span></div>
     <div class="overseer card">
       <p class="eyebrow gold">CASEY Overseer · transparent learning</p><h3>Fact-check in the background—never in the way.</h3>
-      <p>Overseer will compare extracted facts, mapped fields, and rendered output in parallel with the fast document path. Agents still get the preview immediately. High-confidence checks pass quietly; conflicts appear as one clear question in the same document conversation.</p>
+      <p>Overseer compares extracted facts, mapped fields, signing roles, and rendered placements in parallel with the fast document path. Agents still get the preview immediately. Property documents are checked for coverage amounts, deductibles, premium, lender details, loan number, and authorized representative; cancellation and New York auto forms receive their own workflow-specific checks.</p>
       <div class="learn-grid">
-        <div class="learn"><b>1 · Observe corrections</b><small>Record the old value, new value, form edition, field, source, and reason—without storing secrets in prompts.</small></div>
-        <div class="learn"><b>2 · Propose a lesson</b><small>Turn repeated corrections into a versioned mapping or extraction suggestion with supporting evidence.</small></div>
-        <div class="learn"><b>3 · Test before trust</b><small>Replay the suggestion against known documents and render checks. One correction never becomes a global rule.</small></div>
-        <div class="learn"><b>4 · Promote safely</b><small>Only validated improvements become the next mapping version, with rollback and a complete audit trail.</small></div>
+        <div class="learn"><b>1 · Observe corrections</b><small>Store privacy-safe hashes plus the form, edition, field, source fingerprint, and correction origin—not the customer's old and new values.</small></div>
+        <div class="learn"><b>2 · Recognize a pattern</b><small>After the same field needs repeated correction on the same mastered form, CASEY creates a lesson candidate for review.</small></div>
+        <div class="learn"><b>3 · Approve before trust</b><small>An administrator can approve or dismiss the lesson. One agent correction never becomes a global mapping rule.</small></div>
+        <div class="learn"><b>4 · Double-check next time</b><small>An approved lesson makes CASEY scrutinize that field on future matching forms while the verified placement map remains versioned and reversible.</small></div>
       </div>
-      <div class="guardrails"><span>Non-blocking shadow checks</span><span>Human approval for global rules</span><span>Versioned maps</span><span>Regression tests</span><span>Rollback</span><span>No silent changes</span></div>
+      <div class="guardrails"><span>Non-blocking checks</span><span>Privacy-safe correction signals</span><span>Human approval</span><span>Form + edition fingerprints</span><span>Versioned maps</span><span>Regression tests</span><span>No silent changes</span></div>
     </div>
   </div>
 </section>
 
 <section class="sec" id="try">
   <div class="wrap">
-    <div class="sec-head"><div class="sec-title"><span class="sec-num">09</span><div><p class="eyebrow">Try this this week</p><h2>Three prompts are enough to start.</h2><p class="sec-dek">Use the words you would use with another agent. CASEY handles the form names and workflow underneath.</p></div></div><span class="chip live">Ready</span></div>
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">10</span><div><p class="eyebrow">Try this this week</p><h2>Three prompts are enough to start.</h2><p class="sec-dek">Use the words you would use with another agent. CASEY handles the form names and workflow underneath.</p></div></div><span class="chip live">Ready</span></div>
     <div class="guide">
       <div class="guide-card card"><h3>Property evidence</h3><div class="prompt">Make the property evidence form this lender needs from the attached dec page.</div><ol><li>Attach the declaration page.</li><li>Review CASEY's form choice and Smart Match values.</li><li>Click any PDF value to correct it.</li><li>Download, file, or send.</li></ol></div>
       <div class="guide-card card"><h3>New York auto bundle</h3><div class="prompt">Build the NY auto ACORD and official ID card from this dec page.</div><ol><li>Keep both document checkboxes selected.</li><li>Review the shared driver, vehicle, policy, and carrier facts.</li><li>Create selected documents.</li><li>Preview each tab and send together if needed.</li></ol></div>
