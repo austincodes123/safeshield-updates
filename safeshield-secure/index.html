@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Safeshield Secure just became a smart document studio | CASEY team update</title>
+<meta name="description" content="Safeshield team launch guide for CASEY's smart ACORD builder, official NYS insurance ID cards, template-free e-sign, secure delivery, NowCerts filing, and signature audit center.">
+<meta name="theme-color" content="#0a1628">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#004B89;--navy2:#0B63A8;--deep:#0a1628;--deep2:#12233B;--deep3:#172b45;
+  --gold:#FFA300;--gold2:#FFC154;--goldsoft:#FFE7BC;--paper:#FAFAF8;--white:#fff;
+  --ink:#0a1628;--body:#2C3A48;--mute:#65788A;--line:#E3E8ED;--line2:#CFD8E0;
+  --ok:#0F7A4F;--okbg:#E4F3EC;--warn:#9A5A11;--warnbg:#FFF1D9;
+  --disp:"Playfair Display",Georgia,serif;--sans:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Consolas,monospace;
+  --shadow:0 1px 2px rgba(10,22,40,.05),0 18px 48px -28px rgba(10,22,40,.35);
+  --shadow-lg:0 26px 90px -42px rgba(10,22,40,.48);--radius:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;overflow-x:hidden;background:var(--paper);color:var(--body);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{margin:0;color:var(--ink);font-family:var(--disp);font-weight:900;line-height:1.06;letter-spacing:-.018em}
+p{margin:0 0 1em}a{color:var(--navy)}strong{color:var(--ink)}button,input{font:inherit}
+img{max-width:100%;display:block}::selection{background:var(--gold);color:var(--deep)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:5px}
+.wrap{max-width:1180px;margin:auto;padding-inline:clamp(18px,4vw,42px)}
+.eyebrow{margin:0 0 13px;color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.eyebrow.gold{color:var(--gold)}.lede{max-width:64ch;color:var(--mute);font-size:clamp(1.04rem,2vw,1.24rem);font-weight:300}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.chip:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}.live{background:var(--okbg);color:var(--ok)}.next{background:var(--warnbg);color:var(--warn)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:12px 21px;border:1px solid transparent;border-radius:999px;font-weight:700;text-decoration:none;cursor:pointer;transition:.18s transform,.18s box-shadow,.18s background}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.btn.gold{background:var(--gold);color:var(--deep)}.btn.navy{background:var(--navy);color:#fff}.btn.ghost{border-color:rgba(255,255,255,.3);color:#fff}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--deep);color:#E9EFF5;padding:clamp(32px,6vw,62px) 0 clamp(60px,9vw,104px)}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(900px 520px at 88% -10%,rgba(255,163,0,.22),transparent 62%),radial-gradient(900px 620px at 0 110%,rgba(0,75,137,.7),transparent 68%)}
+.hero:after{content:"";position:absolute;inset:0;opacity:.06;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(#000,transparent 82%)}
+.hero .wrap{position:relative;z-index:2}.brandbar{display:flex;align-items:center;gap:13px;margin-bottom:clamp(40px,7vw,70px)}
+.shield{width:29px;height:34px;display:grid;place-items:center;background:var(--gold);color:var(--deep);clip-path:polygon(50% 0,95% 16%,88% 75%,50% 100%,12% 75%,5% 16%);font-size:15px;font-weight:900}
+.brand{color:#fff;font-weight:700}.brand span{color:var(--gold)}.brandline{height:1px;flex:1;background:linear-gradient(90deg,rgba(255,255,255,.3),transparent)}
+.brandmeta{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(233,239,245,.58)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.03fr) minmax(360px,.97fr);gap:clamp(32px,6vw,76px);align-items:center}
+.hero h1{color:#fff;font-size:clamp(3rem,7vw,5.4rem);letter-spacing:-.035em}.hero h1 em{font-style:normal;color:var(--gold)}
+.hero-dek{max-width:55ch;margin:24px 0 0;color:rgba(233,239,245,.8);font-size:clamp(1.05rem,2vw,1.25rem);font-weight:300}
+.hero-dek strong{color:#fff}.hero-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:30px}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:42px;border:1px solid rgba(255,255,255,.14);border-radius:13px;overflow:hidden;background:rgba(255,255,255,.14)}
+.hero-stats div{padding:17px;background:rgba(10,22,40,.6)}.hero-stats b{display:block;color:#fff;font:900 1.75rem/1 var(--disp)}.hero-stats small{display:block;margin-top:8px;color:rgba(233,239,245,.57);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.casey-panel{overflow:hidden;border:1px solid rgba(255,255,255,.17);border-radius:20px;background:rgba(255,255,255,.055);box-shadow:var(--shadow-lg);backdrop-filter:blur(8px)}
+.casey-head{display:flex;align-items:center;gap:10px;padding:14px;border-bottom:1px solid rgba(255,255,255,.13)}.casey-c{width:35px;height:35px;display:grid;place-items:center;border-radius:10px;background:var(--gold);color:var(--deep);font-weight:900}
+.casey-head b{color:#fff}.casey-head small{display:block;color:rgba(233,239,245,.53)}.casey-body{padding:17px}
+.bubble{margin-bottom:12px;padding:12px 14px;border-radius:5px 15px 15px 15px;background:rgba(255,255,255,.09);color:#f4f7fa}.bubble.c{border:1px solid rgba(255,163,0,.25);background:rgba(255,163,0,.12)}
+.bundle-mini{display:grid;gap:9px;margin-top:13px}.bundle-row{display:flex;align-items:center;gap:10px;padding:11px;border:1px solid rgba(255,255,255,.13);border-radius:10px;background:rgba(0,0,0,.1)}
+.check{width:21px;height:21px;display:grid;place-items:center;border-radius:6px;background:#27ae60;color:#fff;font-size:12px;font-weight:800}.bundle-row strong{display:block;color:#fff;font-size:.9rem}.bundle-row small{display:block;color:rgba(233,239,245,.58)}
+
+/* nav and section */
+.nav{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(250,250,248,.93);backdrop-filter:blur(12px)}
+.nav-in{display:flex;align-items:center;gap:12px;max-width:1180px;margin:auto;padding:6px clamp(18px,4vw,42px)}
+.nav-brand{display:flex;align-items:center;gap:8px;padding:6px 0;color:var(--ink);font-size:.9rem;font-weight:800}.nav-brand i{width:17px;height:20px;background:var(--gold);clip-path:polygon(50% 0,95% 16%,88% 75%,50% 100%,12% 75%,5% 16%)}
+.nav-scroll{display:flex;flex:1;gap:3px;overflow:auto;scrollbar-width:none}.nav-scroll::-webkit-scrollbar{display:none}.nav-scroll a{flex:0 0 auto;padding:8px 11px;border-radius:999px;color:var(--mute);font-size:.82rem;font-weight:600;text-decoration:none}.nav-scroll a:hover,.nav-scroll a.on{background:var(--navy);color:#fff}
+.progress{position:absolute;bottom:-1px;left:0;height:2px;background:var(--gold);width:0}
+.priority{padding:clamp(48px,7vw,80px) 0 0}.priority-head,.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.priority h2,.sec h2{font-size:clamp(2rem,4.6vw,3.15rem)}.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:27px}
+.feature-link{min-height:185px;padding:20px;color:var(--body);text-decoration:none;transition:.18s transform,.18s border}.feature-link:hover{transform:translateY(-4px);border-color:var(--gold)}
+.feature-icon{width:43px;height:43px;display:grid;place-items:center;margin-bottom:17px;border-radius:12px;background:var(--deep);color:var(--gold);font-size:20px}.feature-link h3{font:700 1.05rem/1.25 var(--sans)}.feature-link p{margin:9px 0 0;color:var(--mute);font-size:.88rem}
+.sec{padding:clamp(60px,9vw,105px) 0 0;scroll-margin-top:62px}.sec-head{padding-bottom:23px;border-bottom:1px solid var(--line);align-items:flex-start}.sec-title{display:flex;gap:18px}.sec-num{color:var(--line2);font:900 clamp(2.2rem,5vw,3.2rem)/.86 var(--disp)}.sec-key .sec-num{color:var(--gold)}
+.sec-dek{max-width:62ch;margin:10px 0 0;color:var(--mute);font-size:1.08rem;font-weight:300}.section-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(420px,1.12fr);gap:clamp(24px,5vw,56px);align-items:start;margin-top:32px}
+.section-grid.flip{grid-template-columns:minmax(420px,1.12fr) minmax(0,.88fr)}.section-grid.flip .copy{order:2}.copy h3{font:800 clamp(1.35rem,3vw,1.9rem)/1.12 var(--disp);margin:0 0 13px}.copy p{max-width:56ch}.ticks{list-style:none;margin:22px 0;padding:0}.ticks li{position:relative;margin:12px 0;padding-left:29px}.ticks li:before{content:"✓";position:absolute;left:0;top:1px;width:19px;height:19px;display:grid;place-items:center;border-radius:6px;background:var(--goldsoft);color:var(--navy);font-size:12px;font-weight:900}
+.note{display:flex;gap:12px;margin-top:20px;padding:15px 17px;border:1px solid #F2D6A0;border-radius:12px;background:var(--warnbg);color:#4A3411;font-size:.92rem}.note b{color:#3A2808}
+
+/* product frames */
+.browser{overflow:hidden;border:1px solid var(--line2);border-radius:15px;background:#fff;box-shadow:var(--shadow-lg)}.browserbar{display:flex;align-items:center;gap:7px;padding:9px 12px;border-bottom:1px solid var(--line2);background:#EDF1F5}.browserbar i{width:9px;height:9px;border-radius:50%;background:#c4cdd6}.url{flex:1;margin-left:5px;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--mute);font:11px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app{background:var(--deep);color:#e9eff5}.app-top{display:flex;align-items:center;gap:14px;padding:13px 17px;border-bottom:1px solid rgba(255,255,255,.1)}.app-top b{color:var(--gold)}.app-tabs{display:flex;gap:6px;margin-left:auto}.app-tab{padding:6px 9px;border-radius:7px;color:#8fa4ba;font-size:10px;font-weight:700}.app-tab.on{background:#086db7;color:#fff}
+.app-body{padding:16px}.app-card{padding:14px;border:1px solid #26435f;border-radius:12px;background:#12233b}.app-card+.app-card{margin-top:12px}.app-card h4{color:#fff;font:700 15px var(--sans)}.app-muted{color:#8198b0;font-size:11px}.stepper{display:flex;gap:8px;margin:12px 0}.step{display:flex;align-items:center;gap:5px;color:#7d91a5;font-size:9px}.step b{width:19px;height:19px;display:grid;place-items:center;border:1px solid #28435e;border-radius:50%;color:#8499ae;font:700 9px var(--sans)}.step.on{color:var(--gold)}.step.on b{border-color:var(--gold);color:var(--gold)}
+.intake{display:grid;grid-template-columns:1fr 1fr;gap:9px}.fauxfield{padding:9px;border:1px solid #294663;border-radius:7px;background:#172c45}.fauxfield label{display:block;color:#88a0b7;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.fauxfield span{display:block;margin-top:3px;color:#fff;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app-actions{display:flex;gap:8px;margin-top:12px}.app-btn{padding:8px 12px;border-radius:7px;background:#086db7;color:#fff;font-size:10px;font-weight:800}.app-btn.alt{border:1px solid #31506e;background:#172b43;color:#a8bfd4}
+.two-docs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.docchoice{display:flex;gap:8px;align-items:center;padding:10px;border:1px solid #284663;border-radius:8px}.docchoice b{color:#fff;font:700 11px var(--sans)}.docchoice small{display:block;color:#7f96ad;font-size:9px}
+.edit-workspace{display:grid;grid-template-columns:.77fr 1.23fr;gap:11px}.field-list{display:grid;gap:7px}.mapped{padding:9px;border:1px solid #274663;border-radius:8px;background:#162c45}.mapped small{display:flex;justify-content:space-between;color:#839ab2;font-size:8px;text-transform:uppercase}.mapped b{display:block;margin-top:3px;color:#fff;font:600 10px var(--sans)}.mapped .good{color:#42d78b}
+.paper{position:relative;min-height:340px;padding:22px;border:1px solid #cbd4dd;background:#fff;color:#101820;box-shadow:0 6px 18px rgba(0,0,0,.18)}.paper h5{margin:0 0 8px;text-align:center;font:800 15px Arial}.paper-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid #222}.paper-cell{min-height:55px;padding:5px;border-right:1px solid #222;border-bottom:1px solid #222;font:7px Arial}.paper-cell:nth-child(even){border-right:0}.paper-cell b{display:block;font-size:6px}.paper-lines{height:90px;margin-top:8px;border:1px solid #222;background:repeating-linear-gradient(#fff,#fff 17px,#aaa 18px)}.edit-pop{position:absolute;right:10px;top:115px;width:188px;padding:11px;border:1px solid #405a73;border-radius:10px;background:#0e2137;color:#fff;box-shadow:0 12px 28px rgba(0,0,0,.3)}.edit-pop b{font:700 11px var(--sans)}.edit-pop input{width:100%;margin:7px 0;padding:7px;border:1px solid var(--gold);border-radius:5px;background:#172b43;color:#fff;font-size:10px}.edit-pop small{color:#8ca4bb;font-size:8px}.edit-pop button{float:right;border:0;border-radius:5px;background:#0870bc;color:#fff;font-size:9px;font-weight:700}
+
+/* id card */
+.id-shell{padding:18px;background:#dfe5eb}.idcard{position:relative;overflow:hidden;border:2px solid #111;background:#fff;color:#111;font:7px/1.22 Arial;padding:10px}.idcard:after{content:"TRAINING SAMPLE · NOT VALID";position:absolute;left:-15%;right:-15%;top:42%;transform:rotate(-15deg);color:rgba(173,25,25,.18);font-size:24px;font-weight:900;text-align:center;letter-spacing:4px}
+.idtitle{text-align:center;font-size:12px;font-weight:900}.idgrid{display:grid;grid-template-columns:1fr 1fr .62fr;gap:9px;margin-top:8px}.idgrid strong{font-size:8px}.idperson{margin:8px 0;padding:8px 16px;border:1px solid #111;font-weight:700}.barcode{height:56px;margin-top:8px;background:repeating-linear-gradient(90deg,#111 0 2px,#fff 2px 4px,#111 4px 5px,#fff 5px 8px,#111 8px 12px,#fff 12px 14px)}.idfoot{display:flex;justify-content:space-between;margin-top:5px;font-weight:700}
+.how{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:24px;overflow:auto}.how-step{position:relative;min-width:155px;padding:0 14px;text-align:center}.how-step:not(:last-child):after{content:"";position:absolute;right:-10px;top:22px;width:20px;height:2px;background:var(--line2)}.how-n{width:44px;height:44px;display:grid;place-items:center;margin:0 auto 10px;border:1px solid var(--line2);border-radius:12px;background:#fff;color:var(--navy);font:900 1.15rem var(--disp)}.how-step:nth-child(5) .how-n{border-color:var(--ok);background:var(--okbg);color:var(--ok)}.how-step b{display:block;color:var(--ink);font-size:.84rem}.how-step small{display:block;margin-top:4px;color:var(--mute);font-size:.77rem;line-height:1.4}
+
+/* esign */
+.signscreen{display:grid;grid-template-columns:1.05fr .65fr;min-height:440px;background:#eef2f6}.docpreview{padding:18px;background:#dfe5eb}.docmini{height:100%;min-height:400px;padding:24px;border:1px solid #ccd4dc;background:#fff}.docmini h5{text-align:center;font:900 18px Arial}.docline{height:8px;margin:12px 0;border-radius:3px;background:#e4e8ec}.docline.w70{width:70%}.docline.w45{width:45%}.sigline{margin-top:140px;border-bottom:1px solid #111;color:#777;font:8px Arial}.signcard{padding:24px;background:#fff}.signcard h4{font:800 1.5rem var(--sans)}.signcard p{color:var(--mute);font-size:.82rem}.method{display:flex;border:1px solid var(--line2);border-radius:7px;overflow:hidden}.method button{flex:1;border:0;padding:9px;background:#f4f6f8;color:var(--mute);font-size:.75rem;font-weight:700;cursor:pointer}.method button.on{background:var(--navy);color:#fff}.sigpreview{height:82px;margin-top:10px;padding:15px;border:1px solid var(--line2);border-radius:7px;color:#153a5c;font:italic 27px cursive}.drawpad{display:none;height:82px;margin-top:10px;border:1px dashed var(--navy);border-radius:7px;background:linear-gradient(165deg,transparent 48%,#183c5d 49%,#183c5d 51%,transparent 52%)}.consent{display:flex;gap:10px;margin:16px 0;padding:12px;border:2px solid var(--navy);border-radius:7px;background:#f1f7fc;font-size:.76rem}.consent input{width:20px;height:20px}.signbtn{width:100%;border:0;border-radius:6px;background:var(--navy);color:#fff;padding:12px;font-weight:800}
+.options{padding:18px}.opt{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.toggle{width:44px;height:25px;flex:0 0 auto;border:0;border-radius:999px;background:#cbd4dc;position:relative;cursor:pointer}.toggle:after{content:"";position:absolute;left:3px;top:3px;width:19px;height:19px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:.18s}.toggle.on{background:var(--ok)}.toggle.on:after{transform:translateX(19px)}.opt b{display:block;font:700 .95rem var(--sans)}.opt small{display:block;color:var(--mute);font-size:.79rem}
+.thankyou{padding:24px;text-align:center;background:#f5f7fa}.complete{max-width:470px;margin:auto;padding:30px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow)}.complete-icon{width:55px;height:55px;display:grid;place-items:center;margin:0 auto 14px;border-radius:50%;background:var(--okbg);color:var(--ok);font-size:29px;font-weight:900}.complete h4{font:800 1.45rem var(--sans);color:var(--navy)}.review-card{margin-top:21px;padding:20px;border:1px solid var(--line);border-radius:10px;background:#f7f9fc}.stars{color:var(--gold);font-size:23px;letter-spacing:3px}.review-card h5{margin:8px 0 6px;color:var(--ink);font:800 1.15rem var(--sans)}.review-card p{color:var(--mute);font-size:.81rem}.review-card a{display:block;padding:11px;border-radius:6px;background:var(--navy);color:#fff;font-size:.82rem;font-weight:800;text-decoration:none}
+
+/* screenshot */
+.screenshot{overflow:hidden;margin-top:26px;border:1px solid var(--line2);border-radius:16px;background:#07111e;box-shadow:var(--shadow-lg)}.screenshot img{width:100%}.caption{padding:12px 16px;background:#fff;color:var(--mute);font-size:.81rem}
+
+/* flows/table */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:26px}.flow-card{padding:16px;border:1px solid var(--line);border-radius:12px;background:#fff}.flow-card .n{width:30px;height:30px;display:grid;place-items:center;margin-bottom:13px;border-radius:8px;background:var(--deep);color:var(--gold);font:800 .9rem var(--sans)}.flow-card b{display:block;font:.8rem/1.35 var(--sans);color:var(--ink)}.flow-card small{display:block;margin-top:5px;color:var(--mute);font-size:.75rem;line-height:1.4}
+.health{padding:20px}.health-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding-bottom:15px;border-bottom:1px solid var(--line)}.health-head h4{font:800 1.05rem var(--sans)}.health-table{width:100%;border-collapse:collapse;font-size:.82rem}.health-table th,.health-table td{padding:12px 9px;text-align:left;border-bottom:1px solid var(--line)}.health-table th{color:var(--mute);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase}.verified{color:var(--ok);font-weight:700}.action{color:var(--navy);font-weight:700}.pack{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}.pack span{padding:6px 10px;border-radius:999px;background:#edf3f8;color:var(--navy);font-size:.75rem;font-weight:700}
+
+/* overseer */
+.overseer{position:relative;overflow:hidden;margin-top:32px;padding:clamp(24px,5vw,44px);background:var(--deep);color:#e9eff5}.overseer:before{content:"";position:absolute;inset:0;background:radial-gradient(520px 300px at 100% 0,rgba(255,163,0,.18),transparent 65%)}.overseer>*{position:relative}.overseer h3{color:#fff;font-size:clamp(1.7rem,4vw,2.5rem)}.overseer p{max-width:70ch;color:#aab9c7}.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}.learn{padding:18px;border:1px solid rgba(255,255,255,.13);border-radius:12px;background:rgba(255,255,255,.055)}.learn b{display:block;color:#fff}.learn small{display:block;margin-top:5px;color:#9eb0c2}.guardrails{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.guardrails span{padding:7px 10px;border-radius:999px;background:rgba(255,163,0,.12);color:var(--gold2);font-size:.75rem;font-weight:700}
+
+/* guide */
+.guide{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}.guide-card{padding:23px}.guide-card h3{font:800 1.3rem var(--sans)}.prompt{margin:15px 0;padding:15px;border:1px solid var(--line2);border-radius:10px;background:#f7f9fb;color:var(--ink);font-size:.92rem}.prompt:before{content:"You can type:";display:block;margin-bottom:7px;color:var(--navy);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.guide ol{margin:16px 0 0;padding-left:22px}.guide li{margin:9px 0}
+.cta{margin-top:clamp(70px,9vw,110px);padding:clamp(38px,7vw,70px);border-radius:22px;background:var(--deep);color:#dfe8f0;text-align:center}.cta h2{color:#fff;font-size:clamp(2rem,5vw,3.5rem)}.cta p{max-width:60ch;margin:16px auto 25px;color:#a7b7c6}.footer{padding:36px 0;color:var(--mute);font-size:.8rem;text-align:center}
+.mobile-callout{display:none}
+
+@media(max-width:980px){
+  .hero-grid,.section-grid,.section-grid.flip{grid-template-columns:1fr}.section-grid.flip .copy{order:0}.feature-grid{grid-template-columns:1fr 1fr}.flow{grid-template-columns:repeat(3,1fr)}.learn-grid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  body{font-size:16px}.brandmeta,.brandline{display:none}.hero-grid{display:block}.casey-panel{margin-top:34px}.hero-stats{grid-template-columns:1fr 1fr}.feature-grid,.guide{grid-template-columns:1fr}.sec-title{gap:12px}.sec-num{font-size:2rem}.section-grid,.section-grid.flip{display:block}.copy{margin-bottom:24px}.edit-workspace,.signscreen{grid-template-columns:1fr}.field-list{display:none}.paper{min-height:300px}.edit-pop{right:8px;top:105px;width:168px}.how{padding-bottom:8px}.flow{grid-template-columns:1fr 1fr}.screenshot{border-radius:10px}.nav-brand span{display:none}.mobile-callout{display:block;margin-top:10px;color:var(--mute);font-size:.8rem}.app-tabs{display:none}
+}
+@media(max-width:430px){
+  .hero{padding-top:24px}.hero h1{font-size:2.7rem}.hero-stats{display:none}.feature-grid,.flow{grid-template-columns:1fr}.intake,.two-docs{grid-template-columns:1fr}.paper{padding:14px}.edit-pop{position:relative;right:auto;top:auto;width:auto;margin-top:8px}.signcard{padding:18px}.nav-scroll a{padding:8px 9px}.idgrid{grid-template-columns:1fr 1fr}.idgrid div:last-child{display:none}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="brandbar"><div class="shield">S</div><div class="brand"><span>Safeshield</span> Insurance</div><div class="brandline"></div><div class="brandmeta">Internal team launch · July 2026</div></div>
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow gold">Safeshield Secure · the huge update</p>
+        <h1>Create it. Sign it. <em>File it.</em></h1>
+        <p class="hero-dek">Safeshield Secure is now a <strong>smart insurance document studio</strong>. Ask CASEY for what you need—or start in the portal—and she can choose the form, read the policy, fill it, create an official NYS ID card, place signing fields, send it securely, and preserve the finished record.</p>
+        <div class="hero-actions"><a class="btn gold" href="#try">See how to use it</a><a class="btn ghost" href="https://casey.gosafeshield.com/secure-docs.html" target="_blank" rel="noopener">Open Safeshield Secure ↗</a></div>
+        <div class="hero-stats">
+          <div><b>2</b><small>Ways to start</small></div><div><b>1</b><small>Shared intake</small></div><div><b>0</b><small>RabbitSign templates</small></div><div><b>24/7</b><small>Audit trail</small></div>
+        </div>
+      </div>
+      <div class="casey-panel" aria-label="Sample CASEY document request">
+        <div class="casey-head"><div class="casey-c">C</div><div><b>Ask CASEY</b><small>Smart document request</small></div></div>
+        <div class="casey-body">
+          <div class="bubble">Build Jerry Garcia's NY auto application and an ID card from this declarations page.</div>
+          <div class="bubble c"><strong>I found a New York personal auto policy.</strong><br>I matched the ACORD 90 and the official NYS ID-card workflow. Both are ready for review.</div>
+          <div class="bundle-mini">
+            <div class="bundle-row"><span class="check">✓</span><div><strong>ACORD 90 · NY Personal Auto</strong><small>Mapped PDF · review and e-sign if needed</small></div></div>
+            <div class="bundle-row"><span class="check">✓</span><div><strong>New York insurance ID card</strong><small>Official state generator · completed attachment</small></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="nav"><div class="nav-in"><div class="nav-brand"><i></i><span>Safeshield Secure</span></div><nav class="nav-scroll" aria-label="Sections"><a href="#start">Start</a><a href="#smart">Smart docs</a><a href="#nys">NY ID cards</a><a href="#esign">E-sign</a><a href="#security">Security</a><a href="#records">Records</a><a href="#learning">Learning</a><a href="#try">Use it</a></nav></div><div class="progress" id="progress"></div></div>
+
+<main>
+<section class="priority">
+  <div class="wrap">
+    <div class="priority-head"><div><p class="eyebrow">If you read nothing else</p><h2>These change the job.</h2></div><span class="chip live">Live now</span></div>
+    <div class="feature-grid">
+      <a class="feature-link card" href="#smart"><span class="feature-icon">✦</span><h3>Plain English → correct form</h3><p>Say “property proof for this lender.” CASEY chooses the right ACORD and explains why.</p></a>
+      <a class="feature-link card" href="#nys"><span class="feature-icon">NY</span><h3>Official NYS ID cards</h3><p>Create the real FS-20 yourself—with the state barcode—without leaving CASEY.</p></a>
+      <a class="feature-link card" href="#esign"><span class="feature-icon">✍</span><h3>Template-free e-sign</h3><p>Upload a PDF. CASEY finds the signature spots, then you review and send.</p></a>
+      <a class="feature-link card" href="#records"><span class="feature-icon">✓</span><h3>Finished means filed</h3><p>Signed PDF, audit certificate, Google Chat notification, and NowCerts record.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-key" id="start">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">01</span><div><p class="eyebrow">Two front doors · one workflow</p><h2>Start wherever you already are.</h2><p class="sec-dek">You do not have to learn a special command. Ask CASEY in Chat, or open Safeshield Secure and use Create with CASEY.</p></div></div><span class="chip live">Live now</span></div>
+    <div class="section-grid">
+      <div class="copy">
+        <h3>Use normal insurance language.</h3>
+        <p>CASEY understands the job—not only the form number. A declarations page or typed facts become one shared intake that can produce one document or a whole bundle.</p>
+        <ul class="ticks">
+          <li>“I need a property form for this lender.”</li>
+          <li>“Build the cancellation and send it to the insured.”</li>
+          <li>“Create the NY auto ACORD and ID card.”</li>
+          <li>“Use this finished PDF and put the signature on the insured line.”</li>
+        </ul>
+        <div class="note"><span>💡</span><div><b>You are still in control.</b> CASEY prepares a review—not a blind send. Anything uncertain is called out before the document can move forward.</div></div>
+      </div>
+      <div class="browser">
+        <div class="browserbar"><i></i><i></i><i></i><span class="url">casey.gosafeshield.com/secure-docs.html</span></div>
+        <div class="app">
+          <div class="app-top"><b>Safeshield Secure</b><div class="app-tabs"><span class="app-tab on">Create with CASEY</span><span class="app-tab">Upload a finished PDF</span><span class="app-tab">NY ID card</span></div></div>
+          <div class="app-body">
+            <div class="app-card"><h4>Create a smart document</h4><div class="app-muted">Describe what you need and add the declarations page.</div><div class="stepper"><span class="step on"><b>1</b>Start</span><span class="step"><b>2</b>Review</span><span class="step"><b>3</b>Prepare</span><span class="step"><b>4</b>Send</span></div>
+              <div class="fauxfield"><label>What do you need?</label><span>Build Jerry Garcia's NY auto ACORD and ID card.</span></div>
+              <div class="fauxfield" style="margin-top:9px"><label>Declarations page</label><span>JERRY-GARCIA-NY-AUTO-DEC.pdf · attached</span></div>
+              <div class="app-actions"><span class="app-btn">Build my documents</span><span class="app-btn alt">Form and NowCerts options</span></div>
+            </div>
+            <div class="two-docs"><div class="docchoice"><span class="check">✓</span><div><b>ACORD 90</b><small>Mapped PDF</small></div></div><div class="docchoice"><span class="check">✓</span><div><b>NY ID card</b><small>Official generator</small></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-key" id="smart">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">02</span><div><p class="eyebrow">Smart Match + live editing</p><h2>The form fills while you watch.</h2><p class="sec-dek">CASEY reads the source, chooses the form, maps familiar facts to mastered coordinates, and shows the result beside the field list.</p></div></div><span class="chip live">Live now</span></div>
+    <div class="section-grid flip">
+      <div class="copy">
+        <h3>Click the PDF to fix a value.</h3>
+        <p>Every CASEY-filled value is a live text box. Click the value on the document, type the correction, and the PDF updates without starting over.</p>
+        <ul class="ticks">
+          <li>Exact field placement is cached by form and edition.</li>
+          <li>Smart Match shows where every value came from.</li>
+          <li>Required gaps are highlighted; optional fields can stay off.</li>
+          <li>Check or uncheck fields, signatures, initials, text, and checkboxes.</li>
+          <li>Multiple documents share one fact set—so you review once.</li>
+        </ul>
+        <p><strong>What “learning placement” means:</strong> once a form edition is mastered, CASEY reuses its verified coordinate map. Agent corrections become structured feedback for the Overseer layer; they never silently rewrite an approved form.</p>
+      </div>
+      <div class="browser">
+        <div class="browserbar"><i></i><i></i><i></i><span class="url">Live document · ACORD 90 · Jerry Garcia</span></div>
+        <div class="app-body app">
+          <div class="edit-workspace">
+            <div class="field-list">
+              <div class="mapped"><small>Insured name <span class="good">Mapped</span></small><b>Jerry Garcia</b></div>
+              <div class="mapped"><small>Policy number <span class="good">Mapped</span></small><b>SAMPLE-90-2026</b></div>
+              <div class="mapped"><small>Effective date <span class="good">Mapped</span></small><b>07/30/2026</b></div>
+              <div class="mapped"><small>Vehicle <span class="good">Mapped</span></small><b>2025 Sample Sedan</b></div>
+              <div class="mapped"><small>Total premium <span class="good">Mapped</span></small><b>$2,480</b></div>
+            </div>
+            <div class="paper">
+              <h5>NEW YORK PERSONAL AUTO APPLICATION</h5>
+              <div class="paper-grid"><div class="paper-cell"><b>AGENCY</b>Safeshield Insurance</div><div class="paper-cell"><b>APPLICANT</b>Jerry Garcia</div><div class="paper-cell"><b>ADDRESS</b>123 Sample Street, Albany NY 12207</div><div class="paper-cell"><b>POLICY NUMBER</b>SAMPLE-90-2026</div></div>
+              <div class="paper-lines"></div>
+              <div class="edit-pop"><b>Policy Number</b><input value="SAMPLE-90-2026" aria-label="Sample policy number"><small>Updates this mapped value and the live PDF</small><button>Done</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-key" id="nys">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">03</span><div><p class="eyebrow">The showstopper</p><h2>You can create official NYS ID cards.</h2><p class="sec-dek">Not a screenshot. Not a generic PDF. Safeshield Secure sends verified policy data through our licensed New York generator and returns the official FS-20 with the state barcode.</p></div></div><span class="chip live">Live now</span></div>
+    <div class="section-grid">
+      <div class="copy">
+        <h3>Ask for the card—or let CASEY infer it.</h3>
+        <p>Upload a New York auto declarations page or type the facts. CASEY identifies the risk state, carrier, driver, vehicle, policy term, and the carrier's NYS code. If something required is missing or invalid, she asks instead of guessing.</p>
+        <ul class="ticks">
+          <li>Pull from the declaration page, typed request, or NowCerts fallback.</li>
+          <li>Review driver, policy, carrier, vehicle, VIN, and effective dates.</li>
+          <li>Generate the official card in the background—your computer stays free.</li>
+          <li>View it fitted to the screen, download it, or send it securely.</li>
+          <li>Build the ACORD 90 and ID card together from the same intake.</li>
+        </ul>
+        <div class="note"><span>⚠</span><div><b>CASEY never invents regulated data.</b> Carrier code, license details, VIN, and required dates must pass validation. Errors appear as a clear issue in the same document conversation.</div></div>
+      </div>
+      <div class="browser">
+        <div class="browserbar"><i></i><i></i><i></i><span class="url">New York insurance ID card · Official PDF preview</span></div>
+        <div class="id-shell">
+          <div class="idcard">
+            <div class="idtitle">NEW YORK STATE INSURANCE IDENTIFICATION CARD</div>
+            <div class="idgrid">
+              <div><strong>999 · Sample Insurance Company</strong><br><br>Name &amp; Address of Issuer<br><strong>Safeshield Insurance Agency LLC</strong><br>191 King Street<br>Chappaqua, NY 10514</div>
+              <div>Policy Number<br><strong>SAMPLE-6859403</strong><br><br>Effective Date &nbsp;&nbsp; Expiration Date<br><strong>07/30/2026 &nbsp;&nbsp; 07/30/2027</strong><div class="idperson">GARCIA, JERRY<br>123 SAMPLE STREET<br>ALBANY NY 12207</div></div>
+              <div>Motor Vehicle:<br><strong>2025 &nbsp; SAMPLE</strong><br><br>Vehicle Identification Number<br><strong>TESTVIN00000000001</strong><br><br>FS-20</div>
+            </div>
+            <div class="barcode"></div><div class="idfoot"><span>Official workflow preview</span><span>FS-20</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="how" aria-label="How to create a New York ID card">
+      <div class="how-step"><div class="how-n">1</div><b>Start</b><small>Ask CASEY or choose NY ID card in Safeshield Secure.</small></div>
+      <div class="how-step"><div class="how-n">2</div><b>Add the source</b><small>Upload the dec page, type the facts, or use NowCerts.</small></div>
+      <div class="how-step"><div class="how-n">3</div><b>Review</b><small>Check carrier code, driver, vehicle, VIN, and dates.</small></div>
+      <div class="how-step"><div class="how-n">4</div><b>Create</b><small>Click Create official ID card. CASEY runs the NY generator.</small></div>
+      <div class="how-step"><div class="how-n">✓</div><b>Use the PDF</b><small>View, download, file, or send it—alone or with the ACORD.</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-key" id="esign">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">04</span><div><p class="eyebrow">Safeshield Secure Sign</p><h2>E-sign without building a template first.</h2><p class="sec-dek">Upload a finished PDF or generate one with CASEY. Known forms already know their signature roles; unfamiliar PDFs are inspected for printed signing lines and boxes, then shown in the visual editor.</p></div></div><span class="chip live">Live now</span></div>
+    <div class="section-grid flip">
+      <div class="copy">
+        <h3>The signer gets a clean, mobile-first experience.</h3>
+        <ul class="ticks">
+          <li>Fitted PDF preview—no giant zoom or sideways document.</li>
+          <li>Type a signature or draw it with a finger, mouse, or stylus.</li>
+          <li>Clear electronic-signature consent before the Sign button.</li>
+          <li>Signature, initials, text, radio buttons, and checkboxes.</li>
+          <li>Sequential or parallel signing when more than one person is needed.</li>
+          <li>Safeshield Insurance is the sender—not an individual agent.</li>
+        </ul>
+        <p>The visual field editor lets you move, add, or remove a signing box before sending. A cancellation can require only the named-insured signature while producer/witness signatures and dates are applied by the agent workflow.</p>
+      </div>
+      <div class="browser">
+        <div class="browserbar"><i></i><i></i><i></i><span class="url">Safeshield Secure · Review and sign</span></div>
+        <div class="signscreen">
+          <div class="docpreview"><div class="docmini"><h5>CANCELLATION REQUEST / POLICY RELEASE</h5><div class="docline"></div><div class="docline w70"></div><div class="docline"></div><div class="docline w45"></div><div class="sigline">SIGNATURE OF NAMED INSURED</div></div></div>
+          <div class="signcard"><h4>Review and sign</h4><p>Signer: Jerry Garcia · named insured</p><label style="font-size:.72rem;font-weight:700">Full legal name</label><div class="fauxfield" style="margin:6px 0 12px;background:#fff;border-color:#aeb9c6"><span style="color:#17212b">Jerry Garcia</span></div><div class="method"><button class="on" data-method="type">Type signature</button><button data-method="draw">Draw signature</button></div><div class="sigpreview">Jerry Garcia</div><div class="drawpad"></div><label class="consent"><input type="checkbox" checked><span><strong>Electronic signature consent</strong><br>I consent to use electronic records and signatures for this document.</span></label><button class="signbtn">Sign document</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="security">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">05</span><div><p class="eyebrow">Per-send controls</p><h2>Secure when it needs to be. Human when it should be.</h2><p class="sec-dek">The agent decides the security and customer-experience settings for each send. Advanced options stay tucked away until you need them.</p></div></div><span class="chip live">Live now</span></div>
+    <div class="section-grid">
+      <div class="card options">
+        <div class="opt"><button class="toggle on" aria-pressed="true"></button><div><b>File automatically in NowCerts</b><small>Recommended. CASEY matches and files the PDF plus a readable audit note in the background.</small></div></div>
+        <div class="opt"><button class="toggle" aria-pressed="false"></button><div><b>Password-protect this signature request</b><small>CASEY creates a password shown once. Share it separately by text or phone.</small></div></div>
+        <div class="opt"><button class="toggle on" id="reviewToggle" aria-pressed="true"></button><div><b>Include a review request after signing?</b><small>Off by default. Turn it on only when it fits the customer experience.</small></div></div>
+        <div class="opt"><button class="toggle on" aria-pressed="true"></button><div><b>Require an emailed code</b><small>A six-digit code protects the first open; the trusted device is remembered for 30 days.</small></div></div>
+        <div class="opt"><button class="toggle" aria-pressed="false"></button><div><b>Watermark the copy</b><small>Stamp every page for sensitive documents while the original remains protected.</small></div></div>
+      </div>
+      <div class="browser" id="reviewPreview">
+        <div class="browserbar"><i></i><i></i><i></i><span class="url">What the signer sees after completion</span></div>
+        <div class="thankyou">
+          <div class="complete"><div class="complete-icon">✓</div><h4>Thank you—your signature is complete</h4><p style="color:var(--mute);font-size:.84rem">Your document has been securely signed, and its audit certificate is attached to the completed PDF.</p>
+            <div class="review-card" id="reviewCard"><div class="stars">★★★★★</div><h5>Would you share your experience?</h5><p>If Safeshield made this easy, we'd be grateful for a 5-star review. It only takes a moment.</p><a href="https://gosafeshield.com/review" target="_blank" rel="noopener">Leave a 5-star review</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="mobile-callout">On a phone, the same options stack into large tap targets and the signing panel moves below the fitted document.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">06</span><div><p class="eyebrow">The secure sender</p><h2>Send one file—or a whole package.</h2><p class="sec-dek">Drag in PDFs, Word files, spreadsheets, images, or ZIPs. Multiple recipients receive their own private link and access code, and multiple selected documents can travel in one clean email.</p></div></div><span class="chip live">Live now</span></div>
+    <figure class="screenshot"><img src="assets/secure-sender.png" alt="Safeshield Secure sender with recipient, NowCerts, watermark, emailed code, document reader, and expiration controls"><figcaption class="caption">Live Safeshield Secure sender. The technical controls stay below the message, so the everyday path remains simple.</figcaption></figure>
+  </div>
+</section>
+
+<section class="sec sec-key" id="records">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">07</span><div><p class="eyebrow">Nothing disappears after “send”</p><h2>A signed document becomes a complete record.</h2><p class="sec-dek">Safeshield Secure tracks delivery and signing, keeps the evidence package, and routes the finished work to the systems the team already uses.</p></div></div><span class="chip live">Live now</span></div>
+    <div class="flow">
+      <div class="flow-card"><span class="n">1</span><b>Secure request sent</b><small>Branded email, private link, optional password or code.</small></div>
+      <div class="flow-card"><span class="n">2</span><b>Signer completes</b><small>Consent, signature method, time, IP, browser, and fingerprint.</small></div>
+      <div class="flow-card"><span class="n">3</span><b>Google Chat notified</b><small>The team sees completion with direct download actions.</small></div>
+      <div class="flow-card"><span class="n">4</span><b>NowCerts filed</b><small>Approved PDF plus a readable note go to the matched household.</small></div>
+      <div class="flow-card"><span class="n">5</span><b>Package preserved</b><small>Signed PDF, audit certificate, audit JSON, and package ZIP.</small></div>
+    </div>
+    <div class="section-grid" style="margin-top:28px">
+      <div class="copy">
+        <h3>Search it like a question.</h3>
+        <p>Ask CASEY, “Did Jerry Garcia sign the cancellation?” The signature search returns signer, status, completion time, delivery state, password protection, NowCerts archive status, and the finished files.</p>
+        <ul class="ticks">
+          <li>Reminder, resend, fresh private link, and signer-email correction.</li>
+          <li>Add, reset, or remove password protection.</li>
+          <li>Operations health checks delivery, expiration, NowCerts, Google Chat, file integrity, and retention.</li>
+          <li>Unmatched NowCerts records are saved safely and escalated for resolution—not lost.</li>
+        </ul>
+      </div>
+      <div class="card health">
+        <div class="health-head"><div><h4>Completed signatures</h4><small style="color:var(--mute)">Permanent copies and tamper-evident audit records</small></div><span class="chip live">Verified</span></div>
+        <table class="health-table"><thead><tr><th>Document</th><th>Completed</th><th>Status</th><th>Actions</th></tr></thead><tbody>
+          <tr><td><strong>Jerry Garcia cancellation</strong><br><small>CASEY e-sign</small></td><td>Today · 10:42 AM</td><td class="verified">✓ Verified</td><td class="action">View signed PDF</td></tr>
+          <tr><td><strong>Jerry Garcia ACORD package</strong><br><small>CASEY e-sign</small></td><td>Today · 10:35 AM</td><td class="verified">✓ Verified</td><td class="action">Details &amp; downloads</td></tr>
+        </tbody></table>
+        <div class="pack"><span>Signed PDF</span><span>Audit certificate</span><span>Audit JSON</span><span>Download package</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="learning">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">08</span><div><p class="eyebrow">The intelligence layer</p><h2>Fast today. Smarter every time.</h2><p class="sec-dek">The current system already uses mastered form maps, deterministic checks, source evidence, safe retries, and audit trails. The next deployment adds the full Overseer feedback loop.</p></div></div><span class="chip next">Next deployment</span></div>
+    <div class="overseer card">
+      <p class="eyebrow gold">CASEY Overseer · transparent learning</p><h3>Fact-check in the background—never in the way.</h3>
+      <p>Overseer will compare extracted facts, mapped fields, and rendered output in parallel with the fast document path. Agents still get the preview immediately. High-confidence checks pass quietly; conflicts appear as one clear question in the same document conversation.</p>
+      <div class="learn-grid">
+        <div class="learn"><b>1 · Observe corrections</b><small>Record the old value, new value, form edition, field, source, and reason—without storing secrets in prompts.</small></div>
+        <div class="learn"><b>2 · Propose a lesson</b><small>Turn repeated corrections into a versioned mapping or extraction suggestion with supporting evidence.</small></div>
+        <div class="learn"><b>3 · Test before trust</b><small>Replay the suggestion against known documents and render checks. One correction never becomes a global rule.</small></div>
+        <div class="learn"><b>4 · Promote safely</b><small>Only validated improvements become the next mapping version, with rollback and a complete audit trail.</small></div>
+      </div>
+      <div class="guardrails"><span>Non-blocking shadow checks</span><span>Human approval for global rules</span><span>Versioned maps</span><span>Regression tests</span><span>Rollback</span><span>No silent changes</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="try">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-title"><span class="sec-num">09</span><div><p class="eyebrow">Try this this week</p><h2>Three prompts are enough to start.</h2><p class="sec-dek">Use the words you would use with another agent. CASEY handles the form names and workflow underneath.</p></div></div><span class="chip live">Ready</span></div>
+    <div class="guide">
+      <div class="guide-card card"><h3>Property evidence</h3><div class="prompt">Make the property evidence form this lender needs from the attached dec page.</div><ol><li>Attach the declaration page.</li><li>Review CASEY's form choice and Smart Match values.</li><li>Click any PDF value to correct it.</li><li>Download, file, or send.</li></ol></div>
+      <div class="guide-card card"><h3>New York auto bundle</h3><div class="prompt">Build the NY auto ACORD and official ID card from this dec page.</div><ol><li>Keep both document checkboxes selected.</li><li>Review the shared driver, vehicle, policy, and carrier facts.</li><li>Create selected documents.</li><li>Preview each tab and send together if needed.</li></ol></div>
+      <div class="guide-card card"><h3>Cancellation + e-sign</h3><div class="prompt">Create the cancellation for this policy and send it to the named insured for signature.</div><ol><li>Confirm cancellation date and reason.</li><li>Check that only the required insured signature is requested.</li><li>Choose password/review options if appropriate.</li><li>Send and follow the result in Signatures.</li></ol></div>
+      <div class="guide-card card"><h3>Your own finished PDF</h3><div class="prompt">Use this finished PDF. Find the insured signature line and prepare it for secure signing.</div><ol><li>Choose Upload a finished PDF.</li><li>Review detected signing fields.</li><li>Drag, resize, add, or remove any field.</li><li>Approve and send.</li></ol></div>
+    </div>
+    <div class="cta"><p class="eyebrow gold">Safeshield Secure</p><h2>It is live. Go make something.</h2><p>Start in CASEY Chat or open Safeshield Secure. If CASEY asks a question, answer it in the document conversation—the same draft updates in place.</p><a class="btn gold" href="https://casey.gosafeshield.com/secure-docs.html" target="_blank" rel="noopener">Open Safeshield Secure ↗</a></div>
+  </div>
+</section>
+</main>
+<footer class="footer"><div class="wrap">Safeshield Insurance · Internal team update · Fictional sample client shown throughout · July 2026</div></footer>
+<script>
+const progress=document.getElementById('progress');
+const navLinks=[...document.querySelectorAll('.nav-scroll a')];
+const sections=navLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function updatePage(){
+  const max=document.documentElement.scrollHeight-innerHeight;
+  progress.style.width=(max?scrollY/max*100:0)+'%';
+  let current=sections[0];
+  for(const section of sections){if(section.getBoundingClientRect().top<=110)current=section}
+  navLinks.forEach(a=>a.classList.toggle('on',current&&a.getAttribute('href')==='#'+current.id));
+}
+addEventListener('scroll',updatePage,{passive:true});updatePage();
+document.querySelectorAll('.toggle').forEach(toggle=>toggle.addEventListener('click',()=>{
+  toggle.classList.toggle('on');toggle.setAttribute('aria-pressed',toggle.classList.contains('on'));
+  if(toggle.id==='reviewToggle'){document.getElementById('reviewCard').style.display=toggle.classList.contains('on')?'block':'none'}
+}));
+document.querySelectorAll('.method button').forEach(button=>button.addEventListener('click',()=>{
+  document.querySelectorAll('.method button').forEach(b=>b.classList.remove('on'));button.classList.add('on');
+  document.querySelector('.sigpreview').style.display=button.dataset.method==='type'?'block':'none';
+  document.querySelector('.drawpad').style.display=button.dataset.method==='draw'?'block':'none';
+}));
+</script>
+</body>
+</html>
