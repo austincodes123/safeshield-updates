@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>State of the Shield | August 2026</title>
-  <meta name="description" content="Austin's Portugal travel note and Safeshield team update: out-of-office handoff, CASEY, Gusto, My Pay, the lead engine, client portal, Claims Center, Safeshield Secure, and our new office.">
+  <title>CASEY Ecosystem | Safeshield Insurance</title>
+  <meta name="description" content="Explore the connected CASEY operating ecosystem: lead generation, Gusto and pay coaching, Safeshield Secure, client experience, claims, quoting, renewals, commissions, training, and Instant Bind.">
   <style>
     :root {
       --navy: #081727;
@@ -90,8 +90,16 @@
     body.view-ready.view-updates [data-page="updates"][data-topic] { display: none; }
     body.view-ready.view-updates [data-page="updates"][data-topic].topic-active { display: block; }
     body.view-updates .hero { min-height: 0; }
-    body.view-updates .hero-inner { padding-bottom: 54px; }
+    body.view-updates .hero-inner { padding: 20px 0 22px; }
     body.view-updates .hero-grid { display: none; }
+    body.view-updates .hero-heading { display: flex; align-items: baseline; gap: 16px; margin-top: 17px; }
+    body.view-updates .hero-heading .report-title { font-size: clamp(1.9rem, 3vw, 2.7rem); }
+    body.view-updates .view-switcher { margin-top: 17px; }
+    body.view-updates main { display: flex; flex-direction: column; }
+    body.view-updates .system-map { order: -1; }
+    body.view-updates .system-map.section { padding-top: 52px; }
+    body.view-updates .system-map .section-head { margin-bottom: 26px; }
+    body.view-updates .hero { display: none; }
 
     .chapter-nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); border-bottom: 1px solid var(--line); backdrop-filter: blur(16px); }
     .chapter-nav .shell { display: flex; align-items: center; gap: 8px; overflow-x: auto; padding: 12px 0; scrollbar-width: none; }
@@ -199,7 +207,18 @@
     .ecosystem-journey button:hover, .ecosystem-journey button.active { border-color: var(--orange); background: rgba(255,163,0,.12); }
     .ecosystem-journey b { display: block; color: var(--orange); font-size: .64rem; letter-spacing: .1em; }
     .ecosystem-journey span { display: block; margin-top: 8px; font-size: .82rem; font-weight: 800; }
-    .ecosystem-modal-stage { margin-top: 10px; padding: 16px 18px; border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; color: #dce7ef; background: rgba(255,255,255,.07); font-size: .86rem; }
+    .ecosystem-demo-screen { margin-top: 11px; overflow: hidden; border: 1px solid rgba(255,255,255,.14); border-radius: 15px; background: #071522; }
+    .ecosystem-demo-toolbar { display: flex; justify-content: space-between; gap: 12px; padding: 10px 13px; border-bottom: 1px solid rgba(255,255,255,.1); color: #9eb0bf; font-size: .62rem; font-weight: 850; letter-spacing: .09em; }
+    .ecosystem-demo-toolbar span { display: flex; align-items: center; gap: 7px; }
+    .ecosystem-demo-toolbar i { width: 7px; height: 7px; border-radius: 50%; background: #26c477; box-shadow: 0 0 10px rgba(38,196,119,.8); }
+    .ecosystem-demo-toolbar em { color: var(--orange); font-style: normal; }
+    .ecosystem-demo-body { position: relative; min-height: 146px; padding: 20px 20px 22px; background: radial-gradient(circle at 90% 10%, rgba(255,163,0,.11), transparent 34%); }
+    .ecosystem-demo-body small { color: var(--orange); font-size: .62rem; font-weight: 900; letter-spacing: .12em; }
+    .ecosystem-demo-body strong { display: block; margin-top: 7px; color: white; font-size: 1.1rem; }
+    .ecosystem-modal-stage { margin: 8px 0 0; color: #c3d1dc; font-size: .84rem; }
+    .ecosystem-demo-meter { display: flex; gap: 6px; margin-top: 17px; }
+    .ecosystem-demo-meter i { width: 34px; height: 4px; border-radius: 999px; background: rgba(255,255,255,.12); }
+    .ecosystem-demo-meter i.complete { background: var(--orange); box-shadow: 0 0 10px rgba(255,163,0,.3); }
     .ecosystem-modal-actions { display: flex; align-items: center; gap: 12px; margin-top: 19px; }
     .ecosystem-modal-actions button { padding: 12px 16px; border: 0; border-radius: 999px; color: var(--navy); background: var(--orange); font-size: .68rem; font-weight: 950; letter-spacing: .08em; cursor: pointer; }
     .ecosystem-modal-actions span { color: #9fb2c2; font-size: .72rem; }
@@ -449,6 +468,9 @@
       .letter-preview a { grid-template-columns: 1fr auto; gap: 5px 10px; }
       .letter-preview a > span { grid-column: 1 / -1; grid-row: 2; }
       .ecosystem-map { min-height: 560px; border-radius: 28px; }
+      body.view-updates .system-map.section { padding-top: 34px; }
+      body.view-updates .system-map .section-head { margin-bottom: 16px; }
+      body.view-updates .system-map .section-head p, body.view-updates .ecosystem-progress { display: none; }
       .ecosystem-hub { width: 112px; height: 112px; padding: 11px; }
       .ecosystem-hub strong { font-size: 1.3rem; }
       .ecosystem-hub span { font-size: .58rem; }
@@ -473,7 +495,7 @@
     }
   </style>
 </head>
-<body class="view-ready view-letter">
+<body class="view-ready view-updates">
   <header class="hero" id="top">
     <div class="hero-inner shell">
       <div class="brand-row">
@@ -485,8 +507,8 @@
         <h1 class="report-title">State of the Shield</h1>
       </div>
       <div class="view-switcher" aria-label="Choose update view">
-        <button class="view-tab active" type="button" data-view="letter" aria-pressed="true"><b>01</b><span><strong>Austin&rsquo;s Letter</strong><span>Current state and team handoff</span></span></button>
-        <button class="view-tab" type="button" data-view="updates" aria-pressed="false"><b>02</b><span><strong>What&rsquo;s New</strong><span>Systems, tools, and how they work</span></span></button>
+        <button class="view-tab active" type="button" data-view="updates" aria-pressed="true"><b>01</b><span><strong>CASEY Ecosystem</strong><span>Explore the systems and what is new</span></span></button>
+        <button class="view-tab" type="button" data-view="letter" aria-pressed="false"><b>02</b><span><strong>Austin&rsquo;s Letter</strong><span>Current state and team handoff</span></span></button>
       </div>
       <div class="hero-grid" data-page="letter">
         <div class="hero-copy opening-letter">
@@ -515,7 +537,7 @@
 
   <nav class="chapter-nav" aria-label="Update chapters">
     <div class="shell">
-      <a class="nav-brand" href="#top">STATE OF THE SHIELD</a>
+      <a class="nav-brand" href="#systems">CASEY ECOSYSTEM</a>
       <a href="#before-i-go" data-nav="letter">Plan ahead</a>
       <a href="#updates-overview" data-nav="updates">Why it matters</a>
       <a href="#leads" data-nav="updates">Lead engine</a>
@@ -599,7 +621,7 @@
     <section class="section system-map" id="systems" data-page="updates" data-topic="systems">
       <div class="shell">
         <div class="section-head">
-          <div><div class="eyebrow">The Safeshield ecosystem</div><h2>A working system that keeps getting fuller.</h2></div>
+          <div><div class="eyebrow">Safeshield Insurance</div><h2>The CASEY operating ecosystem.</h2></div>
           <p>This is not a future-state diagram. Most of these connections already work today. Click any node to see what enters it, what CASEY does, and what the team gets back.</p>
         </div>
         <div class="ecosystem-progress"><strong>11 CONNECTED</strong><span>Lead intake, Deal Log, Gusto, NowCerts, client service, claims, Secure, quoting, renewals, commissions, and training already connect to the CASEY operating layer. Instant Bind is the next approved connection.</span></div>
@@ -632,7 +654,10 @@
                 <button type="button" data-system-stage="1"><b>02 | CASEY</b><span></span></button>
                 <button type="button" data-system-stage="2"><b>03 | RESULT</b><span></span></button>
               </div>
-              <div class="ecosystem-modal-stage" aria-live="polite"></div>
+              <div class="ecosystem-demo-screen" aria-live="polite">
+                <div class="ecosystem-demo-toolbar"><span><i></i> LIVE CASEY WORKFLOW</span><em data-system-screen-count>STEP 1 OF 3</em></div>
+                <div class="ecosystem-demo-body"><small data-system-screen-name>SYSTEM</small><strong data-system-screen-title></strong><p class="ecosystem-modal-stage"></p><div class="ecosystem-demo-meter"><i></i><i></i><i></i></div></div>
+              </div>
               <div class="ecosystem-modal-actions"><button type="button" data-open-system-guide hidden>OPEN FULL INTERACTIVE GUIDE &rarr;</button><span>Close this window to keep exploring the globe.</span></div>
             </div>
           </div>
@@ -933,7 +958,9 @@
 
       tabs.forEach(function (tab) {
         tab.addEventListener('click', function () {
-          setView(tab.getAttribute('data-view'), { clearTopic: true, updateUrl: true, scrollTop: true });
+          var nextView = tab.getAttribute('data-view');
+          setView(nextView, { clearTopic: nextView === 'letter', updateUrl: true, scrollTop: true });
+          if (nextView === 'updates') setTopic('systems', { updateUrl: true });
         });
       });
 
@@ -995,9 +1022,10 @@
       }
       if (requestedView === 'updates' || requestedTopic) {
         setView('updates');
-        setTopic(requestedTopic);
+        setTopic(requestedTopic || 'systems');
       } else {
-        setView('letter');
+        setView('updates');
+        setTopic('systems');
       }
     }());
 
@@ -1073,6 +1101,9 @@
         button.classList.toggle('active', buttonIndex === index);
       });
       document.querySelector('.ecosystem-modal-stage').textContent = journey[index][1];
+      document.querySelector('[data-system-screen-title]').textContent = journey[index][0];
+      document.querySelector('[data-system-screen-count]').textContent = 'STEP ' + (index + 1) + ' OF 3';
+      document.querySelectorAll('.ecosystem-demo-meter i').forEach(function (bar, barIndex) { bar.classList.toggle('complete', barIndex <= index); });
     }
 
     function openSystemModal(key, card) {
@@ -1082,6 +1113,7 @@
       var modal = document.querySelector('.ecosystem-modal');
       modal.querySelector('h3').textContent = story[0];
       modal.querySelector('.ecosystem-modal-summary').textContent = story[1];
+      modal.querySelector('[data-system-screen-name]').textContent = key.toUpperCase() + ' | CASEY CONNECTED';
       modal.querySelectorAll('[data-system-stage]').forEach(function (button, index) {
         button.querySelector('span').textContent = journey[index][0];
       });
