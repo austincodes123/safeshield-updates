@@ -61,16 +61,41 @@
     .opening-letter p { margin: 0; color: #c5d0dc; font-size: clamp(1.02rem, 1.7vw, 1.18rem); line-height: 1.7; }
     .opening-letter p + p { margin-top: 16px; }
     .opening-letter strong { color: white; }
+    .letter-preview { display: grid; gap: 8px; margin-top: 25px; }
+    .letter-preview a { display: grid; grid-template-columns: minmax(180px, .75fr) minmax(0, 1.25fr) auto; gap: 16px; align-items: center; padding: 14px 16px; border: 1px solid rgba(255,255,255,.13); border-radius: 13px; background: rgba(255,255,255,.055); text-decoration: none; }
+    .letter-preview a:hover { border-color: var(--orange); background: rgba(255,163,0,.08); }
+    .letter-preview strong { color: white; font-size: .9rem; }
+    .letter-preview span { color: #aebdca; font-size: .79rem; }
+    .letter-preview b { color: var(--orange); font-size: .74rem; white-space: nowrap; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
     .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 999px; font-weight: 800; text-decoration: none; }
     .btn-primary { background: var(--orange); color: var(--navy); }
     .btn-ghost { border: 1px solid rgba(255,255,255,.28); color: white; }
+    .hero-heading { margin-top: 56px; }
+    .hero-heading .report-title { margin-bottom: 0; }
+    .view-switcher { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; max-width: 760px; margin-top: 34px; padding: 6px; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; background: rgba(255,255,255,.06); }
+    .view-tab { display: flex; align-items: center; gap: 13px; min-width: 0; padding: 15px 17px; border: 0; border-radius: 13px; color: #bcc9d5; background: transparent; text-align: left; cursor: pointer; }
+    .view-tab b { display: grid; place-items: center; width: 30px; height: 30px; flex: 0 0 30px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; font-size: .72rem; }
+    .view-tab strong, .view-tab span { display: block; }
+    .view-tab strong { color: white; font-size: .94rem; }
+    .view-tab span { margin-top: 2px; color: #91a2b3; font-size: .72rem; }
+    .view-tab.active { color: var(--navy); background: var(--orange); box-shadow: 0 9px 26px rgba(0,0,0,.18); }
+    .view-tab.active b { border-color: rgba(8,23,39,.25); }
+    .view-tab.active strong, .view-tab.active span { color: var(--navy); }
+    body.view-ready [data-page] { display: none; }
+    body.view-ready.view-letter [data-page="letter"], body.view-ready.view-updates [data-page="updates"] { display: block; }
+    body.view-ready.view-updates [data-page="updates"][data-topic] { display: none; }
+    body.view-ready.view-updates [data-page="updates"][data-topic].topic-active { display: block; }
+    body.view-updates .hero { min-height: 0; }
+    body.view-updates .hero-inner { padding-bottom: 54px; }
+    body.view-updates .hero-grid { display: none; }
 
     .chapter-nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); border-bottom: 1px solid var(--line); backdrop-filter: blur(16px); }
     .chapter-nav .shell { display: flex; align-items: center; gap: 8px; overflow-x: auto; padding: 12px 0; scrollbar-width: none; }
     .chapter-nav a { flex: 0 0 auto; padding: 9px 13px; border-radius: 999px; color: #566b7e; font-size: .78rem; font-weight: 850; text-decoration: none; }
     .chapter-nav a:hover { background: var(--navy); color: white; }
     .chapter-nav .nav-brand { margin-right: auto; color: var(--navy); }
+    body.view-letter [data-nav="updates"], body.view-updates [data-nav="letter"] { display: none; }
 
     .letter-section { margin-top: -42px; position: relative; z-index: 3; }
     .letter-grid { display: grid; grid-template-columns: 1.22fr .78fr; gap: 22px; }
@@ -100,6 +125,20 @@
     .team-coverage-item span { display: block; color: var(--blue); font-size: .72rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
     .team-coverage-item strong { display: block; margin-top: 7px; font-size: 1.02rem; }
     .team-coverage-item p { margin: 7px 0 0; color: var(--muted); font-size: .86rem; }
+
+    .updates-overview { color: white; background: linear-gradient(135deg, #0b1b2c, #123452); }
+    .updates-overview .section-head p { color: #bfd0dd; }
+    .impact-lead { max-width: 940px; margin: 0 0 34px; color: white; font-family: Georgia, serif; font-size: clamp(1.8rem, 4.2vw, 3.9rem); line-height: 1.08; letter-spacing: -.035em; }
+    .impact-lead strong { color: var(--orange); font-weight: 500; }
+    .impact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .impact-card { display: block; width: 100%; padding: 26px; border: 1px solid rgba(255,255,255,.13); border-radius: 18px; color: white; background: rgba(255,255,255,.06); text-align: left; cursor: pointer; }
+    .impact-card:hover, .impact-card.active { border-color: var(--orange); background: rgba(255,163,0,.1); transform: translateY(-2px); }
+    .topic-icon { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 18px; border-radius: 13px; color: var(--navy); background: var(--orange); font-size: .78rem; font-weight: 950; letter-spacing: -.02em; }
+    .impact-kicker { display: block; color: var(--orange); font-size: .7rem; font-weight: 850; letter-spacing: .13em; }
+    .impact-title { display: block; margin: 15px 0 8px; color: white; font-size: 1.25rem; font-weight: 850; }
+    .impact-copy { display: block; color: #b9c8d4; font-size: .9rem; }
+    .topic-action { display: block; margin-top: 18px; color: var(--orange); font-size: .72rem; font-weight: 900; letter-spacing: .09em; }
+    .impact-card.wide { grid-column: 1 / -1; border-color: rgba(255,163,0,.38); }
 
     .system-map { background: var(--navy); color: white; }
     .system-map .section-head p { color: #afbdcb; }
@@ -230,6 +269,35 @@
     .secure-rule p { font-weight: 720; }
     .secure-shot { overflow: hidden; border: 1px solid rgba(255,255,255,.14); border-radius: 24px; }
     .secure-shot img { width: 100%; height: 100%; object-fit: cover; }
+    .secure-link-feature { display: grid; grid-template-columns: .9fr 1.1fr; gap: 22px; margin-top: 22px; padding: 30px; border: 1px solid rgba(255,163,0,.35); border-radius: 22px; background: rgba(255,163,0,.08); }
+    .secure-link-copy h3 { margin: 10px 0; font-size: 1.7rem; }
+    .secure-link-copy p { margin: 0; color: #c0ced9; }
+    .secure-uses { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+    .secure-uses span { padding: 7px 9px; border: 1px solid rgba(255,255,255,.13); border-radius: 999px; color: #d6e1e9; font-size: .72rem; }
+    .email-link-demo { overflow: hidden; border-radius: 16px; color: var(--ink); background: white; box-shadow: 0 18px 42px rgba(0,0,0,.2); }
+    .secure-demo { min-width: 0; }
+    .secure-demo-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 9px; padding: 5px; border-radius: 12px; background: rgba(255,255,255,.08); }
+    .secure-demo-tabs button { padding: 9px 6px; border: 0; border-radius: 8px; color: #b9c8d5; background: transparent; font-size: .7rem; font-weight: 850; cursor: pointer; }
+    .secure-demo-tabs button.active { color: var(--navy); background: var(--orange); }
+    .secure-demo-panel { display: none; }
+    .secure-demo-panel.active { display: block; }
+    .email-link-top { padding: 13px 17px; color: white; background: var(--blue); font-size: .7rem; font-weight: 900; letter-spacing: .1em; }
+    .email-link-body { padding: 20px; }
+    .email-link-body strong { display: block; }
+    .email-link-body p { margin: 7px 0 15px; color: var(--muted); font-size: .82rem; }
+    .email-sign-button { display: inline-block; padding: 10px 13px; border-radius: 8px; color: var(--navy); background: var(--orange); font-size: .72rem; font-weight: 900; }
+    .email-link-note { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); color: #647789; font-size: .72rem; }
+    .link-ready { padding: 25px; color: var(--ink); background: white; border-radius: 16px; }
+    .link-ready strong { display: block; font-size: 1.05rem; }
+    .link-ready p { margin: 7px 0 14px; color: var(--muted); font-size: .82rem; }
+    .link-bar { display: flex; align-items: center; gap: 8px; padding: 11px 12px; overflow: hidden; border: 1px solid var(--line); border-radius: 9px; background: #f5f8fa; color: #466176; font-size: .72rem; }
+    .link-bar span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .link-bar b { margin-left: auto; color: var(--blue); }
+    .signed-result { padding: 25px; border-radius: 16px; color: white; background: #0c6548; }
+    .signed-result strong { display: block; font-size: 1.05rem; }
+    .signed-result p { margin: 7px 0 16px; color: #c9eee1; font-size: .82rem; }
+    .signed-checks { display: grid; gap: 7px; }
+    .signed-checks span { padding: 8px 10px; border-radius: 8px; background: rgba(255,255,255,.1); font-size: .75rem; }
     .secure-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
     .secure-step { padding: 22px; border: 1px solid rgba(255,255,255,.13); border-radius: 18px; background: rgba(255,255,255,.05); }
     .secure-step b { color: var(--orange); font-size: .72rem; letter-spacing: .12em; }
@@ -273,7 +341,7 @@
     .coach-grid > *, .experience-grid > *, .signature-grid > *, .bind-layout > *, .office-grid > *, .intake-model > * { min-width: 0; }
 
     @media (max-width: 960px) {
-      .section-head, .letter-grid, .lead-coverage, .coach-grid, .experience-grid, .signature-grid, .secure-hero, .office-grid, .closing-card { grid-template-columns: 1fr; }
+      .section-head, .letter-grid, .lead-coverage, .coach-grid, .experience-grid, .signature-grid, .secure-hero, .secure-link-feature, .office-grid, .closing-card { grid-template-columns: 1fr; }
       .hero { min-height: auto; }
       .system-grid { grid-template-columns: repeat(2,1fr); }
       .bind-layout { grid-template-columns: 1fr; }
@@ -293,7 +361,7 @@
       .brand-row { align-items: flex-start; }
       .edition { text-align: right; font-size: .62rem; }
       .hero-grid { margin-top: 54px; }
-      .routing, .coverage-days, .team-coverage-grid, .system-grid, .questions, .portal-tools, .secure-steps, .bind-path, .industry-grid, .intake-benefits { grid-template-columns: 1fr; }
+      .routing, .coverage-days, .team-coverage-grid, .impact-grid, .system-grid, .questions, .portal-tools, .secure-steps, .bind-path, .industry-grid, .intake-benefits { grid-template-columns: 1fr; }
       .bind-step { min-height: 0; }
       .bind-step:not(:last-child)::after { content: "↓"; display: block; right: 50%; top: auto; bottom: -22px; transform: translateX(50%); }
       .mode-switch button { min-width: 0; padding: 10px 5px; font-size: .78rem; }
@@ -309,30 +377,49 @@
       .identity-signoff { gap: 13px; }
       .signoff-headshot { width: 66px; height: 66px; flex-basis: 66px; }
       .signature { width: min(170px, calc(100% - 79px)); }
+      .hero-heading { margin-top: 40px; }
+      .view-switcher { gap: 5px; padding: 5px; }
+      .view-tab { gap: 8px; padding: 12px 10px; }
+      .view-tab b { width: 25px; height: 25px; flex-basis: 25px; }
+      .view-tab > span > span { display: none; }
+      .letter-preview a { grid-template-columns: 1fr auto; gap: 5px 10px; }
+      .letter-preview a > span { grid-column: 1 / -1; grid-row: 2; }
     }
   </style>
 </head>
-<body>
+<body class="view-ready view-letter">
   <header class="hero" id="top">
     <div class="hero-inner shell">
       <div class="brand-row">
         <div class="brand">Safeshield <span>Insurance</span></div>
         <div class="edition">Internal team update | August 2026</div>
       </div>
-      <div class="hero-grid">
+      <div class="hero-heading">
+        <div class="eyebrow">August 2026</div>
+        <h1 class="report-title">State of the Shield</h1>
+      </div>
+      <div class="view-switcher" aria-label="Choose update view">
+        <button class="view-tab active" type="button" data-view="letter" aria-pressed="true"><b>01</b><span><strong>Austin&rsquo;s Letter</strong><span>Current state and team handoff</span></span></button>
+        <button class="view-tab" type="button" data-view="updates" aria-pressed="false"><b>02</b><span><strong>What&rsquo;s New</strong><span>Systems, tools, and how they work</span></span></button>
+      </div>
+      <div class="hero-grid" data-page="letter">
         <div class="hero-copy opening-letter">
-          <div class="eyebrow">August 2026</div>
-          <h1 class="report-title">State of the Shield</h1>
           <p class="salutation">Team,</p>
           <p>For a long time, I have been working to get our systems to a place where the work can actually flow, from the first lead to the quote, the client relationship, the documents, the follow-up, and even the way each of you can understand your pay. We are closer to that vision than we have ever been.</p>
           <p>A lot of new changes are live, with more rolling out now, to make CASEY better, faster, and more effective for us as a team. This update puts those changes in one place, shows how they connect, and explains how I expect us to use them.</p>
+          <div class="letter-preview" aria-label="Highlights from the full update">
+            <a href="#updates-overview" data-switch-view="updates"><strong>CASEY is now client-facing</strong><span>She can guide prospects, build the intake, collect files, and create the handoff.</span><b>SEE HOW IT WORKS &rarr;</b></a>
+            <a href="#coach" data-switch-view="updates"><strong>Gusto is now inside CASEY</strong><span>Ask plain-language questions about paychecks, salary, commissions, earnings, and goals.</span><b>SEE HOW IT WORKS &rarr;</b></a>
+            <a href="#leads" data-switch-view="updates"><strong>One intake becomes 13 paths</strong><span>The experience adapts to the business while the lead record stays clean and consistent.</span><b>SEE HOW IT WORKS &rarr;</b></a>
+            <a href="#leads" data-switch-view="updates"><strong>New SEO opportunities are opening</strong><span>Expect more calls, website intakes, and Google Chat leads as new prospects find us.</span><b>SEE HOW LEADS FLOW &rarr;</b></a>
+          </div>
           <p>It also comes at an important time for me personally. From <strong>Friday, August 14 through Wednesday, August 26</strong>, Lexie and I are heading to Portugal. We&rsquo;re going to spend time in Lisbon, make our way down to the Algarve, and really experience the country together.</p>
           <p>I am incredibly excited about this trip, and I want to enjoy it and be present for it. I plan to be off the grid most of the time, but I will check my email once or twice a day. If you are truly unsure about something after using CASEY and leaning on the team, you can email me. Just remember that I will be <strong>six to seven hours ahead</strong>, so please do not expect a real-time response. If you already know you will need a decision, approval, file, answer, or anything else directly from me, ask before I leave.</p>
           <p>While I am away, <strong>Eric is in charge of the big decisions.</strong> Handle the day-to-day work in your lane, support each other, and take anything significant to him.</p>
           <p>I also want you to know how good I feel stepping away. Safeshield is a well-oiled machine because of this team. The systems are getting stronger, the work is flowing better, and I trust every one of you to keep it running exactly as it should.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#before-i-go">Think through what you&rsquo;ll need</a>
-            <a class="btn btn-ghost" href="#systems">The Safeshield update</a>
+            <a class="btn btn-ghost" href="#updates-overview" data-switch-view="updates">Open the full update</a>
           </div>
         </div>
       </div>
@@ -342,19 +429,20 @@
   <nav class="chapter-nav" aria-label="Update chapters">
     <div class="shell">
       <a class="nav-brand" href="#top">STATE OF THE SHIELD</a>
-      <a href="#before-i-go">Plan ahead</a>
-      <a href="#leads">Lead engine</a>
-      <a href="#instant-bind">Instant Bind</a>
-      <a href="#coach">Pay coach</a>
-      <a href="#experience">Client experience</a>
-      <a href="#secure">Secure</a>
-      <a href="#office">Office</a>
-      <a href="#closing">My note</a>
+      <a href="#before-i-go" data-nav="letter">Plan ahead</a>
+      <a href="#updates-overview" data-nav="updates">Why it matters</a>
+      <a href="#leads" data-nav="updates">Lead engine</a>
+      <a href="#instant-bind" data-nav="updates">Instant Bind</a>
+      <a href="#coach" data-nav="updates">Pay coach</a>
+      <a href="#experience" data-nav="updates">Client experience</a>
+      <a href="#secure" data-nav="updates">Secure</a>
+      <a href="#office" data-nav="updates">Office</a>
+      <a href="#closing" data-nav="letter">My note</a>
     </div>
   </nav>
 
   <main>
-    <section class="section letter-section" id="before-i-go">
+    <section class="section letter-section" id="before-i-go" data-page="letter">
       <div class="shell">
         <div class="letter-grid">
           <article class="card letter">
@@ -399,7 +487,26 @@
       </div>
     </section>
 
-    <section class="section system-map" id="systems">
+    <section class="section updates-overview" id="updates-overview" data-page="updates">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="eyebrow">Why this is a big deal</div><h2>CASEY has crossed to the client side.</h2></div>
+          <p>For years, CASEY has made our side of the business stronger. Now that intelligence is meeting prospects and clients at the front door, while new connections make the employee side dramatically more useful.</p>
+        </div>
+        <p class="impact-lead">This is bigger than a collection of new features. <strong>It changes where the work begins and how far CASEY can carry it.</strong></p>
+        <div class="impact-grid">
+          <button class="impact-card" type="button" data-topic-target="leads"><span class="topic-icon">AI</span><span class="impact-kicker">01 | CLIENT-SIDE CASEY + LEADS</span><span class="impact-title">CASEY now meets the prospect.</span><span class="impact-copy">Explore AI lead generation, new SEO opportunities, Google Chat handoffs, and how one intake becomes 13 commercial paths.</span><span class="topic-action">OPEN THE LEAD ENGINE &rarr;</span></button>
+          <button class="impact-card" type="button" data-topic-target="coach"><span class="topic-icon">$</span><span class="impact-kicker">02 | GUSTO + CASEY</span><span class="impact-title">Payroll finally speaks plain English.</span><span class="impact-copy">See how employees can ask about paychecks, salary, commissions, earnings, goal planning, and what to do next.</span><span class="topic-action">OPEN MY PAY + COACH &rarr;</span></button>
+          <button class="impact-card" type="button" data-topic-target="instant-bind"><span class="topic-icon">B</span><span class="impact-kicker">03 | PLYMOUTH ROCK API</span><span class="impact-title">The last disconnected mile is opening.</span><span class="impact-copy">See what approved API access can mean for a connected online home quote and a future instant-bind path.</span><span class="topic-action">OPEN INSTANT BIND &rarr;</span></button>
+          <button class="impact-card" type="button" data-topic-target="experience"><span class="topic-icon">P</span><span class="impact-kicker">04 | CLIENT EXPERIENCE</span><span class="impact-title">The relationship is stronger after the sale.</span><span class="impact-copy">Explore the Client Portal, Claims Center, assigned-team experience, and the new Safeshield email standard.</span><span class="topic-action">OPEN CLIENT EXPERIENCE &rarr;</span></button>
+          <button class="impact-card" type="button" data-topic-target="secure"><span class="topic-icon">S</span><span class="impact-kicker">05 | SAFESHIELD SECURE</span><span class="impact-title">Create it. Sign it. File it.</span><span class="impact-copy">See protected uploads, smart document preparation, Smart Sign, completed delivery, and permanent audit evidence.</span><span class="topic-action">OPEN SECURE &rarr;</span></button>
+          <button class="impact-card" type="button" data-topic-target="office"><span class="topic-icon">O</span><span class="impact-kicker">06 | HOME BASE</span><span class="impact-title">The cubicles are here.</span><span class="impact-copy">See the finished space and the simple standards for keeping it clean, personal, and respected.</span><span class="topic-action">OPEN THE OFFICE UPDATE &rarr;</span></button>
+          <button class="impact-card wide" type="button" data-topic-target="systems"><span class="topic-icon">ALL</span><span class="impact-kicker">07 | THE BIG PICTURE</span><span class="impact-title">See how every piece ties together.</span><span class="impact-copy">Start with the complete operating map: leads, pay, client experience, claims, Secure, and Instant Bind working as one Safeshield system.</span><span class="topic-action">OPEN THE SYSTEM MAP &rarr;</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section system-map" id="systems" data-page="updates" data-topic="systems">
       <div class="shell">
         <div class="section-head">
           <div><div class="eyebrow">The big picture</div><h2>One operating system.</h2></div>
@@ -416,7 +523,7 @@
       </div>
     </section>
 
-    <section class="section" id="leads">
+    <section class="section" id="leads" data-page="updates" data-topic="leads">
       <div class="shell">
         <div class="section-head">
           <div><div class="eyebrow">Chapter 01 · Growth</div><h2>The lead engine is live.</h2></div>
@@ -463,7 +570,7 @@
       </div>
     </section>
 
-    <section class="section bind-section" id="instant-bind">
+    <section class="section bind-section" id="instant-bind" data-page="updates" data-topic="instant-bind">
       <div class="shell">
         <div class="section-head">
           <div><div class="eyebrow">The last disconnected mile</div><h2>Plymouth Rock said yes.</h2></div>
@@ -488,7 +595,7 @@
       </div>
     </section>
 
-    <section class="section coach" id="coach">
+    <section class="section coach" id="coach" data-page="updates" data-topic="coach">
       <div class="shell">
         <div class="section-head">
           <div><div class="eyebrow">Chapter 02 · Compensation</div><h2>CASEY understands your paycheck.</h2></div>
@@ -530,7 +637,7 @@
       </div>
     </section>
 
-    <section class="section" id="experience">
+    <section class="section" id="experience" data-page="updates" data-topic="experience">
       <div class="shell">
         <div class="section-head">
           <div><div class="eyebrow">Chapter 03 · Client experience</div><h2>Stronger after the sale.</h2></div>
@@ -565,15 +672,29 @@
       </div>
     </section>
 
-    <section class="section secure" id="secure">
+    <section class="section secure" id="secure" data-page="updates" data-topic="secure">
       <div class="shell">
         <div class="section-head">
           <div><div class="eyebrow">Chapter 04 · Documents</div><h2>Create it. Sign it. File it.</h2></div>
           <p>Safeshield Secure is our document standard: protected client upload, smart document preparation, human review, e-signing, completed delivery, and permanent audit evidence.</p>
         </div>
         <div class="secure-hero">
-          <article class="secure-rule"><div><div class="eyebrow" style="color:#17283b">The rule</div><h3>Send the secure link. Never the sensitive attachment.</h3></div><p>Personal information, policy details, signatures, banking information, licenses, applications, and other protected documents belong in Safeshield Secure.</p></article>
+          <article class="secure-rule"><div><div class="eyebrow" style="color:#17283b">The new standard</div><h3>Safeshield Secure is our e-sign provider.</h3></div><p>Do not use NowCerts document signing. Every e-signature and every sensitive-document request should go through Safeshield Secure, with the protected link sent instead of the attachment.</p></article>
           <div class="secure-shot"><img src="assets/secure-studio.png" alt="Safeshield Secure smart document studio"></div>
+        </div>
+        <div class="secure-link-feature">
+          <div class="secure-link-copy">
+            <div class="eyebrow">A major new capability</div>
+            <h3>Put the signing link inside the email you are already sending.</h3>
+            <p>Safeshield Secure can give you a real web link for the client&rsquo;s signing session. If you are writing a welcome email but still need the old-policy cancellation signed, include the signing button in that same message. The client gets one clear experience, and you do not have to wait for a separate signing email before moving forward.</p>
+            <div class="secure-uses"><span>Welcome email + cancellation</span><span>Proposal + signature</span><span>Renewal + required form</span><span>Service email + authorization</span></div>
+          </div>
+          <div class="secure-demo" aria-label="Safeshield Secure signing-link demo">
+            <div class="secure-demo-tabs"><button class="active" type="button" data-secure-demo="link">1. Create link</button><button type="button" data-secure-demo="email">2. Add to email</button><button type="button" data-secure-demo="signed">3. Completed</button></div>
+            <div class="secure-demo-panel active" data-secure-panel="link"><div class="link-ready"><strong>Your protected signing link is ready.</strong><p>Copy this link from Safeshield Secure and place it wherever the client needs to take action.</p><div class="link-bar"><span>secure.gosafeshield.com/sign/cancellation</span><b>COPY LINK</b></div></div></div>
+            <div class="secure-demo-panel" data-secure-panel="email"><div class="email-link-demo"><div class="email-link-top">WELCOME TO SAFESHIELD</div><div class="email-link-body"><strong>Your new coverage is ready.</strong><p>Everything you need is below. Please use the secure button to sign the cancellation request for your previous policy.</p><span class="email-sign-button">SIGN CANCELLATION FORM</span><div class="email-link-note">The button opens the protected Safeshield Secure signing session.</div></div></div></div>
+            <div class="secure-demo-panel" data-secure-panel="signed"><div class="signed-result"><strong>Signed and complete.</strong><p>The client finished the cancellation request through the link in the welcome email.</p><div class="signed-checks"><span>&#10003; Completed PDF delivered</span><span>&#10003; Signing evidence retained</span><span>&#10003; Team progress and completion notices sent</span></div></div></div>
+          </div>
         </div>
         <div class="secure-steps">
           <article class="secure-step"><b>01 · UPLOAD</b><h4>Collect securely</h4><p>Protected uploads for declarations pages, licenses, photos, and client files.</p></article>
@@ -581,11 +702,11 @@
           <article class="secure-step"><b>03 · SIGN</b><h4>Smart Sign</h4><p>Finished PDFs are scanned for signature, initials, name, and date fields before send.</p></article>
           <article class="secure-step"><b>04 · PROVE</b><h4>Complete the record</h4><p>Sequential handoffs, progress notices, completed PDFs, and an audit trail.</p></article>
         </div>
-        <div class="ask-bar"><strong>Ask CASEY:</strong><div class="ask-list"><span>Send this securely.</span><span>Create an upload link.</span><span>Prepare this PDF for Jane and John to sign in order.</span><span>Build the application and ID card from this dec page.</span></div></div>
+        <div class="ask-bar"><strong>Ask CASEY:</strong><div class="ask-list"><span>Send this securely.</span><span>Create an upload link.</span><span>Prepare this PDF for Jane and John to sign in order.</span><span>Give me the signing link to paste into my email.</span><span>Build the application and ID card from this dec page.</span></div></div>
       </div>
     </section>
 
-    <section class="section" id="office">
+    <section class="section" id="office" data-page="updates" data-topic="office">
       <div class="shell">
         <div class="section-head">
           <div><div class="eyebrow">Chapter 05 | Home base</div><h2>The cubicles finally came.</h2></div>
@@ -603,7 +724,7 @@
     </section>
   </main>
 
-  <section class="closing" id="closing">
+  <section class="closing" id="closing" data-page="letter">
     <div class="shell closing-card">
       <div>
         <div class="eyebrow">A note from me</div>
@@ -631,6 +752,119 @@
   <footer><div class="shell">Safeshield Insurance internal update | Not for client distribution | Lead and compensation examples are illustrative | Payroll questions belong in a private 1:1 CASEY chat</div></footer>
 
   <script>
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.view-tab'));
+      var topicButtons = Array.prototype.slice.call(document.querySelectorAll('[data-topic-target]'));
+      var topicSections = Array.prototype.slice.call(document.querySelectorAll('[data-topic]'));
+
+      function activeTopic() {
+        var section = document.querySelector('[data-topic].topic-active');
+        return section ? section.getAttribute('data-topic') : '';
+      }
+
+      function syncUrl(view, topic) {
+        if (!window.history) return;
+        var nextUrl = window.location.pathname;
+        if (view === 'updates') {
+          nextUrl += '?view=updates';
+          if (topic) nextUrl += '&topic=' + encodeURIComponent(topic);
+        }
+        window.history.replaceState({ view: view, topic: topic || '' }, '', nextUrl);
+      }
+
+      function setTopic(topic, options) {
+        options = options || {};
+        var selected = topicSections.some(function (section) { return section.getAttribute('data-topic') === topic; }) ? topic : '';
+        topicSections.forEach(function (section) {
+          section.classList.toggle('topic-active', section.getAttribute('data-topic') === selected);
+        });
+        topicButtons.forEach(function (button) {
+          var active = button.getAttribute('data-topic-target') === selected;
+          button.classList.toggle('active', active);
+          button.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        if (options.updateUrl) syncUrl('updates', selected);
+        if (options.scroll && selected) {
+          window.requestAnimationFrame(function () {
+            var section = document.querySelector('[data-topic="' + selected + '"]');
+            if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        }
+        return selected;
+      }
+
+      function setView(view, options) {
+        options = options || {};
+        view = view === 'updates' ? 'updates' : 'letter';
+        document.body.classList.toggle('view-letter', view === 'letter');
+        document.body.classList.toggle('view-updates', view === 'updates');
+        if (view === 'letter' || options.clearTopic) setTopic('');
+        tabs.forEach(function (tab) {
+          var active = tab.getAttribute('data-view') === view;
+          tab.classList.toggle('active', active);
+          tab.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        if (options.updateUrl) syncUrl(view, view === 'updates' ? activeTopic() : '');
+        if (options.scrollTop) window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          setView(tab.getAttribute('data-view'), { clearTopic: true, updateUrl: true, scrollTop: true });
+        });
+      });
+
+      topicButtons.forEach(function (button) {
+        button.setAttribute('aria-pressed', 'false');
+        button.addEventListener('click', function () {
+          setView('updates');
+          setTopic(button.getAttribute('data-topic-target'), { updateUrl: true, scroll: true });
+        });
+      });
+
+      document.querySelectorAll('[data-switch-view]').forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+          var target = link.getAttribute('href').replace('#', '');
+          setView('updates', { clearTopic: target === 'updates-overview' });
+          if (target === 'updates-overview') {
+            syncUrl('updates', '');
+            document.querySelector('#updates-overview').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            setTopic(target, { updateUrl: true, scroll: true });
+          }
+        });
+      });
+
+      document.querySelectorAll('.chapter-nav a[data-nav="updates"]').forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+          var target = link.getAttribute('href').replace('#', '');
+          setView('updates', { clearTopic: target === 'updates-overview' });
+          if (target === 'updates-overview') {
+            syncUrl('updates', '');
+            document.querySelector('#updates-overview').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            setTopic(target, { updateUrl: true, scroll: true });
+          }
+        });
+      });
+
+      var params = new URLSearchParams(window.location.search);
+      var requestedView = params.get('view');
+      var requestedTopic = params.get('topic') || '';
+      if (!requestedTopic && window.location.hash) {
+        var requestedSection = document.querySelector(window.location.hash);
+        if (requestedSection) requestedTopic = requestedSection.getAttribute('data-topic') || '';
+      }
+      if (requestedView === 'updates' || requestedTopic) {
+        setView('updates');
+        setTopic(requestedTopic);
+      } else {
+        setView('letter');
+      }
+    }());
+
     document.querySelectorAll('.mode-switch button').forEach(function (button) {
       button.addEventListener('click', function () {
         var mode = button.getAttribute('data-mode');
@@ -641,6 +875,18 @@
         });
         document.querySelectorAll('.mode-panel').forEach(function (panel) {
           panel.classList.toggle('active', panel.getAttribute('data-panel') === mode);
+        });
+      });
+    });
+
+    document.querySelectorAll('[data-secure-demo]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var step = button.getAttribute('data-secure-demo');
+        document.querySelectorAll('[data-secure-demo]').forEach(function (item) {
+          item.classList.toggle('active', item === button);
+        });
+        document.querySelectorAll('[data-secure-panel]').forEach(function (panel) {
+          panel.classList.toggle('active', panel.getAttribute('data-secure-panel') === step);
         });
       });
     });
