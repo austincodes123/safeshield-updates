@@ -67,6 +67,9 @@
     .letter-preview strong { color: white; font-size: .9rem; }
     .letter-preview span { color: #aebdca; font-size: .79rem; }
     .letter-preview b { color: var(--orange); font-size: .74rem; white-space: nowrap; }
+    .test-drive { margin-top: 18px; padding: 17px 18px; border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; background: rgba(255,163,0,.09); }
+    .test-drive strong, .test-drive span { display: block; }
+    .test-drive span { margin-top: 5px; color: #bdcad5; font-size: .86rem; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
     .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 999px; font-weight: 800; text-decoration: none; }
     .btn-primary { background: var(--orange); color: var(--navy); }
@@ -131,14 +134,30 @@
     .impact-lead { max-width: 940px; margin: 0 0 34px; color: white; font-family: Georgia, serif; font-size: clamp(1.8rem, 4.2vw, 3.9rem); line-height: 1.08; letter-spacing: -.035em; }
     .impact-lead strong { color: var(--orange); font-weight: 500; }
     .impact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .impact-card { display: block; width: 100%; padding: 26px; border: 1px solid rgba(255,255,255,.13); border-radius: 18px; color: white; background: rgba(255,255,255,.06); text-align: left; cursor: pointer; }
+    .topic-group-label { grid-column: 1 / -1; margin-top: 12px; padding: 8px 0 2px; color: var(--orange); font-size: .72rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    .impact-card { position: relative; display: block; width: 100%; padding: 26px; border: 1px solid rgba(255,255,255,.13); border-radius: 18px; color: white; background: rgba(255,255,255,.06); text-align: left; cursor: pointer; }
     .impact-card:hover, .impact-card.active { border-color: var(--orange); background: rgba(255,163,0,.1); transform: translateY(-2px); }
+    .impact-card.featured { border-color: rgba(255,163,0,.46); background: radial-gradient(circle at 88% 8%, rgba(255,163,0,.2), transparent 34%), rgba(255,255,255,.065); box-shadow: 0 0 30px rgba(255,163,0,.09), inset 0 0 24px rgba(255,163,0,.035); }
+    .impact-card.featured:hover, .impact-card.featured.active { box-shadow: 0 0 42px rgba(255,163,0,.2), inset 0 0 30px rgba(255,163,0,.07); }
+    .new-badge { position: absolute; top: 17px; right: 17px; z-index: 3; display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px; border: 1px solid rgba(255,198,92,.72); border-radius: 999px; color: #13283d; background: var(--orange); box-shadow: 0 0 0 5px rgba(255,163,0,.09), 0 0 22px rgba(255,163,0,.32); font-size: .62rem; font-weight: 950; letter-spacing: .12em; line-height: 1; }
+    .new-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #fff4d7; box-shadow: 0 0 8px white; }
     .topic-icon { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 18px; border-radius: 13px; color: var(--navy); background: var(--orange); font-size: .78rem; font-weight: 950; letter-spacing: -.02em; }
     .impact-kicker { display: block; color: var(--orange); font-size: .7rem; font-weight: 850; letter-spacing: .13em; }
     .impact-title { display: block; margin: 15px 0 8px; color: white; font-size: 1.25rem; font-weight: 850; }
     .impact-copy { display: block; color: #b9c8d4; font-size: .9rem; }
     .topic-action { display: block; margin-top: 18px; color: var(--orange); font-size: .72rem; font-weight: 900; letter-spacing: .09em; }
     .impact-card.wide { grid-column: 1 / -1; border-color: rgba(255,163,0,.38); }
+    .team-lab { display: grid; grid-template-columns: .7fr 1.3fr; gap: 28px; align-items: center; margin-top: 18px; padding: 26px; border-radius: 18px; color: var(--navy); background: var(--orange); }
+    .team-lab h3 { margin: 7px 0 0; font-size: 1.55rem; }
+    .team-lab p { margin: 0; font-weight: 700; }
+    .coming-soon { display: inline-block; margin-bottom: 14px; padding: 7px 10px; border-radius: 999px; color: var(--navy); background: var(--orange); font-size: .68rem; font-weight: 950; letter-spacing: .1em; }
+    [data-system-demo], [data-lead-demo], [data-bind-demo], [data-portal-demo], [data-office-demo], [data-claims-demo] { transition: transform .18s ease, border-color .18s ease, background .18s ease; cursor: pointer; }
+    [data-system-demo]:hover, [data-system-demo].active, [data-lead-demo]:hover, [data-lead-demo].active, [data-bind-demo]:hover, [data-bind-demo].active, [data-portal-demo]:hover, [data-portal-demo].active, [data-office-demo]:hover, [data-office-demo].active { transform: translateY(-2px); border-color: var(--orange); }
+    .demo-output { margin-top: 14px; padding: 20px; border: 1px solid var(--line); border-left: 4px solid var(--orange); border-radius: 0 14px 14px 0; background: white; }
+    .demo-output strong { display: block; margin-bottom: 5px; }
+    .demo-output span { color: var(--muted); font-size: .9rem; }
+    .demo-output.dark { border-color: rgba(255,255,255,.15); border-left-color: var(--orange); color: white; background: rgba(255,255,255,.07); }
+    .demo-output.dark span { color: #c1cfdb; }
 
     .system-map { background: var(--navy); color: white; }
     .system-map .section-head p { color: #afbdcb; }
@@ -148,6 +167,41 @@
     .system-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 13px; background: var(--orange); color: var(--navy); font-size: 1.1rem; font-weight: 950; }
     .system-card h3 { margin: 24px 0 8px; font-size: 1.08rem; }
     .system-card p { margin: 0; color: #aebdcb; font-size: .88rem; }
+    .system-demo-output { grid-column: 1 / -1; }
+    .system-status { display: inline-block; margin-top: 17px; padding: 6px 8px; border-radius: 999px; color: #b7f1d3; background: rgba(20,132,84,.22); font-size: .64rem; font-weight: 900; letter-spacing: .09em; }
+    .system-status.soon { color: var(--navy); background: var(--orange); }
+    .system-card.new-node { border-color: rgba(255,163,0,.48); background: radial-gradient(circle at 85% 10%, rgba(255,163,0,.2), transparent 38%), rgba(255,255,255,.065); box-shadow: 0 0 32px rgba(255,163,0,.12); }
+    .system-card .new-badge { top: 13px; right: 13px; padding: 6px 8px; font-size: .54rem; }
+    .ecosystem-progress { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; padding: 16px 18px; border: 1px solid rgba(255,255,255,.13); border-radius: 14px; background: rgba(255,255,255,.05); }
+    .ecosystem-progress strong { color: var(--orange); font-size: 1.35rem; }
+    .ecosystem-progress span { color: #c1cfdb; font-size: .84rem; }
+    .ecosystem-map { position: relative; display: block; min-height: 650px; overflow: hidden; border: 1px solid rgba(255,255,255,.11); border-radius: 50%; background: radial-gradient(circle at 50% 48%, rgba(20,72,111,.34), rgba(8,23,39,.1) 48%, rgba(255,255,255,.025) 49%, rgba(8,23,39,.45) 72%); touch-action: none; cursor: grab; }
+    .ecosystem-map:active { cursor: grabbing; }
+    .ecosystem-lines { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; }
+    .ecosystem-lines line { stroke: rgba(255,163,0,.34); stroke-width: 2; stroke-dasharray: 7 7; }
+    .ecosystem-hub { position: absolute; left: 50%; top: 50%; z-index: 40; display: grid; place-items: center; width: 190px; height: 190px; padding: 24px; transform: translate(-50%,-50%); border: 2px solid var(--orange); border-radius: 50%; color: white; background: radial-gradient(circle, #153c60, #081727 72%); text-align: center; box-shadow: 0 0 0 12px rgba(255,163,0,.06), 0 22px 50px rgba(0,0,0,.28); pointer-events: none; }
+    .ecosystem-hub strong { display: block; color: var(--orange); font-family: Georgia, serif; font-size: 2rem; }
+    .ecosystem-hub span { display: block; margin-top: 5px; color: #b9c8d4; font-size: .75rem; }
+    .ecosystem-map .system-card { position: absolute; left: 50%; top: 50%; z-index: 1; width: 220px; min-height: 168px; margin: 0; transform: translate(-50%,-50%); transform-origin: center; will-change: left, top, transform, opacity; }
+    .ecosystem-map .system-card p { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .2s ease, opacity .2s ease; }
+    .ecosystem-map .system-card:hover p, .ecosystem-map .system-card:focus p, .ecosystem-map .system-card.active p { max-height: 100px; opacity: 1; }
+    .globe-hint { position: absolute; left: 50%; bottom: 18px; z-index: 50; transform: translateX(-50%); padding: 8px 12px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; color: #b8c8d4; background: rgba(8,23,39,.82); font-size: .66rem; font-weight: 850; letter-spacing: .09em; white-space: nowrap; pointer-events: none; }
+    .ecosystem-modal[hidden] { display: none; }
+    .ecosystem-modal { position: absolute; inset: 0; z-index: 80; display: grid; place-items: center; padding: 30px; background: rgba(5,17,30,.46); backdrop-filter: blur(3px); cursor: default; }
+    .ecosystem-modal-panel { position: relative; width: min(700px, 100%); max-height: calc(100% - 20px); overflow: auto; padding: 32px; border: 1px solid rgba(255,163,0,.6); border-radius: 22px; color: white; background: linear-gradient(145deg, rgba(17,49,76,.98), rgba(7,22,37,.98)); box-shadow: 0 28px 80px rgba(0,0,0,.5), 0 0 45px rgba(255,163,0,.16); }
+    .ecosystem-modal-close { position: absolute; top: 15px; right: 15px; z-index: 2; display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; color: white; background: rgba(255,255,255,.08); font-size: 1.2rem; cursor: pointer; }
+    .ecosystem-modal-close:hover { border-color: var(--orange); color: var(--orange); }
+    .ecosystem-modal h3 { max-width: 570px; margin: 8px 46px 9px 0; font-family: Georgia, serif; font-size: clamp(1.75rem, 4vw, 2.8rem); line-height: 1.04; }
+    .ecosystem-modal-summary { margin: 0; color: #c5d3de; }
+    .ecosystem-journey { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 24px; }
+    .ecosystem-journey button { min-height: 92px; padding: 14px; border: 1px solid rgba(255,255,255,.14); border-radius: 13px; color: white; background: rgba(255,255,255,.06); text-align: left; cursor: pointer; }
+    .ecosystem-journey button:hover, .ecosystem-journey button.active { border-color: var(--orange); background: rgba(255,163,0,.12); }
+    .ecosystem-journey b { display: block; color: var(--orange); font-size: .64rem; letter-spacing: .1em; }
+    .ecosystem-journey span { display: block; margin-top: 8px; font-size: .82rem; font-weight: 800; }
+    .ecosystem-modal-stage { margin-top: 10px; padding: 16px 18px; border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; color: #dce7ef; background: rgba(255,255,255,.07); font-size: .86rem; }
+    .ecosystem-modal-actions { display: flex; align-items: center; gap: 12px; margin-top: 19px; }
+    .ecosystem-modal-actions button { padding: 12px 16px; border: 0; border-radius: 999px; color: var(--navy); background: var(--orange); font-size: .68rem; font-weight: 950; letter-spacing: .08em; cursor: pointer; }
+    .ecosystem-modal-actions span { color: #9fb2c2; font-size: .72rem; }
 
     .bind-section { color: white; background: #005a97; }
     .bind-section .section-head p { color: #d7e8f4; }
@@ -169,6 +223,7 @@
     .flow-step b { display: block; color: var(--blue); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
     .flow-step span { display: block; margin-top: 5px; font-weight: 800; }
     .flow-arrow { text-align: center; color: var(--orange); font-size: 1.6rem; font-weight: 900; }
+    .lead-demo-output { margin: -20px 0 30px; }
     .intake-model { display: grid; grid-template-columns: .48fr 54px 1.52fr; gap: 16px; align-items: stretch; margin: 34px 0; }
     .intake-core { display: flex; flex-direction: column; justify-content: center; padding: 30px; color: white; background: var(--navy); border-radius: 20px; }
     .intake-core strong { display: block; margin-top: 14px; font-size: 1.8rem; line-height: 1.04; }
@@ -233,6 +288,7 @@
     .status span { color: var(--muted); font-size: .83rem; }
     .portal-tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
     .portal-tool { padding: 18px 12px; background: white; border-radius: 14px; text-align: center; }
+    button.portal-tool { width: 100%; border: 0; color: var(--ink); font: inherit; }
     .portal-tool b { display: block; margin-top: 7px; font-size: .76rem; }
     .portal-tool span { display: block; margin-top: 3px; color: var(--muted); font-size: .72rem; }
     .claims-card { padding: 30px; color: white; background: var(--navy); }
@@ -242,6 +298,9 @@
     .search span { flex: 1; padding: 14px; color: #82909d; font-size: .88rem; }
     .search b { display: grid; place-items: center; padding: 0 18px; background: var(--orange); color: var(--navy); font-size: .75rem; }
     .upload { margin-top: 10px; padding: 16px; border: 1px dashed #58708a; border-radius: 12px; text-align: center; color: #d3dce4; font-size: .83rem; }
+    button.search, button.upload { width: 100%; font: inherit; cursor: pointer; }
+    button.search { border: 0; text-align: left; }
+    button.upload { background: transparent; }
     .claim-path { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 16px; }
     .claim-path div { padding: 13px 7px; border-radius: 10px; background: rgba(255,255,255,.07); text-align: center; font-size: .75rem; font-weight: 820; }
 
@@ -316,6 +375,10 @@
     .cubicle-rule span { font-size: 1.55rem; }
     .cubicle-rule h3 { margin: 8px 0 7px; }
     .cubicle-rule p { margin: 0; color: var(--muted); }
+    .cubicle-rule.active { background: #fff3d6; }
+    .office-progress { padding: 20px; color: white; background: var(--navy); border-radius: 18px; }
+    .office-progress strong, .office-progress span { display: block; }
+    .office-progress span { margin-top: 5px; color: #b7c6d2; font-size: .83rem; }
 
     .closing { padding: 110px 0; color: white; background: linear-gradient(135deg, #06111e, #0c2138); }
     .closing-card { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: end; }
@@ -343,7 +406,7 @@
     @media (max-width: 960px) {
       .section-head, .letter-grid, .lead-coverage, .coach-grid, .experience-grid, .signature-grid, .secure-hero, .secure-link-feature, .office-grid, .closing-card { grid-template-columns: 1fr; }
       .hero { min-height: auto; }
-      .system-grid { grid-template-columns: repeat(2,1fr); }
+      .system-grid:not(.ecosystem-map) { grid-template-columns: repeat(2,1fr); }
       .bind-layout { grid-template-columns: 1fr; }
       .bind-path { grid-template-columns: repeat(2, 1fr); }
       .bind-step:nth-child(2)::after { display: none; }
@@ -361,7 +424,7 @@
       .brand-row { align-items: flex-start; }
       .edition { text-align: right; font-size: .62rem; }
       .hero-grid { margin-top: 54px; }
-      .routing, .coverage-days, .team-coverage-grid, .impact-grid, .system-grid, .questions, .portal-tools, .secure-steps, .bind-path, .industry-grid, .intake-benefits { grid-template-columns: 1fr; }
+      .routing, .coverage-days, .team-coverage-grid, .impact-grid, .team-lab, .system-grid, .questions, .portal-tools, .secure-steps, .bind-path, .industry-grid, .intake-benefits { grid-template-columns: 1fr; }
       .bind-step { min-height: 0; }
       .bind-step:not(:last-child)::after { content: "↓"; display: block; right: 50%; top: auto; bottom: -22px; transform: translateX(50%); }
       .mode-switch button { min-width: 0; padding: 10px 5px; font-size: .78rem; }
@@ -384,6 +447,24 @@
       .view-tab > span > span { display: none; }
       .letter-preview a { grid-template-columns: 1fr auto; gap: 5px 10px; }
       .letter-preview a > span { grid-column: 1 / -1; grid-row: 2; }
+      .ecosystem-map { min-height: 560px; border-radius: 28px; }
+      .ecosystem-hub { width: 112px; height: 112px; padding: 11px; }
+      .ecosystem-hub strong { font-size: 1.3rem; }
+      .ecosystem-hub span { font-size: .58rem; }
+      .ecosystem-map [data-system-demo] { width: 132px; min-height: 120px; padding: 12px; }
+      .ecosystem-map .system-icon { width: 34px; height: 34px; }
+      .ecosystem-map .system-card h3 { margin-top: 11px; font-size: .9rem; }
+      .ecosystem-map .system-card p { font-size: .75rem; }
+      .ecosystem-map .system-status { margin-top: 10px; font-size: .55rem; }
+      .ecosystem-modal { position: fixed; place-items: end center; padding: 8px; background: rgba(5,17,30,.34); }
+      .ecosystem-modal-panel { max-height: 68vh; padding: 23px 18px 19px; border-radius: 20px 20px 12px 12px; }
+      .ecosystem-modal h3 { margin-top: 6px; font-size: 1.6rem; }
+      .ecosystem-journey { grid-template-columns: 1fr; gap: 6px; margin-top: 16px; }
+      .ecosystem-journey button { min-height: 0; padding: 11px 13px; }
+      .ecosystem-journey button span { margin-top: 4px; }
+      .ecosystem-modal-actions { align-items: flex-start; flex-direction: column; }
+      .globe-hint { bottom: 12px; max-width: calc(100% - 24px); overflow: hidden; text-overflow: ellipsis; }
+      .globe-hint { bottom: 10px; font-size: .58rem; }
     }
   </style>
 </head>
@@ -413,6 +494,7 @@
             <a href="#leads" data-switch-view="updates"><strong>One intake becomes 13 paths</strong><span>The experience adapts to the business while the lead record stays clean and consistent.</span><b>SEE HOW IT WORKS &rarr;</b></a>
             <a href="#leads" data-switch-view="updates"><strong>New SEO opportunities are opening</strong><span>Expect more calls, website intakes, and Google Chat leads as new prospects find us.</span><b>SEE HOW LEADS FLOW &rarr;</b></a>
           </div>
+          <div class="test-drive"><strong>Please try these tools before the day you actually need them.</strong><span>Use the real CASEY experience with a safe test scenario, click through the workflow, and tell me what is confusing, missing, or broken. Your feedback is crucial to making every piece reliable for the whole team.</span></div>
           <p>It also comes at an important time for me personally. From <strong>Friday, August 14 through Wednesday, August 26</strong>, Lexie and I are heading to Portugal. We&rsquo;re going to spend time in Lisbon, make our way down to the Algarve, and really experience the country together.</p>
           <p>I am incredibly excited about this trip, and I want to enjoy it and be present for it. I plan to be off the grid most of the time, but I will check my email once or twice a day. If you are truly unsure about something after using CASEY and leaning on the team, you can email me. Just remember that I will be <strong>six to seven hours ahead</strong>, so please do not expect a real-time response. If you already know you will need a decision, approval, file, answer, or anything else directly from me, ask before I leave.</p>
           <p>While I am away, <strong>Eric is in charge of the big decisions.</strong> Handle the day-to-day work in your lane, support each other, and take anything significant to him.</p>
@@ -495,30 +577,54 @@
         </div>
         <p class="impact-lead">This is bigger than a collection of new features. <strong>It changes where the work begins and how far CASEY can carry it.</strong></p>
         <div class="impact-grid">
-          <button class="impact-card" type="button" data-topic-target="leads"><span class="topic-icon">AI</span><span class="impact-kicker">01 | CLIENT-SIDE CASEY + LEADS</span><span class="impact-title">CASEY now meets the prospect.</span><span class="impact-copy">Explore AI lead generation, new SEO opportunities, Google Chat handoffs, and how one intake becomes 13 commercial paths.</span><span class="topic-action">OPEN THE LEAD ENGINE &rarr;</span></button>
-          <button class="impact-card" type="button" data-topic-target="coach"><span class="topic-icon">$</span><span class="impact-kicker">02 | GUSTO + CASEY</span><span class="impact-title">Payroll finally speaks plain English.</span><span class="impact-copy">See how employees can ask about paychecks, salary, commissions, earnings, goal planning, and what to do next.</span><span class="topic-action">OPEN MY PAY + COACH &rarr;</span></button>
-          <button class="impact-card" type="button" data-topic-target="instant-bind"><span class="topic-icon">B</span><span class="impact-kicker">03 | PLYMOUTH ROCK API</span><span class="impact-title">The last disconnected mile is opening.</span><span class="impact-copy">See what approved API access can mean for a connected online home quote and a future instant-bind path.</span><span class="topic-action">OPEN INSTANT BIND &rarr;</span></button>
-          <button class="impact-card" type="button" data-topic-target="experience"><span class="topic-icon">P</span><span class="impact-kicker">04 | CLIENT EXPERIENCE</span><span class="impact-title">The relationship is stronger after the sale.</span><span class="impact-copy">Explore the Client Portal, Claims Center, assigned-team experience, and the new Safeshield email standard.</span><span class="topic-action">OPEN CLIENT EXPERIENCE &rarr;</span></button>
-          <button class="impact-card" type="button" data-topic-target="secure"><span class="topic-icon">S</span><span class="impact-kicker">05 | SAFESHIELD SECURE</span><span class="impact-title">Create it. Sign it. File it.</span><span class="impact-copy">See protected uploads, smart document preparation, Smart Sign, completed delivery, and permanent audit evidence.</span><span class="topic-action">OPEN SECURE &rarr;</span></button>
+          <div class="topic-group-label">New, expanded, or newly connected</div>
+          <button class="impact-card featured" type="button" data-topic-target="leads" data-system-focus="leads"><span class="new-badge">NEW</span><span class="topic-icon">AI</span><span class="impact-kicker">01 | CLIENT-SIDE CASEY + LEADS</span><span class="impact-title">CASEY now meets the prospect.</span><span class="impact-copy">Explore AI lead generation, new SEO opportunities, Google Chat handoffs, and how one intake becomes 13 commercial paths.</span><span class="topic-action">FIND IT IN THE ECOSYSTEM &rarr;</span></button>
+          <button class="impact-card featured" type="button" data-topic-target="coach" data-system-focus="pay"><span class="new-badge">NEW</span><span class="topic-icon">$</span><span class="impact-kicker">02 | GUSTO + CASEY</span><span class="impact-title">Payroll finally speaks plain English.</span><span class="impact-copy">See how employees can ask about paychecks, salary, commissions, earnings, goal planning, and what to do next.</span><span class="topic-action">FIND IT IN THE ECOSYSTEM &rarr;</span></button>
+          <button class="impact-card featured" type="button" data-topic-target="secure" data-system-focus="secure"><span class="new-badge">NEW</span><span class="topic-icon">S</span><span class="impact-kicker">03 | SAFESHIELD SECURE</span><span class="impact-title">Create it. Sign it. File it.</span><span class="impact-copy">See the new signing-link workflow, protected uploads, Smart Sign, completed delivery, and audit evidence.</span><span class="topic-action">FIND IT IN THE ECOSYSTEM &rarr;</span></button>
+          <button class="impact-card featured" type="button" data-topic-target="instant-bind" data-system-focus="bind"><span class="new-badge">NEW</span><span class="topic-icon">B</span><span class="impact-kicker">04 | APPROVED + COMING SOON</span><span class="impact-title">Plymouth Rock opened the door.</span><span class="impact-copy">API access is approved. Instant Bind is not live yet. See the future path and the work still ahead.</span><span class="topic-action">FIND IT IN THE ECOSYSTEM &rarr;</span></button>
+          <div class="topic-group-label">Explore the broader Safeshield ecosystem</div>
+          <button class="impact-card" type="button" data-topic-target="experience"><span class="topic-icon">P</span><span class="impact-kicker">05 | CLIENT EXPERIENCE</span><span class="impact-title">The relationship is stronger after the sale.</span><span class="impact-copy">Explore the Client Portal, Claims Center, assigned-team experience, and the new Safeshield email standard.</span><span class="topic-action">OPEN CLIENT EXPERIENCE &rarr;</span></button>
           <button class="impact-card" type="button" data-topic-target="office"><span class="topic-icon">O</span><span class="impact-kicker">06 | HOME BASE</span><span class="impact-title">The cubicles are here.</span><span class="impact-copy">See the finished space and the simple standards for keeping it clean, personal, and respected.</span><span class="topic-action">OPEN THE OFFICE UPDATE &rarr;</span></button>
           <button class="impact-card wide" type="button" data-topic-target="systems"><span class="topic-icon">ALL</span><span class="impact-kicker">07 | THE BIG PICTURE</span><span class="impact-title">See how every piece ties together.</span><span class="impact-copy">Start with the complete operating map: leads, pay, client experience, claims, Secure, and Instant Bind working as one Safeshield system.</span><span class="topic-action">OPEN THE SYSTEM MAP &rarr;</span></button>
         </div>
+        <div class="team-lab"><div><div class="eyebrow" style="color:#17283b">The team is part of the build</div><h3>Test it before you need it.</h3></div><p>Open the real CASEY workflow with a safe test scenario. Ask the question. Click the next step. Try the link. If anything is confusing, incomplete, or fails, report exactly what you tried and what happened. Early feedback is how we make these systems dependable before a client or deadline is waiting.</p></div>
       </div>
     </section>
 
     <section class="section system-map" id="systems" data-page="updates" data-topic="systems">
       <div class="shell">
         <div class="section-head">
-          <div><div class="eyebrow">The big picture</div><h2>One operating system.</h2></div>
-          <p>This is no longer a collection of separate tools. CASEY gathers the work, routes it, records it, explains the money, protects the documents, and gives each person the next action.</p>
+          <div><div class="eyebrow">The Safeshield ecosystem</div><h2>A working system that keeps getting fuller.</h2></div>
+          <p>This is not a future-state diagram. Most of these connections already work today. Click any node to see what enters it, what CASEY does, and what the team gets back.</p>
         </div>
-        <div class="system-grid">
-          <article class="system-card" data-number="1"><div class="system-icon">L</div><h3>Lead engine</h3><p>Smart intake to Google Chat, NowCerts, ownership, follow-up, and Won/Lost.</p></article>
-          <article class="system-card" data-number="2"><div class="system-icon">$</div><h3>Pay + coach</h3><p>Gusto, My Pay, compensation rules, goal planning, pace, and scenarios.</p></article>
-          <article class="system-card" data-number="3"><div class="system-icon">P</div><h3>Client experience</h3><p>Portal, renewals, documents, requests, COIs, and assigned-team access.</p></article>
-          <article class="system-card" data-number="4"><div class="system-icon">C</div><h3>Claims Center</h3><p>Carrier lookup, declarations-page identification, and official reporting routes.</p></article>
-          <article class="system-card" data-number="5"><div class="system-icon">S</div><h3>Safeshield Secure</h3><p>Protected upload, smart forms, e-sign, completed PDFs, and audit evidence.</p></article>
-          <article class="system-card" data-number="6"><div class="system-icon">B</div><h3>Instant Bind</h3><p>Plymouth Rock API access opens the path from online home quote to a connected bind workflow.</p></article>
+        <div class="ecosystem-progress"><strong>7 LIVE</strong><span>Lead intake, Deal Log, Gusto and pay coaching, NowCerts handoff, the Client Portal, Claims Center, and Safeshield Secure are functioning parts of the ecosystem. Instant Bind is the next approved connection.</span></div>
+        <div class="system-grid ecosystem-map" aria-label="Interactive Safeshield technology ecosystem">
+          <svg class="ecosystem-lines" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true"><line x1="500" y1="310" x2="165" y2="100"></line><line x1="500" y1="310" x2="500" y2="100"></line><line x1="500" y1="310" x2="835" y2="100"></line><line x1="500" y1="310" x2="165" y2="310"></line><line x1="500" y1="310" x2="835" y2="310"></line><line x1="500" y1="310" x2="165" y2="520"></line><line x1="500" y1="310" x2="500" y2="520"></line><line x1="500" y1="310" x2="835" y2="520"></line></svg>
+          <div class="ecosystem-hub"><div><strong>CASEY</strong><span>THE SAFESHIELD OPERATING ECOSYSTEM</span></div></div>
+          <article class="system-card new-node" data-number="1" data-system-demo="leads" data-lon="-140" data-lat="-20" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">L</div><h3>Lead engine</h3><p>Smart intake, SEO and ad attribution, Google Chat, ownership, follow-up, and Won/Lost.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" data-number="2" data-system-demo="deals" data-lon="-95" data-lat="25" role="button" tabindex="0"><div class="system-icon">D</div><h3>Deal Log</h3><p>Won business becomes a structured deal record that feeds measurement, payout context, and coaching.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card new-node" data-number="3" data-system-demo="pay" data-lon="-50" data-lat="-10" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">$</div><h3>Gusto + pay coach</h3><p>Salary, pay history, Deal Log activity, compensation rules, goals, pace, and scenarios.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" data-number="4" data-system-demo="nowcerts" data-lon="-10" data-lat="28" role="button" tabindex="0"><div class="system-icon">N</div><h3>NowCerts handoff</h3><p>Claimed opportunities become records with source, answers, documents, ownership, and notes intact.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" data-number="5" data-system-demo="portal" data-lon="35" data-lat="-25" role="button" tabindex="0"><div class="system-icon">P</div><h3>Client experience</h3><p>Portal, renewals, documents, requests, COIs, and assigned-team access.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" data-number="6" data-system-demo="claims" data-lon="80" data-lat="15" role="button" tabindex="0"><div class="system-icon">C</div><h3>Claims Center</h3><p>Carrier lookup, declarations-page identification, and official reporting routes.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card new-node" data-number="7" data-system-demo="secure" data-lon="125" data-lat="-12" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">S</div><h3>Safeshield Secure</h3><p>Protected upload, smart forms, signing links, e-sign, completed PDFs, and audit evidence.</p><span class="system-status">&#10003; EXPANDED + LIVE</span></article>
+          <article class="system-card new-node" data-number="8" data-system-demo="bind" data-lon="170" data-lat="25" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">B</div><h3>Instant Bind</h3><p>Plymouth Rock API approval opens the future path from online home quote to connected bind.</p><span class="system-status soon">APPROVED | COMING SOON</span></article>
+          <div class="ecosystem-modal" role="dialog" aria-modal="true" aria-labelledby="ecosystem-modal-title" hidden>
+            <div class="ecosystem-modal-panel">
+              <button class="ecosystem-modal-close" type="button" data-close-system-modal aria-label="Close system profile">&times;</button>
+              <div class="eyebrow">Inside the ecosystem</div>
+              <h3 id="ecosystem-modal-title">System profile</h3>
+              <p class="ecosystem-modal-summary"></p>
+              <div class="ecosystem-journey" aria-label="Interactive system walkthrough">
+                <button type="button" data-system-stage="0"><b>01 | INPUT</b><span></span></button>
+                <button type="button" data-system-stage="1"><b>02 | CASEY</b><span></span></button>
+                <button type="button" data-system-stage="2"><b>03 | RESULT</b><span></span></button>
+              </div>
+              <div class="ecosystem-modal-stage" aria-live="polite"></div>
+              <div class="ecosystem-modal-actions"><button type="button" data-open-system-guide hidden>OPEN FULL INTERACTIVE GUIDE &rarr;</button><span>Close this window to keep exploring the globe.</span></div>
+            </div>
+          </div>
+          <div class="globe-hint">DRAG OR SCROLL IN ANY DIRECTION | THE ECOSYSTEM LOOPS</div>
         </div>
       </div>
     </section>
@@ -530,10 +636,11 @@
           <p>A website visitor can now become a named, claimed, fully documented opportunity without re-keying the same facts across separate systems.</p>
         </div>
         <div class="flow" aria-label="Lead workflow">
-          <div class="flow-step"><b>01 · Visitor</b><span>Smart intake</span></div><div class="flow-arrow">&rarr;</div>
-          <div class="flow-step"><b>02 · CASEY</b><span>Route + enrich</span></div><div class="flow-arrow">&rarr;</div>
-          <div class="flow-step"><b>03 · Producer</b><span>Claim + close</span></div>
+          <div class="flow-step active" data-lead-demo="visitor" role="button" tabindex="0"><b>01 · Visitor</b><span>Smart intake</span></div><div class="flow-arrow">&rarr;</div>
+          <div class="flow-step" data-lead-demo="casey" role="button" tabindex="0"><b>02 · CASEY</b><span>Route + enrich</span></div><div class="flow-arrow">&rarr;</div>
+          <div class="flow-step" data-lead-demo="producer" role="button" tabindex="0"><b>03 · Producer</b><span>Claim + close</span></div>
         </div>
+        <div class="demo-output lead-demo-output" aria-live="polite"><strong>The visitor gets a relevant conversation.</strong><span>CASEY recognizes the business, asks industry-specific questions, accepts optional files, and waits to request contact details until the experience has delivered value.</span></div>
         <div class="intake-model" aria-label="One commercial intake engine powering thirteen industry experiences">
           <article class="intake-core">
             <div class="eyebrow">1 core engine</div>
@@ -573,8 +680,8 @@
     <section class="section bind-section" id="instant-bind" data-page="updates" data-topic="instant-bind">
       <div class="shell">
         <div class="section-head">
-          <div><div class="eyebrow">The last disconnected mile</div><h2>Plymouth Rock said yes.</h2></div>
-          <p>Safeshield has been approved for Plymouth Rock API access. This is the opening we needed to connect online home quoting to Instant Bind and, ultimately, the rest of the operation.</p>
+          <div><span class="coming-soon">APPROVED | COMING SOON</span><div class="eyebrow">The last disconnected mile</div><h2>Plymouth Rock said yes.</h2></div>
+          <p>Safeshield has been approved for Plymouth Rock API access. Instant Bind is not live today. Approval opens the route, while integration, carrier testing, certification, and compliance work still have to be completed.</p>
         </div>
         <div class="bind-layout">
           <article class="bind-news">
@@ -584,11 +691,12 @@
           </article>
           <div>
             <div class="bind-path" aria-label="Future Instant Bind workflow">
-              <div class="bind-step"><b>01 | ONLINE</b><strong>Customer starts</strong><span>Basic home and property details.</span></div>
-              <div class="bind-step"><b>02 | PLYMOUTH ROCK</b><strong>Live quote</strong><span>Carrier data returns through the approved API.</span></div>
-              <div class="bind-step"><b>03 | INSTANT BIND</b><strong>Easy next step</strong><span>A clear digital path from quote toward bind.</span></div>
-              <div class="bind-step"><b>04 | CASEY</b><strong>Connected record</strong><span>Ownership, follow-up, documents, and measurement stay together.</span></div>
+              <div class="bind-step active" data-bind-demo="online" role="button" tabindex="0"><b>01 | ONLINE</b><strong>Customer starts</strong><span>Basic home and property details.</span></div>
+              <div class="bind-step" data-bind-demo="carrier" role="button" tabindex="0"><b>02 | PLYMOUTH ROCK</b><strong>Live quote</strong><span>Carrier data returns through the approved API.</span></div>
+              <div class="bind-step" data-bind-demo="bind" role="button" tabindex="0"><b>03 | INSTANT BIND</b><strong>Easy next step</strong><span>A clear digital path from quote toward bind.</span></div>
+              <div class="bind-step" data-bind-demo="casey" role="button" tabindex="0"><b>04 | CASEY</b><strong>Connected record</strong><span>Ownership, follow-up, documents, and measurement stay together.</span></div>
             </div>
+            <div class="demo-output dark bind-demo-output" aria-live="polite"><strong>Future step 1: the customer starts online.</strong><span>The planned experience begins with guided home and property questions. This is a preview of the approved direction, not a live quoting or binding tool yet.</span></div>
             <div class="bind-note"><strong>Approval is the milestone. Implementation is next.</strong> We still have integration, testing, carrier certification, and compliance work ahead. The important change is that the door is now open.</div>
           </div>
         </div>
@@ -648,14 +756,16 @@
             <div class="window-top"><div><small>SAFESHIELD CLIENT PORTAL</small><h3>Welcome back, Greg</h3></div><div class="avatar">GM</div></div>
             <div class="window-body">
               <div class="status"><div class="status-icon">&#10003;</div><div><strong>Your coverage is on track</strong><span>Current policies, renewal status, and anything needing attention</span></div></div>
-              <div class="portal-tools"><div class="portal-tool">&#128196;<b>POLICIES</b><span>Limits, premiums &amp; renewals</span></div><div class="portal-tool">&#128194;<b>DOCUMENTS</b><span>Decs, ID cards &amp; files</span></div><div class="portal-tool">&#9997;<b>REQUESTS</b><span>Changes, COIs &amp; status</span></div></div>
+              <div class="portal-tools"><button class="portal-tool active" type="button" data-portal-demo="policies">&#128196;<b>POLICIES</b><span>Limits, premiums &amp; renewals</span></button><button class="portal-tool" type="button" data-portal-demo="documents">&#128194;<b>DOCUMENTS</b><span>Decs, ID cards &amp; files</span></button><button class="portal-tool" type="button" data-portal-demo="requests">&#9997;<b>REQUESTS</b><span>Changes, COIs &amp; status</span></button></div>
+              <div class="demo-output portal-demo-output" aria-live="polite"><strong>Policies at a glance.</strong><span>The client can see active policies, renewal timing, limits, premiums, and anything that needs attention without calling for basic information.</span></div>
               <div class="privacy" style="margin-top:12px"><strong>Your Safeshield team:</strong> the assigned agent appears by name with direct call and email actions.</div>
             </div>
           </article>
           <article class="card claims-card">
             <div class="eyebrow">Claims Center</div><h3>Find the right place to report a claim.</h3><p>Search the insurance company or let the system identify it from a declarations-page PDF, then go to the official carrier phone number and filing website.</p>
-            <div class="search"><span>Search carrier name&hellip;</span><b>SEARCH</b></div>
-            <div class="upload">&#128196; Upload a declarations page to identify the carrier</div>
+            <button class="search" type="button" data-claims-demo="search"><span>Travelers</span><b>SEARCH</b></button>
+            <button class="upload" type="button" data-claims-demo="upload">&#128196; Upload a declarations page to identify the carrier</button>
+            <div class="demo-output dark claims-demo-output" aria-live="polite"><strong>Try one of the two paths.</strong><span>Search the carrier by name or identify it from a declarations page.</span></div>
             <div class="claim-path"><div>1 · IDENTIFY</div><div>2 · ROUTE</div><div>3 · SUPPORT</div></div>
             <p style="font-size:.78rem;color:#ffb9b9;margin-top:18px"><strong>If anyone is in danger, call 911 first.</strong> The directory locates the official reporting channel; it does not itself report or confirm a claim.</p>
           </article>
@@ -715,9 +825,10 @@
         <div class="office-grid">
           <div class="card office-photo"><img src="assets/office-cubicles.jpg" alt="New Safeshield office cubicles"></div>
           <div class="office-copy">
-            <article class="card cubicle-rule"><span>&#10024;</span><h3>Keep it clean.</h3><p>Treat it like your own bedroom: reset it, clear the clutter, and do not leave a mess behind.</p></article>
-            <article class="card cubicle-rule"><span>&#127912;</span><h3>Make it yours.</h3><p>Bring photos, plants, organizers, or whatever makes your space feel like your own.</p></article>
-            <article class="card cubicle-rule"><span>&#129309;</span><h3>Respect it.</h3><p>Take care of the furniture, walls, equipment, shared spaces, and the people working around you.</p></article>
+            <article class="card cubicle-rule" data-office-demo="clean" role="button" tabindex="0"><span>&#10024;</span><h3>Keep it clean.</h3><p>Treat it like your own bedroom: reset it, clear the clutter, and do not leave a mess behind.</p></article>
+            <article class="card cubicle-rule" data-office-demo="personal" role="button" tabindex="0"><span>&#127912;</span><h3>Make it yours.</h3><p>Bring photos, plants, organizers, or whatever makes your space feel like your own.</p></article>
+            <article class="card cubicle-rule" data-office-demo="respect" role="button" tabindex="0"><span>&#129309;</span><h3>Respect it.</h3><p>Take care of the furniture, walls, equipment, shared spaces, and the people working around you.</p></article>
+            <div class="office-progress" aria-live="polite"><strong>0 of 3 commitments acknowledged</strong><span>Click each commitment as your personal cubicle standard.</span></div>
           </div>
         </div>
       </div>
@@ -818,9 +929,22 @@
         button.setAttribute('aria-pressed', 'false');
         button.addEventListener('click', function () {
           setView('updates');
-          setTopic(button.getAttribute('data-topic-target'), { updateUrl: true, scroll: true });
+          var systemFocus = button.getAttribute('data-system-focus');
+          if (systemFocus) {
+            setTopic('systems', { updateUrl: true, scroll: true });
+            window.setTimeout(function () {
+              if (window.focusEcosystemNode) window.focusEcosystemNode(systemFocus);
+            }, 420);
+          } else {
+            setTopic(button.getAttribute('data-topic-target'), { updateUrl: true, scroll: true });
+          }
         });
       });
+
+      window.openUpdateTopic = function (topic) {
+        setView('updates');
+        setTopic(topic, { updateUrl: true, scroll: true });
+      };
 
       document.querySelectorAll('[data-switch-view]').forEach(function (link) {
         link.addEventListener('click', function (event) {
@@ -890,6 +1014,264 @@
         });
       });
     });
+
+    function makeKeyboardClickable(element) {
+      element.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          element.click();
+        }
+      });
+    }
+
+    var systemStories = {
+      leads: ['Lead engine: attention becomes owned work.', 'SEO, ads, phone calls, and website visitors enter through a relevant intake. CASEY preserves the source, structures the answers, routes the lead to Google Chat, and keeps ownership and outcome visible.'],
+      deals: ['Deal Log: won business becomes usable operating data.', 'A completed sale is recorded with the producer, carrier, revenue context, and deal facts. That record feeds measurement, payout context, and more useful coaching instead of disappearing into a spreadsheet.'],
+      pay: ['Gusto + CASEY: payroll becomes understandable.', 'Gusto pay history, salary, Deal Log activity, and the Safeshield compensation plan come together so an employee can understand a check, see year-to-date earnings, and plan toward a goal.'],
+      nowcerts: ['NowCerts handoff: the work stays connected.', 'A claimed opportunity can carry the source, intake answers, documents, owner, and notes into the client record without forcing the team to re-key the same story.'],
+      portal: ['Client experience: the intelligence reaches the other side.', 'Policies, documents, renewals, requests, COIs, and the assigned Safeshield team become accessible through a modern client front door.'],
+      claims: ['Claims Center: identify, route, and support.', 'A carrier name or declarations page leads to the official reporting phone number and website. CASEY helps locate the right path without pretending to file or confirm the claim.'],
+      secure: ['Safeshield Secure: the document workflow is connected.', 'A protected upload becomes a prepared document, a shareable signing link, completed delivery, and retained audit evidence. This is the live Safeshield e-sign standard.'],
+      bind: ['Instant Bind: the approved connection that comes next.', 'Plymouth Rock API access is approved, but Instant Bind is not live. Integration, carrier testing, certification, and compliance must be completed before this node becomes a functioning part of the ecosystem.']
+    };
+    var systemJourneys = {
+      leads: [['SEO, ads, phone, and web', 'A prospect arrives from a measurable source with a real business need.'], ['Structure and route', 'CASEY adapts the intake, keeps attribution, collects useful answers and files, and sends an owned opportunity to the team.'], ['Claimed opportunity', 'The producer receives context instead of a blank lead and can keep Won or Lost visible.']],
+      deals: [['Completed sale', 'Producer, client, carrier, premium, revenue context, and deal facts enter once.'], ['Create operating data', 'CASEY keeps the sale connected to measurement, compensation context, and coaching.'], ['A record the business can use', 'The win does not disappear into a disconnected spreadsheet or inbox.']],
+      pay: [['Pay plus production', 'Gusto history, salary, Deal Log activity, the comp plan, and goals come together.'], ['Explain and calculate', 'CASEY answers private pay questions and can model the activity needed to reach a goal.'], ['A clear next move', 'The employee understands the check, year-to-date pace, and what to do next.']],
+      nowcerts: [['Claimed lead', 'Source, intake answers, files, owner, and notes are already attached.'], ['Preserve the story', 'CASEY carries the useful context into the connected client workflow.'], ['Less re-keying', 'The team starts with the same information the prospect already provided.']],
+      portal: [['Client need', 'A client wants a policy, document, renewal detail, COI, or service path.'], ['Open the client front door', 'CASEY-powered tools organize access and keep the assigned Safeshield team visible.'], ['Faster self-service', 'Clients find routine information without losing the human relationship.']],
+      claims: [['Carrier or declarations page', 'The client starts with a carrier name or uploads the policy page they have.'], ['Identify the correct route', 'CASEY locates the carrier and presents its official reporting phone number and website.'], ['Safer claim handoff', 'The client reaches the correct carrier channel without Safeshield pretending to file or confirm the claim.']],
+      secure: [['Document or protected upload', 'A file enters through the Safeshield document workflow instead of an exposed email attachment.'], ['Prepare and sign', 'Smart forms, e-sign fields, reusable website links, signer progress, and audit evidence stay connected.'], ['Completed and retained', 'The signed PDF is delivered and the evidence is preserved. Safeshield Secure is our e-sign standard.']],
+      bind: [['Online home intake', 'The future journey begins with guided property questions and an online customer.'], ['Plymouth Rock connection', 'Approved API access creates the path for quote data, testing, certification, and compliance work.'], ['Easy connected bind', 'The intended result is a simple path from online quote toward bind, with CASEY retaining ownership and follow-up. This is coming soon, not live.']]
+    };
+    var activeSystemKey = '';
+
+    function showSystemStage(index) {
+      var journey = systemJourneys[activeSystemKey];
+      if (!journey) return;
+      document.querySelectorAll('[data-system-stage]').forEach(function (button, buttonIndex) {
+        button.classList.toggle('active', buttonIndex === index);
+      });
+      document.querySelector('.ecosystem-modal-stage').textContent = journey[index][1];
+    }
+
+    function openSystemModal(key, card) {
+      activeSystemKey = key;
+      var story = systemStories[key];
+      var journey = systemJourneys[key];
+      var modal = document.querySelector('.ecosystem-modal');
+      modal.querySelector('h3').textContent = story[0];
+      modal.querySelector('.ecosystem-modal-summary').textContent = story[1];
+      modal.querySelectorAll('[data-system-stage]').forEach(function (button, index) {
+        button.querySelector('span').textContent = journey[index][0];
+      });
+      var guideButton = modal.querySelector('[data-open-system-guide]');
+      var guideTopics = { leads: 'leads', pay: 'coach', portal: 'experience', claims: 'experience', secure: 'secure', bind: 'instant-bind' };
+      var guideTopic = guideTopics[key] || '';
+      guideButton.hidden = !guideTopic;
+      guideButton.setAttribute('data-guide-topic', guideTopic);
+      modal.hidden = false;
+      showSystemStage(0);
+      window.setTimeout(function () { modal.querySelector('[data-close-system-modal]').focus({ preventScroll: true }); }, 40);
+      modal.setAttribute('data-return-system', card.getAttribute('data-system-demo'));
+    }
+
+    document.querySelectorAll('[data-system-demo]').forEach(function (card) {
+      makeKeyboardClickable(card);
+      card.addEventListener('click', function () {
+        var key = card.getAttribute('data-system-demo');
+        document.querySelectorAll('[data-system-demo]').forEach(function (item) { item.classList.toggle('active', item === card); });
+        openSystemModal(key, card);
+      });
+    });
+
+    document.querySelectorAll('[data-system-stage]').forEach(function (button, index) {
+      button.addEventListener('click', function () { showSystemStage(index); });
+    });
+
+    function closeSystemModal() {
+      var modal = document.querySelector('.ecosystem-modal');
+      var returnKey = modal.getAttribute('data-return-system');
+      modal.hidden = true;
+      document.querySelectorAll('[data-system-demo]').forEach(function (item) { item.classList.remove('active'); });
+      var returnNode = document.querySelector('[data-system-demo="' + returnKey + '"]');
+      if (returnNode) returnNode.focus({ preventScroll: true });
+    }
+
+    document.querySelector('[data-close-system-modal]').addEventListener('click', closeSystemModal);
+    document.querySelector('.ecosystem-modal').addEventListener('click', function (event) {
+      if (event.target === event.currentTarget) closeSystemModal();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !document.querySelector('.ecosystem-modal').hidden) closeSystemModal();
+    });
+
+    document.querySelector('[data-open-system-guide]').addEventListener('click', function (event) {
+      event.stopPropagation();
+      var topic = event.currentTarget.getAttribute('data-guide-topic');
+      if (topic && window.openUpdateTopic) window.openUpdateTopic(topic);
+    });
+
+    var leadStories = {
+      visitor: ['The visitor gets a relevant conversation.', 'CASEY recognizes the business, asks industry-specific questions, accepts optional files, and waits to request contact details until the experience has delivered value.'],
+      casey: ['CASEY turns the conversation into a real opportunity.', 'The source, industry, answers, files, and contact details are structured, enriched, and routed into Google Chat with the correct lead-day ownership.'],
+      producer: ['The producer claims, works, and closes the loop.', 'Claiming establishes ownership, creates the connected record, opens the follow-up actions, and keeps Won or Lost visible so the system can learn what produced value.']
+    };
+    document.querySelectorAll('[data-lead-demo]').forEach(function (step) {
+      makeKeyboardClickable(step);
+      step.addEventListener('click', function () {
+        var key = step.getAttribute('data-lead-demo');
+        document.querySelectorAll('[data-lead-demo]').forEach(function (item) { item.classList.toggle('active', item === step); });
+        var story = leadStories[key];
+        var output = document.querySelector('.lead-demo-output');
+        output.querySelector('strong').textContent = story[0];
+        output.querySelector('span').textContent = story[1];
+      });
+    });
+
+    var bindStories = {
+      online: ['Future step 1: the customer starts online.', 'The planned experience begins with guided home and property questions. This is a preview of the approved direction, not a live quoting or binding tool yet.'],
+      carrier: ['Future step 2: Plymouth Rock returns quote data.', 'The approved API is the carrier connection required for real quote information. Integration, testing, and carrier certification still have to happen.'],
+      bind: ['Future step 3: a simple digital bind path.', 'The goal is an easy next action from quote toward bind. This step is coming soon and will not be available until the carrier and compliance work is complete.'],
+      casey: ['Future step 4: CASEY keeps the record connected.', 'Once implemented, ownership, documents, follow-up, and measurement can stay attached to the same journey instead of splitting into another disconnected process.']
+    };
+    document.querySelectorAll('[data-bind-demo]').forEach(function (step) {
+      makeKeyboardClickable(step);
+      step.addEventListener('click', function () {
+        var key = step.getAttribute('data-bind-demo');
+        document.querySelectorAll('[data-bind-demo]').forEach(function (item) { item.classList.toggle('active', item === step); });
+        var story = bindStories[key];
+        var output = document.querySelector('.bind-demo-output');
+        output.querySelector('strong').textContent = story[0];
+        output.querySelector('span').textContent = story[1];
+      });
+    });
+
+    var portalStories = {
+      policies: ['Policies at a glance.', 'The client can see active policies, renewal timing, limits, premiums, and anything that needs attention without calling for basic information.'],
+      documents: ['Documents without the email hunt.', 'Declarations pages, ID cards, and shared files are organized in one client-facing place instead of being buried across old messages.'],
+      requests: ['A clear service request path.', 'The client can request a change, COI, or other help and understand that it has entered the Safeshield workflow.']
+    };
+    document.querySelectorAll('[data-portal-demo]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var key = button.getAttribute('data-portal-demo');
+        document.querySelectorAll('[data-portal-demo]').forEach(function (item) { item.classList.toggle('active', item === button); });
+        var story = portalStories[key];
+        var output = document.querySelector('.portal-demo-output');
+        output.querySelector('strong').textContent = story[0];
+        output.querySelector('span').textContent = story[1];
+      });
+    });
+
+    document.querySelectorAll('[data-claims-demo]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var output = document.querySelector('.claims-demo-output');
+        if (button.getAttribute('data-claims-demo') === 'search') {
+          output.querySelector('strong').textContent = 'Carrier identified: Travelers.';
+          output.querySelector('span').textContent = 'The Claims Center would show the official reporting phone number and website so the client reaches the correct carrier channel.';
+        } else {
+          output.querySelector('strong').textContent = 'Declarations page recognized.';
+          output.querySelector('span').textContent = 'CASEY can identify the carrier from the document and route the user to that carrier\'s official claim-reporting information.';
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-office-demo]').forEach(function (card) {
+      makeKeyboardClickable(card);
+      card.addEventListener('click', function () {
+        card.classList.toggle('active');
+        var completed = document.querySelectorAll('[data-office-demo].active').length;
+        var output = document.querySelector('.office-progress');
+        output.querySelector('strong').textContent = completed + ' of 3 commitments acknowledged';
+        output.querySelector('span').textContent = completed === 3 ? 'Ready. Make the space yours and take care of it together.' : 'Click each commitment as your personal cubicle standard.';
+      });
+    });
+
+    (function () {
+      var globe = document.querySelector('.ecosystem-map');
+      if (!globe) return;
+      var nodes = Array.prototype.slice.call(globe.querySelectorAll('[data-system-demo]'));
+      var lines = Array.prototype.slice.call(globe.querySelectorAll('.ecosystem-lines line'));
+      var yaw = 0;
+      var pitch = 0;
+      var dragging = false;
+      var lastX = 0;
+      var lastY = 0;
+
+      window.focusEcosystemNode = function (key) {
+        var node = globe.querySelector('[data-system-demo="' + key + '"]');
+        if (!node) return;
+        yaw = (55 - Number(node.getAttribute('data-lon'))) * Math.PI / 180;
+        pitch = (-20 - Number(node.getAttribute('data-lat'))) * Math.PI / 180;
+        renderGlobe();
+        globe.scrollIntoView({ behavior: 'auto', block: 'center' });
+        node.click();
+        window.setTimeout(function () { node.focus({ preventScroll: true }); }, 80);
+      };
+
+      function renderGlobe() {
+        var width = globe.clientWidth;
+        var height = globe.clientHeight;
+        var mobile = width < 680;
+        var nodeWidth = mobile ? 132 : 220;
+        var nodeHeight = mobile ? 120 : 168;
+        var radiusX = mobile ? width * .34 : Math.max(220, (width - nodeWidth) / 2 - 24);
+        var radiusY = mobile ? height * .34 : Math.max(180, (height - nodeHeight) / 2 - 44);
+        var centerX = width / 2;
+        var centerY = height / 2;
+        var svg = globe.querySelector('.ecosystem-lines');
+        svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
+
+        nodes.forEach(function (node, index) {
+          var longitude = Number(node.getAttribute('data-lon')) * Math.PI / 180 + yaw;
+          var latitude = Number(node.getAttribute('data-lat')) * Math.PI / 180 + pitch;
+          var depth = Math.cos(longitude) * Math.cos(latitude);
+          var x = centerX + Math.sin(longitude) * Math.cos(latitude) * radiusX;
+          var y = centerY + Math.sin(latitude) * radiusY;
+          var scale = .52 + (depth + 1) * .24;
+          var opacity = Math.max(.06, (depth + 1) * .48);
+          node.style.left = x + 'px';
+          node.style.top = y + 'px';
+          node.style.transform = 'translate(-50%, -50%) scale(' + scale.toFixed(3) + ')';
+          node.style.opacity = Math.min(1, opacity).toFixed(3);
+          node.style.zIndex = String(Math.round(10 + (depth + 1) * 12));
+          node.style.pointerEvents = depth < -.2 ? 'none' : 'auto';
+          if (lines[index]) {
+            lines[index].setAttribute('x1', centerX);
+            lines[index].setAttribute('y1', centerY);
+            lines[index].setAttribute('x2', x);
+            lines[index].setAttribute('y2', y);
+            lines[index].style.opacity = String(Math.max(.08, (depth + 1) * .32));
+          }
+        });
+      }
+
+      globe.addEventListener('wheel', function (event) {
+        event.preventDefault();
+        yaw += event.deltaX * .0025;
+        pitch += event.deltaY * .0021;
+        renderGlobe();
+      }, { passive: false });
+
+      globe.addEventListener('pointerdown', function (event) {
+        dragging = true;
+        lastX = event.clientX;
+        lastY = event.clientY;
+        globe.setPointerCapture(event.pointerId);
+      });
+      globe.addEventListener('pointermove', function (event) {
+        if (!dragging) return;
+        yaw += (event.clientX - lastX) * .008;
+        pitch += (event.clientY - lastY) * .008;
+        lastX = event.clientX;
+        lastY = event.clientY;
+        renderGlobe();
+      });
+      globe.addEventListener('pointerup', function () { dragging = false; });
+      globe.addEventListener('pointercancel', function () { dragging = false; });
+      window.addEventListener('resize', renderGlobe);
+      renderGlobe();
+    }());
   </script>
 </body>
 </html>
