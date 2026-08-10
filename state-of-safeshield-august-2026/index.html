@@ -557,6 +557,7 @@
         transparent;
       isolation: isolate;
     }
+    .ecosystem-map.modal-open { z-index: 90; }
     .ecosystem-map::after {
       content: "";
       position: absolute;
@@ -718,7 +719,9 @@
       border: 1px solid rgba(255,255,255,.1);
       background: rgba(255,255,255,.1);
       box-shadow: 0 18px 60px rgba(0,0,0,.24);
+      scrollbar-width: none;
     }
+    .ecosystem-rail::-webkit-scrollbar { display: none; }
     .ecosystem-rail button {
       min-height: 72px;
       padding: 13px 14px;
@@ -779,7 +782,8 @@
       .ecosystem-mobile-dock { display: none; }
       .ecosystem-rail { left: 14px; right: 14px; bottom: 18px; width: auto; overflow-x: auto; grid-template-columns: repeat(4, minmax(132px, 1fr)); }
       .globe-hint { right: 20px; bottom: 108px; }
-      .ecosystem-modal-panel { max-height: 82svh; padding: 34px 20px 24px; border-top: 1px solid rgba(255,163,0,.38); border-left: 0; }
+      .ecosystem-modal { place-items: end center; }
+      .ecosystem-modal-panel { width: 100%; max-height: 82svh; padding: 42px 20px 24px; border-top: 1px solid rgba(255,163,0,.38); border-left: 0; border-radius: 18px 18px 0 0; background: linear-gradient(165deg, #0d2a42, #06131f 72%); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1577,6 +1581,7 @@
       guideButton.hidden = !guideTopic;
       guideButton.setAttribute('data-guide-topic', guideTopic);
       modal.hidden = false;
+      document.querySelector('.ecosystem-map').classList.add('modal-open');
       showSystemStage(0);
       renderFeatureLibrary(key);
       window.setTimeout(function () { modal.querySelector('[data-close-system-modal]').focus({ preventScroll: true }); }, 40);
@@ -1620,6 +1625,7 @@
       var modal = document.querySelector('.ecosystem-modal');
       var returnKey = modal.getAttribute('data-return-system');
       modal.hidden = true;
+      document.querySelector('.ecosystem-map').classList.remove('modal-open');
       document.querySelectorAll('[data-system-demo]').forEach(function (item) { item.classList.remove('active'); });
       var returnNode = document.querySelector('[data-system-demo="' + returnKey + '"]');
       if (returnNode) returnNode.focus({ preventScroll: true });
