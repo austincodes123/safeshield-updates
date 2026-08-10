@@ -85,6 +85,21 @@
     .route { padding: 20px; }
     .route strong { display: block; }
     .route a { display: inline-block; margin-top: 8px; color: var(--blue); font-size: .91rem; font-weight: 750; text-decoration: none; }
+    .lead-coverage { display: grid; grid-template-columns: 1.35fr .65fr; gap: 24px; align-items: center; margin-top: 22px; padding: 28px; color: white; background: var(--navy); }
+    .lead-coverage h3 { margin: 8px 0; font-size: 1.55rem; }
+    .lead-coverage p { margin: 0; color: #c1ced9; }
+    .coverage-days { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .coverage-day { padding: 18px; border: 1px solid rgba(255,255,255,.13); border-radius: 14px; background: rgba(255,255,255,.07); }
+    .coverage-day span { display: block; color: var(--orange); font-size: .72rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .coverage-day strong { display: block; margin-top: 7px; font-size: 1.05rem; }
+    .coverage-day small { display: block; margin-top: 3px; color: #aebdca; }
+    .team-coverage { margin-top: 12px; padding: 28px; }
+    .team-coverage h3 { margin: 8px 0 18px; font-size: 1.55rem; }
+    .team-coverage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .team-coverage-item { padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: #f7f9fb; }
+    .team-coverage-item span { display: block; color: var(--blue); font-size: .72rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .team-coverage-item strong { display: block; margin-top: 7px; font-size: 1.02rem; }
+    .team-coverage-item p { margin: 7px 0 0; color: var(--muted); font-size: .86rem; }
 
     .system-map { background: var(--navy); color: white; }
     .system-map .section-head p { color: #afbdcb; }
@@ -248,7 +263,7 @@
     .coach-grid > *, .experience-grid > *, .signature-grid > *, .bind-layout > *, .office-grid > *, .intake-model > * { min-width: 0; }
 
     @media (max-width: 960px) {
-      .section-head, .letter-grid, .coach-grid, .experience-grid, .signature-grid, .secure-hero, .office-grid, .closing-card { grid-template-columns: 1fr; }
+      .section-head, .letter-grid, .lead-coverage, .coach-grid, .experience-grid, .signature-grid, .secure-hero, .office-grid, .closing-card { grid-template-columns: 1fr; }
       .hero { min-height: auto; }
       .system-grid { grid-template-columns: repeat(2,1fr); }
       .bind-layout { grid-template-columns: 1fr; }
@@ -268,7 +283,7 @@
       .brand-row { align-items: flex-start; }
       .edition { text-align: right; font-size: .62rem; }
       .hero-grid { margin-top: 54px; }
-      .routing, .system-grid, .questions, .portal-tools, .secure-steps, .bind-path, .industry-grid, .intake-benefits { grid-template-columns: 1fr; }
+      .routing, .coverage-days, .team-coverage-grid, .system-grid, .questions, .portal-tools, .secure-steps, .bind-path, .industry-grid, .intake-benefits { grid-template-columns: 1fr; }
       .bind-step { min-height: 0; }
       .bind-step:not(:last-child)::after { content: "↓"; display: block; right: 50%; top: auto; bottom: -22px; transform: translateX(50%); }
       .mode-switch button { min-width: 0; padding: 10px 5px; font-size: .78rem; }
@@ -348,6 +363,26 @@
           <div class="card route"><strong>Policy service &amp; changes</strong><a href="mailto:service@gosafeshield.com">service@gosafeshield.com · Option 2</a></div>
           <div class="card route"><strong>Certificates / COIs</strong><a href="mailto:certs@gosafeshield.com">certs@gosafeshield.com</a></div>
         </div>
+        <article class="card lead-coverage" aria-label="Austin lead coverage while Austin is away">
+          <div>
+            <div class="eyebrow" style="color:var(--orange)">Austin lead coverage</div>
+            <h3>Work the opportunity. Do not wait for me.</h3>
+            <p>If a lead calls in while I am away, or I forward a lead from my email that is coded as an Austin lead, feel free to work it. The goal is to take care of the prospect and keep the opportunity moving, regardless of the Austin coding.</p>
+          </div>
+          <div class="coverage-days" aria-label="Monday lead day assignments">
+            <div class="coverage-day"><span>Monday, August 17</span><strong>Trent</strong><small>Austin&rsquo;s lead day</small></div>
+            <div class="coverage-day"><span>Monday, August 24</span><strong>Justin</strong><small>Austin&rsquo;s lead day</small></div>
+          </div>
+        </article>
+        <article class="card team-coverage" aria-label="Team service coverage while Austin is away">
+          <div class="eyebrow">Service coverage</div>
+          <h3>Use CASEY, lean on each other, and handle what comes in.</h3>
+          <div class="team-coverage-grid">
+            <div class="team-coverage-item"><span>Commercial endorsements</span><strong>Alyssa, take the lead.</strong><p>CASEY gives you the capability to handle most of these. If you hit a question, I trust Eric to help you work through it.</p></div>
+            <div class="team-coverage-item"><span>Personal lines</span><strong>Work with Marsha.</strong><p>If someone calls because their rate is increasing or they have questions about a renewal, work together and take care of the client.</p></div>
+            <div class="team-coverage-item"><span>The expectation</span><strong>We are a team.</strong><p>Do not let something sit because it usually belongs to someone else. Use the people and systems around you to keep the work moving.</p></div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -565,7 +600,7 @@
         <div class="moon">To the moon!</div>
         <img class="signature" src="assets/austin-signature-orange.png" alt="Austin Glazer signature">
       </div>
-      <aside class="final-check"><strong>Before August 14</strong><ul><li>Think through what you may need from Austin and ask before he leaves.</li><li>Take major decisions to Eric while Austin is away.</li><li>Test the lead, My Pay, portal, Claims Center, Secure, and signature workflows.</li><li>Know your lead day and the 24-hour rule.</li><li>Own your lane, help each other, and keep building.</li></ul></aside>
+      <aside class="final-check"><strong>Before August 14</strong><ul><li>Think through what you may need from Austin and ask before he leaves.</li><li>Take major decisions to Eric while Austin is away.</li><li>Work call-ins and forwarded Austin-coded leads instead of waiting for Austin.</li><li>Remember: Trent covers Monday, August 17, and Justin covers Monday, August 24.</li><li>Alyssa handles commercial endorsements, with Eric available for questions.</li><li>Work personal-lines rate and renewal calls with Marsha.</li><li>Use CASEY, help each other, and keep the work moving.</li></ul></aside>
     </div>
   </section>
 
