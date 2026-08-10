@@ -262,7 +262,10 @@
     .dead-quote cite { display: block; margin-top: 12px; color: #aebdca; font-size: .78rem; font-style: normal; font-weight: 750; letter-spacing: .04em; }
     .dead-quote .quote-meaning { margin: 18px 0 0; color: #d2dce4; font-size: .92rem; }
     .moon { color: var(--orange); font-family: Georgia, serif; font-size: clamp(3.2rem, 7vw, 6.8rem); font-style: italic; line-height: .9; }
-    .signature { width: min(310px, 80%); margin-top: 18px; }
+    .identity-signoff { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
+    .signoff-headshot { width: 84px; height: 84px; flex: 0 0 84px; overflow: hidden; border: 3px solid var(--orange); border-radius: 50%; box-shadow: 0 10px 24px rgba(0,0,0,.24); }
+    .signoff-headshot img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.65); transform-origin: 50% 28%; }
+    .signature { width: min(220px, calc(100% - 100px)); margin: 0; }
     .final-check { padding: 24px; border: 1px solid rgba(255,255,255,.14); border-radius: 18px; background: rgba(255,255,255,.05); }
     .final-check strong { color: var(--orange); }
     .final-check ul { margin: 12px 0 0; padding-left: 20px; color: #c2ced9; }
@@ -303,6 +306,9 @@
       .claim-path { grid-template-columns: 1fr; }
       .secure-rule h3 { font-size: 1.75rem; }
       .closing { padding: 80px 0; }
+      .identity-signoff { gap: 13px; }
+      .signoff-headshot { width: 66px; height: 66px; flex-basis: 66px; }
+      .signature { width: min(170px, calc(100% - 79px)); }
     }
   </style>
 </head>
@@ -613,7 +619,10 @@
           <p class="quote-meaning">Slow down. Listen. Follow the process. Trust yourself and trust the team. You have got this.</p>
         </div>
         <div class="moon">To the moon!</div>
-        <img class="signature" src="assets/austin-signature-orange.png" alt="Austin Glazer signature">
+        <div class="identity-signoff">
+          <div class="signoff-headshot"><img src="assets/austin-headshot.jpg" alt="Austin Glazer"></div>
+          <img class="signature" src="assets/austin-signature-orange.png" alt="Austin Glazer signature">
+        </div>
       </div>
       <aside class="final-check"><strong>Before August 14</strong><ul><li>Think through what you may need from Austin and ask before he leaves.</li><li>Take major decisions to Eric while Austin is away.</li><li>Work call-ins and forwarded Austin-coded leads instead of waiting for Austin.</li><li>Remember: Trent covers Monday, August 17, and Justin covers Monday, August 24.</li><li>Alyssa handles commercial endorsements, with Eric available for questions.</li><li>Work personal-lines rate and renewal calls with Marsha.</li><li>Use CASEY, help each other, and keep the work moving.</li></ul></aside>
     </div>
