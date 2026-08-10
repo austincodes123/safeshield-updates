@@ -182,6 +182,7 @@
     .ecosystem-hub { position: absolute; left: 50%; top: 50%; z-index: 40; display: grid; place-items: center; width: 190px; height: 190px; padding: 24px; transform: translate(-50%,-50%); border: 2px solid var(--orange); border-radius: 50%; color: white; background: radial-gradient(circle, #153c60, #081727 72%); text-align: center; box-shadow: 0 0 0 12px rgba(255,163,0,.06), 0 22px 50px rgba(0,0,0,.28); pointer-events: none; }
     .ecosystem-hub strong { display: block; color: var(--orange); font-family: Georgia, serif; font-size: 2rem; }
     .ecosystem-hub span { display: block; margin-top: 5px; color: #b9c8d4; font-size: .75rem; }
+    .ecosystem-mobile-dock { display: none; }
     .ecosystem-map .system-card { position: absolute; left: 50%; top: 50%; z-index: 1; width: 220px; min-height: 168px; margin: 0; transform: translate(-50%,-50%); transform-origin: center; will-change: left, top, transform, opacity; }
     .ecosystem-map .system-card p { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .2s ease, opacity .2s ease; }
     .ecosystem-map .system-card:hover p, .ecosystem-map .system-card:focus p, .ecosystem-map .system-card.active p { max-height: 100px; opacity: 1; }
@@ -451,11 +452,15 @@
       .ecosystem-hub { width: 112px; height: 112px; padding: 11px; }
       .ecosystem-hub strong { font-size: 1.3rem; }
       .ecosystem-hub span { font-size: .58rem; }
-      .ecosystem-map [data-system-demo] { width: 132px; min-height: 120px; padding: 12px; }
+      .ecosystem-map [data-system-demo] { width: 112px; min-height: 104px; padding: 10px; }
       .ecosystem-map .system-icon { width: 34px; height: 34px; }
       .ecosystem-map .system-card h3 { margin-top: 11px; font-size: .9rem; }
       .ecosystem-map .system-card p { font-size: .75rem; }
       .ecosystem-map .system-status { margin-top: 10px; font-size: .55rem; }
+      .ecosystem-mobile-dock { position: absolute; top: 10px; left: 10px; right: 10px; z-index: 60; display: flex; gap: 7px; overflow-x: auto; padding: 4px 2px 10px; scrollbar-width: none; }
+      .ecosystem-mobile-dock::-webkit-scrollbar { display: none; }
+      .ecosystem-mobile-dock button { flex: 0 0 auto; padding: 8px 10px; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; color: #d9e4ec; background: rgba(8,23,39,.88); font-size: .62rem; font-weight: 850; white-space: nowrap; }
+      .ecosystem-mobile-dock button.new { border-color: var(--orange); color: var(--orange); box-shadow: 0 0 18px rgba(255,163,0,.12); }
       .ecosystem-modal { position: fixed; place-items: end center; padding: 8px; background: rgba(5,17,30,.34); }
       .ecosystem-modal-panel { max-height: 68vh; padding: 23px 18px 19px; border-radius: 20px 20px 12px 12px; }
       .ecosystem-modal h3 { margin-top: 6px; font-size: 1.6rem; }
@@ -597,18 +602,25 @@
           <div><div class="eyebrow">The Safeshield ecosystem</div><h2>A working system that keeps getting fuller.</h2></div>
           <p>This is not a future-state diagram. Most of these connections already work today. Click any node to see what enters it, what CASEY does, and what the team gets back.</p>
         </div>
-        <div class="ecosystem-progress"><strong>7 LIVE</strong><span>Lead intake, Deal Log, Gusto and pay coaching, NowCerts handoff, the Client Portal, Claims Center, and Safeshield Secure are functioning parts of the ecosystem. Instant Bind is the next approved connection.</span></div>
+        <div class="ecosystem-progress"><strong>11 CONNECTED</strong><span>Lead intake, Deal Log, Gusto, NowCerts, client service, claims, Secure, quoting, renewals, commissions, and training already connect to the CASEY operating layer. Instant Bind is the next approved connection.</span></div>
         <div class="system-grid ecosystem-map" aria-label="Interactive Safeshield technology ecosystem">
-          <svg class="ecosystem-lines" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true"><line x1="500" y1="310" x2="165" y2="100"></line><line x1="500" y1="310" x2="500" y2="100"></line><line x1="500" y1="310" x2="835" y2="100"></line><line x1="500" y1="310" x2="165" y2="310"></line><line x1="500" y1="310" x2="835" y2="310"></line><line x1="500" y1="310" x2="165" y2="520"></line><line x1="500" y1="310" x2="500" y2="520"></line><line x1="500" y1="310" x2="835" y2="520"></line></svg>
+          <div class="ecosystem-mobile-dock" aria-label="Choose a system">
+            <button class="new" type="button" data-mobile-system="leads">NEW: Leads</button><button class="new" type="button" data-mobile-system="pay">NEW: Gusto</button><button class="new" type="button" data-mobile-system="secure">NEW: Secure</button><button class="new" type="button" data-mobile-system="bind">NEW: Instant Bind</button><button type="button" data-mobile-system="deals">Deal Log</button><button type="button" data-mobile-system="nowcerts">NowCerts</button><button type="button" data-mobile-system="portal">Client</button><button type="button" data-mobile-system="claims">Claims</button><button type="button" data-mobile-system="quote">Quoting</button><button type="button" data-mobile-system="renewals">Renewals</button><button type="button" data-mobile-system="commission">Commissions</button><button type="button" data-mobile-system="training">Training</button>
+          </div>
+          <svg class="ecosystem-lines" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true"><line x1="500" y1="310" x2="165" y2="100"></line><line x1="500" y1="310" x2="500" y2="100"></line><line x1="500" y1="310" x2="835" y2="100"></line><line x1="500" y1="310" x2="165" y2="310"></line><line x1="500" y1="310" x2="835" y2="310"></line><line x1="500" y1="310" x2="165" y2="520"></line><line x1="500" y1="310" x2="500" y2="520"></line><line x1="500" y1="310" x2="835" y2="520"></line><line x1="500" y1="310" x2="260" y2="180"></line><line x1="500" y1="310" x2="740" y2="180"></line><line x1="500" y1="310" x2="260" y2="440"></line><line x1="500" y1="310" x2="740" y2="440"></line></svg>
           <div class="ecosystem-hub"><div><strong>CASEY</strong><span>THE SAFESHIELD OPERATING ECOSYSTEM</span></div></div>
-          <article class="system-card new-node" data-number="1" data-system-demo="leads" data-lon="-140" data-lat="-20" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">L</div><h3>Lead engine</h3><p>Smart intake, SEO and ad attribution, Google Chat, ownership, follow-up, and Won/Lost.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card" data-number="2" data-system-demo="deals" data-lon="-95" data-lat="25" role="button" tabindex="0"><div class="system-icon">D</div><h3>Deal Log</h3><p>Won business becomes a structured deal record that feeds measurement, payout context, and coaching.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card new-node" data-number="3" data-system-demo="pay" data-lon="-50" data-lat="-10" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">$</div><h3>Gusto + pay coach</h3><p>Salary, pay history, Deal Log activity, compensation rules, goals, pace, and scenarios.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card" data-number="4" data-system-demo="nowcerts" data-lon="-10" data-lat="28" role="button" tabindex="0"><div class="system-icon">N</div><h3>NowCerts handoff</h3><p>Claimed opportunities become records with source, answers, documents, ownership, and notes intact.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card" data-number="5" data-system-demo="portal" data-lon="35" data-lat="-25" role="button" tabindex="0"><div class="system-icon">P</div><h3>Client experience</h3><p>Portal, renewals, documents, requests, COIs, and assigned-team access.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card" data-number="6" data-system-demo="claims" data-lon="80" data-lat="15" role="button" tabindex="0"><div class="system-icon">C</div><h3>Claims Center</h3><p>Carrier lookup, declarations-page identification, and official reporting routes.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card new-node" data-number="7" data-system-demo="secure" data-lon="125" data-lat="-12" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">S</div><h3>Safeshield Secure</h3><p>Protected upload, smart forms, signing links, e-sign, completed PDFs, and audit evidence.</p><span class="system-status">&#10003; EXPANDED + LIVE</span></article>
-          <article class="system-card new-node" data-number="8" data-system-demo="bind" data-lon="170" data-lat="25" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">B</div><h3>Instant Bind</h3><p>Plymouth Rock API approval opens the future path from online home quote to connected bind.</p><span class="system-status soon">APPROVED | COMING SOON</span></article>
+          <article class="system-card new-node" data-number="1" data-system-demo="leads" data-lon="-150" data-lat="-22" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">L</div><h3>Lead engine</h3><p>Smart intake, SEO and ad attribution, Google Chat, ownership, follow-up, and Won/Lost.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" data-number="2" data-system-demo="deals" data-lon="-120" data-lat="18" role="button" tabindex="0"><div class="system-icon">D</div><h3>Deal Log</h3><p>Won business becomes a structured deal record that feeds measurement, payout context, and coaching.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card new-node" data-number="3" data-system-demo="pay" data-lon="-90" data-lat="-8" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">$</div><h3>Gusto + pay coach</h3><p>Salary, pay history, Deal Log activity, compensation rules, goals, pace, and scenarios.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" data-number="4" data-system-demo="nowcerts" data-lon="-60" data-lat="26" role="button" tabindex="0"><div class="system-icon">N</div><h3>NowCerts handoff</h3><p>Claimed opportunities become records with source, answers, documents, ownership, and notes intact.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" data-number="5" data-system-demo="portal" data-lon="-30" data-lat="-24" role="button" tabindex="0"><div class="system-icon">P</div><h3>Client experience</h3><p>Portal, documents, service requests, COIs, and assigned-team access.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" data-number="6" data-system-demo="claims" data-lon="0" data-lat="14" role="button" tabindex="0"><div class="system-icon">C</div><h3>Claims Center</h3><p>Carrier lookup, declarations-page identification, and official reporting routes.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card new-node" data-number="7" data-system-demo="secure" data-lon="30" data-lat="-10" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">S</div><h3>Safeshield Secure</h3><p>Protected upload, smart forms, signing links, e-sign, completed PDFs, and audit evidence.</p><span class="system-status">&#10003; EXPANDED + LIVE</span></article>
+          <article class="system-card new-node" data-number="8" data-system-demo="bind" data-lon="60" data-lat="24" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">B</div><h3>Instant Bind</h3><p>Plymouth Rock API approval opens the future path from online home quote to connected bind.</p><span class="system-status soon">APPROVED | COMING SOON</span></article>
+          <article class="system-card" data-number="9" data-system-demo="quote" data-lon="90" data-lat="-22" role="button" tabindex="0"><div class="system-icon">Q</div><h3>Quoting + proposals</h3><p>One approved risk moves through appetite guidance, supervised quoting, carrier bridges, and a client-ready proposal.</p><span class="system-status">SUPERVISED</span></article>
+          <article class="system-card" data-number="10" data-system-demo="renewals" data-lon="120" data-lat="18" role="button" tabindex="0"><div class="system-icon">R</div><h3>Renewals + service</h3><p>Upcoming renewals and client requests become prepared, owned, documented work instead of hidden follow-up.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" data-number="11" data-system-demo="commission" data-lon="150" data-lat="-8" role="button" tabindex="0"><div class="system-icon">$</div><h3>Commission engine</h3><p>Deposits, carrier statements, policy truth, producer rules, exceptions, and close stay traceable.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" data-number="12" data-system-demo="training" data-lon="180" data-lat="24" role="button" tabindex="0"><div class="system-icon">T</div><h3>Training + knowledge</h3><p>Role-based guidance, approved agency knowledge, practice, and coaching appear where the employee needs them.</p><span class="system-status">&#10003; LIVE</span></article>
           <div class="ecosystem-modal" role="dialog" aria-modal="true" aria-labelledby="ecosystem-modal-title" hidden>
             <div class="ecosystem-modal-panel">
               <button class="ecosystem-modal-close" type="button" data-close-system-modal aria-label="Close system profile">&times;</button>
@@ -1032,7 +1044,11 @@
       portal: ['Client experience: the intelligence reaches the other side.', 'Policies, documents, renewals, requests, COIs, and the assigned Safeshield team become accessible through a modern client front door.'],
       claims: ['Claims Center: identify, route, and support.', 'A carrier name or declarations page leads to the official reporting phone number and website. CASEY helps locate the right path without pretending to file or confirm the claim.'],
       secure: ['Safeshield Secure: the document workflow is connected.', 'A protected upload becomes a prepared document, a shareable signing link, completed delivery, and retained audit evidence. This is the live Safeshield e-sign standard.'],
-      bind: ['Instant Bind: the approved connection that comes next.', 'Plymouth Rock API access is approved, but Instant Bind is not live. Integration, carrier testing, certification, and compliance must be completed before this node becomes a functioning part of the ecosystem.']
+      bind: ['Instant Bind: the approved connection that comes next.', 'Plymouth Rock API access is approved, but Instant Bind is not live. Integration, carrier testing, certification, and compliance must be completed before this node becomes a functioning part of the ecosystem.'],
+      quote: ['Quoting + proposals: say the risk once.', 'CASEY structures the household, applies Safeshield carrier knowledge, prepares the market path, supervises the quote handoff, and turns results into a clearer client decision. Licensed approval stays visible where it matters.'],
+      renewals: ['Renewals + service: surface the work before it becomes a fire.', 'CASEY watches the book and incoming requests, identifies the policy, gathers missing details, prepares the next step, drafts communication, and keeps ownership and the AMS record visible.'],
+      commission: ['Commission engine: close the money without detective work.', 'Bank activity, carrier statements, policy records, producer rules, exceptions, and payroll-ready statements remain tied to their source instead of being rebuilt in spreadsheets.'],
+      training: ['Training + knowledge: the playbook appears in the work.', 'Role-based learning, approved Safeshield knowledge, guided practice, authority limits, and coaching meet the employee at the point where they actually need help.']
     };
     var systemJourneys = {
       leads: [['SEO, ads, phone, and web', 'A prospect arrives from a measurable source with a real business need.'], ['Structure and route', 'CASEY adapts the intake, keeps attribution, collects useful answers and files, and sends an owned opportunity to the team.'], ['Claimed opportunity', 'The producer receives context instead of a blank lead and can keep Won or Lost visible.']],
@@ -1042,7 +1058,11 @@
       portal: [['Client need', 'A client wants a policy, document, renewal detail, COI, or service path.'], ['Open the client front door', 'CASEY-powered tools organize access and keep the assigned Safeshield team visible.'], ['Faster self-service', 'Clients find routine information without losing the human relationship.']],
       claims: [['Carrier or declarations page', 'The client starts with a carrier name or uploads the policy page they have.'], ['Identify the correct route', 'CASEY locates the carrier and presents its official reporting phone number and website.'], ['Safer claim handoff', 'The client reaches the correct carrier channel without Safeshield pretending to file or confirm the claim.']],
       secure: [['Document or protected upload', 'A file enters through the Safeshield document workflow instead of an exposed email attachment.'], ['Prepare and sign', 'Smart forms, e-sign fields, reusable website links, signer progress, and audit evidence stay connected.'], ['Completed and retained', 'The signed PDF is delivered and the evidence is preserved. Safeshield Secure is our e-sign standard.']],
-      bind: [['Online home intake', 'The future journey begins with guided property questions and an online customer.'], ['Plymouth Rock connection', 'Approved API access creates the path for quote data, testing, certification, and compliance work.'], ['Easy connected bind', 'The intended result is a simple path from online quote toward bind, with CASEY retaining ownership and follow-up. This is coming soon, not live.']]
+      bind: [['Online home intake', 'The future journey begins with guided property questions and an online customer.'], ['Plymouth Rock connection', 'Approved API access creates the path for quote data, testing, certification, and compliance work.'], ['Easy connected bind', 'The intended result is a simple path from online quote toward bind, with CASEY retaining ownership and follow-up. This is coming soon, not live.']],
+      quote: [['One approved risk', 'The conversation or intake becomes a structured household with people, property, vehicles, dates, and notes.'], ['Guide and supervise', 'CASEY applies appetite knowledge, prepares PL Rater and carrier handoffs, and stops for licensed decisions or exceptions.'], ['A client-ready choice', 'Quote results become an editable, understandable proposal instead of another pile of carrier PDFs.']],
+      renewals: [['Renewal or request', 'A date, call, email, portal request, or policy change creates visible work.'], ['Find and prepare', 'CASEY connects the client and policy, gathers details, drafts the service path, and keeps a person in control.'], ['Owned follow-through', 'The client is updated and the action remains attached to the agency record until it is finished.']],
+      commission: [['Money and statements', 'Bank deposits and carrier detail enter with the original evidence still attached.'], ['Match and calculate', 'CASEY connects policy truth, producer ownership, versioned rules, and the exceptions that need review.'], ['Traceable close', 'Clean work becomes a producer statement and payroll-ready close without hiding adjustments.']],
+      training: [['Role and real task', 'The employee starts from the work they are responsible for, not a generic content library.'], ['Guide in context', 'CASEY uses approved knowledge, micro-lessons, practice, and authority limits while the work is happening.'], ['Confidence plus visibility', 'The employee knows the next step and managers can see readiness, exceptions, and coaching opportunities.']]
     };
     var activeSystemKey = '';
 
@@ -1213,9 +1233,9 @@
         var width = globe.clientWidth;
         var height = globe.clientHeight;
         var mobile = width < 680;
-        var nodeWidth = mobile ? 132 : 220;
-        var nodeHeight = mobile ? 120 : 168;
-        var radiusX = mobile ? width * .34 : Math.max(220, (width - nodeWidth) / 2 - 24);
+        var nodeWidth = mobile ? 112 : 220;
+        var nodeHeight = mobile ? 104 : 168;
+        var radiusX = mobile ? width * .38 : Math.max(220, (width - nodeWidth) / 2 - 24);
         var radiusY = mobile ? height * .34 : Math.max(180, (height - nodeHeight) / 2 - 44);
         var centerX = width / 2;
         var centerY = height / 2;
@@ -1270,6 +1290,12 @@
       globe.addEventListener('pointerup', function () { dragging = false; });
       globe.addEventListener('pointercancel', function () { dragging = false; });
       window.addEventListener('resize', renderGlobe);
+      globe.querySelectorAll('[data-mobile-system]').forEach(function (button) {
+        button.addEventListener('click', function (event) {
+          event.stopPropagation();
+          window.focusEcosystemNode(button.getAttribute('data-mobile-system'));
+        });
+      });
       renderGlobe();
     }());
   </script>
