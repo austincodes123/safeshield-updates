@@ -509,6 +509,282 @@
       .globe-hint { bottom: 12px; max-width: calc(100% - 24px); overflow: hidden; text-overflow: ellipsis; }
       .globe-hint { bottom: 10px; font-size: .58rem; }
     }
+
+    /* CASEY ecosystem: cinematic operating map */
+    body.view-updates { background: #06111d; }
+    body.view-updates .chapter-nav { display: none; }
+    body.view-updates .system-map.section {
+      position: relative;
+      min-height: 100svh;
+      padding: 0;
+      background:
+        radial-gradient(circle at 72% 35%, rgba(0, 90, 151, .16), transparent 34%),
+        radial-gradient(circle at 18% 72%, rgba(255, 163, 0, .055), transparent 28%),
+        #06111d;
+      overflow: hidden;
+    }
+    body.view-updates .system-map > .shell { width: 100%; max-width: none; }
+    .ecosystem-intro {
+      position: absolute;
+      inset: 0 auto auto 0;
+      z-index: 54;
+      width: min(440px, 38vw);
+      padding: clamp(26px, 4vw, 58px);
+      pointer-events: none;
+    }
+    .ecosystem-intro .eyebrow { display: flex; align-items: center; gap: 10px; }
+    .ecosystem-intro .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--orange); }
+    .ecosystem-intro h2 {
+      max-width: 420px;
+      margin: 14px 0 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 5vw, 5.6rem);
+      font-weight: 400;
+      line-height: .88;
+      letter-spacing: -.055em;
+    }
+    .ecosystem-intro h2 span { display: block; color: var(--orange); font-style: italic; }
+    .ecosystem-intro p { max-width: 370px; margin: 0; color: #91a5b8; font-size: .92rem; }
+    .ecosystem-intro-meta { display: flex; gap: 24px; margin-top: 24px; color: #d6e1e9; font-size: .66rem; font-weight: 800; letter-spacing: .12em; }
+    .ecosystem-intro-meta b { color: var(--orange); font-size: 1rem; }
+    .ecosystem-progress { display: none; }
+    .ecosystem-map {
+      min-height: 100svh;
+      border: 0;
+      border-radius: 0;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.025) 0 1px, transparent 1.6px) 0 0 / 42px 42px,
+        transparent;
+      isolation: isolate;
+    }
+    .ecosystem-map::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: linear-gradient(90deg, #06111d 0%, transparent 24%, transparent 78%, #06111d 100%);
+      pointer-events: none;
+    }
+    .ecosystem-canvas { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
+    .ecosystem-map.webgl-ready .ecosystem-sphere { opacity: 0; }
+    .ecosystem-sphere {
+      position: absolute;
+      left: 58%;
+      top: 50%;
+      z-index: -1;
+      width: min(69vw, 860px);
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(118, 177, 216, .22);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 34% 30%, rgba(98, 184, 239, .13), transparent 28%),
+        radial-gradient(circle at 68% 72%, rgba(0, 43, 78, .5), transparent 48%),
+        radial-gradient(circle, rgba(14, 50, 79, .54), rgba(5, 17, 29, .08) 69%);
+      box-shadow:
+        inset -48px -20px 90px rgba(0,0,0,.56),
+        inset 24px 0 60px rgba(0,90,151,.08),
+        0 0 100px rgba(0,90,151,.1);
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .ecosystem-sphere::before,
+    .ecosystem-sphere::after {
+      content: "";
+      position: absolute;
+      inset: -8%;
+      border-radius: 50%;
+      background:
+        repeating-radial-gradient(ellipse at center, transparent 0 9.4%, rgba(92, 153, 194, .12) 9.6% 9.8%, transparent 10% 19.4%),
+        repeating-linear-gradient(90deg, transparent 0 9.7%, rgba(92, 153, 194, .1) 9.9% 10.1%, transparent 10.3% 19.7%);
+      mask-image: radial-gradient(circle, #000 0 67%, transparent 70%);
+      animation: gridDrift 28s linear infinite;
+    }
+    .ecosystem-sphere::after {
+      inset: 10%;
+      border: 1px solid rgba(255,163,0,.14);
+      background: none;
+      box-shadow: 0 0 0 9vw rgba(255,255,255,.008), 0 0 0 18vw rgba(255,255,255,.006);
+      animation: none;
+    }
+    @keyframes gridDrift { to { transform: rotate(360deg); } }
+    .ecosystem-lines { z-index: 0; filter: drop-shadow(0 0 4px rgba(255,163,0,.18)); }
+    .ecosystem-lines line { stroke: rgba(107, 164, 202, .23); stroke-width: 1; stroke-dasharray: none; }
+    .ecosystem-hub {
+      left: 58%;
+      width: 182px;
+      height: auto;
+      padding: 20px 26px;
+      border: 0;
+      border-radius: 2px;
+      background: rgba(4, 15, 26, .72);
+      box-shadow: 0 0 0 1px rgba(255,163,0,.25), 0 18px 60px rgba(0,0,0,.36);
+      backdrop-filter: blur(18px);
+    }
+    .ecosystem-hub::before { content: ""; position: absolute; left: 50%; bottom: -26px; width: 1px; height: 26px; background: linear-gradient(var(--orange), transparent); }
+    .ecosystem-hub strong { color: white; font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 1.72rem; font-weight: 900; letter-spacing: .2em; text-indent: .2em; }
+    .ecosystem-hub span { margin-top: 5px; color: var(--orange); font-size: .52rem; font-weight: 850; letter-spacing: .17em; }
+    .ecosystem-map .system-card {
+      width: 48px;
+      height: 48px;
+      min-height: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+      text-align: center;
+    }
+    .ecosystem-map .system-card::after { display: none; }
+    .ecosystem-map .system-card .system-icon {
+      position: relative;
+      left: auto;
+      top: auto;
+      width: 48px;
+      height: 48px;
+      transform: none;
+      border: 1px solid rgba(174, 208, 229, .42);
+      border-radius: 50%;
+      color: #d8e9f3;
+      background: rgba(6, 22, 36, .9);
+      box-shadow: 0 0 0 5px rgba(107,164,202,.06), 0 0 22px rgba(107,164,202,.26);
+      backdrop-filter: blur(10px);
+    }
+    .ecosystem-map .system-card .system-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 1.7;
+    }
+    .ecosystem-map .system-card h3 {
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 10px);
+      display: block;
+      margin: 0;
+      padding: 7px 10px;
+      transform: translate(-50%, 4px);
+      border: 1px solid rgba(170, 198, 216, .2);
+      border-radius: 3px;
+      color: #eaf1f6;
+      background: rgba(5, 18, 30, .78);
+      box-shadow: 0 8px 28px rgba(0,0,0,.24);
+      backdrop-filter: blur(12px);
+      font-size: .76rem;
+      font-weight: 720;
+      letter-spacing: .01em;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .16s ease, transform .16s ease;
+    }
+    .ecosystem-map .system-card p,
+    .ecosystem-map .system-card .system-status { display: none; }
+    .ecosystem-map .system-card .new-badge {
+      top: -2px;
+      right: -2px;
+      left: auto;
+      width: 9px;
+      height: 9px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      color: transparent;
+      background: var(--orange);
+      box-shadow: 0 0 14px rgba(255,163,0,.85);
+      font-size: 0;
+    }
+    .ecosystem-map .system-card .new-badge::before { display: none; }
+    .ecosystem-map .system-card.new-node { border: 0; background: transparent; box-shadow: none; }
+    .ecosystem-map .system-card.new-node .system-icon { border-color: rgba(255,163,0,.72); color: var(--orange); box-shadow: 0 0 0 6px rgba(255,163,0,.07), 0 0 28px rgba(255,163,0,.46); }
+    .ecosystem-map .system-card:hover,
+    .ecosystem-map .system-card:focus,
+    .ecosystem-map .system-card.active { transform: translate(-50%, -50%) scale(1) !important; }
+    .ecosystem-map .system-card:hover h3,
+    .ecosystem-map .system-card:focus h3,
+    .ecosystem-map .system-card.active h3 { transform: translate(-50%, 0); border-color: rgba(255,163,0,.72); color: white; background: rgba(10,31,49,.96); box-shadow: 0 0 32px rgba(255,163,0,.14); opacity: 1; }
+    .ecosystem-map .system-card:hover .system-icon,
+    .ecosystem-map .system-card:focus .system-icon,
+    .ecosystem-map .system-card.active .system-icon { color: var(--orange); border-color: var(--orange); transform: scale(1.08); }
+    .ecosystem-rail {
+      position: absolute;
+      left: clamp(26px, 4vw, 58px);
+      bottom: clamp(28px, 4vw, 52px);
+      z-index: 55;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(118px, 1fr));
+      gap: 1px;
+      width: min(670px, calc(100% - 80px));
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.1);
+      box-shadow: 0 18px 60px rgba(0,0,0,.24);
+    }
+    .ecosystem-rail button {
+      min-height: 72px;
+      padding: 13px 14px;
+      border: 0;
+      color: #aabcca;
+      background: rgba(5,17,29,.88);
+      text-align: left;
+      cursor: pointer;
+    }
+    .ecosystem-rail button:hover { color: white; background: #0b2237; }
+    .ecosystem-rail small { display: block; color: var(--orange); font-size: .49rem; font-weight: 900; letter-spacing: .16em; }
+    .ecosystem-rail strong { display: block; margin-top: 5px; color: inherit; font-size: .68rem; }
+    .globe-hint {
+      left: auto;
+      right: clamp(24px, 4vw, 58px);
+      bottom: clamp(30px, 4vw, 54px);
+      transform: none;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      color: #668095;
+      background: transparent;
+      font-size: .57rem;
+      letter-spacing: .14em;
+    }
+    .ecosystem-modal { position: fixed; z-index: 100; place-items: stretch end; padding: 0; background: rgba(2,9,15,.48); backdrop-filter: blur(6px); }
+    .ecosystem-modal-panel {
+      width: min(620px, 100%);
+      max-height: 100svh;
+      padding: clamp(32px, 5vw, 60px);
+      border: 0;
+      border-left: 1px solid rgba(255,163,0,.38);
+      border-radius: 0;
+      background: linear-gradient(155deg, rgba(12, 36, 57, .99), rgba(4, 16, 27, .995) 70%);
+      box-shadow: -32px 0 100px rgba(0,0,0,.5);
+    }
+    .ecosystem-modal-close { top: 22px; right: 22px; border-color: rgba(255,255,255,.12); background: transparent; }
+    .ecosystem-modal h3 { max-width: 500px; margin-top: 12px; font-family: Georgia, serif; font-weight: 400; }
+    .ecosystem-journey { gap: 1px; background: rgba(255,255,255,.1); }
+    .ecosystem-journey button { border: 0; border-radius: 0; background: rgba(255,255,255,.035); }
+    .ecosystem-journey button:hover, .ecosystem-journey button.active { background: rgba(255,163,0,.1); box-shadow: inset 0 -2px var(--orange); }
+    .ecosystem-demo-screen { border-radius: 0; }
+    .ecosystem-feature-tabs button { border-radius: 2px; }
+    .ecosystem-feature-card { border-radius: 2px; }
+
+    @media (max-width: 900px) {
+      .ecosystem-intro { width: 100%; padding: 24px 22px; }
+      .ecosystem-intro h2 { max-width: 270px; font-size: 2.7rem; }
+      .ecosystem-intro p { display: none; }
+      .ecosystem-intro-meta { margin-top: 12px; }
+      .ecosystem-map { min-height: 740px; }
+      .ecosystem-sphere { left: 50%; top: 52%; width: min(116vw, 680px); }
+      .ecosystem-hub { left: 50%; top: 52%; width: 132px; padding: 14px 18px; }
+      .ecosystem-hub strong { font-size: 1.2rem; }
+      .ecosystem-map .system-card { width: 42px; height: 42px; }
+      .ecosystem-map .system-card h3 { max-width: 138px; padding: 7px 8px; overflow: hidden; font-size: .66rem; text-overflow: ellipsis; }
+      .ecosystem-map .system-card .system-icon { width: 42px; height: 42px; }
+      .ecosystem-mobile-dock { display: none; }
+      .ecosystem-rail { left: 14px; right: 14px; bottom: 18px; width: auto; overflow-x: auto; grid-template-columns: repeat(4, minmax(132px, 1fr)); }
+      .globe-hint { right: 20px; bottom: 108px; }
+      .ecosystem-modal-panel { max-height: 82svh; padding: 34px 20px 24px; border-top: 1px solid rgba(255,163,0,.38); border-left: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ecosystem-sphere::before { animation: none; }
+    }
   </style>
 </head>
 <body class="view-ready view-updates">
@@ -636,29 +912,33 @@
 
     <section class="section system-map" id="systems" data-page="updates" data-topic="systems">
       <div class="shell">
-        <div class="section-head">
-          <div><div class="eyebrow">Safeshield Insurance</div><h2>The CASEY operating ecosystem.</h2></div>
-          <p>This is not a future-state diagram. Most of these connections already work today. Click any node to see what enters it, what CASEY does, and what the team gets back.</p>
+        <div class="ecosystem-intro">
+          <div class="eyebrow">Safeshield intelligence layer</div>
+          <h2>Every system. <span>One CASEY.</span></h2>
+          <p>Rotate the operating world. Each point is a real capability connected through CASEY, with the newest additions illuminated in orange.</p>
+          <div class="ecosystem-intro-meta"><span><b>11</b> LIVE CONNECTIONS</span><span><b>1</b> COMING NEXT</span></div>
         </div>
         <div class="ecosystem-progress"><strong>11 CONNECTED</strong><span>Lead intake, Deal Log, Gusto, NowCerts, client service, claims, Secure, quoting, renewals, commissions, and training already connect to the CASEY operating layer. Instant Bind is the next approved connection.</span></div>
         <div class="system-grid ecosystem-map" aria-label="Interactive Safeshield technology ecosystem">
+          <canvas class="ecosystem-canvas" aria-hidden="true"></canvas>
+          <div class="ecosystem-sphere" aria-hidden="true"></div>
           <div class="ecosystem-mobile-dock" aria-label="Choose a system">
             <button class="new" type="button" data-mobile-system="leads">NEW: Leads</button><button class="new" type="button" data-mobile-system="pay">NEW: Gusto</button><button class="new" type="button" data-mobile-system="secure">NEW: Secure</button><button class="new" type="button" data-mobile-system="bind">NEW: Instant Bind</button><button type="button" data-mobile-system="deals">Deal Log</button><button type="button" data-mobile-system="nowcerts">NowCerts</button><button type="button" data-mobile-system="portal">Client</button><button type="button" data-mobile-system="claims">Claims</button><button type="button" data-mobile-system="quote">Quoting</button><button type="button" data-mobile-system="renewals">Renewals</button><button type="button" data-mobile-system="commission">Commissions</button><button type="button" data-mobile-system="training">Training</button>
           </div>
           <svg class="ecosystem-lines" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true"><line x1="500" y1="310" x2="165" y2="100"></line><line x1="500" y1="310" x2="500" y2="100"></line><line x1="500" y1="310" x2="835" y2="100"></line><line x1="500" y1="310" x2="165" y2="310"></line><line x1="500" y1="310" x2="835" y2="310"></line><line x1="500" y1="310" x2="165" y2="520"></line><line x1="500" y1="310" x2="500" y2="520"></line><line x1="500" y1="310" x2="835" y2="520"></line><line x1="500" y1="310" x2="260" y2="180"></line><line x1="500" y1="310" x2="740" y2="180"></line><line x1="500" y1="310" x2="260" y2="440"></line><line x1="500" y1="310" x2="740" y2="440"></line></svg>
           <div class="ecosystem-hub"><div><strong>CASEY</strong><span>THE SAFESHIELD OPERATING ECOSYSTEM</span></div></div>
-          <article class="system-card new-node" data-number="1" data-system-demo="leads" data-lon="-150" data-lat="-22" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">L</div><h3>Lead engine</h3><p>Smart intake, SEO and ad attribution, Google Chat, ownership, follow-up, and Won/Lost.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card" data-number="2" data-system-demo="deals" data-lon="-120" data-lat="18" role="button" tabindex="0"><div class="system-icon">D</div><h3>Deal Log</h3><p>Won business becomes a structured deal record that feeds measurement, payout context, and coaching.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card new-node" data-number="3" data-system-demo="pay" data-lon="-90" data-lat="-8" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">$</div><h3>Gusto + pay coach</h3><p>Salary, pay history, Deal Log activity, compensation rules, goals, pace, and scenarios.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card" data-number="4" data-system-demo="nowcerts" data-lon="-60" data-lat="26" role="button" tabindex="0"><div class="system-icon">N</div><h3>NowCerts handoff</h3><p>Claimed opportunities become records with source, answers, documents, ownership, and notes intact.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card" data-number="5" data-system-demo="portal" data-lon="-30" data-lat="-24" role="button" tabindex="0"><div class="system-icon">P</div><h3>Client experience</h3><p>Portal, documents, service requests, COIs, and assigned-team access.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card" data-number="6" data-system-demo="claims" data-lon="0" data-lat="14" role="button" tabindex="0"><div class="system-icon">C</div><h3>Claims Center</h3><p>Carrier lookup, declarations-page identification, and official reporting routes.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card new-node" data-number="7" data-system-demo="secure" data-lon="30" data-lat="-10" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">S</div><h3>Safeshield Secure</h3><p>Protected upload, smart forms, signing links, e-sign, completed PDFs, and audit evidence.</p><span class="system-status">&#10003; EXPANDED + LIVE</span></article>
-          <article class="system-card new-node" data-number="8" data-system-demo="bind" data-lon="60" data-lat="24" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon">B</div><h3>Instant Bind</h3><p>Plymouth Rock API approval opens the future path from online home quote to connected bind.</p><span class="system-status soon">APPROVED | COMING SOON</span></article>
-          <article class="system-card" data-number="9" data-system-demo="quote" data-lon="90" data-lat="-22" role="button" tabindex="0"><div class="system-icon">Q</div><h3>Quoting + proposals</h3><p>One approved risk moves through appetite guidance, supervised quoting, carrier bridges, and a client-ready proposal.</p><span class="system-status">SUPERVISED</span></article>
-          <article class="system-card" data-number="10" data-system-demo="renewals" data-lon="120" data-lat="18" role="button" tabindex="0"><div class="system-icon">R</div><h3>Renewals + service</h3><p>Upcoming renewals and client requests become prepared, owned, documented work instead of hidden follow-up.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card" data-number="11" data-system-demo="commission" data-lon="150" data-lat="-8" role="button" tabindex="0"><div class="system-icon">$</div><h3>Commission engine</h3><p>Deposits, carrier statements, policy truth, producer rules, exceptions, and close stay traceable.</p><span class="system-status">&#10003; LIVE</span></article>
-          <article class="system-card" data-number="12" data-system-demo="training" data-lon="180" data-lat="24" role="button" tabindex="0"><div class="system-icon">T</div><h3>Training + knowledge</h3><p>Role-based guidance, approved agency knowledge, practice, and coaching appear where the employee needs them.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card new-node" aria-label="Open Lead engine" data-number="1" data-system-demo="leads" data-lon="-150" data-lat="-22" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon"><i data-lucide="radar" aria-hidden="true"></i></div><h3>Lead engine</h3><p>Smart intake, SEO and ad attribution, Google Chat, ownership, follow-up, and Won/Lost.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" aria-label="Open Deal Log" data-number="2" data-system-demo="deals" data-lon="-120" data-lat="18" role="button" tabindex="0"><div class="system-icon"><i data-lucide="trophy" aria-hidden="true"></i></div><h3>Deal Log</h3><p>Won business becomes a structured deal record that feeds measurement, payout context, and coaching.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card new-node" aria-label="Open Gusto and pay coach" data-number="3" data-system-demo="pay" data-lon="-90" data-lat="-8" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon"><i data-lucide="wallet-cards" aria-hidden="true"></i></div><h3>Gusto + pay coach</h3><p>Salary, pay history, Deal Log activity, compensation rules, goals, pace, and scenarios.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" aria-label="Open NowCerts handoff" data-number="4" data-system-demo="nowcerts" data-lon="-60" data-lat="26" role="button" tabindex="0"><div class="system-icon"><i data-lucide="database" aria-hidden="true"></i></div><h3>NowCerts handoff</h3><p>Claimed opportunities become records with source, answers, documents, ownership, and notes intact.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" aria-label="Open Client experience" data-number="5" data-system-demo="portal" data-lon="-30" data-lat="-24" role="button" tabindex="0"><div class="system-icon"><i data-lucide="panels-top-left" aria-hidden="true"></i></div><h3>Client experience</h3><p>Portal, documents, service requests, COIs, and assigned-team access.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" aria-label="Open Claims Center" data-number="6" data-system-demo="claims" data-lon="0" data-lat="14" role="button" tabindex="0"><div class="system-icon"><i data-lucide="life-buoy" aria-hidden="true"></i></div><h3>Claims Center</h3><p>Carrier lookup, declarations-page identification, and official reporting routes.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card new-node" aria-label="Open Safeshield Secure" data-number="7" data-system-demo="secure" data-lon="30" data-lat="-10" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon"><i data-lucide="shield-check" aria-hidden="true"></i></div><h3>Safeshield Secure</h3><p>Protected upload, smart forms, signing links, e-sign, completed PDFs, and audit evidence.</p><span class="system-status">&#10003; EXPANDED + LIVE</span></article>
+          <article class="system-card new-node" aria-label="Open Instant Bind" data-number="8" data-system-demo="bind" data-lon="60" data-lat="24" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon"><i data-lucide="link" aria-hidden="true"></i></div><h3>Instant Bind</h3><p>Plymouth Rock API approval opens the future path from online home quote to connected bind.</p><span class="system-status soon">APPROVED | COMING SOON</span></article>
+          <article class="system-card" aria-label="Open Quoting and proposals" data-number="9" data-system-demo="quote" data-lon="90" data-lat="-22" role="button" tabindex="0"><div class="system-icon"><i data-lucide="file-chart-column" aria-hidden="true"></i></div><h3>Quoting + proposals</h3><p>One approved risk moves through appetite guidance, supervised quoting, carrier bridges, and a client-ready proposal.</p><span class="system-status">SUPERVISED</span></article>
+          <article class="system-card" aria-label="Open Renewals and service" data-number="10" data-system-demo="renewals" data-lon="120" data-lat="18" role="button" tabindex="0"><div class="system-icon"><i data-lucide="refresh-cw" aria-hidden="true"></i></div><h3>Renewals + service</h3><p>Upcoming renewals and client requests become prepared, owned, documented work instead of hidden follow-up.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" aria-label="Open Commission engine" data-number="11" data-system-demo="commission" data-lon="150" data-lat="-8" role="button" tabindex="0"><div class="system-icon"><i data-lucide="badge-dollar-sign" aria-hidden="true"></i></div><h3>Commission engine</h3><p>Deposits, carrier statements, policy truth, producer rules, exceptions, and close stay traceable.</p><span class="system-status">&#10003; LIVE</span></article>
+          <article class="system-card" aria-label="Open Training and knowledge" data-number="12" data-system-demo="training" data-lon="180" data-lat="24" role="button" tabindex="0"><div class="system-icon"><i data-lucide="graduation-cap" aria-hidden="true"></i></div><h3>Training + knowledge</h3><p>Role-based guidance, approved agency knowledge, practice, and coaching appear where the employee needs them.</p><span class="system-status">&#10003; LIVE</span></article>
           <div class="ecosystem-modal" role="dialog" aria-modal="true" aria-labelledby="ecosystem-modal-title" hidden>
             <div class="ecosystem-modal-panel">
               <button class="ecosystem-modal-close" type="button" data-close-system-modal aria-label="Close system profile">&times;</button>
@@ -681,6 +961,12 @@
               </div>
               <div class="ecosystem-modal-actions"><button type="button" data-open-system-guide hidden>OPEN FULL INTERACTIVE GUIDE &rarr;</button><span>Close this window to keep exploring the globe.</span></div>
             </div>
+          </div>
+          <div class="ecosystem-rail" aria-label="New CASEY capabilities">
+            <button type="button" data-mobile-system="leads"><small>NEW / LIVE</small><strong>Client-side CASEY</strong></button>
+            <button type="button" data-mobile-system="pay"><small>NEW / LIVE</small><strong>Gusto + pay coach</strong></button>
+            <button type="button" data-mobile-system="secure"><small>EXPANDED</small><strong>Safeshield Secure</strong></button>
+            <button type="button" data-mobile-system="bind"><small>APPROVED</small><strong>Instant Bind</strong></button>
           </div>
           <div class="globe-hint">DRAG OR SCROLL IN ANY DIRECTION | THE ECOSYSTEM LOOPS</div>
         </div>
@@ -920,7 +1206,10 @@
 
   <footer><div class="shell">Safeshield Insurance internal update | Not for client distribution | Lead and compensation examples are illustrative | Payroll questions belong in a private 1:1 CASEY chat</div></footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
   <script>
+    if (window.lucide) window.lucide.createIcons({ attrs: { 'stroke-width': 1.7 } });
     (function () {
       var tabs = Array.prototype.slice.call(document.querySelectorAll('.view-tab'));
       var topicButtons = Array.prototype.slice.call(document.querySelectorAll('[data-topic-target]'));
@@ -1429,92 +1718,184 @@
       var globe = document.querySelector('.ecosystem-map');
       if (!globe) return;
       var nodes = Array.prototype.slice.call(globe.querySelectorAll('[data-system-demo]'));
-      var lines = Array.prototype.slice.call(globe.querySelectorAll('.ecosystem-lines line'));
-      var yaw = 0;
-      var pitch = 0;
+      var fallbackLines = globe.querySelector('.ecosystem-lines');
+      var yaw = -.38;
+      var pitch = -.08;
       var dragging = false;
       var lastX = 0;
       var lastY = 0;
+      var lastInteraction = Date.now();
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!window.THREE) return;
+      fallbackLines.style.display = 'none';
+
+      var canvas = globe.querySelector('.ecosystem-canvas');
+      var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
+      camera.position.set(0, 0, 4.5);
+      var world = new THREE.Group();
+      scene.add(world);
+
+      scene.add(new THREE.AmbientLight(0x527b99, 1.25));
+      var keyLight = new THREE.DirectionalLight(0x8fd3ff, 3.2);
+      keyLight.position.set(-3, 4, 5);
+      scene.add(keyLight);
+      var warmLight = new THREE.PointLight(0xffa300, 5, 9);
+      warmLight.position.set(2.4, -1.7, 3.1);
+      scene.add(warmLight);
+
+      var sphere = new THREE.Mesh(
+        new THREE.SphereGeometry(1.18, 64, 40),
+        new THREE.MeshPhysicalMaterial({ color: 0x071b2c, emissive: 0x061525, emissiveIntensity: .78, roughness: .58, metalness: .28, transparent: true, opacity: .96, clearcoat: .35 })
+      );
+      world.add(sphere);
+      var wire = new THREE.Mesh(
+        new THREE.SphereGeometry(1.195, 36, 24),
+        new THREE.MeshBasicMaterial({ color: 0x4d9ccc, wireframe: true, transparent: true, opacity: .115 })
+      );
+      wire.scale.y = .999;
+      world.add(wire);
+
+      var halo = new THREE.Mesh(
+        new THREE.SphereGeometry(1.24, 48, 30),
+        new THREE.MeshBasicMaterial({ color: 0x1672aa, side: THREE.BackSide, transparent: true, opacity: .055 })
+      );
+      world.add(halo);
+
+      var dustPositions = [];
+      for (var dustIndex = 0; dustIndex < 620; dustIndex += 1) {
+        var dustY = 1 - (dustIndex / 619) * 2;
+        var dustRadius = Math.sqrt(1 - dustY * dustY);
+        var dustTheta = Math.PI * (3 - Math.sqrt(5)) * dustIndex;
+        dustPositions.push(Math.cos(dustTheta) * dustRadius * 1.205, dustY * 1.205, Math.sin(dustTheta) * dustRadius * 1.205);
+      }
+      var dustGeometry = new THREE.BufferGeometry();
+      dustGeometry.setAttribute('position', new THREE.Float32BufferAttribute(dustPositions, 3));
+      world.add(new THREE.Points(dustGeometry, new THREE.PointsMaterial({ color: 0x78b8dc, size: .009, transparent: true, opacity: .5 })));
+
+      function pointFromNode(node, radius) {
+        var lon = Number(node.getAttribute('data-lon')) * Math.PI / 180;
+        var lat = Number(node.getAttribute('data-lat')) * Math.PI / 180;
+        return new THREE.Vector3(
+          Math.sin(lon) * Math.cos(lat) * radius,
+          Math.sin(lat) * radius,
+          Math.cos(lon) * Math.cos(lat) * radius
+        );
+      }
+
+      var nodeVectors = nodes.map(function (node) { return pointFromNode(node, 1.23); });
+      var newKeys = { leads: true, pay: true, secure: true, bind: true };
+      var dotGeometry = new THREE.SphereGeometry(.027, 18, 18);
+      nodes.forEach(function (node, index) {
+        var key = node.getAttribute('data-system-demo');
+        var dot = new THREE.Mesh(dotGeometry, new THREE.MeshBasicMaterial({ color: newKeys[key] ? 0xffa300 : 0xa9d4ec }));
+        dot.position.copy(nodeVectors[index]);
+        dot.userData.nodeKey = key;
+        world.add(dot);
+
+        var next = nodeVectors[(index + 3) % nodeVectors.length];
+        var middle = nodeVectors[index].clone().add(next).normalize().multiplyScalar(1.52);
+        var curve = new THREE.QuadraticBezierCurve3(nodeVectors[index], middle, next);
+        var arcGeometry = new THREE.BufferGeometry().setFromPoints(curve.getPoints(34));
+        world.add(new THREE.Line(arcGeometry, new THREE.LineBasicMaterial({ color: newKeys[key] ? 0xffa300 : 0x3b789e, transparent: true, opacity: newKeys[key] ? .38 : .17 })));
+      });
+
+      function sizeScene() {
+        var width = Math.max(1, globe.clientWidth);
+        var height = Math.max(1, globe.clientHeight);
+        renderer.setSize(width, height, false);
+        camera.aspect = width / height;
+        camera.fov = width < 900 ? 48 : 38;
+        camera.position.z = width < 900 ? 4.9 : 4.35;
+        camera.updateProjectionMatrix();
+        world.position.x = width < 900 ? 0 : .55;
+        world.position.y = width < 900 ? -.02 : 0;
+      }
+
+      function placeLabels() {
+        var width = globe.clientWidth;
+        var height = globe.clientHeight;
+        world.updateMatrixWorld(true);
+        nodes.forEach(function (node, index) {
+          var worldPoint = nodeVectors[index].clone().applyMatrix4(world.matrixWorld);
+          var projected = worldPoint.clone().project(camera);
+          var x = (projected.x * .5 + .5) * width;
+          var y = (-projected.y * .5 + .5) * height;
+          var front = worldPoint.z;
+          var scale = Math.max(.7, Math.min(1.08, .84 + front * .14));
+          var opacity = Math.max(.08, Math.min(1, .32 + (front + 1.2) * .42));
+          node.style.left = x + 'px';
+          node.style.top = y + 'px';
+          node.style.setProperty('--node-scale', scale.toFixed(3));
+          node.style.transform = 'translate(-50%, -50%) scale(' + scale.toFixed(3) + ')';
+          node.style.opacity = opacity.toFixed(3);
+          node.style.zIndex = String(Math.round(18 + front * 10));
+          node.style.pointerEvents = front < -.32 ? 'none' : 'auto';
+        });
+      }
+
+      function renderGlobe() {
+        world.rotation.y = yaw;
+        world.rotation.x = pitch;
+        renderer.render(scene, camera);
+        placeLabels();
+      }
+
+      function animate() {
+        if (!dragging && !reduceMotion && Date.now() - lastInteraction > 1600 && document.querySelector('.ecosystem-modal').hidden) yaw += .00062;
+        renderGlobe();
+        window.requestAnimationFrame(animate);
+      }
 
       window.focusEcosystemNode = function (key) {
         var node = globe.querySelector('[data-system-demo="' + key + '"]');
         if (!node) return;
-        yaw = (55 - Number(node.getAttribute('data-lon'))) * Math.PI / 180;
-        pitch = (-20 - Number(node.getAttribute('data-lat'))) * Math.PI / 180;
+        yaw = -Number(node.getAttribute('data-lon')) * Math.PI / 180;
+        pitch = -Number(node.getAttribute('data-lat')) * Math.PI / 180 * .55;
+        lastInteraction = Date.now();
         renderGlobe();
         globe.scrollIntoView({ behavior: 'auto', block: 'center' });
-        node.click();
-        window.setTimeout(function () { node.focus({ preventScroll: true }); }, 80);
+        window.setTimeout(function () { node.click(); node.focus({ preventScroll: true }); }, 180);
       };
-
-      function renderGlobe() {
-        var width = globe.clientWidth;
-        var height = globe.clientHeight;
-        var mobile = width < 680;
-        var nodeWidth = mobile ? 112 : 220;
-        var nodeHeight = mobile ? 104 : 168;
-        var radiusX = mobile ? width * .38 : Math.max(220, (width - nodeWidth) / 2 - 24);
-        var radiusY = mobile ? height * .34 : Math.max(180, (height - nodeHeight) / 2 - 44);
-        var centerX = width / 2;
-        var centerY = height / 2;
-        var svg = globe.querySelector('.ecosystem-lines');
-        svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
-
-        nodes.forEach(function (node, index) {
-          var longitude = Number(node.getAttribute('data-lon')) * Math.PI / 180 + yaw;
-          var latitude = Number(node.getAttribute('data-lat')) * Math.PI / 180 + pitch;
-          var depth = Math.cos(longitude) * Math.cos(latitude);
-          var x = centerX + Math.sin(longitude) * Math.cos(latitude) * radiusX;
-          var y = centerY + Math.sin(latitude) * radiusY;
-          var scale = .52 + (depth + 1) * .24;
-          var opacity = Math.max(.06, (depth + 1) * .48);
-          node.style.left = x + 'px';
-          node.style.top = y + 'px';
-          node.style.transform = 'translate(-50%, -50%) scale(' + scale.toFixed(3) + ')';
-          node.style.opacity = Math.min(1, opacity).toFixed(3);
-          node.style.zIndex = String(Math.round(10 + (depth + 1) * 12));
-          node.style.pointerEvents = depth < -.2 ? 'none' : 'auto';
-          if (lines[index]) {
-            lines[index].setAttribute('x1', centerX);
-            lines[index].setAttribute('y1', centerY);
-            lines[index].setAttribute('x2', x);
-            lines[index].setAttribute('y2', y);
-            lines[index].style.opacity = String(Math.max(.08, (depth + 1) * .32));
-          }
-        });
-      }
 
       globe.addEventListener('wheel', function (event) {
         event.preventDefault();
-        yaw += event.deltaX * .0025;
-        pitch += event.deltaY * .0021;
-        renderGlobe();
+        yaw += (event.deltaX || event.deltaY) * .0021;
+        pitch = Math.max(-.82, Math.min(.82, pitch + event.deltaY * .0007));
+        lastInteraction = Date.now();
       }, { passive: false });
-
       globe.addEventListener('pointerdown', function (event) {
+        if (event.target.closest('[data-system-demo], .ecosystem-rail, .ecosystem-modal')) return;
         dragging = true;
         lastX = event.clientX;
         lastY = event.clientY;
+        lastInteraction = Date.now();
         globe.setPointerCapture(event.pointerId);
       });
       globe.addEventListener('pointermove', function (event) {
         if (!dragging) return;
-        yaw += (event.clientX - lastX) * .008;
-        pitch += (event.clientY - lastY) * .008;
+        yaw += (event.clientX - lastX) * .007;
+        pitch = Math.max(-.82, Math.min(.82, pitch + (event.clientY - lastY) * .005));
         lastX = event.clientX;
         lastY = event.clientY;
-        renderGlobe();
+        lastInteraction = Date.now();
       });
       globe.addEventListener('pointerup', function () { dragging = false; });
       globe.addEventListener('pointercancel', function () { dragging = false; });
-      window.addEventListener('resize', renderGlobe);
+      window.addEventListener('resize', sizeScene);
       globe.querySelectorAll('[data-mobile-system]').forEach(function (button) {
         button.addEventListener('click', function (event) {
           event.stopPropagation();
           window.focusEcosystemNode(button.getAttribute('data-mobile-system'));
         });
       });
-      renderGlobe();
+      sizeScene();
+      globe.classList.add('webgl-ready');
+      animate();
     }());
   </script>
 </body>
