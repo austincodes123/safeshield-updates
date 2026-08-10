@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>State of the Shield | August 2026</title>
-  <meta name="description" content="Austin's Portugal travel note and Safeshield team update: out-of-office handoff, CASEY, Gusto, My Pay, the lead engine, client portal, Claims Center, Safeshield Secure, and our new office.">
+  <title>CASEY Ecosystem | Safeshield Insurance</title>
+  <meta name="description" content="Explore the connected CASEY operating ecosystem: lead generation, Gusto and pay coaching, Safeshield Secure, client experience, claims, quoting, renewals, commissions, training, and Instant Bind.">
   <style>
     :root {
       --navy: #081727;
@@ -90,8 +90,16 @@
     body.view-ready.view-updates [data-page="updates"][data-topic] { display: none; }
     body.view-ready.view-updates [data-page="updates"][data-topic].topic-active { display: block; }
     body.view-updates .hero { min-height: 0; }
-    body.view-updates .hero-inner { padding-bottom: 54px; }
+    body.view-updates .hero-inner { padding: 20px 0 22px; }
     body.view-updates .hero-grid { display: none; }
+    body.view-updates .hero-heading { display: flex; align-items: baseline; gap: 16px; margin-top: 17px; }
+    body.view-updates .hero-heading .report-title { font-size: clamp(1.9rem, 3vw, 2.7rem); }
+    body.view-updates .view-switcher { margin-top: 17px; }
+    body.view-updates main { display: flex; flex-direction: column; }
+    body.view-updates .system-map { order: -1; }
+    body.view-updates .system-map.section { padding-top: 52px; }
+    body.view-updates .system-map .section-head { margin-bottom: 26px; }
+    body.view-updates .hero { display: none; }
 
     .chapter-nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); border-bottom: 1px solid var(--line); backdrop-filter: blur(16px); }
     .chapter-nav .shell { display: flex; align-items: center; gap: 8px; overflow-x: auto; padding: 12px 0; scrollbar-width: none; }
@@ -199,7 +207,34 @@
     .ecosystem-journey button:hover, .ecosystem-journey button.active { border-color: var(--orange); background: rgba(255,163,0,.12); }
     .ecosystem-journey b { display: block; color: var(--orange); font-size: .64rem; letter-spacing: .1em; }
     .ecosystem-journey span { display: block; margin-top: 8px; font-size: .82rem; font-weight: 800; }
-    .ecosystem-modal-stage { margin-top: 10px; padding: 16px 18px; border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; color: #dce7ef; background: rgba(255,255,255,.07); font-size: .86rem; }
+    .ecosystem-demo-screen { margin-top: 11px; overflow: hidden; border: 1px solid rgba(255,255,255,.14); border-radius: 15px; background: #071522; }
+    .ecosystem-demo-toolbar { display: flex; justify-content: space-between; gap: 12px; padding: 10px 13px; border-bottom: 1px solid rgba(255,255,255,.1); color: #9eb0bf; font-size: .62rem; font-weight: 850; letter-spacing: .09em; }
+    .ecosystem-demo-toolbar span { display: flex; align-items: center; gap: 7px; }
+    .ecosystem-demo-toolbar i { width: 7px; height: 7px; border-radius: 50%; background: #26c477; box-shadow: 0 0 10px rgba(38,196,119,.8); }
+    .ecosystem-demo-toolbar em { color: var(--orange); font-style: normal; }
+    .ecosystem-demo-body { position: relative; min-height: 146px; padding: 20px 20px 22px; background: radial-gradient(circle at 90% 10%, rgba(255,163,0,.11), transparent 34%); }
+    .ecosystem-demo-body small { color: var(--orange); font-size: .62rem; font-weight: 900; letter-spacing: .12em; }
+    .ecosystem-demo-body strong { display: block; margin-top: 7px; color: white; font-size: 1.1rem; }
+    .ecosystem-modal-stage { margin: 8px 0 0; color: #c3d1dc; font-size: .84rem; }
+    .ecosystem-demo-meter { display: flex; gap: 6px; margin-top: 17px; }
+    .ecosystem-demo-meter i { width: 34px; height: 4px; border-radius: 999px; background: rgba(255,255,255,.12); }
+    .ecosystem-demo-meter i.complete { background: var(--orange); box-shadow: 0 0 10px rgba(255,163,0,.3); }
+    .ecosystem-feature-browser { margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.11); }
+    .ecosystem-feature-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .ecosystem-feature-head strong { color: white; font-size: .9rem; }
+    .ecosystem-feature-head span { color: var(--orange); font-size: .64rem; font-weight: 900; letter-spacing: .1em; }
+    .ecosystem-feature-tabs { display: flex; gap: 7px; overflow-x: auto; margin-top: 12px; padding-bottom: 8px; scrollbar-width: thin; }
+    .ecosystem-feature-tabs button { flex: 0 0 auto; padding: 8px 10px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; color: #c9d6df; background: rgba(255,255,255,.05); font-size: .65rem; font-weight: 800; cursor: pointer; }
+    .ecosystem-feature-tabs button:hover, .ecosystem-feature-tabs button.active { border-color: var(--orange); color: var(--orange); background: rgba(255,163,0,.08); }
+    .ecosystem-feature-card { position: relative; margin-top: 8px; padding: 17px 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; background: rgba(255,255,255,.045); }
+    .ecosystem-feature-card > span { display: inline-block; padding: 5px 7px; border-radius: 999px; color: #baf0d4; background: rgba(20,132,84,.22); font-size: .58rem; font-weight: 900; letter-spacing: .09em; }
+    .ecosystem-feature-card > span.supervised, .ecosystem-feature-card > span.expanding { color: #ffe0a5; background: rgba(255,163,0,.14); }
+    .ecosystem-feature-card > span.soon { color: var(--navy); background: var(--orange); }
+    .ecosystem-feature-card h4 { margin: 10px 0 5px; color: white; font-size: 1rem; }
+    .ecosystem-feature-card p { margin: 0; color: #b8c7d3; font-size: .8rem; }
+    .ecosystem-feature-card button { margin-top: 13px; padding: 9px 12px; border: 0; border-radius: 999px; color: var(--navy); background: var(--orange); font-size: .62rem; font-weight: 950; letter-spacing: .08em; cursor: pointer; }
+    .ecosystem-feature-result { margin-top: 11px; padding: 11px 12px; border-left: 3px solid #26c477; color: #d8e5ed; background: rgba(38,196,119,.08); font-size: .75rem; }
+    .ecosystem-feature-result[hidden] { display: none; }
     .ecosystem-modal-actions { display: flex; align-items: center; gap: 12px; margin-top: 19px; }
     .ecosystem-modal-actions button { padding: 12px 16px; border: 0; border-radius: 999px; color: var(--navy); background: var(--orange); font-size: .68rem; font-weight: 950; letter-spacing: .08em; cursor: pointer; }
     .ecosystem-modal-actions span { color: #9fb2c2; font-size: .72rem; }
@@ -449,6 +484,9 @@
       .letter-preview a { grid-template-columns: 1fr auto; gap: 5px 10px; }
       .letter-preview a > span { grid-column: 1 / -1; grid-row: 2; }
       .ecosystem-map { min-height: 560px; border-radius: 28px; }
+      body.view-updates .system-map.section { padding-top: 34px; }
+      body.view-updates .system-map .section-head { margin-bottom: 16px; }
+      body.view-updates .system-map .section-head p, body.view-updates .ecosystem-progress { display: none; }
       .ecosystem-hub { width: 112px; height: 112px; padding: 11px; }
       .ecosystem-hub strong { font-size: 1.3rem; }
       .ecosystem-hub span { font-size: .58rem; }
@@ -473,7 +511,7 @@
     }
   </style>
 </head>
-<body class="view-ready view-letter">
+<body class="view-ready view-updates">
   <header class="hero" id="top">
     <div class="hero-inner shell">
       <div class="brand-row">
@@ -485,8 +523,8 @@
         <h1 class="report-title">State of the Shield</h1>
       </div>
       <div class="view-switcher" aria-label="Choose update view">
-        <button class="view-tab active" type="button" data-view="letter" aria-pressed="true"><b>01</b><span><strong>Austin&rsquo;s Letter</strong><span>Current state and team handoff</span></span></button>
-        <button class="view-tab" type="button" data-view="updates" aria-pressed="false"><b>02</b><span><strong>What&rsquo;s New</strong><span>Systems, tools, and how they work</span></span></button>
+        <button class="view-tab active" type="button" data-view="updates" aria-pressed="true"><b>01</b><span><strong>CASEY Ecosystem</strong><span>Explore the systems and what is new</span></span></button>
+        <button class="view-tab" type="button" data-view="letter" aria-pressed="false"><b>02</b><span><strong>Austin&rsquo;s Letter</strong><span>Current state and team handoff</span></span></button>
       </div>
       <div class="hero-grid" data-page="letter">
         <div class="hero-copy opening-letter">
@@ -515,7 +553,7 @@
 
   <nav class="chapter-nav" aria-label="Update chapters">
     <div class="shell">
-      <a class="nav-brand" href="#top">STATE OF THE SHIELD</a>
+      <a class="nav-brand" href="#systems">CASEY ECOSYSTEM</a>
       <a href="#before-i-go" data-nav="letter">Plan ahead</a>
       <a href="#updates-overview" data-nav="updates">Why it matters</a>
       <a href="#leads" data-nav="updates">Lead engine</a>
@@ -599,7 +637,7 @@
     <section class="section system-map" id="systems" data-page="updates" data-topic="systems">
       <div class="shell">
         <div class="section-head">
-          <div><div class="eyebrow">The Safeshield ecosystem</div><h2>A working system that keeps getting fuller.</h2></div>
+          <div><div class="eyebrow">Safeshield Insurance</div><h2>The CASEY operating ecosystem.</h2></div>
           <p>This is not a future-state diagram. Most of these connections already work today. Click any node to see what enters it, what CASEY does, and what the team gets back.</p>
         </div>
         <div class="ecosystem-progress"><strong>11 CONNECTED</strong><span>Lead intake, Deal Log, Gusto, NowCerts, client service, claims, Secure, quoting, renewals, commissions, and training already connect to the CASEY operating layer. Instant Bind is the next approved connection.</span></div>
@@ -632,7 +670,15 @@
                 <button type="button" data-system-stage="1"><b>02 | CASEY</b><span></span></button>
                 <button type="button" data-system-stage="2"><b>03 | RESULT</b><span></span></button>
               </div>
-              <div class="ecosystem-modal-stage" aria-live="polite"></div>
+              <div class="ecosystem-demo-screen" aria-live="polite">
+                <div class="ecosystem-demo-toolbar"><span><i></i> LIVE CASEY WORKFLOW</span><em data-system-screen-count>STEP 1 OF 3</em></div>
+                <div class="ecosystem-demo-body"><small data-system-screen-name>SYSTEM</small><strong data-system-screen-title></strong><p class="ecosystem-modal-stage"></p><div class="ecosystem-demo-meter"><i></i><i></i><i></i></div></div>
+              </div>
+              <div class="ecosystem-feature-browser">
+                <div class="ecosystem-feature-head"><strong>Explore every capability in this system</strong><span data-system-feature-count></span></div>
+                <div class="ecosystem-feature-tabs" data-system-feature-list></div>
+                <div class="ecosystem-feature-card"><span data-system-feature-status>LIVE</span><h4 data-system-feature-title></h4><p data-system-feature-copy></p><button type="button" data-run-feature-demo>RUN MINI DEMO &rarr;</button><div class="ecosystem-feature-result" data-system-feature-result hidden></div></div>
+              </div>
               <div class="ecosystem-modal-actions"><button type="button" data-open-system-guide hidden>OPEN FULL INTERACTIVE GUIDE &rarr;</button><span>Close this window to keep exploring the globe.</span></div>
             </div>
           </div>
@@ -933,7 +979,9 @@
 
       tabs.forEach(function (tab) {
         tab.addEventListener('click', function () {
-          setView(tab.getAttribute('data-view'), { clearTopic: true, updateUrl: true, scrollTop: true });
+          var nextView = tab.getAttribute('data-view');
+          setView(nextView, { clearTopic: nextView === 'letter', updateUrl: true, scrollTop: true });
+          if (nextView === 'updates') setTopic('systems', { updateUrl: true });
         });
       });
 
@@ -995,9 +1043,10 @@
       }
       if (requestedView === 'updates' || requestedTopic) {
         setView('updates');
-        setTopic(requestedTopic);
+        setTopic(requestedTopic || 'systems');
       } else {
-        setView('letter');
+        setView('updates');
+        setTopic('systems');
       }
     }());
 
@@ -1064,7 +1113,151 @@
       commission: [['Money and statements', 'Bank deposits and carrier detail enter with the original evidence still attached.'], ['Match and calculate', 'CASEY connects policy truth, producer ownership, versioned rules, and the exceptions that need review.'], ['Traceable close', 'Clean work becomes a producer statement and payroll-ready close without hiding adjustments.']],
       training: [['Role and real task', 'The employee starts from the work they are responsible for, not a generic content library.'], ['Guide in context', 'CASEY uses approved knowledge, micro-lessons, practice, and authority limits while the work is happening.'], ['Confidence plus visibility', 'The employee knows the next step and managers can see readiness, exceptions, and coaching opportunities.']]
     };
+    var featureLibrary = {
+      leads: [
+        ['Smart intake portals', 'Conditional questions, plain-language guidance, secure uploads, save and resume, and structured risk data.', 'LIVE'],
+        ['Client-side CASEY', 'Guide a prospect, deliver value before contact capture, collect files, and create a complete handoff.', 'NEW + LIVE'],
+        ['13 commercial paths', 'One core business intake adapts its questions and guidance to thirteen different industries.', 'NEW + LIVE'],
+        ['SEO and page metadata', 'Publish consistent titles, descriptions, sharing data, and structured signals across public experiences.', 'LIVE'],
+        ['Niche intake builder', 'Research a specialty market and prepare a conditional, submission-ready intake for it.', 'SUPERVISED'],
+        ['Branded lead capture', 'Keep partners, campaigns, QR codes, and specialty audiences inside a trusted Safeshield workflow.', 'LIVE'],
+        ['Lead persistence', 'Save the opportunity before downstream Google, Gmail, or AMS calls so a failed handoff cannot erase it.', 'LIVE'],
+        ['Source and handoff tracking', 'Preserve origin, ownership, communication, claim status, and NowCerts creation.', 'LIVE'],
+        ['Mail merge and campaigns', 'Build approved audiences, preview personalization, schedule delivery, track results, and honor opt-outs.', 'LIVE'],
+        ['Dealership Program', 'Permanent QR, mobile intake, license OCR, VIN decoding, Spanish, first-click claiming, and NowCerts creation.', 'LIVE']
+      ],
+      deals: [
+        ['Deal Log', 'Record client, producer, carrier, premium, revenue context, source, and status once.', 'LIVE'],
+        ['Motivational win messages', 'Celebrate completed business and keep team momentum visible when a deal is logged.', 'LIVE'],
+        ['Activity tracking', 'Preserve the request, action, owner, source, result, and next step.', 'LIVE'],
+        ['Deal-log validation', 'Use the operating record as an input without blindly trusting incomplete or unreliable fields.', 'LIVE']
+      ],
+      pay: [
+        ['Private paycheck questions', 'Explain paycheck amounts, salary, deductions, commission changes, and year-to-date earnings privately.', 'NEW + LIVE'],
+        ['Comp-plan coaching', 'Combine the Safeshield compensation plan with real production and pay history.', 'NEW + LIVE'],
+        ['Goal planning', 'Work backward from an earnings goal to the production, pace, and activity needed to reach it.', 'NEW + LIVE'],
+        ['What-if scenarios', 'Compare different sales, premium, commission, and timing assumptions before making a plan.', 'NEW + LIVE'],
+        ['Producer statements', 'Show policy-level earnings, splits, adjustments, and status with an audit trail.', 'LIVE']
+      ],
+      nowcerts: [
+        ['NowCerts operations', 'Search, create, update, note, and connect clients and policies in the agency system of record.', 'LIVE'],
+        ['Smart policy and people matching', 'Match manual, downloaded, and existing records while isolating ambiguity for review.', 'LIVE'],
+        ['IVANS and AL3 downloads', 'Process policy transactions, eDocs, claims information, and carrier activity.', 'LIVE'],
+        ['Automation engine', 'Run scheduled renewals, email, health, backup, download, and digest workflows.', 'LIVE'],
+        ['Exception queues', 'Show the small set of records needing human judgment instead of hiding bad matches.', 'LIVE'],
+        ['Operational watchdog', 'Monitor integrations, schedules, backups, and persistent state so failures become visible work.', 'LIVE'],
+        ['Permissions and authority', 'Control who can view, stage, approve, bind, publish, or administer consequential actions.', 'LIVE']
+      ],
+      portal: [
+        ['Client self-service portal', 'Let clients view policies, submit requests, receive documents, request certificates, and follow progress.', 'LIVE'],
+        ['Unified client context', 'Bring the person, policies, notes, documents, assigned team, and request together.', 'LIVE'],
+        ['Service request routing', 'Classify changes, collect missing details, prepare the next action, and track ownership.', 'SUPERVISED'],
+        ['Certificate requests', 'Turn a portal request into a populated ACORD 25, delivery, activity record, and auditable trail.', 'LIVE'],
+        ['Client portal documents', 'Give clients a secure place to request, receive, and act on agency paperwork.', 'LIVE']
+      ],
+      claims: [
+        ['Carrier search', 'Find official reporting phone numbers and websites from the carrier name.', 'LIVE'],
+        ['Declarations-page recognition', 'Identify the carrier from an uploaded declarations page and show the correct official route.', 'LIVE'],
+        ['Safe claim handoff', 'Guide the client without pretending Safeshield filed or confirmed the claim.', 'LIVE']
+      ],
+      secure: [
+        ['Protected uploads', 'Collect sensitive files through a protected link instead of exposed email attachments.', 'LIVE'],
+        ['Smart Sign', 'Find signature, initials, name, and date fields and prepare the PDF for review.', 'EXPANDED + LIVE'],
+        ['Reusable signing links', 'Put an actual e-sign website link inside a welcome email while the document waits for signature.', 'NEW + LIVE'],
+        ['Sequential signers', 'Route signers in order and keep progress visible without losing the document state.', 'LIVE'],
+        ['ACORD 25 certificates', 'Pull policy data, fill, preview, deliver, and log the certificate.', 'LIVE'],
+        ['ACORD 35 cancellations', 'Collect the required facts, generate the form, route e-sign, and preserve the signed record.', 'LIVE'],
+        ['Document agent', 'Classify, connect, and route incoming documents to the correct client and workflow.', 'SUPERVISED'],
+        ['Invoices and connected records', 'Generate a client-facing invoice from the same policy and payment context.', 'LIVE']
+      ],
+      bind: [
+        ['Plymouth Rock API access', 'Carrier approval opens the connection required for online quote and bind work.', 'APPROVED'],
+        ['Online home intake', 'Guide the customer through the property facts needed for the future carrier workflow.', 'COMING SOON'],
+        ['Quote-to-bind connection', 'Move from carrier quote information toward an easy connected bind path.', 'COMING SOON'],
+        ['Certification and compliance', 'Complete carrier testing, certification, and compliance before exposing the live workflow.', 'REQUIRED']
+      ],
+      quote: [
+        ['Quoting guide', 'Put Safeshield carrier appetite and placement guidance inside the work.', 'LIVE'],
+        ['Supervised quote automation', 'Use property prefill, VIN decoding, carrier guidance, live control, and recovery diagnostics.', 'SUPERVISED'],
+        ['PL Rater and carrier bridges', 'Move approved household data through comparative rating and connected carrier paths.', 'SUPERVISED'],
+        ['Interactive proposals', 'Turn carrier results into an agent-edited, client-ready comparison and recommendation.', 'EXPANDING'],
+        ['Editable proposal records', 'Change coverage and recommendations without rebuilding or resending a static PDF.', 'EXPANDING'],
+        ['Follow-up and Gmail', 'Draft, schedule, and track communication from the connected opportunity.', 'SUPERVISED'],
+        ['Calendar coordination', 'Put calls, client actions, and deadlines where the team already works.', 'SUPERVISED'],
+        ['Binding-authority guardrails', 'Let authorized users advance while learners stop for approval with the work prepared.', 'LIVE'],
+        ['Carrier intelligence', 'Combine appointments, appetite, book, commission, and placement context for better decisions.', 'LIVE']
+      ],
+      renewals: [
+        ['Renewal center', 'Surface upcoming renewals, premium changes, outreach, and next actions before emergencies.', 'LIVE'],
+        ['Google-connected renewals', 'Coordinate reminders, follow-up, and team visibility through connected Google workflows.', 'LIVE'],
+        ['Cancellation workflow', 'Prepare ACORD 35, send for e-signature, notify the team, and document the record.', 'LIVE'],
+        ['Retention opportunities', 'Identify remarket, cross-sell, and coverage-review moments from book activity.', 'EXPANDING'],
+        ['Service desk', 'Turn a customer message into classified, prepared, owned, and documented work.', 'SUPERVISED']
+      ],
+      commission: [
+        ['Commission engine', 'Import, match, calculate splits, review exceptions, approve, and close.', 'LIVE'],
+        ['Payments', 'Coordinate client payment links, ACH and card status, and the connected policy workflow.', 'LIVE'],
+        ['Premium finance', 'Track financed transactions and retained-from-premium commission handling.', 'LIVE'],
+        ['Plaid and reconciliation', 'Connect bank activity to financial operations and focused exception review.', 'SUPERVISED'],
+        ['iCFO intelligence', 'Ask read-only questions across bank truth and policy truth and run finance reports.', 'LIVE'],
+        ['Premium-trust controls', 'Roll forward trust activity and isolate movements requiring finance review.', 'LIVE'],
+        ['Shared read-only data layer', 'Safely power connected experiences with carrier, commission, deal, bank, and book truth.', 'LIVE']
+      ],
+      training: [
+        ['Training center', 'Role-specific learning, videos, quizzes, progress, and manager visibility.', 'LIVE'],
+        ['CASEY assistant', 'Ask questions and stage agency actions through connected tools with confirmation.', 'LIVE'],
+        ['CASEY strategic advisor', 'Digest agency activity into priorities, prompts, and management perspective.', 'EXPANDING'],
+        ['Notifications and motivation', 'Keep wins, exceptions, deadlines, and important activity visible.', 'LIVE'],
+        ['Agency intelligence', 'Connect book, carrier mix, workflow, retention, production, and capacity.', 'EXPANDING'],
+        ['CASEY^SA', 'Translate US insurance workflows into familiar South African terminology for onboarding.', 'LIVE'],
+        ['Authority-aware onboarding', 'Adapt training and real-work checkpoints to role, readiness, and permitted actions.', 'LIVE'],
+        ['Owner operating view', 'Connect production, retention, capacity, exceptions, finance, and ownership.', 'LIVE'],
+        ['Investor data room', 'Provide NDA-gated documents, live metrics, watermarked exports, and diligence history.', 'LIVE'],
+        ['Governed publishing', 'Review public pages, forms, proposals, campaigns, and workflow changes before release.', 'SUPERVISED'],
+        ['Platform expansion', 'Extend the operating layer proven inside Safeshield to additional insurance workflows.', 'EXPANDING']
+      ]
+    };
     var activeSystemKey = '';
+    var activeFeature = null;
+
+    function statusClass(status) {
+      var value = String(status || '').toLowerCase();
+      if (value.indexOf('coming') >= 0 || value.indexOf('required') >= 0 || value.indexOf('approved') >= 0) return 'soon';
+      if (value.indexOf('supervised') >= 0) return 'supervised';
+      if (value.indexOf('expanding') >= 0) return 'expanding';
+      return '';
+    }
+
+    function selectFeature(feature, button) {
+      activeFeature = feature;
+      document.querySelectorAll('[data-system-feature-list] button').forEach(function (item) { item.classList.toggle('active', item === button); });
+      var status = document.querySelector('[data-system-feature-status]');
+      status.textContent = feature[2];
+      status.className = statusClass(feature[2]);
+      document.querySelector('[data-system-feature-title]').textContent = feature[0];
+      document.querySelector('[data-system-feature-copy]').textContent = feature[1];
+      document.querySelector('[data-system-feature-result]').hidden = true;
+      document.querySelector('[data-system-screen-name]').textContent = feature[2] + ' | FEATURE PREVIEW';
+      document.querySelector('[data-system-screen-title]').textContent = feature[0];
+      document.querySelector('[data-system-screen-count]').textContent = 'SELECTED FEATURE';
+      document.querySelector('.ecosystem-modal-stage').textContent = feature[1];
+      document.querySelectorAll('.ecosystem-demo-meter i').forEach(function (bar, index) { bar.classList.toggle('complete', index === 0); });
+    }
+
+    function renderFeatureLibrary(key) {
+      var features = featureLibrary[key] || [];
+      var list = document.querySelector('[data-system-feature-list]');
+      list.innerHTML = '';
+      document.querySelector('[data-system-feature-count]').textContent = features.length + ' CAPABILITIES';
+      features.forEach(function (feature, index) {
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = feature[0];
+        button.addEventListener('click', function () { selectFeature(feature, button); });
+        list.appendChild(button);
+        if (index === 0) selectFeature(feature, button);
+      });
+    }
 
     function showSystemStage(index) {
       var journey = systemJourneys[activeSystemKey];
@@ -1073,6 +1266,9 @@
         button.classList.toggle('active', buttonIndex === index);
       });
       document.querySelector('.ecosystem-modal-stage').textContent = journey[index][1];
+      document.querySelector('[data-system-screen-title]').textContent = journey[index][0];
+      document.querySelector('[data-system-screen-count]').textContent = 'STEP ' + (index + 1) + ' OF 3';
+      document.querySelectorAll('.ecosystem-demo-meter i').forEach(function (bar, barIndex) { bar.classList.toggle('complete', barIndex <= index); });
     }
 
     function openSystemModal(key, card) {
@@ -1082,6 +1278,7 @@
       var modal = document.querySelector('.ecosystem-modal');
       modal.querySelector('h3').textContent = story[0];
       modal.querySelector('.ecosystem-modal-summary').textContent = story[1];
+      modal.querySelector('[data-system-screen-name]').textContent = key.toUpperCase() + ' | CASEY CONNECTED';
       modal.querySelectorAll('[data-system-stage]').forEach(function (button, index) {
         button.querySelector('span').textContent = journey[index][0];
       });
@@ -1092,6 +1289,7 @@
       guideButton.setAttribute('data-guide-topic', guideTopic);
       modal.hidden = false;
       showSystemStage(0);
+      renderFeatureLibrary(key);
       window.setTimeout(function () { modal.querySelector('[data-close-system-modal]').focus({ preventScroll: true }); }, 40);
       modal.setAttribute('data-return-system', card.getAttribute('data-system-demo'));
     }
@@ -1107,6 +1305,26 @@
 
     document.querySelectorAll('[data-system-stage]').forEach(function (button, index) {
       button.addEventListener('click', function () { showSystemStage(index); });
+    });
+
+    document.querySelector('[data-run-feature-demo]').addEventListener('click', function () {
+      if (!activeFeature) return;
+      var status = String(activeFeature[2] || '');
+      var result = document.querySelector('[data-system-feature-result]');
+      var message;
+      if (/COMING|REQUIRED|APPROVED/.test(status)) {
+        message = 'Preview only: CASEY can model this path, but the carrier, testing, certification, or approval work must be complete before it becomes a live action.';
+      } else if (/SUPERVISED/.test(status)) {
+        message = 'Demo staged: CASEY prepares the connected work, preserves the source and owner, and stops at the human review point before anything consequential happens.';
+      } else if (/EXPANDING/.test(status)) {
+        message = 'Interactive preview complete: this capability works in part today and is actively expanding. Try it in CASEY and report anything missing or confusing.';
+      } else {
+        message = 'Demo complete: CASEY receives the request, runs the connected workflow, preserves ownership and evidence, and returns a visible result or next action.';
+      }
+      result.textContent = message;
+      result.hidden = false;
+      document.querySelector('[data-system-screen-count]').textContent = 'DEMO COMPLETE';
+      document.querySelectorAll('.ecosystem-demo-meter i').forEach(function (bar) { bar.classList.add('complete'); });
     });
 
     function closeSystemModal() {
