@@ -685,6 +685,12 @@
       pointer-events: none;
       transition: opacity .16s ease, transform .16s ease;
     }
+    .ecosystem-map:not(.system-expanded) .system-card h3 {
+      transform: translate(-50%, 0);
+      border-color: rgba(130,174,202,.18);
+      background: rgba(5,18,30,.86);
+      opacity: .9;
+    }
     .ecosystem-map .system-card p,
     .ecosystem-map .system-card .system-status { display: none; }
     .ecosystem-map .system-card .new-badge {
@@ -2211,6 +2217,9 @@
         });
         var firstCategory = categoryButtons.querySelector('button');
         if (firstCategory) firstCategory.classList.add('active');
+        if (featureNodes[0]) featureNodes[0].classList.add('active');
+        var firstRailFeature = featureRail.querySelector('button');
+        if (firstRailFeature) firstRailFeature.classList.add('active');
         if (window.lucide) window.lucide.createIcons();
       }
 
