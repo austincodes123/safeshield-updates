@@ -2351,6 +2351,8 @@
         backButton.focus({ preventScroll: true });
         restoreEcosystemScroll();
         window.requestAnimationFrame(restoreEcosystemScroll);
+        window.setTimeout(restoreEcosystemScroll, 80);
+        window.setTimeout(restoreEcosystemScroll, 260);
       };
 
       window.exitSystemEcosystem = function () {
