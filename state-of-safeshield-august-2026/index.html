@@ -57,10 +57,19 @@
     .copy { font-family:"Libre Caslon Text",Georgia,serif; font-size:1.01rem; line-height:1.82; }
     .copy p { margin:0 0 20px; }
     .copy strong { color:#091c30; }
-    .trip-note { display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:start; margin:30px 0; padding:22px; border:1px solid rgba(0,91,159,.22); background:rgba(0,91,159,.06); }
-    .trip-note b { display:grid; place-items:center; width:46px; height:46px; border-radius:50%; color:var(--navy); background:var(--orange); font-size:.72rem; letter-spacing:.05em; }
-    .trip-note strong { display:block; margin-bottom:5px; font-size:.86rem; }
-    .trip-note span { color:var(--muted); font-size:.79rem; line-height:1.55; }
+    .travel-map { position:relative; isolation:isolate; min-height:430px; margin:30px 0; overflow:hidden; border:1px solid rgba(255,163,0,.4); color:#fff; background:#061827; box-shadow:0 18px 45px rgba(7,24,39,.18); }
+    .travel-map::before { content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(circle at 50% 44%,rgba(0,91,159,.27),transparent 46%),linear-gradient(135deg,#061827,#0d2941 62%,#071827); }
+    .travel-map__heading { position:absolute; top:22px; left:24px; z-index:2; max-width:360px; }
+    .travel-map__heading small { display:block; margin-bottom:7px; color:var(--orange); font-size:.56rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; }
+    .travel-map__heading strong { display:block; font-family:"Libre Caslon Text",Georgia,serif; font-size:clamp(1.25rem,3vw,1.72rem); font-weight:400; letter-spacing:-.025em; }
+    .travel-map__canvas { display:block; width:100%; height:430px; }
+    .travel-map__facts { position:absolute; right:18px; bottom:18px; left:18px; z-index:2; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; border:1px solid rgba(255,255,255,.16); background:rgba(4,17,29,.78); box-shadow:0 10px 35px rgba(0,0,0,.2); backdrop-filter:blur(10px); }
+    .travel-map__fact { padding:13px 16px; }
+    .travel-map__fact:last-child { text-align:right; }
+    .travel-map__fact small { display:block; color:#8fa8bb; font-size:.49rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+    .travel-map__fact strong { display:block; margin-top:3px; color:#fff; font-size:.75rem; }
+    .travel-map__distance { padding:0 20px; border-right:1px solid rgba(255,255,255,.12); border-left:1px solid rgba(255,255,255,.12); color:var(--orange); font-size:.62rem; font-weight:800; letter-spacing:.11em; text-align:center; text-transform:uppercase; }
+    .travel-map figcaption { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
     .section { margin:42px 0 0; padding-top:34px; border-top:1px solid var(--line); }
     .section-kicker { margin:0 0 8px; color:var(--blue); font-size:.59rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; }
     .section h2 { margin:0; font-family:"Libre Caslon Text",Georgia,serif; font-size:clamp(1.6rem,4vw,2.25rem); font-weight:400; letter-spacing:-.03em; }
@@ -138,8 +147,12 @@
       .titlebar time { padding:0; }
       .content { padding:32px 20px 24px; }
       .copy { font-size:.96rem; line-height:1.75; }
-      .trip-note { grid-template-columns:1fr; }
-      .trip-note b { width:40px; height:40px; }
+      .travel-map { min-height:450px; margin-right:-4px; margin-left:-4px; }
+      .travel-map__heading { top:18px; left:18px; max-width:270px; }
+      .travel-map__canvas { height:450px; }
+      .travel-map__facts { right:10px; bottom:10px; left:10px; grid-template-columns:1fr 1fr; }
+      .travel-map__fact { padding:11px 12px; }
+      .travel-map__distance { grid-column:1/-1; grid-row:2; padding:9px 10px; border:0; border-top:1px solid rgba(255,255,255,.12); }
       .casey-cta { grid-template-columns:1fr; }
       .casey-cta a { width:100%; }
       .handoff { grid-template-columns:1fr; }
@@ -175,10 +188,16 @@
           <p>I fully intend to enjoy this vacation and be off the grid outside of an occasional check-in. Before I leave, please take a minute and think honestly about anything you may need from me. <strong>This is not about what I need. It is about making sure you have the information, approval, or direction you need before August 14.</strong></p>
         </div>
 
-        <div class="trip-note">
-          <b>PT</b>
-          <div><strong>Portugal: August 14 through August 26</strong><span>I return Thursday, August 27. I will check email once or twice a day, but remember that I will be six to seven hours ahead.</span></div>
-        </div>
+        <figure class="travel-map" data-travel-map>
+          <div class="travel-map__heading"><small>How far away I will be</small><strong>Stamford to Portugal</strong></div>
+          <canvas class="travel-map__canvas" data-travel-canvas aria-label="Animated globe showing a flight from Stamford, Connecticut, across the Atlantic Ocean to Lisbon, Portugal"></canvas>
+          <div class="travel-map__facts">
+            <div class="travel-map__fact"><small>Away</small><strong>August 14 through August 26</strong></div>
+            <div class="travel-map__distance">3,338 miles across the Atlantic</div>
+            <div class="travel-map__fact"><small>Back in the office</small><strong>Thursday, August 27</strong></div>
+          </div>
+          <figcaption>I will check email once or twice a day, but Portugal is six to seven hours ahead of Connecticut.</figcaption>
+        </figure>
 
         <div class="copy">
           <p>I expect the business to run the way it should while I am gone. That is not because I take any of you for granted. It is because this place has become a well-oiled machine because of all of you. We are the best damn team, and I am incredibly grateful for what we have built together.</p>
@@ -255,7 +274,144 @@
       <footer class="footer">Safeshield Insurance · Internal team update · August 2026</footer>
     </article>
   </main>
+  <script src="assets/map/d3-array.min.js"></script>
+  <script src="assets/map/d3-geo.min.js"></script>
+  <script src="assets/map/topojson-client.min.js"></script>
   <script>
+    (() => {
+      const canvas = document.querySelector('[data-travel-canvas]');
+      if (!canvas || !window.d3 || !window.topojson) return;
+      const context = canvas.getContext('2d');
+      const origin = [-73.5387,41.0534];
+      const destination = [-9.1393,38.7223];
+      const routePoint = d3.geoInterpolate(origin,destination);
+      const route = {type:'LineString',coordinates:Array.from({length:101},(_,index)=>routePoint(index/100))};
+      const sphere = {type:'Sphere'};
+      const graticule = d3.geoGraticule10();
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let land;
+      let usa;
+      let portugal;
+      let projection;
+      let path;
+      let frame;
+
+      function configure() {
+        const rect = canvas.getBoundingClientRect();
+        const ratio = Math.min(window.devicePixelRatio || 1,2);
+        canvas.width = Math.max(1,Math.round(rect.width*ratio));
+        canvas.height = Math.max(1,Math.round(rect.height*ratio));
+        context.setTransform(ratio,0,0,ratio,0,0);
+        const mobile = rect.width < 560;
+        projection = d3.geoOrthographic()
+          .rotate([41.3,-39.8])
+          .translate([rect.width/2,rect.height*(mobile?.47:.49)])
+          .scale(Math.min(rect.width*(mobile?.53:.39),rect.height*(mobile?.42:.48)))
+          .clipAngle(90)
+          .precision(.35);
+        path = d3.geoPath(projection,context);
+      }
+
+      function geometry(feature,fill,stroke,width) {
+        if (!feature) return;
+        context.beginPath();
+        path(feature);
+        if (fill) { context.fillStyle=fill; context.fill(); }
+        if (stroke) { context.strokeStyle=stroke; context.lineWidth=width; context.stroke(); }
+      }
+
+      function marker(point,title,subtitle,align) {
+        const position = projection(point);
+        if (!position) return;
+        const [x,y] = position;
+        context.save();
+        context.shadowColor='rgba(255,163,0,.9)';
+        context.shadowBlur=18;
+        context.beginPath();
+        context.arc(x,y,6,0,Math.PI*2);
+        context.fillStyle='#ffa300';
+        context.fill();
+        context.shadowBlur=0;
+        context.beginPath();
+        context.arc(x,y,12,0,Math.PI*2);
+        context.strokeStyle='rgba(255,163,0,.55)';
+        context.lineWidth=1.5;
+        context.stroke();
+        const direction = align==='right' ? -1 : 1;
+        const tx = x + direction*18;
+        context.textAlign = align==='right' ? 'right' : 'left';
+        context.fillStyle='#ffffff';
+        context.font='700 12px "DM Sans", Arial, sans-serif';
+        context.fillText(title,tx,y-4);
+        context.fillStyle='#9fb5c5';
+        context.font='700 8px "DM Sans", Arial, sans-serif';
+        context.fillText(subtitle.toUpperCase(),tx,y+10);
+        context.restore();
+      }
+
+      function plane(progress) {
+        const current = projection(routePoint(progress));
+        const next = projection(routePoint(Math.min(progress+.004,1)));
+        if (!current || !next) return;
+        const angle = Math.atan2(next[1]-current[1],next[0]-current[0]);
+        context.save();
+        context.translate(current[0],current[1]);
+        context.rotate(angle);
+        context.shadowColor='rgba(255,163,0,.85)';
+        context.shadowBlur=12;
+        context.fillStyle='#fffaf0';
+        context.font='20px Arial, sans-serif';
+        context.textAlign='center';
+        context.textBaseline='middle';
+        context.fillText('✈',0,0);
+        context.restore();
+      }
+
+      function draw(time=0) {
+        const rect = canvas.getBoundingClientRect();
+        context.clearRect(0,0,rect.width,rect.height);
+        const center = projection.translate();
+        const radius = projection.scale();
+        const glow = context.createRadialGradient(center[0]-radius*.28,center[1]-radius*.34,radius*.08,center[0],center[1],radius*1.04);
+        glow.addColorStop(0,'#17486b');
+        glow.addColorStop(.66,'#0b304b');
+        glow.addColorStop(1,'#061827');
+        geometry(sphere,glow,'rgba(164,203,228,.3)',1.2);
+        geometry(graticule,null,'rgba(143,181,207,.14)',.7);
+        geometry(land,'#31556a','rgba(152,188,209,.25)',.55);
+        geometry(usa,'#3c657a','rgba(255,255,255,.32)',.7);
+        geometry(portugal,'#ffa300','rgba(255,250,240,.9)',.8);
+        context.save();
+        context.setLineDash([5,7]);
+        context.lineDashOffset=-(time/38)%12;
+        context.beginPath();
+        path(route);
+        context.strokeStyle='#ffa300';
+        context.lineWidth=2.2;
+        context.stroke();
+        context.restore();
+        marker(origin,'Stamford, CT','Home base','right');
+        marker(destination,'Portugal','6 to 7 hours ahead','left');
+        plane(reducedMotion?.58:((time%9000)/9000));
+        if (!reducedMotion) frame=requestAnimationFrame(draw);
+      }
+
+      fetch('assets/map/countries-110m.json')
+        .then(response => { if (!response.ok) throw new Error('Map data unavailable'); return response.json(); })
+        .then(world => {
+          land=topojson.feature(world,world.objects.countries);
+          const geometries=world.objects.countries.geometries;
+          const country=id => topojson.feature(world,{type:'GeometryCollection',geometries:geometries.filter(item=>String(item.id)===id)});
+          usa=country('840');
+          portugal=country('620');
+          configure();
+          draw();
+          const observer=new ResizeObserver(()=>{ cancelAnimationFrame(frame); configure(); draw(); });
+          observer.observe(canvas);
+        })
+        .catch(() => canvas.closest('[data-travel-map]')?.classList.add('map-unavailable'));
+    })();
+
     (() => {
       const stage = document.querySelector('[data-signature-stage]');
       if (!stage) return;
