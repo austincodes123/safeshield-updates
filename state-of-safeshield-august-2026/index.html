@@ -1528,13 +1528,21 @@
         var requestedSection = document.querySelector(window.location.hash);
         if (requestedSection) requestedTopic = requestedSection.getAttribute('data-topic') || '';
       }
-      if (requestedView === 'updates' || requestedTopic) {
-        setView('updates');
-        setTopic(requestedTopic || 'systems');
-      } else {
-        setView('updates');
-        setTopic('systems');
+      var initialTopic = requestedTopic || 'systems';
+      if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
+      setView('updates');
+      setTopic(initialTopic);
+      syncUrl('updates', initialTopic);
+      function resetInitialUpdatesPosition() {
+        var scrollRoot = document.documentElement;
+        var priorBehavior = scrollRoot.style.scrollBehavior;
+        scrollRoot.style.scrollBehavior = 'auto';
+        window.scrollTo(0, 0);
+        scrollRoot.style.scrollBehavior = priorBehavior;
       }
+      resetInitialUpdatesPosition();
+      window.requestAnimationFrame(resetInitialUpdatesPosition);
+      window.setTimeout(resetInitialUpdatesPosition, 80);
     }());
 
     document.querySelectorAll('.mode-switch button').forEach(function (button) {
