@@ -87,26 +87,29 @@
     .closing { display:grid; grid-template-columns:auto 1fr; gap:22px; align-items:center; padding:38px 0 14px; }
     .closing > img { width:84px; height:84px; border:3px solid var(--orange); border-radius:50%; object-fit:cover; object-position:50% 30%; box-shadow:0 8px 22px rgba(7,24,39,.16); }
     .signoff p { margin:0 0 2px; font-family:"Libre Caslon Text",Georgia,serif; font-size:1rem; }
-    .signoff strong { display:block; margin-bottom:2px; color:var(--navy); font-size:.9rem; }
-    .signature-stage { position:relative; width:160px; height:58px; margin-top:5px; overflow:visible; }
-    .signature { display:block; width:150px; height:auto; }
-    .signature-hand { position:absolute; top:25px; left:-7px; z-index:2; display:none; width:30px; height:30px; font-size:24px; line-height:1; transform:rotate(-18deg); transform-origin:70% 70%; filter:drop-shadow(0 3px 3px rgba(7,24,39,.2)); }
+    .signature-stage { position:relative; width:190px; height:94px; margin-top:2px; overflow:visible; }
+    .signature,.signature-trace { position:absolute; inset:0 auto auto 0; display:block; width:180px; height:auto; }
+    .signature { opacity:0; transition:opacity .24s ease; }
+    .signature-trace { overflow:visible; }
+    .signature-trace path { fill:none; stroke:var(--orange); stroke-width:3.1; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:1; stroke-dashoffset:1; }
+    .signature-stage.signed .signature { opacity:1; }
+    .signature-stage.signed .signature-trace { opacity:0; }
+    .signature-hand { position:absolute; top:32px; left:-7px; z-index:2; display:none; width:30px; height:30px; font-size:24px; line-height:1; transform:rotate(-18deg); transform-origin:70% 70%; filter:drop-shadow(0 3px 3px rgba(7,24,39,.2)); }
     @media (prefers-reduced-motion:no-preference) {
-      .signature-stage:not(.signing):not(.signed) .signature { clip-path:inset(0 100% 0 0); }
-      .signature-stage.signing .signature { animation:signatureReveal 2.35s cubic-bezier(.18,.72,.22,1) both; }
-      .signature-stage.signing .signature-hand { display:block; animation:signatureHand 2.35s cubic-bezier(.18,.72,.22,1) both; }
+      .signature-stage.signing .signature-trace path { animation:signatureStroke var(--duration) ease-out var(--delay) forwards; }
+      .signature-stage.signing .signature-hand { display:block; animation:signatureHand 3.65s cubic-bezier(.18,.72,.22,1) both; }
     }
-    @keyframes signatureReveal { 0%{clip-path:inset(0 100% 0 0)} 100%{clip-path:inset(0 0 0 0)} }
+    @keyframes signatureStroke { to{stroke-dashoffset:0} }
     @keyframes signatureHand {
       0%{opacity:0;transform:translate(0,4px) rotate(-18deg)}
       5%{opacity:1}
-      18%{transform:translate(24px,-9px) rotate(-8deg)}
-      32%{transform:translate(46px,9px) rotate(-22deg)}
-      48%{transform:translate(69px,-14px) rotate(-10deg)}
-      63%{transform:translate(94px,8px) rotate(-24deg)}
-      78%{transform:translate(117px,-10px) rotate(-9deg)}
-      93%{opacity:1;transform:translate(141px,3px) rotate(-19deg)}
-      100%{opacity:0;transform:translate(151px,5px) rotate(-19deg)}
+      18%{transform:translate(28px,-11px) rotate(-8deg)}
+      32%{transform:translate(55px,10px) rotate(-22deg)}
+      48%{transform:translate(83px,-17px) rotate(-10deg)}
+      63%{transform:translate(113px,9px) rotate(-24deg)}
+      78%{transform:translate(141px,-12px) rotate(-9deg)}
+      93%{opacity:1;transform:translate(169px,4px) rotate(-19deg)}
+      100%{opacity:0;transform:translate(181px,6px) rotate(-19deg)}
     }
     .footer { padding:17px 24px; color:#718291; background:#0b2135; font-size:.59rem; line-height:1.55; text-align:center; }
     @media (max-width:680px) {
@@ -229,7 +232,7 @@
 
         <div class="closing">
           <img src="assets/austin-headshot.jpg" alt="Austin Glazer">
-          <div class="signoff"><p>To the moon!</p><strong>Austin</strong><div class="signature-stage" data-signature-stage><img class="signature" src="assets/austin-signature-orange.png" alt="Austin's signature"><span class="signature-hand" aria-hidden="true">✍️</span></div></div>
+          <div class="signoff"><p>To the moon!</p><div class="signature-stage" data-signature-stage><svg class="signature-trace" viewBox="0 0 281 147" aria-hidden="true"><path d="M12 84 C26 81 42 79 59 77 C71 75 78 65 82 50 C86 36 86 28 81 27 C71 24 58 39 49 59 C40 78 35 101 41 111 C47 118 60 104 68 85 C75 67 78 45 82 31" pathLength="1" style="--delay:.04s;--duration:.9s"/><path d="M61 96 C68 105 77 112 87 110 C99 108 106 96 107 80 C108 62 105 44 110 34 C113 29 116 34 114 42 C111 57 99 72 90 77 C84 80 78 79 74 77" pathLength="1" style="--delay:.72s;--duration:.78s"/><path d="M94 74 C90 88 92 101 102 107 C113 114 123 105 125 91 C126 83 123 78 118 77 C111 76 105 83 105 91 C105 100 114 108 123 108" pathLength="1" style="--delay:1.25s;--duration:.62s"/><path d="M118 74 C118 59 122 44 126 35 M105 76 C123 76 136 78 151 81" pathLength="1" style="--delay:1.7s;--duration:.42s"/><path d="M135 83 C132 96 132 108 139 113 C147 118 157 106 159 95 C160 87 156 83 151 84 C143 85 141 97 149 103 C158 109 168 101 176 92" pathLength="1" style="--delay:1.94s;--duration:.62s"/><path d="M164 99 C168 91 173 88 177 91 C182 96 176 105 176 113 C176 119 180 119 184 112 C189 103 192 93 197 93 C202 94 199 106 194 116 C189 128 183 139 178 138 C172 137 177 125 187 115 C200 102 210 97 219 98 C227 99 229 105 237 108" pathLength="1" style="--delay:2.34s;--duration:.86s"/><path d="M70 78 C116 74 165 70 212 68 C236 67 254 66 271 66" pathLength="1" style="--delay:2.78s;--duration:.72s"/><path class="trace-final" d="M198 98 C203 102 209 107 215 108 C224 110 228 104 232 97 C235 91 235 84 235 80 M220 103 C228 99 236 100 241 105" pathLength="1" style="--delay:3.06s;--duration:.58s"/></svg><img class="signature" src="assets/austin-signature-orange.png" alt="Austin's signature"><span class="signature-hand" aria-hidden="true">✍️</span></div></div>
         </div>
       </div>
       <footer class="footer">Safeshield Insurance · Internal team update · August 2026</footer>
@@ -246,10 +249,14 @@
       const observer = new IntersectionObserver(entries => {
         if (!entries.some(entry => entry.isIntersecting)) return;
         stage.classList.add('signing');
+        window.setTimeout(() => {
+          stage.classList.remove('signing');
+          stage.classList.add('signed');
+        }, 3825);
         observer.disconnect();
       }, { threshold:.7 });
       stage.addEventListener('animationend', event => {
-        if (!event.target.classList.contains('signature')) return;
+        if (!event.target.classList.contains('trace-final')) return;
         stage.classList.remove('signing');
         stage.classList.add('signed');
       }, { once:true });
