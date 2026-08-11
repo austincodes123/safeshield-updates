@@ -702,6 +702,130 @@
     .ecosystem-map .system-card:hover .system-icon,
     .ecosystem-map .system-card:focus .system-icon,
     .ecosystem-map .system-card.active .system-icon { color: var(--orange); border-color: var(--orange); transform: scale(1.08); }
+    .ecosystem-map.system-expanded .system-card { visibility: hidden; opacity: 0 !important; pointer-events: none !important; }
+    .ecosystem-map.system-expanded .ecosystem-rail,
+    .ecosystem-map.system-expanded .ecosystem-rail-label { visibility: hidden; opacity: 0; pointer-events: none; }
+    .ecosystem-back {
+      position: absolute;
+      top: clamp(24px, 4vw, 52px);
+      right: clamp(24px, 4vw, 58px);
+      z-index: 58;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 12px;
+      border: 1px solid rgba(170,198,216,.22);
+      border-radius: 3px;
+      color: #dbe8f0;
+      background: rgba(5,18,30,.72);
+      backdrop-filter: blur(12px);
+      font-size: .61rem;
+      font-weight: 850;
+      letter-spacing: .12em;
+      cursor: pointer;
+    }
+    .ecosystem-back[hidden] { display: none; }
+    .ecosystem-back:hover { border-color: var(--orange); color: var(--orange); }
+    .ecosystem-back svg { width: 15px; height: 15px; }
+    .feature-constellation[hidden], .feature-rail[hidden], .feature-rail-label[hidden] { display: none; }
+    .feature-node {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 24;
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      border: 0;
+      color: #d7e8f2;
+      background: transparent;
+      cursor: pointer;
+      will-change: left, top, transform, opacity;
+      animation: featureNodeIn .36s cubic-bezier(.2,.8,.2,1) both;
+    }
+    @keyframes featureNodeIn { from { opacity: 0; transform: translate(-50%,-50%) scale(.45); } }
+    .feature-node-icon {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(174,208,229,.36);
+      border-radius: 50%;
+      background: rgba(6,22,36,.92);
+      box-shadow: 0 0 0 5px rgba(107,164,202,.05), 0 0 20px rgba(107,164,202,.24);
+      backdrop-filter: blur(10px);
+      transition: color .16s ease, border-color .16s ease, transform .16s ease;
+    }
+    .feature-node-icon svg { width: 19px; height: 19px; stroke-width: 1.7; }
+    .feature-node > span:last-child {
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 9px);
+      max-width: 190px;
+      padding: 7px 9px;
+      transform: translate(-50%, 4px);
+      border: 1px solid rgba(170,198,216,.2);
+      border-radius: 3px;
+      color: white;
+      background: rgba(5,18,30,.94);
+      box-shadow: 0 8px 26px rgba(0,0,0,.28);
+      font-size: .65rem;
+      font-weight: 760;
+      line-height: 1.2;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .16s ease, transform .16s ease;
+    }
+    .feature-node > span:last-child small { display: block; margin-bottom: 3px; color: var(--orange); font-size: .48rem; letter-spacing: .12em; }
+    .feature-node:hover > span:last-child, .feature-node:focus > span:last-child, .feature-node.active > span:last-child { transform: translate(-50%,0); opacity: 1; }
+    .feature-node:hover .feature-node-icon, .feature-node:focus .feature-node-icon, .feature-node.active .feature-node-icon { color: var(--orange); border-color: var(--orange); transform: scale(1.08); }
+    .feature-node.new .feature-node-icon { color: var(--orange); border-color: rgba(255,163,0,.72); box-shadow: 0 0 0 6px rgba(255,163,0,.07), 0 0 28px rgba(255,163,0,.45); }
+    .feature-node.soon .feature-node-icon { color: #ffcf70; border-style: dashed; border-color: rgba(255,163,0,.55); }
+    .feature-node.supervised .feature-node-icon { color: #91b8d2; border-color: rgba(145,184,210,.45); }
+    .feature-rail-label {
+      position: absolute;
+      left: clamp(26px, 4vw, 58px);
+      bottom: calc(clamp(28px, 4vw, 52px) + 81px);
+      z-index: 55;
+      color: #8aa0b1;
+      font-size: .54rem;
+      font-weight: 850;
+      letter-spacing: .16em;
+      white-space: nowrap;
+    }
+    .feature-rail {
+      position: absolute;
+      left: clamp(26px, 4vw, 58px);
+      right: clamp(26px, 4vw, 58px);
+      bottom: clamp(28px, 4vw, 52px);
+      z-index: 55;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(145px, 1fr);
+      gap: 1px;
+      overflow-x: auto;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.1);
+      scrollbar-width: none;
+    }
+    .feature-rail::-webkit-scrollbar { display: none; }
+    .feature-rail-group {
+      display: grid;
+      align-content: center;
+      min-height: 72px;
+      padding: 10px 12px;
+      color: var(--orange);
+      background: #071522;
+      font-size: .5rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      line-height: 1.25;
+    }
+    .feature-rail button { min-height: 72px; padding: 12px 13px; border: 0; color: #aabcca; background: rgba(5,17,29,.9); text-align: left; cursor: pointer; }
+    .feature-rail button:hover, .feature-rail button.active { color: white; background: #0b2237; box-shadow: inset 0 -2px var(--orange); }
+    .feature-rail small { display: block; color: var(--orange); font-size: .47rem; font-weight: 900; letter-spacing: .12em; }
+    .feature-rail strong { display: block; margin-top: 5px; color: inherit; font-size: .65rem; line-height: 1.2; }
     .ecosystem-rail {
       position: absolute;
       left: clamp(26px, 4vw, 58px);
@@ -793,6 +917,13 @@
       .ecosystem-map .system-card { width: 42px; height: 42px; }
       .ecosystem-map .system-card h3 { max-width: 138px; padding: 7px 8px; overflow: hidden; font-size: .66rem; text-overflow: ellipsis; }
       .ecosystem-map .system-card .system-icon { width: 42px; height: 42px; }
+      .ecosystem-back { top: 18px; right: 16px; padding: 9px 10px; }
+      .feature-node { width: 40px; height: 40px; }
+      .feature-node-icon { width: 40px; height: 40px; }
+      .feature-node-icon svg { width: 17px; height: 17px; }
+      .feature-node > span:last-child { max-width: 138px; overflow: hidden; text-overflow: ellipsis; font-size: .6rem; }
+      .feature-rail { left: 14px; right: 14px; bottom: 18px; grid-auto-columns: 132px; }
+      .feature-rail-label { left: 16px; bottom: 100px; max-width: calc(100% - 32px); overflow: hidden; text-overflow: ellipsis; }
       .ecosystem-mobile-dock { display: none; }
       .ecosystem-rail { left: 14px; right: 14px; bottom: 18px; width: auto; overflow-x: auto; grid-template-columns: repeat(4, minmax(132px, 1fr)); }
       .ecosystem-rail-label { left: 16px; bottom: 100px; }
@@ -947,7 +1078,7 @@
             <button class="new" type="button" data-mobile-system="leads">NEW: Leads</button><button class="new" type="button" data-mobile-system="pay">NEW: Gusto</button><button class="new" type="button" data-mobile-system="secure">NEW: Secure</button><button class="new" type="button" data-mobile-system="bind">NEW: Instant Bind</button><button type="button" data-mobile-system="deals">Deal Log</button><button type="button" data-mobile-system="nowcerts">NowCerts</button><button type="button" data-mobile-system="portal">Client</button><button type="button" data-mobile-system="claims">Claims</button><button type="button" data-mobile-system="quote">Quoting</button><button type="button" data-mobile-system="renewals">Renewals</button><button type="button" data-mobile-system="commission">Commissions</button><button type="button" data-mobile-system="training">Training</button>
           </div>
           <svg class="ecosystem-lines" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true"><line x1="500" y1="310" x2="165" y2="100"></line><line x1="500" y1="310" x2="500" y2="100"></line><line x1="500" y1="310" x2="835" y2="100"></line><line x1="500" y1="310" x2="165" y2="310"></line><line x1="500" y1="310" x2="835" y2="310"></line><line x1="500" y1="310" x2="165" y2="520"></line><line x1="500" y1="310" x2="500" y2="520"></line><line x1="500" y1="310" x2="835" y2="520"></line><line x1="500" y1="310" x2="260" y2="180"></line><line x1="500" y1="310" x2="740" y2="180"></line><line x1="500" y1="310" x2="260" y2="440"></line><line x1="500" y1="310" x2="740" y2="440"></line></svg>
-          <div class="ecosystem-hub"><div><strong>CASEY</strong><span>THE SAFESHIELD OPERATING ECOSYSTEM</span></div></div>
+          <div class="ecosystem-hub"><div><strong data-ecosystem-hub-title>CASEY</strong><span data-ecosystem-hub-subtitle>THE SAFESHIELD OPERATING ECOSYSTEM</span></div></div>
           <article class="system-card new-node" aria-label="Open Lead engine" data-number="1" data-system-demo="leads" data-lon="-150" data-lat="-22" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon"><i data-lucide="radar" aria-hidden="true"></i></div><h3>Lead engine</h3><p>Smart intake, SEO and ad attribution, Google Chat, ownership, follow-up, and Won/Lost.</p><span class="system-status">&#10003; LIVE</span></article>
           <article class="system-card" aria-label="Open Deal Log" data-number="2" data-system-demo="deals" data-lon="-120" data-lat="18" role="button" tabindex="0"><div class="system-icon"><i data-lucide="trophy" aria-hidden="true"></i></div><h3>Deal Log</h3><p>Won business becomes a structured deal record that feeds measurement, payout context, and coaching.</p><span class="system-status">&#10003; LIVE</span></article>
           <article class="system-card new-node" aria-label="Open Gusto and pay coach" data-number="3" data-system-demo="pay" data-lon="-90" data-lat="-8" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon"><i data-lucide="wallet-cards" aria-hidden="true"></i></div><h3>Gusto + pay coach</h3><p>Salary, pay history, Deal Log activity, compensation rules, goals, pace, and scenarios.</p><span class="system-status">&#10003; LIVE</span></article>
@@ -960,6 +1091,10 @@
           <article class="system-card" aria-label="Open Renewals and service" data-number="10" data-system-demo="renewals" data-lon="120" data-lat="18" role="button" tabindex="0"><div class="system-icon"><i data-lucide="refresh-cw" aria-hidden="true"></i></div><h3>Renewals + service</h3><p>Upcoming renewals and client requests become prepared, owned, documented work instead of hidden follow-up.</p><span class="system-status">&#10003; LIVE</span></article>
           <article class="system-card" aria-label="Open Commission engine" data-number="11" data-system-demo="commission" data-lon="150" data-lat="-8" role="button" tabindex="0"><div class="system-icon"><i data-lucide="badge-dollar-sign" aria-hidden="true"></i></div><h3>Commission engine</h3><p>Deposits, carrier statements, policy truth, producer rules, exceptions, and close stay traceable.</p><span class="system-status">&#10003; LIVE</span></article>
           <article class="system-card" aria-label="Open Training and knowledge" data-number="12" data-system-demo="training" data-lon="180" data-lat="24" role="button" tabindex="0"><div class="system-icon"><i data-lucide="graduation-cap" aria-hidden="true"></i></div><h3>Training + knowledge</h3><p>Role-based guidance, approved agency knowledge, practice, and coaching appear where the employee needs them.</p><span class="system-status">&#10003; LIVE</span></article>
+          <button class="ecosystem-back" type="button" data-exit-system-ecosystem hidden><i data-lucide="arrow-left" aria-hidden="true"></i> ALL SYSTEMS</button>
+          <div class="feature-constellation" data-feature-constellation hidden aria-label="Capabilities in this system"></div>
+          <div class="feature-rail-label" data-feature-rail-label hidden></div>
+          <div class="feature-rail" data-feature-rail hidden aria-label="Capabilities in this system"></div>
           <div class="ecosystem-modal" role="dialog" aria-modal="true" aria-labelledby="ecosystem-modal-title" hidden>
             <div class="ecosystem-modal-panel">
               <button class="ecosystem-modal-close" type="button" data-close-system-modal aria-label="Close system profile">&times;</button>
@@ -1547,6 +1682,71 @@
         ['Platform expansion', 'Extend the operating layer proven inside Safeshield to additional insurance workflows.', 'EXPANDING']
       ]
     };
+    var featureGroups = {
+      leads: [
+        { name: 'ATTRACT', features: [3, 5] },
+        { name: 'INTAKE', features: [0, 1, 2, 4, 9] },
+        { name: 'ROUTE & OWN', features: [6, 7] },
+        { name: 'FOLLOW UP', features: [8] }
+      ],
+      deals: [
+        { name: 'CAPTURE', features: [0, 2] },
+        { name: 'VERIFY', features: [3] },
+        { name: 'MOTIVATE', features: [1] }
+      ],
+      pay: [
+        { name: 'UNDERSTAND PAY', features: [0, 4] },
+        { name: 'PLAN & COACH', features: [1, 2, 3] }
+      ],
+      nowcerts: [
+        { name: 'SYSTEM OF RECORD', features: [0, 1, 2] },
+        { name: 'AUTOMATE', features: [3] },
+        { name: 'MONITOR & GOVERN', features: [4, 5, 6] }
+      ],
+      portal: [
+        { name: 'SELF-SERVICE', features: [0, 1] },
+        { name: 'REQUEST & ROUTE', features: [2, 3] },
+        { name: 'DOCUMENTS', features: [4] }
+      ],
+      claims: [
+        { name: 'IDENTIFY', features: [0, 1] },
+        { name: 'HAND OFF', features: [2] }
+      ],
+      secure: [
+        { name: 'COLLECT', features: [0, 6] },
+        { name: 'PREPARE & SIGN', features: [1, 2, 3] },
+        { name: 'CREATE', features: [4, 5, 7] }
+      ],
+      bind: [
+        { name: 'CONNECT', features: [0] },
+        { name: 'CUSTOMER JOURNEY', features: [1, 2] },
+        { name: 'READY TO LAUNCH', features: [3] }
+      ],
+      quote: [
+        { name: 'GUIDE', features: [0, 8] },
+        { name: 'AUTOMATE', features: [1, 2] },
+        { name: 'PRESENT', features: [3, 4] },
+        { name: 'FOLLOW THROUGH', features: [5, 6] },
+        { name: 'GOVERN', features: [7] }
+      ],
+      renewals: [
+        { name: 'PREPARE', features: [0, 1] },
+        { name: 'RETAIN', features: [3] },
+        { name: 'SERVICE', features: [2, 4] }
+      ],
+      commission: [
+        { name: 'CALCULATE & CLOSE', features: [0, 2] },
+        { name: 'COLLECT & RECONCILE', features: [1, 3] },
+        { name: 'CONTROL', features: [5] },
+        { name: 'INTELLIGENCE', features: [4, 6] }
+      ],
+      training: [
+        { name: 'LEARN', features: [0, 5, 6] },
+        { name: 'ASSIST & ADVISE', features: [1, 2] },
+        { name: 'SEE THE BUSINESS', features: [3, 4, 7] },
+        { name: 'GOVERN & EXPAND', features: [8, 9, 10] }
+      ]
+    };
     var activeSystemKey = '';
     var activeFeature = null;
 
@@ -1574,19 +1774,22 @@
       document.querySelectorAll('.ecosystem-demo-meter i').forEach(function (bar, index) { bar.classList.toggle('complete', index === 0); });
     }
 
-    function renderFeatureLibrary(key) {
+    function renderFeatureLibrary(key, selectedIndex) {
       var features = featureLibrary[key] || [];
       var list = document.querySelector('[data-system-feature-list]');
       list.innerHTML = '';
       document.querySelector('[data-system-feature-count]').textContent = features.length + ' CAPABILITIES';
+      var buttons = [];
       features.forEach(function (feature, index) {
         var button = document.createElement('button');
         button.type = 'button';
         button.textContent = feature[0];
         button.addEventListener('click', function () { selectFeature(feature, button); });
         list.appendChild(button);
-        if (index === 0) selectFeature(feature, button);
+        buttons.push(button);
       });
+      var index = Number.isInteger(selectedIndex) ? selectedIndex : 0;
+      if (features[index] && buttons[index]) selectFeature(features[index], buttons[index]);
     }
 
     function showSystemStage(index) {
@@ -1601,13 +1804,14 @@
       document.querySelectorAll('.ecosystem-demo-meter i').forEach(function (bar, barIndex) { bar.classList.toggle('complete', barIndex <= index); });
     }
 
-    function openSystemModal(key, card) {
+    function openSystemModal(key, card, selectedIndex, featureButton) {
       activeSystemKey = key;
       var story = systemStories[key];
       var journey = systemJourneys[key];
+      var selectedFeature = Number.isInteger(selectedIndex) ? (featureLibrary[key] || [])[selectedIndex] : null;
       var modal = document.querySelector('.ecosystem-modal');
-      modal.querySelector('h3').textContent = story[0];
-      modal.querySelector('.ecosystem-modal-summary').textContent = story[1];
+      modal.querySelector('h3').textContent = selectedFeature ? selectedFeature[0] : story[0];
+      modal.querySelector('.ecosystem-modal-summary').textContent = selectedFeature ? selectedFeature[1] : story[1];
       modal.querySelector('[data-system-screen-name]').textContent = key.toUpperCase() + ' | CASEY CONNECTED';
       modal.querySelectorAll('[data-system-stage]').forEach(function (button, index) {
         button.querySelector('span').textContent = journey[index][0];
@@ -1620,9 +1824,10 @@
       modal.hidden = false;
       document.querySelector('.ecosystem-map').classList.add('modal-open');
       showSystemStage(0);
-      renderFeatureLibrary(key);
+      renderFeatureLibrary(key, selectedIndex);
       window.setTimeout(function () { modal.querySelector('[data-close-system-modal]').focus({ preventScroll: true }); }, 40);
       modal.setAttribute('data-return-system', card.getAttribute('data-system-demo'));
+      modal.setAttribute('data-return-feature', featureButton ? featureButton.getAttribute('data-feature-index') : '');
     }
 
     document.querySelectorAll('[data-system-demo]').forEach(function (card) {
@@ -1630,7 +1835,8 @@
       card.addEventListener('click', function () {
         var key = card.getAttribute('data-system-demo');
         document.querySelectorAll('[data-system-demo]').forEach(function (item) { item.classList.toggle('active', item === card); });
-        openSystemModal(key, card);
+        if (window.enterSystemEcosystem) window.enterSystemEcosystem(key, card);
+        else openSystemModal(key, card);
       });
     });
 
@@ -1661,8 +1867,14 @@
     function closeSystemModal() {
       var modal = document.querySelector('.ecosystem-modal');
       var returnKey = modal.getAttribute('data-return-system');
+      var returnFeature = modal.getAttribute('data-return-feature');
       modal.hidden = true;
       document.querySelector('.ecosystem-map').classList.remove('modal-open');
+      var featureNode = returnFeature === '' ? null : document.querySelector('[data-feature-index="' + returnFeature + '"]');
+      if (featureNode && document.querySelector('.ecosystem-map').classList.contains('system-expanded')) {
+        featureNode.focus({ preventScroll: true });
+        return;
+      }
       document.querySelectorAll('[data-system-demo]').forEach(function (item) { item.classList.remove('active'); });
       var returnNode = document.querySelector('[data-system-demo="' + returnKey + '"]');
       if (returnNode) returnNode.focus({ preventScroll: true });
@@ -1784,6 +1996,11 @@
       camera.position.set(0, 0, 4.5);
       var world = new THREE.Group();
       scene.add(world);
+      var mainNetworkGroup = new THREE.Group();
+      var featureVisualGroup = new THREE.Group();
+      featureVisualGroup.visible = false;
+      world.add(mainNetworkGroup);
+      world.add(featureVisualGroup);
 
       scene.add(new THREE.AmbientLight(0x527b99, 1.25));
       var keyLight = new THREE.DirectionalLight(0x8fd3ff, 3.2);
@@ -1840,14 +2057,128 @@
         var dot = new THREE.Mesh(dotGeometry, new THREE.MeshBasicMaterial({ color: newKeys[key] ? 0xffa300 : 0xa9d4ec }));
         dot.position.copy(nodeVectors[index]);
         dot.userData.nodeKey = key;
-        world.add(dot);
+        mainNetworkGroup.add(dot);
 
         var next = nodeVectors[(index + 3) % nodeVectors.length];
         var middle = nodeVectors[index].clone().add(next).normalize().multiplyScalar(1.52);
         var curve = new THREE.QuadraticBezierCurve3(nodeVectors[index], middle, next);
         var arcGeometry = new THREE.BufferGeometry().setFromPoints(curve.getPoints(34));
-        world.add(new THREE.Line(arcGeometry, new THREE.LineBasicMaterial({ color: newKeys[key] ? 0xffa300 : 0x3b789e, transparent: true, opacity: newKeys[key] ? .38 : .17 })));
+        mainNetworkGroup.add(new THREE.Line(arcGeometry, new THREE.LineBasicMaterial({ color: newKeys[key] ? 0xffa300 : 0x3b789e, transparent: true, opacity: newKeys[key] ? .38 : .17 })));
       });
+
+      var featureNodes = [];
+      var featureVectors = [];
+      var expandedSystemKey = '';
+      var expandedSystemCard = null;
+      var featureConstellation = globe.querySelector('[data-feature-constellation]');
+      var featureRail = globe.querySelector('[data-feature-rail]');
+      var featureRailLabel = globe.querySelector('[data-feature-rail-label]');
+      var backButton = globe.querySelector('[data-exit-system-ecosystem]');
+      var introTitle = document.querySelector('.ecosystem-title strong');
+      var introSubtitle = document.querySelector('.ecosystem-title span');
+      var introCopy = document.querySelector('.ecosystem-intro > p');
+
+      function featureIconName(title) {
+        var value = String(title || '').toLowerCase();
+        if (/upload/.test(value)) return 'upload-cloud';
+        if (/sign/.test(value)) return 'pen-tool';
+        if (/client|portal/.test(value)) return 'user-round';
+        if (/search|recognition|matching/.test(value)) return 'scan-search';
+        if (/seo/.test(value)) return 'search';
+        if (/intake|form/.test(value)) return 'clipboard-list';
+        if (/route|handoff/.test(value)) return 'route';
+        if (/campaign|mail|gmail/.test(value)) return 'mail';
+        if (/deal|win/.test(value)) return 'trophy';
+        if (/pay|payment|commission|premium/.test(value)) return 'badge-dollar-sign';
+        if (/goal|plan/.test(value)) return 'target';
+        if (/scenario|intelligence|advisor/.test(value)) return 'chart-no-axes-combined';
+        if (/statement|invoice/.test(value)) return 'receipt-text';
+        if (/policy|nowcerts|data/.test(value)) return 'database';
+        if (/sync|automation|download|renewal|retention/.test(value)) return 'refresh-cw';
+        if (/exception|watchdog|guardrail|authority|compliance|govern|control/.test(value)) return 'shield-alert';
+        if (/claim/.test(value)) return 'life-buoy';
+        if (/certificate|acord|document/.test(value)) return 'file-check-2';
+        if (/bind|api|link|bridge/.test(value)) return 'link';
+        if (/quote|proposal|rater/.test(value)) return 'file-chart-column';
+        if (/training|onboarding|learn/.test(value)) return 'graduation-cap';
+        if (/notification/.test(value)) return 'bell';
+        return 'sparkles';
+      }
+
+      function vectorForFeature(groupIndex, groupCount, itemIndex, itemCount) {
+        var baseLon = groupCount === 1 ? 0 : -126 + groupIndex * (252 / (groupCount - 1));
+        var spread = itemCount === 1 ? 0 : (itemIndex - (itemCount - 1) / 2) * Math.min(24, 70 / itemCount);
+        var lon = (baseLon + spread) * Math.PI / 180;
+        var latDegrees = itemCount === 1 ? 0 : (itemIndex % 2 === 0 ? -1 : 1) * (12 + Math.floor(itemIndex / 2) * 13);
+        var lat = latDegrees * Math.PI / 180;
+        return new THREE.Vector3(Math.sin(lon) * Math.cos(lat) * 1.23, Math.sin(lat) * 1.23, Math.cos(lon) * Math.cos(lat) * 1.23);
+      }
+
+      function clearFeatureEcosystem() {
+        featureNodes = [];
+        featureVectors = [];
+        featureConstellation.innerHTML = '';
+        featureRail.innerHTML = '';
+        while (featureVisualGroup.children.length) {
+          var child = featureVisualGroup.children.pop();
+          if (child.geometry) child.geometry.dispose();
+          if (child.material) child.material.dispose();
+        }
+      }
+
+      function buildFeatureEcosystem(key, card) {
+        clearFeatureEcosystem();
+        var features = featureLibrary[key] || [];
+        var groups = featureGroups[key] || [{ name: 'CAPABILITIES', features: features.map(function (_, index) { return index; }) }];
+        groups.forEach(function (group, groupIndex) {
+          var railGroup = document.createElement('div');
+          railGroup.className = 'feature-rail-group';
+          railGroup.textContent = group.name;
+          featureRail.appendChild(railGroup);
+          var groupVectors = [];
+          group.features.forEach(function (featureIndex, itemIndex) {
+            var feature = features[featureIndex];
+            if (!feature) return;
+            var vector = vectorForFeature(groupIndex, groups.length, itemIndex, group.features.length);
+            featureVectors.push(vector);
+            groupVectors.push(vector);
+            var button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'feature-node ' + statusClass(feature[2]) + (String(feature[2]).indexOf('NEW') >= 0 ? ' new' : '');
+            button.setAttribute('data-feature-index', String(featureIndex));
+            button.setAttribute('data-feature-group', group.name);
+            button.setAttribute('aria-label', 'Open ' + feature[0] + ' in ' + group.name);
+            button.style.animationDelay = (featureNodes.length * 34) + 'ms';
+            button.innerHTML = '<span class="feature-node-icon"><i data-lucide="' + featureIconName(feature[0]) + '" aria-hidden="true"></i></span><span><small>' + group.name + '</small>' + feature[0] + '</span>';
+            button.addEventListener('click', function () {
+              featureNodes.forEach(function (item) { item.classList.toggle('active', item === button); });
+              featureRail.querySelectorAll('button').forEach(function (item) { item.classList.toggle('active', item.getAttribute('data-feature-index') === String(featureIndex)); });
+              openSystemModal(key, card, featureIndex, button);
+            });
+            featureConstellation.appendChild(button);
+            featureNodes.push(button);
+
+            var railButton = document.createElement('button');
+            railButton.type = 'button';
+            railButton.setAttribute('data-feature-index', String(featureIndex));
+            railButton.innerHTML = '<small>' + feature[2] + '</small><strong>' + feature[0] + '</strong>';
+            railButton.addEventListener('click', function () { window.focusFeatureNode(featureIndex, { open: true }); });
+            featureRail.appendChild(railButton);
+
+            var dot = new THREE.Mesh(new THREE.SphereGeometry(.025, 16, 16), new THREE.MeshBasicMaterial({ color: String(feature[2]).indexOf('NEW') >= 0 ? 0xffa300 : 0xa9d4ec }));
+            dot.position.copy(vector);
+            featureVisualGroup.add(dot);
+          });
+          groupVectors.forEach(function (vector, index) {
+            if (index === groupVectors.length - 1) return;
+            var next = groupVectors[index + 1];
+            var middle = vector.clone().add(next).normalize().multiplyScalar(1.43);
+            var curve = new THREE.QuadraticBezierCurve3(vector, middle, next);
+            featureVisualGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(24)), new THREE.LineBasicMaterial({ color: groupIndex === 0 ? 0xffa300 : 0x4a8bb2, transparent: true, opacity: groupIndex === 0 ? .3 : .2 })));
+          });
+        });
+        if (window.lucide) window.lucide.createIcons();
+      }
 
       function sizeScene() {
         var width = Math.max(1, globe.clientWidth);
@@ -1881,7 +2212,83 @@
           node.style.zIndex = String(Math.round(18 + front * 10));
           node.style.pointerEvents = front < -.32 ? 'none' : 'auto';
         });
+        featureNodes.forEach(function (node, index) {
+          var worldPoint = featureVectors[index].clone().applyMatrix4(world.matrixWorld);
+          var projected = worldPoint.clone().project(camera);
+          var x = (projected.x * .5 + .5) * width;
+          var y = (-projected.y * .5 + .5) * height;
+          var front = worldPoint.z;
+          var scale = Math.max(.7, Math.min(1.08, .84 + front * .14));
+          var opacity = Math.max(.08, Math.min(1, .32 + (front + 1.2) * .42));
+          node.style.left = x + 'px';
+          node.style.top = y + 'px';
+          node.style.transform = 'translate(-50%, -50%) scale(' + scale.toFixed(3) + ')';
+          node.style.opacity = opacity.toFixed(3);
+          node.style.zIndex = String(Math.round(24 + front * 10));
+          node.style.pointerEvents = front < -.32 ? 'none' : 'auto';
+        });
       }
+
+      window.enterSystemEcosystem = function (key, card) {
+        expandedSystemKey = key;
+        expandedSystemCard = card;
+        buildFeatureEcosystem(key, card);
+        mainNetworkGroup.visible = false;
+        featureVisualGroup.visible = true;
+        globe.classList.add('system-expanded');
+        backButton.hidden = false;
+        featureConstellation.hidden = false;
+        featureRail.hidden = false;
+        featureRailLabel.hidden = false;
+        var systemName = card.querySelector('h3').textContent;
+        var groups = featureGroups[key] || [];
+        globe.querySelector('[data-ecosystem-hub-title]').textContent = systemName;
+        globe.querySelector('[data-ecosystem-hub-subtitle]').textContent = (featureLibrary[key] || []).length + ' CONNECTED CAPABILITIES';
+        introTitle.textContent = systemName.toUpperCase();
+        introSubtitle.textContent = 'CAPABILITY ECOSYSTEM / ' + (featureLibrary[key] || []).length + ' FEATURES';
+        introCopy.textContent = 'Explore by function: ' + groups.map(function (group) { return group.name; }).join(' / ') + '. Select an icon to open its walkthrough.';
+        featureRailLabel.textContent = systemName.toUpperCase() + ' / SORTED BY FUNCTION';
+        yaw = 0;
+        pitch = 0;
+        targetYaw = 0;
+        targetPitch = 0;
+        lastInteraction = Date.now();
+        backButton.focus({ preventScroll: true });
+      };
+
+      window.exitSystemEcosystem = function () {
+        if (!expandedSystemKey) return;
+        var returnCard = expandedSystemCard;
+        expandedSystemKey = '';
+        expandedSystemCard = null;
+        mainNetworkGroup.visible = true;
+        featureVisualGroup.visible = false;
+        globe.classList.remove('system-expanded');
+        backButton.hidden = true;
+        featureConstellation.hidden = true;
+        featureRail.hidden = true;
+        featureRailLabel.hidden = true;
+        globe.querySelector('[data-ecosystem-hub-title]').textContent = 'CASEY';
+        globe.querySelector('[data-ecosystem-hub-subtitle]').textContent = 'THE SAFESHIELD OPERATING ECOSYSTEM';
+        introTitle.textContent = 'CASEY ECOSYSTEM';
+        introSubtitle.textContent = 'LIVING CAPABILITY LIBRARY / UPDATED AUGUST 2026';
+        introCopy.textContent = 'Drag to explore. Select an icon to open its capabilities and walkthrough.';
+        document.querySelectorAll('[data-system-demo]').forEach(function (item) { item.classList.remove('active'); });
+        if (returnCard) returnCard.focus({ preventScroll: true });
+      };
+
+      backButton.addEventListener('click', window.exitSystemEcosystem);
+
+      window.focusFeatureNode = function (featureIndex, options) {
+        options = options || {};
+        var nodeIndex = featureNodes.findIndex(function (node) { return node.getAttribute('data-feature-index') === String(featureIndex); });
+        if (nodeIndex < 0) return;
+        var vector = featureVectors[nodeIndex];
+        targetYaw = -Math.atan2(vector.x, vector.z);
+        targetPitch = -Math.asin(vector.y / 1.23) * .55;
+        lastInteraction = Date.now();
+        if (options.open) window.setTimeout(function () { featureNodes[nodeIndex].click(); }, reduceMotion ? 0 : 420);
+      };
 
       function renderGlobe() {
         world.rotation.y = yaw;
@@ -1927,7 +2334,7 @@
         lastInteraction = Date.now();
       }, { passive: false });
       globe.addEventListener('pointerdown', function (event) {
-        if (event.target.closest('[data-system-demo], .ecosystem-rail, .ecosystem-modal')) return;
+        if (event.target.closest('[data-system-demo], .feature-node, .feature-rail, .ecosystem-back, .ecosystem-rail, .ecosystem-modal')) return;
         dragging = true;
         lastX = event.clientX;
         lastY = event.clientY;
