@@ -2185,6 +2185,8 @@
           categoryButton.addEventListener('click', function () {
             categoryButtons.querySelectorAll('button').forEach(function (item) { item.classList.toggle('active', item === categoryButton); });
             var firstFeature = group.features[0];
+            featureNodes.forEach(function (item) { item.classList.toggle('active', item.getAttribute('data-feature-index') === String(firstFeature)); });
+            featureRail.querySelectorAll('button').forEach(function (item) { item.classList.toggle('active', item.getAttribute('data-feature-index') === String(firstFeature)); });
             window.focusFeatureNode(firstFeature, { open: false });
             var railTarget = featureRail.querySelector('button[data-feature-index="' + firstFeature + '"]');
             if (railTarget) featureRail.scrollTo({ left: Math.max(0, railTarget.offsetLeft - featureRail.clientWidth / 2 + railTarget.offsetWidth / 2), behavior: reduceMotion ? 'auto' : 'smooth' });
