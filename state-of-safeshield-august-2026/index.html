@@ -715,7 +715,7 @@
     .ecosystem-map .system-card.active { transform: translate(-50%, -50%) scale(1) !important; }
     .ecosystem-map .system-card:hover h3,
     .ecosystem-map .system-card:focus h3,
-    .ecosystem-map .system-card.active h3 { transform: translate(-50%, 0); border-color: rgba(255,163,0,.72); color: white; background: rgba(10,31,49,.96); box-shadow: 0 0 32px rgba(255,163,0,.14); opacity: 1; }
+    .ecosystem-map .system-card.active h3 { transform: translate(-50%, 0); border-color: rgba(255,163,0,.72); color: white; background: rgba(10,31,49,.96); box-shadow: 0 0 32px rgba(255,163,0,.14); opacity: 1 !important; }
     .ecosystem-map .system-card:hover .system-icon,
     .ecosystem-map .system-card:focus .system-icon,
     .ecosystem-map .system-card.active .system-icon { color: var(--orange); border-color: var(--orange); transform: scale(1.08); }
@@ -938,7 +938,7 @@
       .ecosystem-map .system-card { width: 42px; height: 42px; }
       .ecosystem-map .system-card h3 { max-width: 138px; padding: 7px 8px; overflow: hidden; font-size: .66rem; text-overflow: ellipsis; }
       .ecosystem-map .system-card .system-icon { width: 42px; height: 42px; }
-      .ecosystem-back { top: 212px; right: 16px; padding: 9px 10px; }
+      .ecosystem-back { top: 282px; right: 16px; padding: 9px 10px; }
       .feature-node { width: 40px; height: 40px; }
       .feature-node-icon { width: 40px; height: 40px; }
       .feature-node-icon svg { width: 17px; height: 17px; }
@@ -2092,6 +2092,7 @@
       var featureVectors = [];
       var expandedSystemKey = '';
       var expandedSystemCard = null;
+      var preservedEcosystemScrollY = null;
       var featureConstellation = globe.querySelector('[data-feature-constellation]');
       var featureRail = globe.querySelector('[data-feature-rail]');
       var featureRailLabel = globe.querySelector('[data-feature-rail-label]');
@@ -2101,6 +2102,19 @@
       var introTitle = document.querySelector('.ecosystem-title strong');
       var introSubtitle = document.querySelector('.ecosystem-title span');
       var introCopy = document.querySelector('.ecosystem-intro > p');
+
+      globe.addEventListener('click', function (event) {
+        if (event.target.closest('[data-system-demo], [data-mobile-system]')) preservedEcosystemScrollY = window.scrollY;
+      }, true);
+
+      function restoreEcosystemScroll() {
+        if (preservedEcosystemScrollY === null) return;
+        var scrollRoot = document.documentElement;
+        var priorBehavior = scrollRoot.style.scrollBehavior;
+        scrollRoot.style.scrollBehavior = 'auto';
+        window.scrollTo(0, preservedEcosystemScrollY);
+        window.requestAnimationFrame(function () { scrollRoot.style.scrollBehavior = priorBehavior; });
+      }
 
       function featureIconName(title) {
         var value = String(title || '').toLowerCase();
@@ -2165,7 +2179,7 @@
             var firstFeature = group.features[0];
             window.focusFeatureNode(firstFeature, { open: false });
             var railTarget = featureRail.querySelector('button[data-feature-index="' + firstFeature + '"]');
-            if (railTarget) railTarget.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
+            if (railTarget) featureRail.scrollTo({ left: Math.max(0, railTarget.offsetLeft - featureRail.clientWidth / 2 + railTarget.offsetWidth / 2), behavior: reduceMotion ? 'auto' : 'smooth' });
           });
           categoryButtons.appendChild(categoryButton);
           var railGroup = document.createElement('div');
@@ -2257,6 +2271,10 @@
           node.style.opacity = opacity.toFixed(3);
           node.style.zIndex = String(Math.round(18 + front * 10));
           node.style.pointerEvents = front < -.32 ? 'none' : 'auto';
+          var label = node.querySelector('h3');
+          var labelThreshold = width < 900 ? .48 : .18;
+          var edgeRoom = width < 900 ? 72 : 96;
+          label.style.opacity = front > labelThreshold && x > edgeRoom && x < width - edgeRoom ? '.94' : '0';
         });
         featureNodes.forEach(function (node, index) {
           var worldPoint = featureVectors[index].clone().applyMatrix4(world.matrixWorld);
@@ -2323,6 +2341,8 @@
         targetPitch = 0;
         lastInteraction = Date.now();
         backButton.focus({ preventScroll: true });
+        restoreEcosystemScroll();
+        window.requestAnimationFrame(restoreEcosystemScroll);
       };
 
       window.exitSystemEcosystem = function () {
