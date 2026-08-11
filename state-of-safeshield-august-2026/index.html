@@ -716,16 +716,17 @@
       box-shadow: 0 18px 60px rgba(0,0,0,.24);
       scrollbar-width: none;
     }
-    .ecosystem-rail::before {
-      content: "WHAT'S NEW  /  SELECT A FEATURE";
+    .ecosystem-rail-label {
       position: absolute;
-      left: 0;
-      bottom: calc(100% + 9px);
+      left: clamp(26px, 4vw, 58px);
+      bottom: calc(clamp(28px, 4vw, 52px) + 81px);
+      z-index: 55;
       color: #7890a2;
       font-size: .54rem;
       font-weight: 850;
       letter-spacing: .16em;
       white-space: nowrap;
+      pointer-events: none;
     }
     .ecosystem-rail::-webkit-scrollbar { display: none; }
     .ecosystem-rail button {
@@ -794,7 +795,7 @@
       .ecosystem-map .system-card .system-icon { width: 42px; height: 42px; }
       .ecosystem-mobile-dock { display: none; }
       .ecosystem-rail { left: 14px; right: 14px; bottom: 18px; width: auto; overflow-x: auto; grid-template-columns: repeat(4, minmax(132px, 1fr)); }
-      .ecosystem-rail::before { left: 2px; }
+      .ecosystem-rail-label { left: 16px; bottom: 100px; }
       .globe-hint { display: none; }
       .ecosystem-modal { place-items: end center; }
       .ecosystem-modal-panel { width: 100%; max-height: 82svh; padding: 42px 20px 24px; border-top: 1px solid rgba(255,163,0,.38); border-left: 0; border-radius: 18px 18px 0 0; background: linear-gradient(165deg, #0d2a42, #06131f 72%); }
@@ -982,6 +983,7 @@
               <div class="ecosystem-modal-actions"><button type="button" data-open-system-guide hidden>OPEN FULL INTERACTIVE GUIDE &rarr;</button><span>Explore it here, then try the real request in CASEY before you urgently need it.</span></div>
             </div>
           </div>
+          <div class="ecosystem-rail-label">WHAT'S NEW&nbsp;&nbsp;/&nbsp;&nbsp;SELECT A FEATURE</div>
           <div class="ecosystem-rail" aria-label="New CASEY capabilities">
             <button type="button" data-mobile-system="leads"><small>NEW / LIVE</small><strong>Client-side CASEY</strong></button>
             <button type="button" data-mobile-system="pay"><small>NEW / LIVE</small><strong>Gusto + pay coach</strong></button>
