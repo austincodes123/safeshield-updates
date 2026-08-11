@@ -542,6 +542,14 @@
     .ecosystem-intro p { max-width: 320px; margin: 0; color: #91a5b8; font-size: .82rem; }
     .ecosystem-intro-meta { display: flex; gap: 24px; margin-top: 24px; color: #d6e1e9; font-size: .66rem; font-weight: 800; letter-spacing: .12em; }
     .ecosystem-intro-meta b { color: var(--orange); font-size: 1rem; }
+    .ecosystem-intro-meta i { font-style: normal; }
+    .ecosystem-category-nav { margin-top: 20px; pointer-events: auto; }
+    .ecosystem-category-nav[hidden] { display: none; }
+    .ecosystem-category-nav > small { display: block; margin-bottom: 9px; color: #6f879a; font-size: .52rem; font-weight: 900; letter-spacing: .17em; }
+    .ecosystem-category-nav > div { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ecosystem-category-nav button { padding: 7px 9px; border: 1px solid rgba(154,190,214,.22); border-radius: 2px; color: #b9cbd8; background: rgba(4,17,28,.72); font-size: .52rem; font-weight: 850; letter-spacing: .09em; cursor: pointer; }
+    .ecosystem-category-nav button:hover,
+    .ecosystem-category-nav button.active { border-color: var(--orange); color: #fff; background: rgba(255,163,0,.1); }
     .ecosystem-progress { display: none; }
     .ecosystem-map {
       min-height: 100svh;
@@ -604,8 +612,10 @@
       animation: none;
     }
     @keyframes gridDrift { to { transform: rotate(360deg); } }
-    .ecosystem-lines { z-index: 0; filter: drop-shadow(0 0 4px rgba(255,163,0,.18)); }
-    .ecosystem-lines line { stroke: rgba(107, 164, 202, .23); stroke-width: 1; stroke-dasharray: none; }
+    .ecosystem-lines { z-index: 0; filter: drop-shadow(0 0 5px rgba(255,163,0,.2)); pointer-events: none; }
+    .ecosystem-lines line { stroke: rgba(100, 180, 226, .32); stroke-width: 1.15; stroke-dasharray: 4 8; animation: connectionFlow 2.8s linear infinite; }
+    .ecosystem-lines line:nth-child(3n) { stroke: rgba(255,163,0,.4); animation-duration: 2.2s; }
+    @keyframes connectionFlow { to { stroke-dashoffset: -48; } }
     .ecosystem-hub {
       left: 58%;
       width: 182px;
@@ -618,6 +628,7 @@
       backdrop-filter: blur(18px);
     }
     .ecosystem-hub::before { content: ""; position: absolute; left: 50%; bottom: -26px; width: 1px; height: 26px; background: linear-gradient(var(--orange), transparent); }
+    .ecosystem-hub small { display: block; margin-bottom: 7px; color: #7894a8; font-size: .45rem; font-weight: 900; letter-spacing: .2em; }
     .ecosystem-hub strong { color: white; font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 1.72rem; font-weight: 900; letter-spacing: .2em; text-indent: .2em; }
     .ecosystem-hub span { margin-top: 5px; color: var(--orange); font-size: .52rem; font-weight: 850; letter-spacing: .17em; }
     .ecosystem-map .system-card {
@@ -908,8 +919,12 @@
       .ecosystem-intro { width: 100%; padding: 24px 22px; }
       .ecosystem-title { margin-top: 12px; }
       .ecosystem-title strong { font-size: 1.25rem; }
-      .ecosystem-intro p { display: none; }
+      .ecosystem-intro p { display: block; max-width: 335px; font-size: .72rem; line-height: 1.45; }
       .ecosystem-intro-meta { margin-top: 12px; }
+      .ecosystem-category-nav { margin-top: 13px; }
+      .ecosystem-category-nav > div { flex-wrap: nowrap; max-width: calc(100vw - 44px); overflow-x: auto; scrollbar-width: none; }
+      .ecosystem-category-nav > div::-webkit-scrollbar { display: none; }
+      .ecosystem-category-nav button { flex: 0 0 auto; }
       .ecosystem-map { min-height: 740px; }
       .ecosystem-sphere { left: 50%; top: 52%; width: min(116vw, 680px); }
       .ecosystem-hub { left: 50%; top: 52%; width: 132px; padding: 14px 18px; }
@@ -917,7 +932,7 @@
       .ecosystem-map .system-card { width: 42px; height: 42px; }
       .ecosystem-map .system-card h3 { max-width: 138px; padding: 7px 8px; overflow: hidden; font-size: .66rem; text-overflow: ellipsis; }
       .ecosystem-map .system-card .system-icon { width: 42px; height: 42px; }
-      .ecosystem-back { top: 150px; right: 16px; padding: 9px 10px; }
+      .ecosystem-back { top: 212px; right: 16px; padding: 9px 10px; }
       .feature-node { width: 40px; height: 40px; }
       .feature-node-icon { width: 40px; height: 40px; }
       .feature-node-icon svg { width: 17px; height: 17px; }
@@ -1066,9 +1081,10 @@
       <div class="shell">
         <div class="ecosystem-intro">
           <div class="eyebrow">Safeshield Insurance</div>
-          <div class="ecosystem-title"><strong>CASEY ECOSYSTEM</strong><span>LIVING CAPABILITY LIBRARY / UPDATED AUGUST 2026</span></div>
-          <p>Drag to explore. Select an icon to open its capabilities and walkthrough.</p>
-          <div class="ecosystem-intro-meta"><span><b>11</b> LIVE CONNECTIONS</span><span><b>1</b> COMING NEXT</span></div>
+          <div class="ecosystem-title"><strong>CASEY OPERATING ECOSYSTEM</strong><span>EVERY PART OF SAFESHIELD / ONE CONNECTED CORE</span></div>
+          <p>Every orbiting icon is a part of the business. Every line leads back to CASEY. Rotate the globe, then select a system to see what CASEY does inside it.</p>
+          <div class="ecosystem-intro-meta"><span><b data-ecosystem-meta-one>12</b> <i data-ecosystem-label-one>BUSINESS SYSTEMS</i></span><span><b data-ecosystem-meta-two>78</b> <i data-ecosystem-label-two>CAPABILITIES</i></span></div>
+          <div class="ecosystem-category-nav" data-ecosystem-category-nav hidden><small>CHOOSE A FUNCTION</small><div data-ecosystem-category-buttons></div></div>
         </div>
         <div class="ecosystem-progress"><strong>11 CONNECTED</strong><span>Lead intake, Deal Log, Gusto, NowCerts, client service, claims, Secure, quoting, renewals, commissions, and training already connect to the CASEY operating layer. Instant Bind is the next approved connection.</span></div>
         <div class="system-grid ecosystem-map" aria-label="Interactive Safeshield technology ecosystem">
@@ -1078,7 +1094,7 @@
             <button class="new" type="button" data-mobile-system="leads">NEW: Leads</button><button class="new" type="button" data-mobile-system="pay">NEW: Gusto</button><button class="new" type="button" data-mobile-system="secure">NEW: Secure</button><button class="new" type="button" data-mobile-system="bind">NEW: Instant Bind</button><button type="button" data-mobile-system="deals">Deal Log</button><button type="button" data-mobile-system="nowcerts">NowCerts</button><button type="button" data-mobile-system="portal">Client</button><button type="button" data-mobile-system="claims">Claims</button><button type="button" data-mobile-system="quote">Quoting</button><button type="button" data-mobile-system="renewals">Renewals</button><button type="button" data-mobile-system="commission">Commissions</button><button type="button" data-mobile-system="training">Training</button>
           </div>
           <svg class="ecosystem-lines" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true"><line x1="500" y1="310" x2="165" y2="100"></line><line x1="500" y1="310" x2="500" y2="100"></line><line x1="500" y1="310" x2="835" y2="100"></line><line x1="500" y1="310" x2="165" y2="310"></line><line x1="500" y1="310" x2="835" y2="310"></line><line x1="500" y1="310" x2="165" y2="520"></line><line x1="500" y1="310" x2="500" y2="520"></line><line x1="500" y1="310" x2="835" y2="520"></line><line x1="500" y1="310" x2="260" y2="180"></line><line x1="500" y1="310" x2="740" y2="180"></line><line x1="500" y1="310" x2="260" y2="440"></line><line x1="500" y1="310" x2="740" y2="440"></line></svg>
-          <div class="ecosystem-hub"><div><strong data-ecosystem-hub-title>CASEY</strong><span data-ecosystem-hub-subtitle>THE SAFESHIELD OPERATING ECOSYSTEM</span></div></div>
+          <div class="ecosystem-hub"><div><small>OPERATING CORE</small><strong data-ecosystem-hub-title>CASEY</strong><span data-ecosystem-hub-subtitle>12 SYSTEMS / ONE CONNECTED BRAIN</span></div></div>
           <article class="system-card new-node" aria-label="Open Lead engine" data-number="1" data-system-demo="leads" data-lon="-150" data-lat="-22" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon"><i data-lucide="radar" aria-hidden="true"></i></div><h3>Lead engine</h3><p>Smart intake, SEO and ad attribution, Google Chat, ownership, follow-up, and Won/Lost.</p><span class="system-status">&#10003; LIVE</span></article>
           <article class="system-card" aria-label="Open Deal Log" data-number="2" data-system-demo="deals" data-lon="-120" data-lat="18" role="button" tabindex="0"><div class="system-icon"><i data-lucide="trophy" aria-hidden="true"></i></div><h3>Deal Log</h3><p>Won business becomes a structured deal record that feeds measurement, payout context, and coaching.</p><span class="system-status">&#10003; LIVE</span></article>
           <article class="system-card new-node" aria-label="Open Gusto and pay coach" data-number="3" data-system-demo="pay" data-lon="-90" data-lat="-8" role="button" tabindex="0"><span class="new-badge">NEW</span><div class="system-icon"><i data-lucide="wallet-cards" aria-hidden="true"></i></div><h3>Gusto + pay coach</h3><p>Salary, pay history, Deal Log activity, compensation rules, goals, pace, and scenarios.</p><span class="system-status">&#10003; LIVE</span></article>
@@ -1985,7 +2001,7 @@
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       if (!window.THREE) return;
-      fallbackLines.style.display = 'none';
+      var connectionLines = Array.prototype.slice.call(fallbackLines.querySelectorAll('line'));
 
       var canvas = globe.querySelector('.ecosystem-canvas');
       var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
@@ -2074,6 +2090,8 @@
       var featureRail = globe.querySelector('[data-feature-rail]');
       var featureRailLabel = globe.querySelector('[data-feature-rail-label]');
       var backButton = globe.querySelector('[data-exit-system-ecosystem]');
+      var categoryNav = document.querySelector('[data-ecosystem-category-nav]');
+      var categoryButtons = document.querySelector('[data-ecosystem-category-buttons]');
       var introTitle = document.querySelector('.ecosystem-title strong');
       var introSubtitle = document.querySelector('.ecosystem-title span');
       var introCopy = document.querySelector('.ecosystem-intro > p');
@@ -2119,6 +2137,7 @@
         featureVectors = [];
         featureConstellation.innerHTML = '';
         featureRail.innerHTML = '';
+        categoryButtons.innerHTML = '';
         while (featureVisualGroup.children.length) {
           var child = featureVisualGroup.children.pop();
           if (child.geometry) child.geometry.dispose();
@@ -2131,6 +2150,18 @@
         var features = featureLibrary[key] || [];
         var groups = featureGroups[key] || [{ name: 'CAPABILITIES', features: features.map(function (_, index) { return index; }) }];
         groups.forEach(function (group, groupIndex) {
+          var categoryButton = document.createElement('button');
+          categoryButton.type = 'button';
+          categoryButton.textContent = group.name;
+          categoryButton.setAttribute('data-category-name', group.name);
+          categoryButton.addEventListener('click', function () {
+            categoryButtons.querySelectorAll('button').forEach(function (item) { item.classList.toggle('active', item === categoryButton); });
+            var firstFeature = group.features[0];
+            window.focusFeatureNode(firstFeature, { open: false });
+            var railTarget = featureRail.querySelector('button[data-feature-index="' + firstFeature + '"]');
+            if (railTarget) railTarget.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
+          });
+          categoryButtons.appendChild(categoryButton);
           var railGroup = document.createElement('div');
           railGroup.className = 'feature-rail-group';
           railGroup.textContent = group.name;
@@ -2152,6 +2183,7 @@
             button.innerHTML = '<span class="feature-node-icon"><i data-lucide="' + featureIconName(feature[0]) + '" aria-hidden="true"></i></span><span><small>' + group.name + '</small>' + feature[0] + '</span>';
             button.addEventListener('click', function () {
               featureNodes.forEach(function (item) { item.classList.toggle('active', item === button); });
+              categoryButtons.querySelectorAll('button').forEach(function (item) { item.classList.toggle('active', item.getAttribute('data-category-name') === group.name); });
               featureRail.querySelectorAll('button').forEach(function (item) { item.classList.toggle('active', item.getAttribute('data-feature-index') === String(featureIndex)); });
               openSystemModal(key, card, featureIndex, button);
             });
@@ -2177,6 +2209,8 @@
             featureVisualGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(24)), new THREE.LineBasicMaterial({ color: groupIndex === 0 ? 0xffa300 : 0x4a8bb2, transparent: true, opacity: groupIndex === 0 ? .3 : .2 })));
           });
         });
+        var firstCategory = categoryButtons.querySelector('button');
+        if (firstCategory) firstCategory.classList.add('active');
         if (window.lucide) window.lucide.createIcons();
       }
 
@@ -2195,6 +2229,8 @@
       function placeLabels() {
         var width = globe.clientWidth;
         var height = globe.clientHeight;
+        var systemPoints = [];
+        var capabilityPoints = [];
         world.updateMatrixWorld(true);
         nodes.forEach(function (node, index) {
           var worldPoint = nodeVectors[index].clone().applyMatrix4(world.matrixWorld);
@@ -2202,6 +2238,7 @@
           var x = (projected.x * .5 + .5) * width;
           var y = (-projected.y * .5 + .5) * height;
           var front = worldPoint.z;
+          systemPoints.push({ x: x, y: y, front: front });
           var scale = Math.max(.7, Math.min(1.08, .84 + front * .14));
           var opacity = Math.max(.08, Math.min(1, .32 + (front + 1.2) * .42));
           node.style.left = x + 'px';
@@ -2218,6 +2255,7 @@
           var x = (projected.x * .5 + .5) * width;
           var y = (-projected.y * .5 + .5) * height;
           var front = worldPoint.z;
+          capabilityPoints.push({ x: x, y: y, front: front });
           var scale = Math.max(.7, Math.min(1.08, .84 + front * .14));
           var opacity = Math.max(.08, Math.min(1, .32 + (front + 1.2) * .42));
           node.style.left = x + 'px';
@@ -2226,6 +2264,23 @@
           node.style.opacity = opacity.toFixed(3);
           node.style.zIndex = String(Math.round(24 + front * 10));
           node.style.pointerEvents = front < -.32 ? 'none' : 'auto';
+        });
+        var mapRect = globe.getBoundingClientRect();
+        var hubRect = globe.querySelector('.ecosystem-hub').getBoundingClientRect();
+        var hubX = hubRect.left - mapRect.left + hubRect.width / 2;
+        var hubY = hubRect.top - mapRect.top + hubRect.height / 2;
+        var activePoints = expandedSystemKey ? capabilityPoints : systemPoints;
+        connectionLines.forEach(function (line, index) {
+          var point = activePoints[index];
+          if (!point) {
+            line.style.opacity = '0';
+            return;
+          }
+          line.setAttribute('x1', String(point.x * 1000 / width));
+          line.setAttribute('y1', String(point.y * 620 / height));
+          line.setAttribute('x2', String(hubX * 1000 / width));
+          line.setAttribute('y2', String(hubY * 620 / height));
+          line.style.opacity = String(Math.max(.06, Math.min(.72, .18 + (point.front + 1.2) * .24)));
         });
       }
 
@@ -2240,14 +2295,19 @@
         featureConstellation.hidden = false;
         featureRail.hidden = false;
         featureRailLabel.hidden = false;
+        categoryNav.hidden = false;
         var systemName = card.querySelector('h3').textContent;
         var groups = featureGroups[key] || [];
-        globe.querySelector('[data-ecosystem-hub-title]').textContent = systemName;
-        globe.querySelector('[data-ecosystem-hub-subtitle]').textContent = (featureLibrary[key] || []).length + ' CONNECTED CAPABILITIES';
+        globe.querySelector('[data-ecosystem-hub-title]').textContent = 'CASEY';
+        globe.querySelector('[data-ecosystem-hub-subtitle]').textContent = 'CONNECTS ' + systemName.toUpperCase();
         introTitle.textContent = systemName.toUpperCase();
-        introSubtitle.textContent = 'CAPABILITY ECOSYSTEM / ' + (featureLibrary[key] || []).length + ' FEATURES';
-        introCopy.textContent = 'Explore by function: ' + groups.map(function (group) { return group.name; }).join(' / ') + '. Select an icon to open its walkthrough.';
-        featureRailLabel.textContent = systemName.toUpperCase() + ' / SORTED BY FUNCTION';
+        introSubtitle.textContent = 'YOU ARE INSIDE THIS SYSTEM';
+        introCopy.textContent = 'The icons orbiting CASEY are the capabilities inside ' + systemName + '. Choose a function, then select any capability to see what it does and run its walkthrough.';
+        document.querySelector('[data-ecosystem-meta-one]').textContent = groups.length;
+        document.querySelector('[data-ecosystem-label-one]').textContent = groups.length === 1 ? 'FUNCTION' : 'FUNCTIONS';
+        document.querySelector('[data-ecosystem-meta-two]').textContent = (featureLibrary[key] || []).length;
+        document.querySelector('[data-ecosystem-label-two]').textContent = 'CAPABILITIES';
+        featureRailLabel.textContent = 'CAPABILITIES / SWIPE OR SELECT AN ICON ABOVE';
         yaw = 0;
         pitch = 0;
         targetYaw = 0;
@@ -2268,11 +2328,16 @@
         featureConstellation.hidden = true;
         featureRail.hidden = true;
         featureRailLabel.hidden = true;
+        categoryNav.hidden = true;
         globe.querySelector('[data-ecosystem-hub-title]').textContent = 'CASEY';
-        globe.querySelector('[data-ecosystem-hub-subtitle]').textContent = 'THE SAFESHIELD OPERATING ECOSYSTEM';
-        introTitle.textContent = 'CASEY ECOSYSTEM';
-        introSubtitle.textContent = 'LIVING CAPABILITY LIBRARY / UPDATED AUGUST 2026';
-        introCopy.textContent = 'Drag to explore. Select an icon to open its capabilities and walkthrough.';
+        globe.querySelector('[data-ecosystem-hub-subtitle]').textContent = '12 SYSTEMS / ONE CONNECTED BRAIN';
+        introTitle.textContent = 'CASEY OPERATING ECOSYSTEM';
+        introSubtitle.textContent = 'EVERY PART OF SAFESHIELD / ONE CONNECTED CORE';
+        introCopy.textContent = 'Every orbiting icon is a part of the business. Every line leads back to CASEY. Rotate the globe, then select a system to see what CASEY does inside it.';
+        document.querySelector('[data-ecosystem-meta-one]').textContent = '12';
+        document.querySelector('[data-ecosystem-label-one]').textContent = 'BUSINESS SYSTEMS';
+        document.querySelector('[data-ecosystem-meta-two]').textContent = '78';
+        document.querySelector('[data-ecosystem-label-two]').textContent = 'CAPABILITIES';
         document.querySelectorAll('[data-system-demo]').forEach(function (item) { item.classList.remove('active'); });
         if (returnCard) returnCard.focus({ preventScroll: true });
       };
@@ -2293,6 +2358,12 @@
       function renderGlobe() {
         world.rotation.y = yaw;
         world.rotation.x = pitch;
+        var hub = globe.querySelector('.ecosystem-hub');
+        var moveX = Math.sin(yaw) * (globe.clientWidth < 900 ? 5 : 9);
+        var moveY = Math.sin(pitch * 1.8) * (globe.clientWidth < 900 ? 4 : 7);
+        var tiltY = Math.sin(yaw) * 4;
+        var tiltX = Math.sin(pitch) * -4;
+        hub.style.transform = 'translate(-50%, -50%) translate(' + moveX.toFixed(2) + 'px,' + moveY.toFixed(2) + 'px) perspective(700px) rotateX(' + tiltX.toFixed(2) + 'deg) rotateY(' + tiltY.toFixed(2) + 'deg)';
         renderer.render(scene, camera);
         placeLabels();
       }
